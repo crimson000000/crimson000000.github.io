@@ -12,19 +12,19 @@
         
         crimson000</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="PAM 回文树（又称回文自动机 PAM\texttt{PAM}PAM），是一种可以高效解决大部分回文串问题的算法，在大部分情况下可以替代马拉车（当然模板题好像都替代不了），是一种不错的算法。  结构  trie 类似于其他的自动机（AC\texttt {AC}AC 自动机、SAM\texttt{SAM}SAM），PAM\texttt{PAM}PAM 也有一颗 $\texttt{trie} $ 树">
+    <meta name="description" content="PAM 回文树（又称回文自动机 PAM\texttt{PAM}PAM），是一种可以高效解决大部分回文串问题的算法，在大部分情况下可以替代马拉车（当然模板题好像都替代不了），是一种不错的算法。  结构  trie 类似于其他的自动机（AC\texttt {AC}AC 自动机、SAM\texttt{SAM}SAM），PAM\texttt{PAM}PAM 也有一颗 trie\texttt{trie}t">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PAM学习笔记">
 <meta property="og:url" content="http://example.com/2023/05/21/PAM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="crimson000">
-<meta property="og:description" content="PAM 回文树（又称回文自动机 PAM\texttt{PAM}PAM），是一种可以高效解决大部分回文串问题的算法，在大部分情况下可以替代马拉车（当然模板题好像都替代不了），是一种不错的算法。  结构  trie 类似于其他的自动机（AC\texttt {AC}AC 自动机、SAM\texttt{SAM}SAM），PAM\texttt{PAM}PAM 也有一颗 $\texttt{trie} $ 树">
+<meta property="og:description" content="PAM 回文树（又称回文自动机 PAM\texttt{PAM}PAM），是一种可以高效解决大部分回文串问题的算法，在大部分情况下可以替代马拉车（当然模板题好像都替代不了），是一种不错的算法。  结构  trie 类似于其他的自动机（AC\texttt {AC}AC 自动机、SAM\texttt{SAM}SAM），PAM\texttt{PAM}PAM 也有一颗 trie\texttt{trie}t">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.imgloc.com/2023/05/21/V40DFy.png">
 <meta property="og:image" content="https://i.imgloc.com/2023/05/21/V40zMx.png">
 <meta property="og:image" content="https://i.imgloc.com/2023/05/21/V40sqy.png">
 <meta property="og:image" content="https://i.imgloc.com/2023/05/21/V4CQJk.png">
 <meta property="article:published_time" content="2023-05-21T09:21:19.000Z">
-<meta property="article:modified_time" content="2023-05-21T12:43:18.448Z">
+<meta property="article:modified_time" content="2023-05-22T06:18:42.494Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="学习笔记">
 <meta name="twitter:card" content="summary">
@@ -141,7 +141,7 @@
 <p>回文树（又称回文自动机 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">PAM</mtext></mrow><annotation encoding="application/x-tex">\texttt{PAM}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61111em;vertical-align:0em;"></span><span class="mord text"><span class="mord texttt">PAM</span></span></span></span></span>），是一种可以高效解决大部分回文串问题的算法，在大部分情况下可以替代马拉车（当然模板题好像都替代不了），是一种不错的算法。</p>
 <h2 id="结构"><a class="markdownIt-Anchor" href="#结构"></a> 结构</h2>
 <h3 id="trie"><a class="markdownIt-Anchor" href="#trie"></a> trie</h3>
-<p>类似于其他的自动机（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">AC</mtext></mrow><annotation encoding="application/x-tex">\texttt {AC}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61111em;vertical-align:0em;"></span><span class="mord text"><span class="mord texttt">AC</span></span></span></span></span> 自动机、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">SAM</mtext></mrow><annotation encoding="application/x-tex">\texttt{SAM}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61111em;vertical-align:0em;"></span><span class="mord text"><span class="mord texttt">SAM</span></span></span></span></span>），<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">PAM</mtext></mrow><annotation encoding="application/x-tex">\texttt{PAM}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61111em;vertical-align:0em;"></span><span class="mord text"><span class="mord texttt">PAM</span></span></span></span></span> 也有一颗 $\texttt{trie} $ 树以及相应的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">fail</mtext></mrow><annotation encoding="application/x-tex">\texttt{fail}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61111em;vertical-align:0em;"></span><span class="mord text"><span class="mord texttt">fail</span></span></span></span></span> 指针。但是不太相同的是，在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">PAM</mtext></mrow><annotation encoding="application/x-tex">\texttt{PAM}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61111em;vertical-align:0em;"></span><span class="mord text"><span class="mord texttt">PAM</span></span></span></span></span> 中，有两棵树（520 这天学这个正适合）。</p>
+<p>类似于其他的自动机（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">AC</mtext></mrow><annotation encoding="application/x-tex">\texttt {AC}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61111em;vertical-align:0em;"></span><span class="mord text"><span class="mord texttt">AC</span></span></span></span></span> 自动机、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">SAM</mtext></mrow><annotation encoding="application/x-tex">\texttt{SAM}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61111em;vertical-align:0em;"></span><span class="mord text"><span class="mord texttt">SAM</span></span></span></span></span>），<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">PAM</mtext></mrow><annotation encoding="application/x-tex">\texttt{PAM}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61111em;vertical-align:0em;"></span><span class="mord text"><span class="mord texttt">PAM</span></span></span></span></span> 也有一颗 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">trie</mtext></mrow><annotation encoding="application/x-tex">\texttt{trie}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61111em;vertical-align:0em;"></span><span class="mord text"><span class="mord texttt">trie</span></span></span></span></span> 树以及相应的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">fail</mtext></mrow><annotation encoding="application/x-tex">\texttt{fail}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61111em;vertical-align:0em;"></span><span class="mord text"><span class="mord texttt">fail</span></span></span></span></span> 指针。但是不太相同的是，在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">PAM</mtext></mrow><annotation encoding="application/x-tex">\texttt{PAM}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61111em;vertical-align:0em;"></span><span class="mord text"><span class="mord texttt">PAM</span></span></span></span></span> 中，有两棵树（520 这天学这个正适合）。</p>
 <p><img src="https://i.imgloc.com/2023/05/21/V40DFy.png" alt="555" /></p>
 <p>为什么呢？因为回文串分为奇回文串和偶回文串，奇回文串当然可以直接插入，但是偶回文串就出现了问题。我们当然可以用类似马拉车的方法，添加不存在的字符来使它变成奇回文串，但是这样太麻烦了。于是我们可以建立两棵树，一颗奇树，一颗偶树，奇树的儿子都代表奇回文串，偶树的儿子都代表偶回文串。</p>
 <p>下图是字符串为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">abaaabacca</mtext></mrow><annotation encoding="application/x-tex">\texttt{abaaabacca}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61111em;vertical-align:0em;"></span><span class="mord text"><span class="mord texttt">abaaabacca</span></span></span></span></span> 的回文树。</p>
@@ -192,7 +192,7 @@
             
         </div>
         <footer class="article-footer">
-            <a data-url="http://example.com/2023/05/21/PAM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clhy1z4fd000ofovscspg084n" data-title="PAM学习笔记"
+            <a data-url="http://example.com/2023/05/21/PAM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clhygin2e0008fcvsgbspazub" data-title="PAM学习笔记"
                class="article-share-link">Share</a>
             
             
@@ -203,6 +203,20 @@
     
         
     <nav id="article-nav">
+        
+            <div class="article-nav-link-wrap article-nav-link-left">
+                
+                    <img data-src="https://d-sketon.top/img/backimg/bg23.jpg" data-sizes="auto" alt="P4016题解"
+                         class="lazyload">
+                
+                <a href="/2023/05/22/P4016%E9%A2%98%E8%A7%A3/"></a>
+                <div class="article-nav-caption">Newer</div>
+                <div class="article-nav-title">
+                    
+                        P4016题解
+                    
+                </div>
+            </div>
         
         
             <div class="article-nav-link-wrap article-nav-link-right">
@@ -236,7 +250,7 @@
         <div class="sidebar-state">
             <div class="sidebar-state-article">
                 <div>Posts</div>
-                <div class="sidebar-state-number">10</div>
+                <div class="sidebar-state-number">11</div>
             </div>
             <div class="sidebar-state-category">
                 <div>Categories</div>
@@ -340,10 +354,10 @@
             
                 <div>
                     <span class="icon-brush"></span>
-                    28.3k
+                    28.9k
                     &nbsp;|&nbsp;
                     <span class="icon-coffee"></span>
-                    02:25
+                    02:28
                 </div>
             
             
@@ -370,7 +384,7 @@
         <div class="sidebar-state">
             <div class="sidebar-state-article">
                 <div>Posts</div>
-                <div class="sidebar-state-number">10</div>
+                <div class="sidebar-state-number">11</div>
             </div>
             <div class="sidebar-state-category">
                 <div>Categories</div>
