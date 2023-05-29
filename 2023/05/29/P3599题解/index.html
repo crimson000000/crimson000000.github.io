@@ -1,0 +1,479 @@
+
+    <!DOCTYPE html>
+    <html lang="en"
+            
+    >
+    <head>
+    <meta charset="utf-8">
+    
+    
+    <title>
+        P3599题解 |
+        
+        crimson000</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="本题是一道比较典的构造题，拿来扩宽扩宽大家的眼界吧。 Task 1试判断能否构造并构造一个长度为 $n$ 的 $1 \sim n$ 的排列，满足其 $n$ 个前缀和在模 $n$ 的意义下互不相同。 很容易想到的一点是：$n$ 一定排在第一位，因为如果排在别的位，加上 $n$ 后在模 $n$ 意义下是不变的，因此不满足题意，只能放在第一位。 然后我们可能有一个朴素的想法：构造出的前缀和序列在模 $n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="P3599题解">
+<meta property="og:url" content="http://example.com/2023/05/29/P3599%E9%A2%98%E8%A7%A3/index.html">
+<meta property="og:site_name" content="crimson000">
+<meta property="og:description" content="本题是一道比较典的构造题，拿来扩宽扩宽大家的眼界吧。 Task 1试判断能否构造并构造一个长度为 $n$ 的 $1 \sim n$ 的排列，满足其 $n$ 个前缀和在模 $n$ 的意义下互不相同。 很容易想到的一点是：$n$ 一定排在第一位，因为如果排在别的位，加上 $n$ 后在模 $n$ 意义下是不变的，因此不满足题意，只能放在第一位。 然后我们可能有一个朴素的想法：构造出的前缀和序列在模 $n">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img.paulzzh.com/touhou/konachan/jpeg/068aa04808f99c146d186a4b1006ffef.jpg">
+<meta property="og:image" content="https://img.paulzzh.com/touhou/konachan/jpeg/4a6d3c2341877e3ef8940d8a8286de4c.jpg">
+<meta property="og:image" content="https://i.imgloc.com/2023/05/25/VD5jSz.jpeg">
+<meta property="og:image" content="https://i.imgloc.com/2023/05/25/VD5IVw.jpeg">
+<meta property="og:image" content="https://i.imgloc.com/2023/05/29/VtZ9dw.jpeg">
+<meta property="og:image" content="https://i.imgloc.com/2023/05/29/VtZL2x.jpeg">
+<meta property="og:image" content="https://i.imgloc.com/2023/05/29/VtZMEk.jpeg">
+<meta property="article:published_time" content="2023-05-29T02:58:58.000Z">
+<meta property="article:modified_time" content="2023-05-29T03:31:35.114Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="题解">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.paulzzh.com/touhou/konachan/jpeg/068aa04808f99c146d186a4b1006ffef.jpg">
+    
+        <link rel="alternate" href="/atom.xml" title="crimson000" type="application/atom+xml">
+    
+    
+        <link rel="shortcut icon" href="/images/favicon.ico">
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui/dist/fancybox.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://unpkg.com/katex@0.16.4/dist/katex.min.css">
+
+    
+    
+<script src="https://unpkg.com/pace-js@1.2.4/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+  
+    <body>
+    <div id="container">
+        <div id="wrap">
+            <header id="header">
+    
+        <img data-src="https://img.paulzzh.com/touhou/konachan/jpeg/068aa04808f99c146d186a4b1006ffef.jpg" data-sizes="auto" alt="P3599题解" class="lazyload">
+    
+    <div id="header-outer" class="outer">
+        <div id="header-title" class="inner">
+            <h1 id="logo-wrap">
+                
+                    
+                    
+                        <a href="/" id="logo">P3599题解</a>
+                    
+                
+            </h1>
+            
+                
+                
+            
+        </div>
+        <div id="header-inner">
+            <nav id="main-nav">
+                <a id="main-nav-toggle" class="nav-icon"></a>
+                
+                    <span class="main-nav-link-wrap">
+                        <span class="main-nav-icon"></span>
+                        <a class="main-nav-link" href="/">Home</a>
+                    </span>
+                
+                    <span class="main-nav-link-wrap">
+                        <span class="main-nav-icon"></span>
+                        <a class="main-nav-link" href="/archives">Archives</a>
+                    </span>
+                
+                    <span class="main-nav-link-wrap">
+                        <span class="main-nav-icon"></span>
+                        <a class="main-nav-link" href="/about">About</a>
+                    </span>
+                
+                    <span class="main-nav-link-wrap">
+                        <span class="main-nav-icon"></span>
+                        <a class="main-nav-link" href="/friend">Friend</a>
+                    </span>
+                
+            </nav>
+            <nav id="sub-nav">
+                
+                    <a id="nav-rss-link" class="nav-icon" href="/atom.xml"
+                       title="RSS Feed"></a>
+                
+                
+            </nav>
+            <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+            </div>
+        </div>
+    </div>
+</header>
+  
+            <div id="content" class="outer">
+                <section id="main"><article id="post-P3599题解" class="h-entry article article-type-post"
+         itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <div class="article-inner">
+        <div class="article-meta">
+            <div class="article-date">
+    <a href="/2023/05/29/P3599%E9%A2%98%E8%A7%A3/" class="article-date-link">
+        <time datetime="2023-05-29T02:58:58.000Z"
+              itemprop="datePublished">2023-05-29</time>
+    </a>
+</div>
+
+            
+        </div>
+        <div class="hr-line"></div>
+        
+        <div class="e-content article-entry" itemprop="articleBody">
+            
+                <p>本题是一道比较典的构造题，拿来扩宽扩宽大家的眼界吧。</p>
+<h1 id="Task-1"><a href="#Task-1" class="headerlink" title="Task 1"></a>Task 1</h1><p>试判断能否构造并构造一个长度为 $n$ 的 $1 \sim n$ 的排列，满足其 $n$ 个前缀和在模 $n$ 的意义下互不相同。</p>
+<p>很容易想到的一点是：$n$ 一定排在第一位，因为如果排在别的位，加上 $n$ 后在模 $n$ 意义下是不变的，因此不满足题意，只能放在第一位。</p>
+<p>然后我们可能有一个朴素的想法：构造出的前缀和序列在模 $n$ 意义下为 $0,1,2,3,\cdots ,n$。但是很显然，这是行不通的（做差分即可）。</p>
+<p>但是当我们随便试试，我们也可以想到一种前缀和序列：$0,1,-1,2,-2 \cdots$。我们对它做个差分，就可以得到原序列为 $0,1,-2,3,-4,\cdots$。这很显然就是 $n,1,n-2, 3, n-4, \cdots$。这样就可以构造出来了！</p>
+<p>但是还有一种情况，就是无解。我们考虑下当什么时候为无解，自己手玩几组样例就能发现：当 $n$ 为除 $1$ 以外的奇数时无解。</p>
+<p>证明：</p>
+<script type="math/tex; mode=display">
+\sum \limits _{i=1}^{n-1} i = \frac{n(n-1)}{2} =kn\equiv 0(\bmod{3})</script><p>这样我们就可以愉快的 AC 掉 Task 1 了。</p>
+<h1 id="Task-2"><a href="#Task-2" class="headerlink" title="Task 2"></a>Task 2</h1><p>试判断能否构造并构造一个长度为 $n$ 的 $1 \sim n$ 的排列，满足其 $n$ 个前缀积在模 $n$ 的意义下互不相同。</p>
+<p>很显然，$n$ 应该放最后，因为如果前缀积中出现 $n$ 后后面的前缀积一定全为 $0$。</p>
+<p>我们先来判断无解：当 $n$ 为大于 $4$ 的合数时无解。</p>
+<hr>
+<p>证明：</p>
+<p>引理：当 $n$ 大于等于 $4$ 时，存在 $a, b &lt; n$ 且 $ab \bmod n = 0$</p>
+<p>因此 $\prod_{1}^{n-1}i \bmod  n=0$</p>
+<p>所以不管我们怎么摆放前 $n-1$ 个数，总是会出现 $2$ 个 $0$（一个为 $n$，一个为 $ab$）。</p>
+<p>所以当 $n$ 为大于 $4$ 的合数时无解。</p>
+<p>引理的证明：</p>
+<ol>
+<li>当 $n=p_1^{a_1}p_2^{a_2}\cdots p_k^{a_k}$ 时，我们可以找到两个数 $x=\prod_{i=1}^{z}p_i^{a_i},y=\prod_{i=z+1}^{k}p_i^{a_i}$ 满足 $xy \bmod n = 0$。</li>
+<li>当 $n=p^{k}(k&gt;2)$ 时，我们可以找到 $x=p^{a},y=p^{k-a}$ 满足要求。</li>
+<li>当 $n=p^2(p&gt;2)$ 时，我们可以找到 $x=p, y = 2p$，这时 $n|xy$。</li>
+</ol>
+<p>得证。</p>
+<hr>
+<p>有了上面的定理，我们就很好判断是否有解了。剩下的问题就是开始构造了。</p>
+<p>我们通过一些手段（打表等）可以发现一个规律：前缀积为 $1,2,3,\cdots$ 的方案一定能构造出来。我们就可以考虑这个方案。</p>
+<p>不难发现按下面的方案构造就能出正解：</p>
+<script type="math/tex; mode=display">
+1,2, \frac{3}{2},\frac{4}{3},\frac{5}{4} \cdots</script><p>当 $n$ 为 $4$ 时，可以直接打表，当 $n &gt; 4$ 时，根据上面的无解方案，我们可以知道 $n$ 一定为质数，我们就可以直接快速幂求逆元。</p>
+<p>完整代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> LOCAL</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt; PII;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e6</span> + <span class="number">10</span>;</span><br><span class="line">bitset&lt;N&gt; st;</span><br><span class="line"><span class="type">int</span> primes[N], cnt;</span><br><span class="line"><span class="type">int</span> a[N];</span><br><span class="line"><span class="type">int</span> type;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">qmi</span><span class="params">(ll a, ll b, ll p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ll res = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(b)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(b &amp; <span class="number">1</span>) res = res * a % p;</span><br><span class="line">        a = a * a % p;</span><br><span class="line">        b &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">(<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span>; i &lt;= n; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(!st[i])</span><br><span class="line">        &#123;</span><br><span class="line">            primes[++ cnt] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>; primes[j] &lt;= n / i; j ++ )</span><br><span class="line">        &#123;</span><br><span class="line">            st[primes[j] * i] = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span>(i % primes[j] == <span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">init</span>(<span class="number">100001</span>);</span><br><span class="line">    st[<span class="number">4</span>] = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">    type = <span class="built_in">read</span>();</span><br><span class="line">    <span class="type">int</span> T = <span class="built_in">read</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(T -- )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> n = <span class="built_in">read</span>();</span><br><span class="line">        <span class="keyword">if</span>(type == <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(n == <span class="number">1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">puts</span>(<span class="string">&quot;2 1&quot;</span>);</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(n &amp; <span class="number">1</span>) <span class="built_in">puts</span>(<span class="string">&quot;0&quot;</span>);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;2 &quot;</span>);</span><br><span class="line">                <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i ++ )</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(!(i &amp; <span class="number">1</span>)) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, n - i);</span><br><span class="line">                    <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, i);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="built_in">puts</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(st[n]) <span class="built_in">puts</span>(<span class="string">&quot;0&quot;</span>);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;2 1 &quot;</span>);</span><br><span class="line">                <span class="keyword">if</span>(n == <span class="number">4</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="built_in">printf</span>(<span class="string">&quot;3 2 4\n&quot;</span>);</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span>; i &lt; n; i ++ )</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, (ll)i * <span class="built_in">qmi</span>(i - <span class="number">1</span>, n - <span class="number">2</span>, n) % n);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, n);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="KOISHI"><a href="#KOISHI" class="headerlink" title="KOISHI"></a>KOISHI</h1><p><img src="https://img.paulzzh.com/touhou/konachan/jpeg/068aa04808f99c146d186a4b1006ffef.jpg" alt=""></p>
+<p><img src="https://img.paulzzh.com/touhou/konachan/jpeg/4a6d3c2341877e3ef8940d8a8286de4c.jpg" alt=""></p>
+<p><img src="https://i.imgloc.com/2023/05/25/VD5jSz.jpeg" alt=""></p>
+<p><img src="https://i.imgloc.com/2023/05/25/VD5IVw.jpeg" alt=""></p>
+<p><img src="https://i.imgloc.com/2023/05/29/VtZ9dw.jpeg" alt=""></p>
+<p><img src="https://i.imgloc.com/2023/05/29/VtZL2x.jpeg" alt=""></p>
+<p><img src="https://i.imgloc.com/2023/05/29/VtZMEk.jpeg" alt=""></p>
+
+            
+        </div>
+        <footer class="article-footer">
+            <a data-url="http://example.com/2023/05/29/P3599%E9%A2%98%E8%A7%A3/" data-id="cli8ase4q000ancvs8vaa8fvt" data-title="P3599题解"
+               class="article-share-link">Share</a>
+            
+            
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+
+        </footer>
+    </div>
+    
+        
+    <nav id="article-nav">
+        
+        
+            <div class="article-nav-link-wrap article-nav-link-right">
+                
+                    
+                    
+                        <img data-src="https://d-sketon.top/img/backimg/bg1.jpg" data-sizes="auto" alt="抽象" class="lazyload">
+                    
+                
+                <a href="/2023/05/26/%E6%8A%BD%E8%B1%A1/"></a>
+                <div class="article-nav-caption">Older</div>
+                <div class="article-nav-title">
+                    
+                        抽象
+                    
+                </div>
+            </div>
+        
+    </nav>
+
+    
+</article>
+
+</section>
+                
+                    <aside id="sidebar">
+    <div class="sidebar-wrap">
+        <div class="sidebar-author">
+            <img data-src="/avatar/avatar.jpg" data-sizes="auto" alt="John Doe" class="lazyload">
+            <div class="sidebar-author-name">John Doe</div>
+            <div class="sidebar-description"></div>
+        </div>
+        <div class="sidebar-state">
+            <div class="sidebar-state-article">
+                <div>Posts</div>
+                <div class="sidebar-state-number">14</div>
+            </div>
+            <div class="sidebar-state-category">
+                <div>Categories</div>
+                <div class="sidebar-state-number">0</div>
+            </div>
+            <div class="sidebar-state-tag">
+                <div>Tags</div>
+                <div class="sidebar-state-number">4</div>
+            </div>
+        </div>
+        <div class="sidebar-social">
+            
+                <div class=icon-github>
+                    <a href=https://github.com/yourname itemprop="url" target="_blank"></a>
+                </div>
+            
+                <div class=icon-google>
+                    <a href=https://plus.google.com/yourname itemprop="url" target="_blank"></a>
+                </div>
+            
+                <div class=icon-twitter>
+                    <a href=https://twitter.com/yourname itemprop="url" target="_blank"></a>
+                </div>
+            
+                <div class=icon-facebook>
+                    <a href=https://www.facebook.com/yourname itemprop="url" target="_blank"></a>
+                </div>
+            
+        </div>
+        <div class="sidebar-menu">
+            
+                <div class="sidebar-menu-link-wrap">
+                    <a class="sidebar-menu-link-dummy" href="/"></a>
+                    <span class="sidebar-menu-icon"></span>
+                    <div class="sidebar-menu-link">Home</div>
+                </div>
+            
+                <div class="sidebar-menu-link-wrap">
+                    <a class="sidebar-menu-link-dummy" href="/archives"></a>
+                    <span class="sidebar-menu-icon"></span>
+                    <div class="sidebar-menu-link">Archives</div>
+                </div>
+            
+                <div class="sidebar-menu-link-wrap">
+                    <a class="sidebar-menu-link-dummy" href="/about"></a>
+                    <span class="sidebar-menu-icon"></span>
+                    <div class="sidebar-menu-link">About</div>
+                </div>
+            
+                <div class="sidebar-menu-link-wrap">
+                    <a class="sidebar-menu-link-dummy" href="/friend"></a>
+                    <span class="sidebar-menu-icon"></span>
+                    <div class="sidebar-menu-link">Friend</div>
+                </div>
+            
+        </div>
+    </div>
+    
+        
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Tag Cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 20px;">学习笔记</a> <a href="/tags/%E6%8A%BD%E8%B1%A1/" style="font-size: 10px;">抽象</a> <a href="/tags/%E6%96%87%E5%8C%96%E8%AF%BE/" style="font-size: 10px;">文化课</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 15px;">题解</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a></li></ul>
+        </div>
+    </div>
+
+
+    
+</aside>
+                
+            </div>
+            <footer id="footer">
+    <div class="footer-line"></div>
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            
+            <div>
+                <span class="icon-copyright"></span>
+                2020-2023
+                <span class="footer-info-sep"></span>
+                John Doe
+            </div>
+            
+                <div>
+                    Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>&nbsp;
+                    Theme.<a href="https://github.com/D-Sketon/hexo-theme-reimu" target="_blank">Reimu</a>
+                </div>
+            
+            
+                <div>
+                    <span class="icon-brush"></span>
+                    31.7k
+                    &nbsp;|&nbsp;
+                    <span class="icon-coffee"></span>
+                    02:29
+                </div>
+            
+            
+                <div>
+                    <span class="icon-eye"></span>
+                    <span id="busuanzi_container_site_pv">Number of visits&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+                    &nbsp;|&nbsp;
+                    <span class="icon-user"></span>
+                    <span id="busuanzi_container_site_uv">Number of visitors&nbsp;<span id="busuanzi_value_site_uv"></span></span>
+                </div>
+            
+        </div>
+    </div>
+</footer>
+  
+        </div>
+        <nav id="mobile-nav">
+    <div class="sidebar-wrap">
+        <div class="sidebar-author">
+            <img data-src="/avatar/avatar.jpg" data-sizes="auto" alt="John Doe" class="lazyload">
+            <div class="sidebar-author-name">John Doe</div>
+            <div class="sidebar-description"></div>
+        </div>
+        <div class="sidebar-state">
+            <div class="sidebar-state-article">
+                <div>Posts</div>
+                <div class="sidebar-state-number">14</div>
+            </div>
+            <div class="sidebar-state-category">
+                <div>Categories</div>
+                <div class="sidebar-state-number">0</div>
+            </div>
+            <div class="sidebar-state-tag">
+                <div>Tags</div>
+                <div class="sidebar-state-number">4</div>
+            </div>
+        </div>
+        <div class="sidebar-social">
+            
+                <div class=icon-github>
+                    <a href=https://github.com/yourname itemprop="url" target="_blank"></a>
+                </div>
+            
+                <div class=icon-google>
+                    <a href=https://plus.google.com/yourname itemprop="url" target="_blank"></a>
+                </div>
+            
+                <div class=icon-twitter>
+                    <a href=https://twitter.com/yourname itemprop="url" target="_blank"></a>
+                </div>
+            
+                <div class=icon-facebook>
+                    <a href=https://www.facebook.com/yourname itemprop="url" target="_blank"></a>
+                </div>
+            
+        </div>
+        <div class="sidebar-menu">
+            
+                <div class="sidebar-menu-link-wrap">
+                    <a class="sidebar-menu-link-dummy" href="/"></a>
+                    <span class="sidebar-menu-icon"></span>
+                    <div class="sidebar-menu-link">Home</div>
+                </div>
+            
+                <div class="sidebar-menu-link-wrap">
+                    <a class="sidebar-menu-link-dummy" href="/archives"></a>
+                    <span class="sidebar-menu-icon"></span>
+                    <div class="sidebar-menu-link">Archives</div>
+                </div>
+            
+                <div class="sidebar-menu-link-wrap">
+                    <a class="sidebar-menu-link-dummy" href="/about"></a>
+                    <span class="sidebar-menu-icon"></span>
+                    <div class="sidebar-menu-link">About</div>
+                </div>
+            
+                <div class="sidebar-menu-link-wrap">
+                    <a class="sidebar-menu-link-dummy" href="/friend"></a>
+                    <span class="sidebar-menu-icon"></span>
+                    <div class="sidebar-menu-link">Friend</div>
+                </div>
+            
+        </div>
+    </div>
+</nav>
+        
+<script src="https://unpkg.com/jquery@3.6.3/dist/jquery.min.js"></script>
+
+
+<script src="https://unpkg.com/lazysizes@5.3.2/lazysizes.min.js"></script>
+
+
+<script src="https://unpkg.com/clipboard@2.0.11/dist/clipboard.min.js"></script>
+
+
+
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+
+
+    
+<script src="https://unpkg.com/busuanzi@2.3.0/bsz.pure.mini.js"></script>
+
+
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
+
+
+
+
+    </div>
+    <div class="site-search">
+        <div class="algolia-popup popup">
+            <div class="algolia-search">
+                <span class="algolia-search-input-icon"></span>
+                <div class="algolia-search-input" id="algolia-search-input"></div>
+            </div>
+
+            <div class="algolia-results">
+                <div id="algolia-stats"></div>
+                <div id="algolia-hits"></div>
+                <div id="algolia-pagination" class="algolia-pagination"></div>
+            </div>
+
+            <span class="popup-btn-close"></span>
+        </div>
+    </div>
+    <!-- hexo injector body_end start -->
+<script src="/js/insertHighlight.js"></script>
+<!-- hexo injector body_end end --></body>
+    </html>
+

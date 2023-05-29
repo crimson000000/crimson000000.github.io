@@ -8,12 +8,13 @@
     
     
     <title>
+        Tag: 抽象 |
         
         crimson000</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta property="og:type" content="website">
 <meta property="og:title" content="crimson000">
-<meta property="og:url" content="http://example.com/page/2/index.html">
+<meta property="og:url" content="http://example.com/tags/%E6%8A%BD%E8%B1%A1/index.html">
 <meta property="og:site_name" content="crimson000">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="John Doe">
@@ -60,12 +61,16 @@
                 
                     
                     
-                        <a href="/" id="logo">crimson000</a>
+                        <a href="/" id="logo">Tags</a>
                     
                 
             </h1>
             
                 
+                
+                    <h2 id="subtitle-wrap">
+                        <a href="/" id="subtitle">抽象</a>
+                    </h2>
                 
             
         </div>
@@ -110,165 +115,65 @@
   
             <div id="content" class="outer">
                 <section id="main">
+    <div class="archives-outer-wrap">
+        <div class="tag-wrap">
+            
+                <div class="archives-tag-list-item">
+                    <a class="archives-tag-list-link" href="/tags/题解/">题解</a>
+                </div>
+            
+                <div class="archives-tag-list-item">
+                    <a class="archives-tag-list-link" href="/tags/学习笔记/">学习笔记</a>
+                </div>
+            
+                <div class="archives-tag-list-item">
+                    <a class="archives-tag-list-link" href="/tags/抽象/">抽象</a>
+                </div>
+            
+                <div class="archives-tag-list-item">
+                    <a class="archives-tag-list-link" href="/tags/文化课/">文化课</a>
+                </div>
+            
+        </div>
+        <div class="category-wrap">
+            
+        </div>
+        
+        
+            
+            
+                
     
-        
-    <div class="post-wrap-left">
-        
-            <a class="post-link" href="/2023/05/09/%E6%95%B4%E4%BD%93%E4%BA%8C%E5%88%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"></a>
-        
-        
-        <div class="post-cover-left">
-            
-                <img data-src="https://d-sketon.top/img/backimg/bg17.jpg" data-sizes="auto" alt="整体二分学习笔记" class="lazyload">
-            
-
+    <section class="archives-wrap">
+        <div class="archive-year-wrap">
+            <a href="/archives/2023" class="archive-year">2023</a>
         </div>
-        <div class="post-info">
-            <div class="post-meta">
-                <a><span class="icon-calendar"></span>2023-05-09</a>
+        <div class="archives">
+            <ul>
                 
-                    <a><span class="icon-pencil"></span>3.1k words</a>
+                <li class="archive-article">
+    <div class="archive-article-date-wrap">
+        <a href="/2023/05/26/%E6%8A%BD%E8%B1%A1/">
+            <time class="dt-published" datetime="2023-05-26T02:16:07.000Z"
+                  itemprop="datePublished">05-26</time>
+        </a>
+    </div>
+    <div class="archive-article-title-wrap">
+        
+            
+                <a class="archive-article-title" href="/2023/05/26/%E6%8A%BD%E8%B1%A1/">抽象</a>
+            
+        
+    </div>
+</li>
                 
                 
-                    <a><span class="icon-clock"></span>17 mins</a>
-                
-            </div>
-            <div class="post-title">整体二分学习笔记</div>
-            <article class="post-article">
-                
-                    整体二分引入对于一堆询问，如果每个单独的询问都可以二分解决的话，时间复杂度为 $O(NM\log N)$，但实际上每次二分都会有一些残留信息被我们扔掉，如果我们将所有询问一起二分，就可以最大时间的减小复杂度。
-讲解经典例题：区间第k大1234给定一个序列 a 和一个整数 S，有 2 种操作：1. 将 a 序列的第 k 个数变为 w2. 查询区间[l, r]中有多少数小于等于 S
-这个题可以用一个树状数组来维护，对于 $a$ 序列，我们将所有小于等于 $S$ 的数的位置在树状数组中 $+1$，表示这个位置有一个小于等于 $S$ 的数。
-对于 1 操作，我们可以看作删除一个数再添加一个数，先看 $
-                
-            </article>
+            </ul>
         </div>
+    </section>
+    
     </div>
 
-    
-        
-    <div class="post-wrap-right">
-        
-            <a class="post-link" href="/2023/05/09/%E6%B7%80%E7%B2%89%E8%B4%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"></a>
-        
-        <div class="post-cover-right">
-            
-                <img data-src="https://d-sketon.top/img/backimg/bg12.jpg" data-sizes="auto" alt="淀粉质学习笔记" class="lazyload">
-            
-        </div>
-        <div class="post-info">
-            <div class="post-meta">
-                <a><span class="icon-calendar"></span>2023-05-09</a>
-                
-                    <a><span class="icon-pencil"></span>1.7k words</a>
-                
-                
-                    <a><span class="icon-clock"></span>8 mins</a>
-                
-            </div>
-            <div class="post-title">淀粉质学习笔记</div>
-            <article class="post-article">
-                
-                    点分治序列上的操作可以用很多方式维护，线段树树状数组平衡树啥的，但是如果毒瘤出题人把序列搬到了树上，则需要一些奇妙方法。一般有两种（好几种？）方法：
-
-树链剖分，把树上路径转化成 dfn 序上的多段进行操作。
-LCT，不多说，目前只会板子，没搞太懂。
-点分治，这个是不用把树转化成序列的，而是将树上统计（一般为统计）进行一个分治。
-……
-
-接下来重点讲解第三种。
-概述在统计某类符合要求的路径数目时，可以将这种路径分为 2 类：
-
-在根节点的各个儿子节点的子树内，不经过根节点。
-经过当前选择的根节点。
-
-对于第一种情况，我们可以直接把它分治到各个儿子节点的子树中，让它们自己去统计。
-而对于第二种情
-                
-            </article>
-        </div>
-    </div>
-
-    
-        
-    <div class="post-wrap-left">
-        
-            <a class="post-link" href="/2023/05/09/FFT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"></a>
-        
-        
-        <div class="post-cover-left">
-            
-                <img data-src="https://d-sketon.top/img/backimg/bg14.jpg" data-sizes="auto" alt="FFT学习笔记" class="lazyload">
-            
-
-        </div>
-        <div class="post-info">
-            <div class="post-meta">
-                <a><span class="icon-calendar"></span>2023-05-09</a>
-                
-                    <a><span class="icon-pencil"></span>2.6k words</a>
-                
-                
-                    <a><span class="icon-clock"></span>13 mins</a>
-                
-            </div>
-            <div class="post-title">FFT学习笔记</div>
-            <article class="post-article">
-                
-                    快速傅里叶变换多项式定义不严谨定义：形如 $f(x) = \sum \limits _{i=0}^{n} a_ix^i$ 的式子为多项式。
-定义（from OIWiki）：对于求和式 $\sum a_nx^n$，如果是有限项相加，称为多项式，记作  $f(x)=\sum \limits_{n=0}^m a_nx^n$。
-次数：对于多项式 $F(x) = \sum \limits _{i=0}^{n} a_ix^i$，该多项式的次数为 $n$。表示为 $\text{degree} (F) = n$
-次数界：任何一个大于多项式次数的整数。
-基本运算系数表示法：
-\mathbf{a} = [a_1,
-                
-            </article>
-        </div>
-    </div>
-
-    
-        
-    <div class="post-wrap-right">
-        
-            <a class="post-link" href="/2023/05/09/%E8%8E%AB%E9%98%9F/"></a>
-        
-        <div class="post-cover-right">
-            
-                <img data-src="https://d-sketon.top/img/backimg/bg16.jpg" data-sizes="auto" alt="莫队" class="lazyload">
-            
-        </div>
-        <div class="post-info">
-            <div class="post-meta">
-                <a><span class="icon-calendar"></span>2023-05-09</a>
-                
-                    <a><span class="icon-pencil"></span>6.7k words</a>
-                
-                
-                    <a><span class="icon-clock"></span>35 mins</a>
-                
-            </div>
-            <div class="post-title">莫队</div>
-            <article class="post-article">
-                
-                    莫队在此膜拜莫涛大佬以及同机房的莫队@Zkl21 。
-普通莫队先来考虑一个极其简单的问题：
-1给你一个序列 a，有多组询问，每次询问 [l, r] 的和
-一眼前缀和，但是我们也可以用莫队大材小用地做这道题。
-我们可以维护一个左端点 $L$ 和 $R$，我们可以发现，维护了这两个端点以及 $[L, R]$ 之间的信息之后就可以很轻松的计算出 $[L, R + 1]$，$[L, R - 1]$，$[L - 1, R]$，$[L + 1, R]$ 这些区间的信息，于是就可以每个询问都这么转移。
-当然可以构造数据来卡掉它，比如下面的数据：
-12345671 1000000999999 10000001
-                
-            </article>
-        </div>
-    </div>
-
-    
-
-
-    <nav id="page-nav">
-        
-        <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-    </nav>
 </section>
                 
                     <aside id="sidebar">
