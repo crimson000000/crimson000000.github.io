@@ -127,19 +127,19 @@
             <div class="post-meta">
                 <a><span class="icon-calendar"></span>2023-06-07</a>
                 
-                    <a><span class="icon-pencil"></span>12k words</a>
+                    <a><span class="icon-pencil"></span>8.2k words</a>
                 
                 
-                    <a><span class="icon-clock"></span>62 mins</a>
+                    <a><span class="icon-clock"></span>38 mins</a>
                 
             </div>
             <div class="post-title">组合数学总结</div>
             <article class="post-article">
                 
                     本篇文章是为了总结一下最近做的组合数学的题目以及涉及到的知识点，以后可能会不定期补充。同时也参考了大佬 lyt 的博客。同时如果想要更深入地了解组合数学中的推式子技巧，可以看下 pjw 的博客。地址1  地址2
- 基本知识
-排列数 AnmA_n^mAnm​ 表示从 nnn 个不同的物品中选出 mmm 个组成的不同排列的数量。Anm=n!(n−m)!A_n^m=\frac{n!}{(n-m)!}Anm​=(n−m)!n!​。
-组合数（高中常用 CnmC_n^mCnm​ 来表示，但是目前通常用 (nm)\dbinom{n}{m}(mn​) 表示），表示从 nnn 个不同物品中选出 mmm 个物品的
+基本知识排列数 $A_n^m$ 表示从 $n$ 个不同的物品中选出 $m$ 个组成的不同排列的数量。$A_n^m=\frac{n!}{(n-m)!}$。
+组合数（高中常用 $C_n^m$ 来表示，但是目前通常用 $\dbinom{n}{m}$ 表示），表示从 $n$ 个不同物品中选出 $m$ 个物品的方案数。$\dbinom{n}{m} = \frac{n!}{m!(n-m)!}$。
+
                 
             </article>
         </div>
@@ -160,23 +160,27 @@
             <div class="post-meta">
                 <a><span class="icon-calendar"></span>2023-06-05</a>
                 
-                    <a><span class="icon-pencil"></span>539 words</a>
+                    <a><span class="icon-pencil"></span>436 words</a>
                 
                 
-                    <a><span class="icon-clock"></span>2 mins</a>
+                    <a><span class="icon-clock"></span>1 min</a>
                 
             </div>
             <div class="post-title">CF1545D 题解</div>
             <article class="post-article">
                 
                     题目链接
- 题目描述
-有 nnn 个人和 kkk 个间隔相同时间的时刻，每个人都向正方向做匀速直线运动。给出每个时刻（0∼k−10 \sim k - 10∼k−1）的所有人的坐标集合（无序），在这 nknknk 个数中有一个数是错误的，找出这个错误的数并将其改正。
-数据范围：5≤n≤10005 \le n \le 10005≤n≤1000，7≤k≤10007 \le k \le 10007≤k≤1000。
-加强版：5≤n≤1065 \le n \le 10^65≤n≤106，7≤k≤1067 \le k \le 10^67≤k≤106。
+题目描述有 $n$ 个人和 $k$ 个间隔相同时间的时刻，每个人都向正方向做匀速直线运动。给出每个时刻（$0 \sim k - 1$）的所有人的坐标集合（无序），在这 $nk$ 个数中有一个数是错误的，找出这个错误的数并将其改正。
+数据范围：$5 \le n \le 1000$，$7 \le k \le 1000$。
+加强版：$5 \le n \le 10^6$，$7 \le k \le 10^6$。
 提示：充分发挥人类智慧
 提示：充分发挥人类智慧
-提示：充
+提示：充分发挥人类智慧
+提示：充分发挥人类智慧
+提示：充分发挥人类智慧
+提示：充分发挥人类智慧
+提示：充分发挥人类智慧
+提示：充分发挥人
                 
             </article>
         </div>
@@ -199,7 +203,7 @@
             <div class="post-meta">
                 <a><span class="icon-calendar"></span>2023-06-05</a>
                 
-                    <a><span class="icon-pencil"></span>676 words</a>
+                    <a><span class="icon-pencil"></span>581 words</a>
                 
                 
                     <a><span class="icon-clock"></span>2 mins</a>
@@ -210,10 +214,11 @@
                 
                     题目链接
 本题码量不大，但是事实上是一道极其难想的思维题。
- 题目描述
-你有 aaa 个 a，bbb 个 b，ccc 个 c。要求用这 a+b+ca+b+ca+b+c 个字母拼接成一个字符串，使得这个字符串的最小表示法在所有能拼成的字符串中最大。
-补充：最小表示法，将一个字符串的最后一个字符放到首位，重复这个操作，最终得到的 nnn 个字符串中字典序最小的即为它的最小表示法。例如 abacba\texttt{abacba}abacba 重复上面操作会得到如下字符串：
-abacba,aabacb,baabac,cbaaba,acbaab,bacbaa\texttt{abacba,aabacb,b
+题目描述你有 $a$ 个 a，$b$ 个 b，$c$ 个 c。要求用这 $a+b+c$ 个字母拼接成一个字符串，使得这个字符串的最小表示法在所有能拼成的字符串中最大。
+补充：最小表示法，将一个字符串的最后一个字符放到首位，重复这个操作，最终得到的 $n$ 个字符串中字典序最小的即为它的最小表示法。例如 $\texttt{abacba}$ 重复上面操作会得到如下字符串：
+
+\texttt{abacba,aabacb,baabac,cbaaba,acbaab,bacbaa}它的最小表示法即为 $\texttt{aabacb}$。
+数据范围
                 
             </article>
         </div>
@@ -234,25 +239,27 @@ abacba,aabacb,baabac,cbaaba,acbaab,bacbaa\texttt{abacba,aabacb,b
             <div class="post-meta">
                 <a><span class="icon-calendar"></span>2023-05-30</a>
                 
-                    <a><span class="icon-pencil"></span>2.5k words</a>
+                    <a><span class="icon-pencil"></span>2.3k words</a>
                 
                 
-                    <a><span class="icon-clock"></span>11 mins</a>
+                    <a><span class="icon-clock"></span>10 mins</a>
                 
             </div>
             <div class="post-title">AT_abc214_g题解</div>
             <article class="post-article">
                 
-                     题目描述
-给定两个排列 p,qp, qp,q，要求统计满足 ∀i,ri≠pi,ri≠qi\forall i, r_i\not= p_i, r_i \not= q_i∀i,ri​=pi​,ri​=qi​ 的排列 rrr 的数量。对 100000000710000000071000000007 取模
-数据范围 n≤3000n \le 3000n≤3000。
- solution
+                    题目描述给定两个排列 $p, q$，要求统计满足 $\forall i, r_i\not= p_i, r_i \not= q_i$ 的排列 $r$ 的数量。对 $1000000007$ 取模
+数据范围 $n \le 3000$。
+solution分割线（I love koishi）
 分割线（I love koishi）
 分割线（I love koishi）
 分割线（I love koishi）
 分割线（I love koishi）
 分割线（I love koishi）
-分割线（I love k
+分割线（I love koishi）
+分割线（I love koishi）
+分割线（I love koishi）
+分割线（I 
                 
             </article>
         </div>
@@ -275,21 +282,20 @@ abacba,aabacb,baabac,cbaaba,acbaab,bacbaa\texttt{abacba,aabacb,b
             <div class="post-meta">
                 <a><span class="icon-calendar"></span>2023-05-29</a>
                 
-                    <a><span class="icon-pencil"></span>1.2k words</a>
+                    <a><span class="icon-pencil"></span>1k words</a>
                 
                 
-                    <a><span class="icon-clock"></span>5 mins</a>
+                    <a><span class="icon-clock"></span>4 mins</a>
                 
             </div>
             <div class="post-title">P3599题解</div>
             <article class="post-article">
                 
                     本题是一道比较典的构造题，拿来扩宽扩宽大家的眼界吧。
- Task 1
-试判断能否构造并构造一个长度为 nnn 的 1∼n1 \sim n1∼n 的排列，满足其 nnn 个前缀和在模 nnn 的意义下互不相同。
-很容易想到的一点是：nnn 一定排在第一位，因为如果排在别的位，加上 nnn 后在模 nnn 意义下是不变的，因此不满足题意，只能放在第一位。
-然后我们可能有一个朴素的想法：构造出的前缀和序列在模 nnn 意义下为 0,1,2,3,⋯ ,n0,1,2,3,\cdots ,n0,1,2,3,⋯,n。但是很显然，这是行不通的（做差分即可）。
-但是当我们随便试试，我们也可以想到一种前缀和序列：
+Task 1试判断能否构造并构造一个长度为 $n$ 的 $1 \sim n$ 的排列，满足其 $n$ 个前缀和在模 $n$ 的意义下互不相同。
+很容易想到的一点是：$n$ 一定排在第一位，因为如果排在别的位，加上 $n$ 后在模 $n$ 意义下是不变的，因此不满足题意，只能放在第一位。
+然后我们可能有一个朴素的想法：构造出的前缀和序列在模 $n$ 意义下为 $0,1,2,3,\cdots ,n$。但是很显然，这是行不通的（做差分即可）。
+但是当我们随便试试，我们也可以想到一种前缀和序列：$0,1,-1,2,-2 \cdots$。我们对它做个
                 
             </article>
         </div>
@@ -305,7 +311,7 @@ abacba,aabacb,baabac,cbaaba,acbaab,bacbaa\texttt{abacba,aabacb,b
             
                 
                 
-                    <img data-src="https://d-sketon.top/img/backimg/bg6.jpg" data-sizes="auto" alt="抽象" class="lazyload">
+                    <img data-src="/images/banner.jpg" data-sizes="auto" alt="抽象" class="lazyload">
                 
             
         </div>
@@ -313,7 +319,7 @@ abacba,aabacb,baabac,cbaaba,acbaab,bacbaa\texttt{abacba,aabacb,b
             <div class="post-meta">
                 <a><span class="icon-calendar"></span>2023-05-26</a>
                 
-                    <a><span class="icon-pencil"></span>3.6k words</a>
+                    <a><span class="icon-pencil"></span>3.5k words</a>
                 
                 
                     <a><span class="icon-clock"></span>12 mins</a>
@@ -346,10 +352,10 @@ abacba,aabacb,baabac,cbaaba,acbaab,bacbaa\texttt{abacba,aabacb,b
             <div class="post-meta">
                 <a><span class="icon-calendar"></span>2023-05-25</a>
                 
-                    <a><span class="icon-pencil"></span>1.1k words</a>
+                    <a><span class="icon-pencil"></span>902 words</a>
                 
                 
-                    <a><span class="icon-clock"></span>5 mins</a>
+                    <a><span class="icon-clock"></span>4 mins</a>
                 
             </div>
             <div class="post-title">CF1421E题解</div>
@@ -357,9 +363,11 @@ abacba,aabacb,baabac,cbaaba,acbaab,bacbaa\texttt{abacba,aabacb,b
                 
                     题目链接
 本题作为一道本人思考了50分钟没想出来的大思维题，我觉得可以用来扩宽一下大家的视野。
-本题中，我们每次都会选取两个相邻的数 aia_iai​ 和 ai+1a_{i+1}ai+1​，同时将这两位变为一位，这一位上填的数为 −(ai+ai+1)-(a_i+a_{i+1})−(ai​+ai+1​)。
-很容易想到的一个 O(n3)O(n^3)O(n3) 的 dp 做法是区间 dp，设 f[l,r]f[l,r]f[l,r] 为区间 [l,r][l, r][l,r] 的最大值，g[l,r]g[l,r]g[l,r] 为区间 [l,r][l, r][l,r] 的最小值，我们就可以得到如下方程：
-f[
+本题中，我们每次都会选取两个相邻的数 $a_i$ 和 $a_{i+1}$，同时将这两位变为一位，这一位上填的数为 $-(a_i+a_{i+1})$。
+很容易想到的一个 $O(n^3)$ 的 dp 做法是区间 dp，设 $f[l,r]$ 为区间 $[l, r]$ 的最大值，$g[l,r]$ 为区间 $[l, r]$ 的最小值，我们就可以得到如下方程：
+
+f[l, r] = f[l,r]=\max \limits _{k=l}^{r-1}\{ -(g[l, k]+g[k+1,r]) \}
+g[l, r]
                 
             </article>
         </div>
@@ -380,20 +388,24 @@ f[
             <div class="post-meta">
                 <a><span class="icon-calendar"></span>2023-05-22</a>
                 
-                    <a><span class="icon-pencil"></span>669 words</a>
+                    <a><span class="icon-pencil"></span>496 words</a>
                 
                 
-                    <a><span class="icon-clock"></span>3 mins</a>
+                    <a><span class="icon-clock"></span>2 mins</a>
                 
             </div>
             <div class="post-title">P4016题解</div>
             <article class="post-article">
                 
                     本题是一个比较经典的问题（环形均分纸牌问题），我也不知道为什么它在网络流 24 题里面出现。但是作为一道比较典的排序算法的题，还是放出来讲一下。
- solution
-假设 a1a_1a1​ 给 ana_nan​ 了 x1x_1x1​ 张纸牌，a2a_2a2​ 给 a1a_1a1​ 了 x2x_2x2​ 张纸牌…（ xix_ixi​ 可正可负）。
-因此操作数量为 ∣x1∣+∣x2∣+⋯∣xn∣|x_1|+|x_2|+ \cdots |x_n|∣x1​∣+∣x2​∣+⋯∣xn​∣。
-令 a=a1+a2+⋯+anna=\frac{a_1+a_2 + \cdots + a_n}{n}a=na1​+a2
+solution假设 $a_1$ 给 $a_n$ 了 $x_1$ 张纸牌，$a_2$ 给 $a_1$ 了 $x_2$ 张纸牌……（ $x_i$ 可正可负）。
+因此操作数量为 $|x_1|+|x_2|+ \cdots |x_n|$。
+令 $a=\frac{a_1+a_2 + \cdots + a_n}{n}$。
+因此可以列出下面的式子：
+
+\left\{\begin{matrix} 
+  a_1-x_1+x_2=a \\ 
+  a_2-x_2+x_3=
                 
             </article>
         </div>
@@ -416,22 +428,19 @@ f[
             <div class="post-meta">
                 <a><span class="icon-calendar"></span>2023-05-21</a>
                 
-                    <a><span class="icon-pencil"></span>2.3k words</a>
+                    <a><span class="icon-pencil"></span>2k words</a>
                 
                 
-                    <a><span class="icon-clock"></span>10 mins</a>
+                    <a><span class="icon-clock"></span>8 mins</a>
                 
             </div>
             <div class="post-title">PAM学习笔记</div>
             <article class="post-article">
                 
-                     PAM
-回文树（又称回文自动机 PAM\texttt{PAM}PAM），是一种可以高效解决大部分回文串问题的算法，在大部分情况下可以替代马拉车（当然模板题好像都替代不了），是一种不错的算法。
- 结构
- trie
-类似于其他的自动机（AC\texttt {AC}AC 自动机、SAM\texttt{SAM}SAM），PAM\texttt{PAM}PAM 也有一颗 trie\texttt{trie}trie 树以及相应的 fail\texttt{fail}fail 指针。但是不太相同的是，在 PAM\texttt{PAM}PAM 中，有两棵树（520 这天学这个正适合）。
+                    PAM回文树（又称回文自动机 $\texttt{PAM}$），是一种可以高效解决大部分回文串问题的算法，在大部分情况下可以替代马拉车（当然模板题好像都替代不了），是一种不错的算法。
+结构trie类似于其他的自动机（$\texttt {AC}$ 自动机、$\texttt{SAM}$），$\texttt{PAM}$ 也有一颗 $\texttt{trie}$ 树以及相应的 $\texttt{fail}$ 指针。但是不太相同的是，在 $\texttt{PAM}$ 中，有两棵树（520 这天学这个正适合）。
 
-为什么呢？因为回文串分
+为什么呢？因为回文串分为奇回文串和偶回文串，奇回文串当然可以直接插入，但是偶回文串就出现了问题
                 
             </article>
         </div>
@@ -452,7 +461,7 @@ f[
             <div class="post-meta">
                 <a><span class="icon-calendar"></span>2023-05-15</a>
                 
-                    <a><span class="icon-pencil"></span>489 words</a>
+                    <a><span class="icon-pencil"></span>471 words</a>
                 
                 
                     <a><span class="icon-clock"></span>2 mins</a>
@@ -461,14 +470,12 @@ f[
             <div class="post-title">P2886题解</div>
             <article class="post-article">
                 
-                     题目大意
-给定起点 SSS 和终点 TTT，求从起点到终点恰好经过 NNN （NNN 给定）条边的最短路径。
- solution
-发现本题点数巨多，但是边数小到可怜，我们可以只保留了一部分点，先判断连通性，不连通直接输出即可。
-当 SSS 和 TTT 连通时，我们设 GkG^kGk 为经过 kkk 条边后最短路的邻接矩阵。我们发现下面一个事实：
-当我们定义矩阵乘法为关于 {min,+}\{min, +\}{min,+} 的运算时，Gm×Gn=Gn+mG^m \times G^n = G^{n+m}Gm×Gn=Gn+m。
+                    题目大意给定起点 $S$ 和终点 $T$，求从起点到终点恰好经过 $N$ （$N$ 给定）条边的最短路径。
+solution发现本题点数巨多，但是边数小到可怜，我们可以只保留了一部分点，先判断连通性，不连通直接输出即可。
+当 $S$ 和 $T$ 连通时，我们设 $G^k$ 为经过 $k$ 条边后最短路的邻接矩阵。我们发现下面一个事实：
+当我们定义矩阵乘法为关于 $\{min, +\}$ 的运算时，$G^m \times G^n = G^{n+m}$。
 因此这题就是对邻接矩阵进行一个广义矩阵乘法。
-同时我们发现 kkk 的范
+同时我们发现 $k$ 的范围完全支持我们进行快速幂，因此我们可以用矩阵快速幂，每次矩阵乘法复杂度为
                 
             </article>
         </div>
@@ -597,10 +604,10 @@ f[
             
                 <div>
                     <span class="icon-brush"></span>
-                    51.3k
+                    43.3k
                     &nbsp;|&nbsp;
                     <span class="icon-coffee"></span>
-                    04:10
+                    03:20
                 </div>
             
             

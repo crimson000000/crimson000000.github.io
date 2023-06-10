@@ -127,23 +127,22 @@
             <div class="post-meta">
                 <a><span class="icon-calendar"></span>2023-05-15</a>
                 
-                    <a><span class="icon-pencil"></span>598 words</a>
+                    <a><span class="icon-pencil"></span>451 words</a>
                 
                 
-                    <a><span class="icon-clock"></span>2 mins</a>
+                    <a><span class="icon-clock"></span>1 min</a>
                 
             </div>
             <div class="post-title">立体几何八大定理</div>
             <article class="post-article">
                 
-                     线面平行
-判定定理：平面外一条直线与平面内一条直线平行，则这条直线和这个平面平行。
+                    线面平行判定定理：平面外一条直线与平面内一条直线平行，则这条直线和这个平面平行。
 符号语言：
-a⊄α,b⊂α,a//b⟹a//αa\not\subset \alpha,b\subset\alpha,a/\kern -0.10em /b\Longrightarrow a/\kern -0.10em /\alpha
-a⊂α,b⊂α,a//b⟹a//α
-性质定理：一条直线和平面平行，经过这条直线的平面这这个平面相交，那么这条直线和交线平行。
+
+a\not\subset \alpha,b\subset\alpha,a/\kern -0.10em /b\Longrightarrow a/\kern -0.10em /\alpha性质定理：一条直线和平面平行，经过这条直线的平面这这个平面相交，那么这条直线和交线平行。
 符号语言：
-α∩β=m,l//α,l⊂β⟹l//m\alpha \cap \beta=m,l/\kern -0.10em /\alpha,l \subs
+
+\alpha \cap \beta=m,l/\kern -0.10em /\alpha,l \subset \beta\Longrightarrow l/\kern -0.10em /m面面平行判定定理：一个平面内有
                 
             </article>
         </div>
@@ -164,10 +163,10 @@ a⊂α,b⊂α,a//b⟹a//α
             <div class="post-meta">
                 <a><span class="icon-calendar"></span>2023-05-13</a>
                 
-                    <a><span class="icon-pencil"></span>4.7k words</a>
+                    <a><span class="icon-pencil"></span>3.8k words</a>
                 
                 
-                    <a><span class="icon-clock"></span>25 mins</a>
+                    <a><span class="icon-clock"></span>19 mins</a>
                 
             </div>
             <div class="post-title">十二重计数法</div>
@@ -176,11 +175,11 @@ a⊂α,b⊂α,a//b⟹a//α
                     题目地址
 十二重计数法作为组合数学登峰造极之作之一，我觉得有必要写一下所有情况的做法以及数学推导来整理一下。
 球之间互不相同，盒子之间互不相同
-本情况中，每个小球都有 mmm 个盒子的选择，因此根据乘法原理，总的方案数即为 mnm^nmn。用快速幂计算，复杂度 O(log⁡n)O(\log n)O(logn)。
+本情况中，每个小球都有 $m$ 个盒子的选择，因此根据乘法原理，总的方案数即为 $m^n$。用快速幂计算，复杂度 $O(\log n)$。
 球之间互不相同，盒子之间互不相同，每个盒子至多装一个球
-当 n&amp;gt;mn &amp;gt; mn&amp;gt;m 时，盒子放不完小球，方案数为 000。
-当 n≤mn \le mn≤m 时，仍然是考虑每个小球：
-第一个小球有 mmm 种选法，第二个小球有 m−1m-1m−1 种选法，第三个小球有 
+当 $n &amp;gt; m$ 时，盒子放不完小球，方案数为 $0$。
+当 $n \le m$ 时，仍然是考虑每个小球：
+第一个小球有 $m$ 种选法，第二个小球有 $m-1$ 种选法，第三个小球有 $m - 2$ 种选法， $\cdots$，第 $n$ 个小球有 
                 
             </article>
         </div>
@@ -203,23 +202,24 @@ a⊂α,b⊂α,a//b⟹a//α
             <div class="post-meta">
                 <a><span class="icon-calendar"></span>2023-05-11</a>
                 
-                    <a><span class="icon-pencil"></span>2.9k words</a>
+                    <a><span class="icon-pencil"></span>2.7k words</a>
                 
                 
-                    <a><span class="icon-clock"></span>14 mins</a>
+                    <a><span class="icon-clock"></span>13 mins</a>
                 
             </div>
             <div class="post-title">网络流学习笔记</div>
             <article class="post-article">
                 
-                     网络流
- 基本概念
-（from OIwiki）
-网络：有向图 G=(V,E)G = (V, E)G=(V,E)，其中每条边有一个流量 ccc，当 (u,v)∉E(u, v) \notin E(u,v)∈/E 时，c(u,v)=0c_{(u, v)} = 0c(u,v)​=0。其中有两个特殊的点：源点 s∈Vs \in Vs∈V，t∈Vt \in Vt∈V。
-流：定义函数 f(u,v)f(u, v)f(u,v)，满足下列条件：
+                    网络流基本概念（from OIwiki）
+网络：有向图 $G = (V, E)$，其中每条边有一个流量 $c$，当 $(u, v) \notin E$ 时，$c_{(u, v)} = 0$。其中有两个特殊的点：源点 $s \in V$，$t \in V$。
+流：定义函数 $f(u, v)$，满足下列条件：
 
-容量限制：f(u,v)≤c(u,v)f(u, v) \le c(u, v)f(u,v)≤c(u,v)。
-斜对称性：f(u,v)=−f(v,u)f(u, v) = -f
+容量限制：$f(u, v) \le c(u, v)$。
+斜对称性：$f(u, v) = -f(v, u)$。
+流守恒性：$\forall x\in V-\{ s, t\}, \sum_{(s,x)\in E} f(u, x)=\sum _{(x,v)\in E} f(x,v)$
+
+最大流定
                 
             </article>
         </div>
@@ -240,20 +240,18 @@ a⊂α,b⊂α,a//b⟹a//α
             <div class="post-meta">
                 <a><span class="icon-calendar"></span>2023-05-10</a>
                 
-                    <a><span class="icon-pencil"></span>2.4k words</a>
+                    <a><span class="icon-pencil"></span>2k words</a>
                 
                 
-                    <a><span class="icon-clock"></span>14 mins</a>
+                    <a><span class="icon-clock"></span>11 mins</a>
                 
             </div>
             <div class="post-title">多项式全家桶</div>
             <article class="post-article">
                 
-                     多项式基本运算
-这个博客主要用来放一些多项式的运算的板子，大部分都来自于洛谷。
- 多项式乘法
-NTT 求个卷积即可。
-12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879#include &amp;lt;bits/stdc++.h&amp;gt;using namespace std;typedef long long ll;const int N = 3e6 + 
+                    多项式基本运算这个博客主要用来放一些多项式的运算的板子，大部分都来自于洛谷。
+多项式乘法NTT 求个卷积即可。
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879#include &amp;lt;bits/stdc++.h&amp;gt;using namespace std;typedef long long ll;const int N = 3e6 + 10, 
                 
             </article>
         </div>
@@ -276,7 +274,7 @@ NTT 求个卷积即可。
             <div class="post-meta">
                 <a><span class="icon-calendar"></span>2023-05-09</a>
                 
-                    <a><span class="icon-pencil"></span>3.2k words</a>
+                    <a><span class="icon-pencil"></span>3.1k words</a>
                 
                 
                     <a><span class="icon-clock"></span>17 mins</a>
@@ -285,14 +283,10 @@ NTT 求个卷积即可。
             <div class="post-title">整体二分学习笔记</div>
             <article class="post-article">
                 
-                     整体二分
- 引入
-对于一堆询问，如果每个单独的询问都可以二分解决的话，时间复杂度为 O(NMlog⁡N)O(NM\log N)O(NMlogN)，但实际上每次二分都会有一些残留信息被我们扔掉，如果我们将所有询问一起二分，就可以最大时间的减小复杂度。
- 讲解
- 经典例题：区间第k大
-1234给定一个序列 a 和一个整数 S，有 2 种操作：1. 将 a 序列的第 k 个数变为 w2. 查询区间[l, r]中有多少数小于等于 S
-这个题可以用一个树状数组来维护，对于 aaa 序列，我们将所有小于等于 SSS 的数的位置在树状数组中 +1+1+1，表示这个位置有一个小于等于 SSS 的数。
-对于 
+                    整体二分引入对于一堆询问，如果每个单独的询问都可以二分解决的话，时间复杂度为 $O(NM\log N)$，但实际上每次二分都会有一些残留信息被我们扔掉，如果我们将所有询问一起二分，就可以最大时间的减小复杂度。
+讲解经典例题：区间第k大1234给定一个序列 a 和一个整数 S，有 2 种操作：1. 将 a 序列的第 k 个数变为 w2. 查询区间[l, r]中有多少数小于等于 S
+这个题可以用一个树状数组来维护，对于 $a$ 序列，我们将所有小于等于 $S$ 的数的位置在树状数组中 $+1$，表示这个位置有一个小于等于 $S$ 的数。
+对于 1 操作，我们可以看作删除一个数再添加一个数，先看 $
                 
             </article>
         </div>
@@ -313,32 +307,30 @@ NTT 求个卷积即可。
             <div class="post-meta">
                 <a><span class="icon-calendar"></span>2023-05-09</a>
                 
-                    <a><span class="icon-pencil"></span>1.8k words</a>
+                    <a><span class="icon-pencil"></span>1.7k words</a>
                 
                 
-                    <a><span class="icon-clock"></span>9 mins</a>
+                    <a><span class="icon-clock"></span>8 mins</a>
                 
             </div>
             <div class="post-title">淀粉质学习笔记</div>
             <article class="post-article">
                 
-                     点分治
-序列上的操作可以用很多方式维护，线段树树状数组平衡树啥的，但是如果毒瘤出题人把序列搬到了树上，则需要一些奇妙方法。一般有两种（好几种？）方法：
+                    点分治序列上的操作可以用很多方式维护，线段树树状数组平衡树啥的，但是如果毒瘤出题人把序列搬到了树上，则需要一些奇妙方法。一般有两种（好几种？）方法：
 
 树链剖分，把树上路径转化成 dfn 序上的多段进行操作。
 LCT，不多说，目前只会板子，没搞太懂。
 点分治，这个是不用把树转化成序列的，而是将树上统计（一般为统计）进行一个分治。
-…
+……
 
 接下来重点讲解第三种。
- 概述
-在统计某类符合要求的路径数目时，可以将这种路径分为 2 类：
+概述在统计某类符合要求的路径数目时，可以将这种路径分为 2 类：
 
 在根节点的各个儿子节点的子树内，不经过根节点。
 经过当前选择的根节点。
 
 对于第一种情况，我们可以直接把它分治到各个儿子节点的子树中，让它们自己去统计。
-而对于第
+而对于第二种情
                 
             </article>
         </div>
@@ -361,21 +353,21 @@ LCT，不多说，目前只会板子，没搞太懂。
             <div class="post-meta">
                 <a><span class="icon-calendar"></span>2023-05-09</a>
                 
-                    <a><span class="icon-pencil"></span>3.6k words</a>
+                    <a><span class="icon-pencil"></span>2.7k words</a>
                 
                 
-                    <a><span class="icon-clock"></span>18 mins</a>
+                    <a><span class="icon-clock"></span>13 mins</a>
                 
             </div>
             <div class="post-title">FFT学习笔记</div>
             <article class="post-article">
                 
-                     快速傅里叶变换
- 多项式
- 定义
-不严谨定义：形如 f(x)=∑i=0naixif(x) = \sum \limits _{i=0}^{n} a_ix^if(x)=i=0∑n​ai​xi 的式子为多项式。
-定义（from OIWiki）：对于求和式 ∑anxn\sum a_nx^n∑an​xn，如果是有限项相加，称为多项式，记作  f(x)=∑n=0manxnf(x)=\sum \limits_{n=0}^m a_nx^nf(x)=n=0∑m​an​xn。
-次数：对于多项式 F(x)=∑i=0naixiF(x) = \sum \limits _{i=0}^{n} a_ix^iF(x)=i=0
+                    快速傅里叶变换多项式定义不严谨定义：形如 $f(x) = \sum \limits _{i=0}^{n} a_ix^i$ 的式子为多项式。
+定义（from OIWiki）：对于求和式 $\sum a_nx^n$，如果是有限项相加，称为多项式，记作  $f(x)=\sum \limits_{n=0}^m a_nx^n$。
+次数：对于多项式 $F(x) = \sum \limits _{i=0}^{n} a_ix^i$，该多项式的次数为 $n$。表示为 $\text{degree} (F) = n$
+次数界：任何一个大于多项式次数的整数。
+基本运算系数表示法：
+\mathbf{a} = [a_1,
                 
             </article>
         </div>
@@ -396,22 +388,22 @@ LCT，不多说，目前只会板子，没搞太懂。
             <div class="post-meta">
                 <a><span class="icon-calendar"></span>2023-05-09</a>
                 
-                    <a><span class="icon-pencil"></span>7.2k words</a>
+                    <a><span class="icon-pencil"></span>6.7k words</a>
                 
                 
-                    <a><span class="icon-clock"></span>37 mins</a>
+                    <a><span class="icon-clock"></span>35 mins</a>
                 
             </div>
             <div class="post-title">莫队</div>
             <article class="post-article">
                 
-                     莫队
-在此膜拜莫涛大佬以及同机房的莫队@Zkl21 。
- 普通莫队
-先来考虑一个极其简单的问题：
+                    莫队在此膜拜莫涛大佬以及同机房的莫队@Zkl21 。
+普通莫队先来考虑一个极其简单的问题：
 1给你一个序列 a，有多组询问，每次询问 [l, r] 的和
 一眼前缀和，但是我们也可以用莫队大材小用地做这道题。
-我们可以维护一个左端点 LLL 和 RRR，我们可以发现，维护了这两个端点以及 [L,R][L, R][L,R] 之间的信息之后就可以很轻松的计算出 [L,R+1][L, R + 1][L,R+1]，[L,R−1][L, R - 1][L,R−1]，[L−1,R][L - 1, R][L−1,R]，[L+1,R][L + 1, R][L+1,R] 这些区间的信息，于是就可以每个询问
+我们可以维护一个左端点 $L$ 和 $R$，我们可以发现，维护了这两个端点以及 $[L, R]$ 之间的信息之后就可以很轻松的计算出 $[L, R + 1]$，$[L, R - 1]$，$[L - 1, R]$，$[L + 1, R]$ 这些区间的信息，于是就可以每个询问都这么转移。
+当然可以构造数据来卡掉它，比如下面的数据：
+12345671 1000000999999 10000001
                 
             </article>
         </div>
@@ -540,10 +532,10 @@ LCT，不多说，目前只会板子，没搞太懂。
             
                 <div>
                     <span class="icon-brush"></span>
-                    51.3k
+                    43.3k
                     &nbsp;|&nbsp;
                     <span class="icon-coffee"></span>
-                    04:10
+                    03:20
                 </div>
             
             
