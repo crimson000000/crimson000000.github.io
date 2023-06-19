@@ -20,7 +20,7 @@
 <meta property="og:description" content="本文章主要是为了不想卷题的时候不是特别颓废而准备 本文章是为了总结 NOIP 最近的题目（为了今年 NOIP 做准备），目前还没写完，尽量做的全面一些。  2013 积木大赛 给定一个长度为 nnn 的序列 hih_ihi​，初始有一个全为 000 的序列，每次操作可以任意选择 L,RL, RL,R，使得 [L,R][L, R][L,R] 这段区间都加一，问最少操作多少次能使该序列与 hhh 序列">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-06-12T13:24:37.000Z">
-<meta property="article:modified_time" content="2023-06-13T13:35:13.749Z">
+<meta property="article:modified_time" content="2023-06-15T13:27:55.830Z">
 <meta property="article:author" content="crimson000">
 <meta property="article:tag" content="题解">
 <meta name="twitter:card" content="summary">
@@ -225,11 +225,16 @@ f_{i,1}=\max _{j=1}^{i-1}\{f_{j,0}\}(h_i&gt;h_j)
 <p>建出来图，就是一个裸的拓扑找环问题，找到之后直接记录大小即可。</p>
 <p>时间复杂度 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>。</p>
 <p><strong>跳石头</strong></p>
+<p>有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">n</span></span></span></span> 个石头（不包括起点和终点的石头），现在准备移走这 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">n</span></span></span></span> 个石头中的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">m</span></span></span></span> 个，问移走这些石头后剩余石头（包括起点）最短间距的最大值。</p>
+<p>数据范围：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo separator="true">,</mo><mi>m</mi><mo>≤</mo><mn>50000</mn></mrow><annotation encoding="application/x-tex">n, m \le 50000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8304100000000001em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">5</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span></span></span></span>。</p>
+<hr />
+<p>简单二分，二分最大值，然后按照题意模拟移走石头即可。时间复杂度 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>。</p>
+<p><strong>子串</strong></p>
 
             
         </div>
         <footer class="article-footer">
-            <a data-url="http://example.com/2023/06/12/NOIP2013-2023%E9%A2%98%E8%A7%A3/" data-id="cliv6gelh000aq4vsfgdldeey" data-title="NOIP2013-2023题解"
+            <a data-url="http://example.com/2023/06/12/NOIP2013-2023%E9%A2%98%E8%A7%A3/" data-id="clj2pinxa000ek8vsbbj5900n" data-title="NOIP2013-2023题解"
                class="article-share-link">Share</a>
             
             
@@ -243,10 +248,8 @@ f_{i,1}=\max _{j=1}^{i-1}\{f_{j,0}\}(h_i&gt;h_j)
         
             <div class="article-nav-link-wrap article-nav-link-left">
                 
-                    
-                    
-                        <img data-src="https://d-sketon.top/img/backimg/bg5.jpg" data-sizes="auto" alt="有机化学学习笔记" class="lazyload">
-                    
+                    <img data-src="https://i.imgloc.com/2023/06/15/VOqmSA.jpeg" data-sizes="auto" alt="有机化学学习笔记"
+                         class="lazyload">
                 
                 <a href="/2023/06/14/%E6%9C%89%E6%9C%BA%E5%8C%96%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"></a>
                 <div class="article-nav-caption">Newer</div>
@@ -289,7 +292,7 @@ f_{i,1}=\max _{j=1}^{i-1}\{f_{j,0}\}(h_i&gt;h_j)
         <div class="sidebar-state">
             <div class="sidebar-state-article">
                 <div>Posts</div>
-                <div class="sidebar-state-number">20</div>
+                <div class="sidebar-state-number">21</div>
             </div>
             <div class="sidebar-state-category">
                 <div>Categories</div>
@@ -355,7 +358,7 @@ f_{i,1}=\max _{j=1}^{i-1}\{f_{j,0}\}(h_i&gt;h_j)
     <div class="widget-wrap">
         <h3 class="widget-title">Tag Cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 16.67px;">学习笔记</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 10px;">总结</a> <a href="/tags/%E6%8A%BD%E8%B1%A1/" style="font-size: 10px;">抽象</a> <a href="/tags/%E6%96%87%E5%8C%96%E8%AF%BE/" style="font-size: 13.33px;">文化课</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 20px;">题解</a>
+            <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 16.67px;">学习笔记</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 13.33px;">总结</a> <a href="/tags/%E6%8A%BD%E8%B1%A1/" style="font-size: 10px;">抽象</a> <a href="/tags/%E6%96%87%E5%8C%96%E8%AF%BE/" style="font-size: 13.33px;">文化课</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 20px;">题解</a>
         </div>
     </div>
 
@@ -393,10 +396,10 @@ f_{i,1}=\max _{j=1}^{i-1}\{f_{j,0}\}(h_i&gt;h_j)
             
                 <div>
                     <span class="icon-brush"></span>
-                    54.3k
+                    63.6k
                     &nbsp;|&nbsp;
                     <span class="icon-coffee"></span>
-                    04:22
+                    04:59
                 </div>
             
             
@@ -423,7 +426,7 @@ f_{i,1}=\max _{j=1}^{i-1}\{f_{j,0}\}(h_i&gt;h_j)
         <div class="sidebar-state">
             <div class="sidebar-state-article">
                 <div>Posts</div>
-                <div class="sidebar-state-number">20</div>
+                <div class="sidebar-state-number">21</div>
             </div>
             <div class="sidebar-state-category">
                 <div>Categories</div>
