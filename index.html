@@ -114,6 +114,74 @@
         
     <div class="post-wrap-left">
         
+            <a class="post-link" href="/2023/06/27/%E6%96%9C%E7%8E%87%E4%BC%98%E5%8C%96dp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"></a>
+        
+        
+        <div class="post-cover-left">
+            
+                <img data-src="https://i.imgloc.com/2023/06/27/VNgMYQ.jpeg" data-sizes="auto" alt="斜率优化dp学习笔记" class="lazyload">
+            
+
+        </div>
+        <div class="post-info">
+            <div class="post-meta">
+                <a><span class="icon-calendar"></span>2023-06-27</a>
+                
+                    <a><span class="icon-pencil"></span>70 words</a>
+                
+                
+                    <a><span class="icon-clock"></span>1 min</a>
+                
+            </div>
+            <div class="post-title">斜率优化dp学习笔记</div>
+            <article class="post-article">
+                
+                    前置知识单调队列优化 dp，计算几何基础知识，小学数学。
+斜率优化在 dp 中，我们常常能遇到一类转移方程，其中含有 $i$ 相关的项与 $j$ 相关的项的乘积，形如这种形式：
+
+f_i=\max_{j
+                
+            </article>
+        </div>
+    </div>
+
+    
+        
+    <div class="post-wrap-right">
+        
+            <a class="post-link" href="/2023/06/25/%E6%9A%91%E5%81%87%E6%91%86%E7%83%82%E6%A8%A1%E6%8B%9F%E8%B5%9B%E6%80%BB%E7%BB%93/"></a>
+        
+        <div class="post-cover-right">
+            
+                <img data-src="https://i.imgloc.com/2023/06/27/VNdh7x.jpeg" data-sizes="auto" alt="暑假摆烂模拟赛总结" class="lazyload">
+            
+        </div>
+        <div class="post-info">
+            <div class="post-meta">
+                <a><span class="icon-calendar"></span>2023-06-25</a>
+                
+                    <a><span class="icon-pencil"></span>230 words</a>
+                
+                
+                    <a><span class="icon-clock"></span>1 min</a>
+                
+            </div>
+            <div class="post-title">暑假摆烂模拟赛总结</div>
+            <article class="post-article">
+                
+                    2023.6.25T1一开始摆了，写了个 20 分暴力走人。写完 T3T4 后刚了半个小时没刚出来，直接跑路。
+T2一开始用数组存状态暴力写挂了，先使用跳题 dp，转移到 T3。写完 T4 假 $O(qn\log n)$ 做法又刚了半个小时 T1 后果断看 T2，发现 $f[i, j, k]$ 表示状态好写，又发现直接能记忆化搜索。发现样例跑太慢了，果断打表。
+T3没看到数据范围，想了半天的 $\texttt{XOR ZERO Tree}$。看了眼数据范围果断暴搜，顺便加个剪枝，70 分到手。
+T4想了 5 分钟怎么优化到 $O(qn)$。想出来了做法，但是写假了，正无穷也开大了，也不知道为什
+                
+            </article>
+        </div>
+    </div>
+
+    
+        
+    <div class="post-wrap-left">
+        
             <a class="post-link" href="/2023/06/18/%E6%A0%91%E7%9B%B8%E5%85%B3%E9%A2%98%E7%9B%AE%E6%95%B4%E7%90%86/"></a>
         
         
@@ -127,10 +195,10 @@
             <div class="post-meta">
                 <a><span class="icon-calendar"></span>2023-06-18</a>
                 
-                    <a><span class="icon-pencil"></span>8.9k words</a>
+                    <a><span class="icon-pencil"></span>7.9k words</a>
                 
                 
-                    <a><span class="icon-clock"></span>36 mins</a>
+                    <a><span class="icon-clock"></span>30 mins</a>
                 
             </div>
             <div class="post-title">树相关题目整理</div>
@@ -138,10 +206,10 @@
                 
                     找了一些之前集训的题，还有一部分是 lyt 推荐的题目。因为发现自己树相关的题目太菜了，只能整理整理了。
 货车运输
-有 nnn 个城市和 mmm 条道路，每条道路有一个最大限重，运送的货物重量超过限重后就无法经过。现在有 qqq 辆货车要运输货物，每辆车只能走一次，第 iii 辆车要从第 aia_iai​ 个城市运送到第 bib_ibi​ 个城市。对每辆车求出最多能运送多少货物。
-数据范围：n≤104,m≤5×104,q≤3×104n \le 10^4, m \le 5\times 10^4, q \le 3 \times 10^4n≤104,m≤5×104,q≤3×104。
+有 $n$ 个城市和 $m$ 条道路，每条道路有一个最大限重，运送的货物重量超过限重后就无法经过。现在有 $q$ 辆货车要运输货物，每辆车只能走一次，第 $i$ 辆车要从第 $a_i$ 个城市运送到第 $b_i$ 个城市。对每辆车求出最多能运送多少货物。
+数据范围：$n \le 10^4, m \le 5\times 10^4, q \le 3 \times 10^4$。
 
-根据贪心的思想
+根据贪心的思想，货车一定只会走最大生成树上的边。因此我们求出最大生成树，然后在这上面倍增或者树剖求最大值即
                 
             </article>
         </div>
@@ -151,68 +219,21 @@
         
     <div class="post-wrap-right">
         
-            <a class="post-link" href="/2023/06/14/%E6%9C%89%E6%9C%BA%E5%8C%96%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"></a>
+            <a class="post-link" href="/2023/06/12/NOIP2013-2023%E9%A2%98%E8%A7%A3/"></a>
         
         <div class="post-cover-right">
             
-                <img data-src="https://i.imgloc.com/2023/06/15/VOqmSA.jpeg" data-sizes="auto" alt="有机化学学习笔记" class="lazyload">
-            
-        </div>
-        <div class="post-info">
-            <div class="post-meta">
-                <a><span class="icon-calendar"></span>2023-06-14</a>
-                
-                    <a><span class="icon-pencil"></span>473 words</a>
-                
-                
-                    <a><span class="icon-clock"></span>1 min</a>
-                
-            </div>
-            <div class="post-title">有机化学学习笔记</div>
-            <article class="post-article">
-                
-                    总结一下 wyy 给我整理的有机化学的笔记。可能会错。
- 有机化学基础
- 轨道效应
-这里主要讲解共轭。共轭顾名思义，就是一起共有，类似孪生的意思。
-而在化学中，共轭一般表示一片电子云合在一起，其中的电子成为了大家共有的，就像苯环中 ∏66\prod_6^6∏66​ 的大 ∏\prod∏ 键一样。
-p−pp-pp−p 共轭
-就是 π\piπ 键。p轨道和p轨道肩并肩形成 π\piπ 键。
-
-p−πp-\pip−π 共轭
-一个p轨道和已经形成了的 π\piπ 键形成共轭键。
-例一：
-
-图中O在p轨道上的一对孤对电子与旁边形成的 π\piπ 键形成了 p−πp-\pip−π 共轭。
-例二：
-
-双键中
-                
-            </article>
-        </div>
-    </div>
-
-    
-        
-    <div class="post-wrap-left">
-        
-            <a class="post-link" href="/2023/06/12/NOIP2013-2023%E9%A2%98%E8%A7%A3/"></a>
-        
-        
-        <div class="post-cover-left">
-            
                 <img data-src="https://img.paulzzh.com/touhou/konachan/jpeg/9f3e2443fc9d396c24bff395564565db.jpg" data-sizes="auto" alt="NOIP2013-2023题解" class="lazyload">
             
-
         </div>
         <div class="post-info">
             <div class="post-meta">
                 <a><span class="icon-calendar"></span>2023-06-12</a>
                 
-                    <a><span class="icon-pencil"></span>2.9k words</a>
+                    <a><span class="icon-pencil"></span>8.6k words</a>
                 
                 
-                    <a><span class="icon-clock"></span>12 mins</a>
+                    <a><span class="icon-clock"></span>33 mins</a>
                 
             </div>
             <div class="post-title">NOIP2013-2023题解</div>
@@ -220,45 +241,13 @@ p−πp-\pip−π 共轭
                 
                     本文章主要是为了不想卷题的时候不是特别颓废而准备
 本文章是为了总结 NOIP 最近的题目（为了今年 NOIP 做准备），目前还没写完，尽量做的全面一些。
- 2013
-积木大赛
-给定一个长度为 nnn 的序列 hih_ihi​，初始有一个全为 000 的序列，每次操作可以任意选择 L,RL, RL,R，使得 [L,R][L, R][L,R] 这段区间都加一，问最少操作多少次能使该序列与 hhh 序列相同。
-数据范围：n≤105n \le 10^5n≤105。
+2013积木大赛
+给定一个长度为 $n$ 的序列 $h_i$，初始有一个全为 $0$ 的序列，每次操作可以任意选择 $L, R$，使得 $[L, R]$ 这段区间都加一，问最少操作多少次能使该序列与 $h$ 序列相同。
+数据范围：$n \le 10^5$。
 
-简单差分题，看到区间加就可以考虑差分。我们发现一次操作会使两个数一个加一一个减一，那么我们把 hhh 差分以下，统计出来正数的和，就是答
-                
-            </article>
-        </div>
-    </div>
-
-    
-        
-    <div class="post-wrap-right">
-        
-            <a class="post-link" href="/2023/06/07/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%E6%80%BB%E7%BB%93/"></a>
-        
-        <div class="post-cover-right">
-            
-                <img data-src="https://i.imgloc.com/2023/06/07/Vl1VpL.jpeg" data-sizes="auto" alt="组合数学总结" class="lazyload">
-            
-        </div>
-        <div class="post-info">
-            <div class="post-meta">
-                <a><span class="icon-calendar"></span>2023-06-07</a>
-                
-                    <a><span class="icon-pencil"></span>12k words</a>
-                
-                
-                    <a><span class="icon-clock"></span>62 mins</a>
-                
-            </div>
-            <div class="post-title">组合数学总结</div>
-            <article class="post-article">
-                
-                    本篇文章是为了总结一下最近做的组合数学的题目以及涉及到的知识点，以后可能会不定期补充。同时也参考了大佬 lyt 的博客。同时如果想要更深入地了解组合数学中的推式子技巧，可以看下 pjw 的博客。地址1  地址2
- 基本知识
-排列数 AnmA_n^mAnm​ 表示从 nnn 个不同的物品中选出 mmm 个组成的不同排列的数量。Anm=n!(n−m)!A_n^m=\frac{n!}{(n-m)!}Anm​=(n−m)!n!​。
-组合数（高中常用 CnmC_n^mCnm​ 来表示，但是目前通常用 (nm)\dbinom{n}{m}(mn​) 表示），表示从 nnn 个不同物品中选出 mmm 个物品的
+简单差分题，看到区间加就可以考虑差分。我们发现一次操作会使两个数一个加一一个减一，那么我们把 $h$ 差分以下，统计出来正数的和，就是答案。
+转圈游戏
+有 $n$ 个人（编号 $0\si
                 
             </article>
         </div>
@@ -268,36 +257,32 @@ p−πp-\pip−π 共轭
         
     <div class="post-wrap-left">
         
-            <a class="post-link" href="/2023/06/05/CF1545D-%E9%A2%98%E8%A7%A3/"></a>
+            <a class="post-link" href="/2023/06/07/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%E6%80%BB%E7%BB%93/"></a>
         
         
         <div class="post-cover-left">
             
-                <img data-src="https://img.paulzzh.com/touhou/konachan/image/bdf79fcf8026aae582a32911c942c8b0.jpg" data-sizes="auto" alt="CF1545D 题解" class="lazyload">
+                <img data-src="https://i.imgloc.com/2023/06/07/Vl1VpL.jpeg" data-sizes="auto" alt="组合数学总结" class="lazyload">
             
 
         </div>
         <div class="post-info">
             <div class="post-meta">
-                <a><span class="icon-calendar"></span>2023-06-05</a>
+                <a><span class="icon-calendar"></span>2023-06-07</a>
                 
-                    <a><span class="icon-pencil"></span>539 words</a>
+                    <a><span class="icon-pencil"></span>8.2k words</a>
                 
                 
-                    <a><span class="icon-clock"></span>2 mins</a>
+                    <a><span class="icon-clock"></span>38 mins</a>
                 
             </div>
-            <div class="post-title">CF1545D 题解</div>
+            <div class="post-title">组合数学总结</div>
             <article class="post-article">
                 
-                    题目链接
- 题目描述
-有 nnn 个人和 kkk 个间隔相同时间的时刻，每个人都向正方向做匀速直线运动。给出每个时刻（0∼k−10 \sim k - 10∼k−1）的所有人的坐标集合（无序），在这 nknknk 个数中有一个数是错误的，找出这个错误的数并将其改正。
-数据范围：5≤n≤10005 \le n \le 10005≤n≤1000，7≤k≤10007 \le k \le 10007≤k≤1000。
-加强版：5≤n≤1065 \le n \le 10^65≤n≤106，7≤k≤1067 \le k \le 10^67≤k≤106。
-提示：充分发挥人类智慧
-提示：充分发挥人类智慧
-提示：充
+                    本篇文章是为了总结一下最近做的组合数学的题目以及涉及到的知识点，以后可能会不定期补充。同时也参考了大佬 lyt 的博客。同时如果想要更深入地了解组合数学中的推式子技巧，可以看下 pjw 的博客。地址1  地址2
+基本知识排列数 $A_n^m$ 表示从 $n$ 个不同的物品中选出 $m$ 个组成的不同排列的数量。$A_n^m=\frac{n!}{(n-m)!}$。
+组合数（高中常用 $C_n^m$ 来表示，但是目前通常用 $\dbinom{n}{m}$ 表示），表示从 $n$ 个不同物品中选出 $m$ 个物品的方案数。$\dbinom{n}{m} = \frac{n!}{m!(n-m)!}$。
+
                 
             </article>
         </div>
@@ -307,18 +292,61 @@ p−πp-\pip−π 共轭
         
     <div class="post-wrap-right">
         
-            <a class="post-link" href="/2023/06/05/Largest-Smallest-Cyclic-Shift%E9%A2%98%E8%A7%A3/"></a>
+            <a class="post-link" href="/2023/06/05/CF1545D-%E9%A2%98%E8%A7%A3/"></a>
         
         <div class="post-cover-right">
             
-                <img data-src="https://img.paulzzh.com/touhou/konachan/image/f7e83305150ed53be7ccf883693c5deb.jpg" data-sizes="auto" alt="Largest Smallest Cyclic Shift题解" class="lazyload">
+                <img data-src="https://img.paulzzh.com/touhou/konachan/image/bdf79fcf8026aae582a32911c942c8b0.jpg" data-sizes="auto" alt="CF1545D 题解" class="lazyload">
             
         </div>
         <div class="post-info">
             <div class="post-meta">
                 <a><span class="icon-calendar"></span>2023-06-05</a>
                 
-                    <a><span class="icon-pencil"></span>676 words</a>
+                    <a><span class="icon-pencil"></span>436 words</a>
+                
+                
+                    <a><span class="icon-clock"></span>1 min</a>
+                
+            </div>
+            <div class="post-title">CF1545D 题解</div>
+            <article class="post-article">
+                
+                    题目链接
+题目描述有 $n$ 个人和 $k$ 个间隔相同时间的时刻，每个人都向正方向做匀速直线运动。给出每个时刻（$0 \sim k - 1$）的所有人的坐标集合（无序），在这 $nk$ 个数中有一个数是错误的，找出这个错误的数并将其改正。
+数据范围：$5 \le n \le 1000$，$7 \le k \le 1000$。
+加强版：$5 \le n \le 10^6$，$7 \le k \le 10^6$。
+提示：充分发挥人类智慧
+提示：充分发挥人类智慧
+提示：充分发挥人类智慧
+提示：充分发挥人类智慧
+提示：充分发挥人类智慧
+提示：充分发挥人类智慧
+提示：充分发挥人类智慧
+提示：充分发挥人
+                
+            </article>
+        </div>
+    </div>
+
+    
+        
+    <div class="post-wrap-left">
+        
+            <a class="post-link" href="/2023/06/05/Largest-Smallest-Cyclic-Shift%E9%A2%98%E8%A7%A3/"></a>
+        
+        
+        <div class="post-cover-left">
+            
+                <img data-src="https://img.paulzzh.com/touhou/konachan/image/f7e83305150ed53be7ccf883693c5deb.jpg" data-sizes="auto" alt="Largest Smallest Cyclic Shift题解" class="lazyload">
+            
+
+        </div>
+        <div class="post-info">
+            <div class="post-meta">
+                <a><span class="icon-calendar"></span>2023-06-05</a>
+                
+                    <a><span class="icon-pencil"></span>581 words</a>
                 
                 
                     <a><span class="icon-clock"></span>2 mins</a>
@@ -329,51 +357,11 @@ p−πp-\pip−π 共轭
                 
                     题目链接
 本题码量不大，但是事实上是一道极其难想的思维题。
- 题目描述
-你有 aaa 个 a，bbb 个 b，ccc 个 c。要求用这 a+b+ca+b+ca+b+c 个字母拼接成一个字符串，使得这个字符串的最小表示法在所有能拼成的字符串中最大。
-补充：最小表示法，将一个字符串的最后一个字符放到首位，重复这个操作，最终得到的 nnn 个字符串中字典序最小的即为它的最小表示法。例如 abacba\texttt{abacba}abacba 重复上面操作会得到如下字符串：
-abacba,aabacb,baabac,cbaaba,acbaab,bacbaa\texttt{abacba,aabacb,b
-                
-            </article>
-        </div>
-    </div>
+题目描述你有 $a$ 个 a，$b$ 个 b，$c$ 个 c。要求用这 $a+b+c$ 个字母拼接成一个字符串，使得这个字符串的最小表示法在所有能拼成的字符串中最大。
+补充：最小表示法，将一个字符串的最后一个字符放到首位，重复这个操作，最终得到的 $n$ 个字符串中字典序最小的即为它的最小表示法。例如 $\texttt{abacba}$ 重复上面操作会得到如下字符串：
 
-    
-        
-    <div class="post-wrap-left">
-        
-            <a class="post-link" href="/2023/05/30/AT-abc214-g%E9%A2%98%E8%A7%A3/"></a>
-        
-        
-        <div class="post-cover-left">
-            
-                <img data-src="https://i.imgloc.com/2023/05/30/Vt18Rz.jpeg" data-sizes="auto" alt="AT_abc214_g题解" class="lazyload">
-            
-
-        </div>
-        <div class="post-info">
-            <div class="post-meta">
-                <a><span class="icon-calendar"></span>2023-05-30</a>
-                
-                    <a><span class="icon-pencil"></span>2.5k words</a>
-                
-                
-                    <a><span class="icon-clock"></span>11 mins</a>
-                
-            </div>
-            <div class="post-title">AT_abc214_g题解</div>
-            <article class="post-article">
-                
-                     题目描述
-给定两个排列 p,qp, qp,q，要求统计满足 ∀i,ri≠pi,ri≠qi\forall i, r_i\not= p_i, r_i \not= q_i∀i,ri​=pi​,ri​=qi​ 的排列 rrr 的数量。对 100000000710000000071000000007 取模
-数据范围 n≤3000n \le 3000n≤3000。
- solution
-分割线（I love koishi）
-分割线（I love koishi）
-分割线（I love koishi）
-分割线（I love koishi）
-分割线（I love koishi）
-分割线（I love k
+\texttt{abacba,aabacb,baabac,cbaaba,acbaab,bacbaa}它的最小表示法即为 $\texttt{aabacb}$。
+数据范围
                 
             </article>
         </div>
@@ -383,32 +371,38 @@ abacba,aabacb,baabac,cbaaba,acbaab,bacbaa\texttt{abacba,aabacb,b
         
     <div class="post-wrap-right">
         
-            <a class="post-link" href="/2023/05/29/P3599%E9%A2%98%E8%A7%A3/"></a>
+            <a class="post-link" href="/2023/05/30/AT-abc214-g%E9%A2%98%E8%A7%A3/"></a>
         
         <div class="post-cover-right">
             
-                <img data-src="https://img.paulzzh.com/touhou/konachan/jpeg/068aa04808f99c146d186a4b1006ffef.jpg" data-sizes="auto" alt="P3599题解" class="lazyload">
+                <img data-src="https://i.imgloc.com/2023/05/30/Vt18Rz.jpeg" data-sizes="auto" alt="AT_abc214_g题解" class="lazyload">
             
         </div>
         <div class="post-info">
             <div class="post-meta">
-                <a><span class="icon-calendar"></span>2023-05-29</a>
+                <a><span class="icon-calendar"></span>2023-05-30</a>
                 
-                    <a><span class="icon-pencil"></span>1.2k words</a>
+                    <a><span class="icon-pencil"></span>2.3k words</a>
                 
                 
-                    <a><span class="icon-clock"></span>5 mins</a>
+                    <a><span class="icon-clock"></span>10 mins</a>
                 
             </div>
-            <div class="post-title">P3599题解</div>
+            <div class="post-title">AT_abc214_g题解</div>
             <article class="post-article">
                 
-                    本题是一道比较典的构造题，拿来扩宽扩宽大家的眼界吧。
- Task 1
-试判断能否构造并构造一个长度为 nnn 的 1∼n1 \sim n1∼n 的排列，满足其 nnn 个前缀和在模 nnn 的意义下互不相同。
-很容易想到的一点是：nnn 一定排在第一位，因为如果排在别的位，加上 nnn 后在模 nnn 意义下是不变的，因此不满足题意，只能放在第一位。
-然后我们可能有一个朴素的想法：构造出的前缀和序列在模 nnn 意义下为 0,1,2,3,⋯ ,n0,1,2,3,\cdots ,n0,1,2,3,⋯,n。但是很显然，这是行不通的（做差分即可）。
-但是当我们随便试试，我们也可以想到一种前缀和序列：
+                    题目描述给定两个排列 $p, q$，要求统计满足 $\forall i, r_i\not= p_i, r_i \not= q_i$ 的排列 $r$ 的数量。对 $1000000007$ 取模
+数据范围 $n \le 3000$。
+solution分割线（I love koishi）
+分割线（I love koishi）
+分割线（I love koishi）
+分割线（I love koishi）
+分割线（I love koishi）
+分割线（I love koishi）
+分割线（I love koishi）
+分割线（I love koishi）
+分割线（I love koishi）
+分割线（I 
                 
             </article>
         </div>
@@ -418,23 +412,57 @@ abacba,aabacb,baabac,cbaaba,acbaab,bacbaa\texttt{abacba,aabacb,b
         
     <div class="post-wrap-left">
         
-            <a class="post-link" href="/2023/05/26/%E6%8A%BD%E8%B1%A1/"></a>
+            <a class="post-link" href="/2023/05/29/P3599%E9%A2%98%E8%A7%A3/"></a>
         
         
         <div class="post-cover-left">
             
-                
-                
-                    <img data-src="/covers/bg1.jpg" data-sizes="auto" alt="抽象" class="lazyload">
-                
+                <img data-src="https://img.paulzzh.com/touhou/konachan/jpeg/068aa04808f99c146d186a4b1006ffef.jpg" data-sizes="auto" alt="P3599题解" class="lazyload">
             
 
         </div>
         <div class="post-info">
             <div class="post-meta">
+                <a><span class="icon-calendar"></span>2023-05-29</a>
+                
+                    <a><span class="icon-pencil"></span>1k words</a>
+                
+                
+                    <a><span class="icon-clock"></span>4 mins</a>
+                
+            </div>
+            <div class="post-title">P3599题解</div>
+            <article class="post-article">
+                
+                    本题是一道比较典的构造题，拿来扩宽扩宽大家的眼界吧。
+Task 1试判断能否构造并构造一个长度为 $n$ 的 $1 \sim n$ 的排列，满足其 $n$ 个前缀和在模 $n$ 的意义下互不相同。
+很容易想到的一点是：$n$ 一定排在第一位，因为如果排在别的位，加上 $n$ 后在模 $n$ 意义下是不变的，因此不满足题意，只能放在第一位。
+然后我们可能有一个朴素的想法：构造出的前缀和序列在模 $n$ 意义下为 $0,1,2,3,\cdots ,n$。但是很显然，这是行不通的（做差分即可）。
+但是当我们随便试试，我们也可以想到一种前缀和序列：$0,1,-1,2,-2 \cdots$。我们对它做个
+                
+            </article>
+        </div>
+    </div>
+
+    
+        
+    <div class="post-wrap-right">
+        
+            <a class="post-link" href="/2023/05/26/%E6%8A%BD%E8%B1%A1/"></a>
+        
+        <div class="post-cover-right">
+            
+                
+                
+                    <img data-src="https://i.328888.xyz/2023/05/09/iQLCSH.md.jpeg" data-sizes="auto" alt="抽象" class="lazyload">
+                
+            
+        </div>
+        <div class="post-info">
+            <div class="post-meta">
                 <a><span class="icon-calendar"></span>2023-05-26</a>
                 
-                    <a><span class="icon-pencil"></span>3.6k words</a>
+                    <a><span class="icon-pencil"></span>3.5k words</a>
                 
                 
                     <a><span class="icon-clock"></span>12 mins</a>
@@ -445,40 +473,6 @@ abacba,aabacb,baabac,cbaaba,acbaab,bacbaa\texttt{abacba,aabacb,b
                 
                     
 您说的对，但我感觉不如安塞腰鼓！好一个安塞腰鼓！ 一锤起来就发狠了，忘情了，没命了！ 百十个斜背响鼓的后生，如百十块被强震不断击起的石头，狂舞在你的面前。 骤雨一样，是急促的鼓点； 旋风一样，是飞扬的流苏；乱蛙一样，是蹦跳的脚步； 火花一样，是闪射的瞳仁； 斗虎一样，是强健的风姿。 黄土高原上，爆出一场多么壮阔、多么豪放、多么火烈的舞蹈哇——安塞腰鼓！ 您说的对，但我感觉不如安塞腰鼓！好一个安塞腰鼓！ 一锤起来就发狠了，忘情了，没命了！ 百十个斜背响鼓的后生，如百十块被强震不断击起的石头，狂舞在你的面前。 骤雨一样，是急促的鼓点； 旋风一样，是飞扬的流苏；乱蛙一样，是蹦跳的脚步； 火花一样，
-                
-            </article>
-        </div>
-    </div>
-
-    
-        
-    <div class="post-wrap-right">
-        
-            <a class="post-link" href="/2023/05/25/CF1421E%E9%A2%98%E8%A7%A3/"></a>
-        
-        <div class="post-cover-right">
-            
-                <img data-src="https://img.paulzzh.com/touhou/konachan/image/5558d2c6085f80d3cfeade810d7aa417.jpg" data-sizes="auto" alt="CF1421E题解" class="lazyload">
-            
-        </div>
-        <div class="post-info">
-            <div class="post-meta">
-                <a><span class="icon-calendar"></span>2023-05-25</a>
-                
-                    <a><span class="icon-pencil"></span>1.1k words</a>
-                
-                
-                    <a><span class="icon-clock"></span>5 mins</a>
-                
-            </div>
-            <div class="post-title">CF1421E题解</div>
-            <article class="post-article">
-                
-                    题目链接
-本题作为一道本人思考了50分钟没想出来的大思维题，我觉得可以用来扩宽一下大家的视野。
-本题中，我们每次都会选取两个相邻的数 aia_iai​ 和 ai+1a_{i+1}ai+1​，同时将这两位变为一位，这一位上填的数为 −(ai+ai+1)-(a_i+a_{i+1})−(ai​+ai+1​)。
-很容易想到的一个 O(n3)O(n^3)O(n3) 的 dp 做法是区间 dp，设 f[l,r]f[l,r]f[l,r] 为区间 [l,r][l, r][l,r] 的最大值，g[l,r]g[l,r]g[l,r] 为区间 [l,r][l, r][l,r] 的最小值，我们就可以得到如下方程：
-f[
                 
             </article>
         </div>
@@ -503,7 +497,7 @@ f[
         <div class="sidebar-state">
             <div class="sidebar-state-article">
                 <div>Posts</div>
-                <div class="sidebar-state-number">21</div>
+                <div class="sidebar-state-number">22</div>
             </div>
             <div class="sidebar-state-category">
                 <div>Categories</div>
@@ -511,7 +505,7 @@ f[
             </div>
             <div class="sidebar-state-tag">
                 <div>Tags</div>
-                <div class="sidebar-state-number">5</div>
+                <div class="sidebar-state-number">6</div>
             </div>
         </div>
         <div class="sidebar-social">
@@ -569,7 +563,7 @@ f[
     <div class="widget-wrap">
         <h3 class="widget-title">Tag Cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 16.67px;">学习笔记</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 13.33px;">总结</a> <a href="/tags/%E6%8A%BD%E8%B1%A1/" style="font-size: 10px;">抽象</a> <a href="/tags/%E6%96%87%E5%8C%96%E8%AF%BE/" style="font-size: 13.33px;">文化课</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 20px;">题解</a>
+            <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 16.67px;">学习笔记</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 13.33px;">总结</a> <a href="/tags/%E6%8A%BD%E8%B1%A1/" style="font-size: 10px;">抽象</a> <a href="/tags/%E6%91%86%E7%83%82/" style="font-size: 10px;">摆烂</a> <a href="/tags/%E6%96%87%E5%8C%96%E8%AF%BE/" style="font-size: 10px;">文化课</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 20px;">题解</a>
         </div>
     </div>
 
@@ -607,10 +601,10 @@ f[
             
                 <div>
                     <span class="icon-brush"></span>
-                    63.6k
+                    60.1k
                     &nbsp;|&nbsp;
                     <span class="icon-coffee"></span>
-                    04:59
+                    04:25
                 </div>
             
             
@@ -637,7 +631,7 @@ f[
         <div class="sidebar-state">
             <div class="sidebar-state-article">
                 <div>Posts</div>
-                <div class="sidebar-state-number">21</div>
+                <div class="sidebar-state-number">22</div>
             </div>
             <div class="sidebar-state-category">
                 <div>Categories</div>
@@ -645,7 +639,7 @@ f[
             </div>
             <div class="sidebar-state-tag">
                 <div>Tags</div>
-                <div class="sidebar-state-number">5</div>
+                <div class="sidebar-state-number">6</div>
             </div>
         </div>
         <div class="sidebar-social">

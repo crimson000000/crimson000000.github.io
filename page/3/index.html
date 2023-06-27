@@ -114,12 +114,12 @@
         
     <div class="post-wrap-left">
         
-            <a class="post-link" href="/2023/05/09/%E8%8E%AB%E9%98%9F/"></a>
+            <a class="post-link" href="/2023/05/09/FFT%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"></a>
         
         
         <div class="post-cover-left">
             
-                <img data-src="https://d-sketon.top/img/backimg/bg16.jpg" data-sizes="auto" alt="莫队" class="lazyload">
+                <img data-src="https://d-sketon.top/img/backimg/bg14.jpg" data-sizes="auto" alt="FFT学习笔记" class="lazyload">
             
 
         </div>
@@ -127,22 +127,57 @@
             <div class="post-meta">
                 <a><span class="icon-calendar"></span>2023-05-09</a>
                 
-                    <a><span class="icon-pencil"></span>7.2k words</a>
+                    <a><span class="icon-pencil"></span>2.7k words</a>
                 
                 
-                    <a><span class="icon-clock"></span>37 mins</a>
+                    <a><span class="icon-clock"></span>13 mins</a>
+                
+            </div>
+            <div class="post-title">FFT学习笔记</div>
+            <article class="post-article">
+                
+                    快速傅里叶变换多项式定义不严谨定义：形如 $f(x) = \sum \limits _{i=0}^{n} a_ix^i$ 的式子为多项式。
+定义（from OIWiki）：对于求和式 $\sum a_nx^n$，如果是有限项相加，称为多项式，记作  $f(x)=\sum \limits_{n=0}^m a_nx^n$。
+次数：对于多项式 $F(x) = \sum \limits _{i=0}^{n} a_ix^i$，该多项式的次数为 $n$。表示为 $\text{degree} (F) = n$
+次数界：任何一个大于多项式次数的整数。
+基本运算系数表示法：
+\mathbf{a} = [a_1,
+                
+            </article>
+        </div>
+    </div>
+
+    
+        
+    <div class="post-wrap-right">
+        
+            <a class="post-link" href="/2023/05/09/%E8%8E%AB%E9%98%9F/"></a>
+        
+        <div class="post-cover-right">
+            
+                <img data-src="https://d-sketon.top/img/backimg/bg16.jpg" data-sizes="auto" alt="莫队" class="lazyload">
+            
+        </div>
+        <div class="post-info">
+            <div class="post-meta">
+                <a><span class="icon-calendar"></span>2023-05-09</a>
+                
+                    <a><span class="icon-pencil"></span>6.7k words</a>
+                
+                
+                    <a><span class="icon-clock"></span>35 mins</a>
                 
             </div>
             <div class="post-title">莫队</div>
             <article class="post-article">
                 
-                     莫队
-在此膜拜莫涛大佬以及同机房的莫队@Zkl21 。
- 普通莫队
-先来考虑一个极其简单的问题：
+                    莫队在此膜拜莫涛大佬以及同机房的莫队@Zkl21 。
+普通莫队先来考虑一个极其简单的问题：
 1给你一个序列 a，有多组询问，每次询问 [l, r] 的和
 一眼前缀和，但是我们也可以用莫队大材小用地做这道题。
-我们可以维护一个左端点 LLL 和 RRR，我们可以发现，维护了这两个端点以及 [L,R][L, R][L,R] 之间的信息之后就可以很轻松的计算出 [L,R+1][L, R + 1][L,R+1]，[L,R−1][L, R - 1][L,R−1]，[L−1,R][L - 1, R][L−1,R]，[L+1,R][L + 1, R][L+1,R] 这些区间的信息，于是就可以每个询问
+我们可以维护一个左端点 $L$ 和 $R$，我们可以发现，维护了这两个端点以及 $[L, R]$ 之间的信息之后就可以很轻松的计算出 $[L, R + 1]$，$[L, R - 1]$，$[L - 1, R]$，$[L + 1, R]$ 这些区间的信息，于是就可以每个询问都这么转移。
+当然可以构造数据来卡掉它，比如下面的数据：
+12345671 1000000999999 10000001
                 
             </article>
         </div>
@@ -167,7 +202,7 @@
         <div class="sidebar-state">
             <div class="sidebar-state-article">
                 <div>Posts</div>
-                <div class="sidebar-state-number">21</div>
+                <div class="sidebar-state-number">22</div>
             </div>
             <div class="sidebar-state-category">
                 <div>Categories</div>
@@ -175,7 +210,7 @@
             </div>
             <div class="sidebar-state-tag">
                 <div>Tags</div>
-                <div class="sidebar-state-number">5</div>
+                <div class="sidebar-state-number">6</div>
             </div>
         </div>
         <div class="sidebar-social">
@@ -233,7 +268,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">Tag Cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 16.67px;">学习笔记</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 13.33px;">总结</a> <a href="/tags/%E6%8A%BD%E8%B1%A1/" style="font-size: 10px;">抽象</a> <a href="/tags/%E6%96%87%E5%8C%96%E8%AF%BE/" style="font-size: 13.33px;">文化课</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 20px;">题解</a>
+            <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 16.67px;">学习笔记</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 13.33px;">总结</a> <a href="/tags/%E6%8A%BD%E8%B1%A1/" style="font-size: 10px;">抽象</a> <a href="/tags/%E6%91%86%E7%83%82/" style="font-size: 10px;">摆烂</a> <a href="/tags/%E6%96%87%E5%8C%96%E8%AF%BE/" style="font-size: 10px;">文化课</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 20px;">题解</a>
         </div>
     </div>
 
@@ -271,10 +306,10 @@
             
                 <div>
                     <span class="icon-brush"></span>
-                    63.6k
+                    60.1k
                     &nbsp;|&nbsp;
                     <span class="icon-coffee"></span>
-                    04:59
+                    04:25
                 </div>
             
             
@@ -301,7 +336,7 @@
         <div class="sidebar-state">
             <div class="sidebar-state-article">
                 <div>Posts</div>
-                <div class="sidebar-state-number">21</div>
+                <div class="sidebar-state-number">22</div>
             </div>
             <div class="sidebar-state-category">
                 <div>Categories</div>
@@ -309,7 +344,7 @@
             </div>
             <div class="sidebar-state-tag">
                 <div>Tags</div>
-                <div class="sidebar-state-number">5</div>
+                <div class="sidebar-state-number">6</div>
             </div>
         </div>
         <div class="sidebar-social">

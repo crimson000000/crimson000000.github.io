@@ -8,22 +8,26 @@
     
     
     <title>
-        P4016题解 |
+        斜率优化dp学习笔记 |
         
         crimson000</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="本题是一个比较经典的问题（环形均分纸牌问题），我也不知道为什么它在网络流 24 题里面出现。但是作为一道比较典的排序算法的题，还是放出来讲一下。 solution假设 $a_1$ 给 $a_n$ 了 $x_1$ 张纸牌，$a_2$ 给 $a_1$ 了 $x_2$ 张纸牌……（ $x_i$ 可正可负）。 因此操作数量为 $|x_1|+|x_2|+ \cdots |x_n|$。 令 $a&#x3D;\frac{">
+    <meta name="description" content="前置知识单调队列优化 dp，计算几何基础知识，小学数学。 斜率优化在 dp 中，我们常常能遇到一类转移方程，其中含有 $i$ 相关的项与 $j$ 相关的项的乘积，形如这种形式：  f_i&#x3D;\max_{j">
 <meta property="og:type" content="article">
-<meta property="og:title" content="P4016题解">
-<meta property="og:url" content="http://example.com/2023/05/22/P4016%E9%A2%98%E8%A7%A3/index.html">
+<meta property="og:title" content="斜率优化dp学习笔记">
+<meta property="og:url" content="http://example.com/2023/06/27/%E6%96%9C%E7%8E%87%E4%BC%98%E5%8C%96dp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="crimson000">
-<meta property="og:description" content="本题是一个比较经典的问题（环形均分纸牌问题），我也不知道为什么它在网络流 24 题里面出现。但是作为一道比较典的排序算法的题，还是放出来讲一下。 solution假设 $a_1$ 给 $a_n$ 了 $x_1$ 张纸牌，$a_2$ 给 $a_1$ 了 $x_2$ 张纸牌……（ $x_i$ 可正可负）。 因此操作数量为 $|x_1|+|x_2|+ \cdots |x_n|$。 令 $a&#x3D;\frac{">
+<meta property="og:description" content="前置知识单调队列优化 dp，计算几何基础知识，小学数学。 斜率优化在 dp 中，我们常常能遇到一类转移方程，其中含有 $i$ 相关的项与 $j$ 相关的项的乘积，形如这种形式：  f_i&#x3D;\max_{j">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-05-22T06:05:46.000Z">
-<meta property="article:modified_time" content="2023-05-22T10:12:53.926Z">
+<meta property="og:image" content="https://i.imgloc.com/2023/06/27/VN7yA5.png">
+<meta property="og:image" content="https://i.imgloc.com/2023/06/27/VN7GK3.png">
+<meta property="og:image" content="https://i.imgloc.com/2023/06/27/VN796H.png">
+<meta property="article:published_time" content="2023-06-27T01:06:47.000Z">
+<meta property="article:modified_time" content="2023-06-27T02:58:11.799Z">
 <meta property="article:author" content="crimson000">
-<meta property="article:tag" content="题解">
+<meta property="article:tag" content="学习笔记">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgloc.com/2023/06/27/VN7yA5.png">
     
         <link rel="alternate" href="/atom.xml" title="crimson000" type="application/atom+xml">
     
@@ -58,7 +62,7 @@
         <div id="wrap">
             <header id="header">
     
-        <img data-src="https://d-sketon.top/img/backimg/bg23.jpg" data-sizes="auto" alt="P4016题解" class="lazyload">
+        <img data-src="https://i.imgloc.com/2023/06/27/VNgMYQ.jpeg" data-sizes="auto" alt="斜率优化dp学习笔记" class="lazyload">
     
     <div id="header-outer" class="outer">
         <div id="header-title" class="inner">
@@ -66,7 +70,7 @@
                 
                     
                     
-                        <a href="/" id="logo">P4016题解</a>
+                        <a href="/" id="logo">斜率优化dp学习笔记</a>
                     
                 
             </h1>
@@ -115,14 +119,14 @@
 </header>
   
             <div id="content" class="outer">
-                <section id="main"><article id="post-P4016题解" class="h-entry article article-type-post"
+                <section id="main"><article id="post-斜率优化dp学习笔记" class="h-entry article article-type-post"
          itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
     <div class="article-inner">
         <div class="article-meta">
             <div class="article-date">
-    <a href="/2023/05/22/P4016%E9%A2%98%E8%A7%A3/" class="article-date-link">
-        <time datetime="2023-05-22T06:05:46.000Z"
-              itemprop="datePublished">2023-05-22</time>
+    <a href="/2023/06/27/%E6%96%9C%E7%8E%87%E4%BC%98%E5%8C%96dp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date-link">
+        <time datetime="2023-06-27T01:06:47.000Z"
+              itemprop="datePublished">2023-06-27</time>
     </a>
 </div>
 
@@ -132,56 +136,111 @@
         
         <div class="e-content article-entry" itemprop="articleBody">
             
-                <p>本题是一个比较经典的问题（环形均分纸牌问题），我也不知道为什么它在网络流 24 题里面出现。但是作为一道比较典的排序算法的题，还是放出来讲一下。</p>
-<h1 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h1><p>假设 $a_1$ 给 $a_n$ 了 $x_1$ 张纸牌，$a_2$ 给 $a_1$ 了 $x_2$ 张纸牌……（ $x_i$ 可正可负）。</p>
-<p>因此操作数量为 $|x_1|+|x_2|+ \cdots |x_n|$。</p>
-<p>令 $a=\frac{a_1+a_2 + \cdots + a_n}{n}$。</p>
-<p>因此可以列出下面的式子：</p>
+                <h1 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h1><p>单调队列优化 dp，计算几何基础知识，小学数学。</p>
+<h1 id="斜率优化"><a href="#斜率优化" class="headerlink" title="斜率优化"></a>斜率优化</h1><p>在 dp 中，我们常常能遇到一类转移方程，其中含有 $i$ 相关的项与 $j$ 相关的项的乘积，形如这种形式：</p>
 <script type="math/tex; mode=display">
-\left\{\begin{matrix} 
-  a_1-x_1+x_2=a \\ 
-  a_2-x_2+x_3=a \\
-  \cdots \\
-a_n-x_n+x_1=a \\
-\end{matrix}\right.</script><p>将所有式子加起来，会发现是一个恒等式，因此不具有唯一解。</p>
-<p>将方程进行等价代换：</p>
+f_i=\max_{j<i}\{ f_j+a_ib_j\}</script><p>我们常见的单调队列优化只能优化只含 $j$ 项的方程，对于这种方程无能为力。因此我们需要利用斜率优化。</p>
+<p>先来看一道例题：</p>
+<hr>
+<p><strong>任务安排</strong></p>
+<p>$n$ 个任务排成一个序列在一台机器上等待完成（顺序不得改变），这 $n$ 个任务被分成若干批，每批包含相邻的若干任务。  </p>
+<p>从零时刻开始，这些任务被分批加工，第 $i$ 个任务单独完成所需的时间为 $t_i$。在每批任务开始前，机器需要启动时间 $s$，而完成这批任务所需的时间是各个任务需要时间的总和（同一批任务将在同一时刻完成）。  </p>
+<p>每个任务的费用是它的完成时刻乘以一个费用系数 $c_i$。请确定一个分组方案，使得总费用最小。</p>
+<p>数据范围：$n\le 5000, t_i, c_i&gt;0$。</p>
+<p>加强版：$n\le 100000,t_i, c_i&gt;0$。</p>
+<hr>
+<p>先设 $sumT[i]$ 为 $t_i$ 的前缀和，$sumC[i]$ 为 $c_i$ 的前缀和。</p>
+<p>我们可以很容易设计出一个 $O(n^3)$ 的转移方程：设 $f[i][j]$ 为前 $i$ 个任务共分为 $j$ 段的最小花费。我们就可以列出转移：</p>
 <script type="math/tex; mode=display">
-\left\{\begin{matrix} 
-  x_1-x_2=a_1-a \\ 
-  x_2-x_3=a_2-a \\
-  \cdots \\
-x_{n-1}-x_n=a_{n-1}-a \\
-x_n-x_1=a_n-a
-\end{matrix}\right.</script><p>令 $x_1$ 为自由变量，来表示其他变量</p>
+f[i][j]=\min_{k<i}\{ f[k][j - 1]+(sumT[i]+j\times s)\times(sumC[i]-sumC[k])\}</script><p>因为状态数为 $O(n^2)$ 级别，无论如何优化都无法通过加强版</p>
+<p>因为时间复杂度太高，我们考虑重新设计状态。设 $f[i]$ 为前 $i$ 个任务分为若干段的最小花费，则</p>
 <script type="math/tex; mode=display">
-\left\{\begin{matrix} 
-x_1=x_1-0\\
-x_2=x_1-(a_1-a)\\
-x_3=x_1-(a_1+a_2-2a)\\
-  \cdots \\
-x_n=x_1-[a_1+a_2+\cdots +a_{n-1}-(n-1)a]
-\end{matrix}\right.</script><p>后面的一堆 a 都为常数，记为 $C_i$</p>
-<p>因此看最上面 $|x_1|+|x_2|+ \cdots |x_n|$ 的式子，就可以转化为 $|x_1-C_1|+|x_1-C_2|+\cdots + |x_1-C_n|$</p>
-<p>将其看作数轴上的一堆点：</p>
-<p>可以将 $x_1$ 取作中位数能将操作次数最小化</p>
-<ul>
-<li>证明：</li>
-</ul>
-<p>绝对值不等式： $|a|+|b| \ge |a+b|$</p>
-<p>假设 C 序列已排好序，将上式分组为 $(|x_1-C_1|+ |C_n-x_1|) +(|x_1-C_2|+|C_{n-1}-x_1|) \cdots \ge |C_n - C_1 + C_{n-1} - C_2 + C_{n-2} - C_3 + \cdots + C_{\frac{n+1}{2}} - x_1|$</p>
-<p>因此令 $x_1$ 取到中位数即可</p>
-<p>完整代码：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e6</span> + <span class="number">10</span>;</span><br><span class="line">ll a[N], c[N], avg;</span><br><span class="line">ll n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%lld&quot;</span>, &amp;n);</span><br><span class="line">    avg = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i ++ ) </span><br><span class="line">    &#123;</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">        avg += a[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    avg /= n;</span><br><span class="line">    c[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span>; i &lt;= n; i ++ ) c[i] = c[i - <span class="number">1</span>] + a[i] - avg;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">sort</span>(c + <span class="number">1</span>, c + n + <span class="number">1</span>);</span><br><span class="line">    ll res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i ++ ) res += <span class="built_in">abs</span>(c[i] - c[(n + <span class="number">1</span>) / <span class="number">2</span>]);</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; res &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>PS：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/UVA11300">经验</a></p>
-
+f[i]=\min _{j<i}\{f[j]+sumT[i]\times (sumC[i]-sumC[j])+s\times (sumC[n]-sumC[j]) \}</script><p>这个方程运用了一个费用提前计算的思想，最后一项 $s\times (sumC[n]-sumC[j])$ 表示虽然不知道后面分成了多少段，但是知道当前分这一段会对后面这些项造成这么多影响。这个方程的复杂度为 $O(n^2)$，可以通过原版数据范围。</p>
+<p>为了通过加强版，我们化简一下式子。</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+f[i] & = \min _{j<i}\{f[j]+sumT[i]\times (sumC[i]-sumC[j])+s\times (sumC[n]-sumC[j]) \}\\
+&=\min _{j<i}\{f[j]+sumT[i]\times sumC[i]-sumT[i]\times sumC[j]+s\times sumC[n]-s\times sumC[j]) \}\\
+&=\min _{j<i}\{f[j]-(sumT[i]+s)\times sumC[j]) \}+sumT[i]\times sumC[i]+s\times sumC[n]
+\end{aligned}</script><p>我们移一下项，变为：</p>
+<script type="math/tex; mode=display">
+f[i]-sumT[i]\times sumC[i]-s\times sumC[n]=\min _{j<i}\{f[j]-(sumT[i]+s)\times sumC[j]) \}</script><p>这时就无法化简了，我们考虑下有什么性质。</p>
+<p>我们可以设 $x_j=sumC[j], y_j=f[j], k_i=(sumT[i]+s), b_i=f[i]-sumT[i]\times sumC[i]-s\times sumC[n]$。（注意下标）这时式子变为：</p>
+<script type="math/tex; mode=display">
+b_i=\min _{j<i}\{y_j-k_i\times x_j \}</script><p>这就变成了一个一次函数求截距的式子。注意到 $sumT[i]\times sumC[i]-s\times sumC[n]$ 在 $i$ 固定时为定值，目前要求 $f[i]$ 最小值，则问题转化为求截距的最小值。</p>
+<p>我们可以把问题放到坐标系中来看：</p>
+<p><img src="https://i.imgloc.com/2023/06/27/VN7yA5.png" alt=""></p>
+<p>由于 $i$ 固定，则斜率 $k_i$ 固定。我们就可以把问题想象成拿着一条斜率为 $k_i$ 的直线从下往上平移，第一个到达的点（点的坐标为上面的 $(x_j, y_j)$）则为最佳转移点（这时截距最小）。我们再考虑下什么样的点才能成为最佳转移点。</p>
+<p>考虑三个决策点 $i, j, k(i&lt;j&lt;k)$。</p>
+<p>当 $k_{i, j}&gt;k_{j, k}$ 时，如图：</p>
+<p><img src="https://i.imgloc.com/2023/06/27/VN7GK3.png" alt=""></p>
+<p>显然，这时 $j$ 不可能成为最佳转移点。</p>
+<p>而当 $k_{i, j} &lt; k_{j, k}$ 时：</p>
+<p><img src="https://i.imgloc.com/2023/06/27/VN796H.png" alt=""></p>
+<p>这时 $j$ 可能成为最佳转移点。</p>
+<p>因此，对于所有可能成为最佳转移点的点构成的点集，其斜率必然单调递增。这就是一个凸壳。我们只需要维护这个凸壳，然后查找第一个相交的点即可。（第一个相交的点 $i$ 满足 $k_{i-1,i}&lt;k\le k_{i, i+1}$）</p>
+<p>现在问题变为了：如何维护这个凸壳？</p>
+<p>这个问题很简单。只需要用一个单调队列，用类似找二维凸包的方式向外弹出斜率更大的队尾即可。</p>
+<p>而题目中还有一个很好的条件：$t_i&gt;0$。因此 $sumT$ 单调递增。我们在寻找相交的点时就可以不断从队头弹出无用决策（斜率小于当前的 $k$）。</p>
+<p>这样就完成了，时间复杂度 $O(n)$。</p>
+<p><strong>加加强版</strong></p>
+<p>题意相同。</p>
+<p>数据范围：$n\le 100000,-512\le |t_i| \le 512, 0&lt;c_i\le 512$。</p>
+<hr>
+<p>这时 $t_i$ 不满足单调递增的关系，我们无法每次从队头弹出元素，因为弹出的元素可能会成为以后的最佳转移点。因此我们需要维护整个凸包，在转移时，由于凸包上斜率单调递增，我们可以在单调队列里二分出第一个满足 $k_{i-1,i}&lt;k\le k_{i, i+1}$ 的凸包上的点，它就是最佳转移点。时间复杂度会多一个 $\log n$。</p>
+<p><strong>加加加强版</strong></p>
+<p>$t_i, c_i$ 都可能为负数。</p>
+<hr>
+<p>这时横坐标和斜率都无法满足单调递增关系，这就意味着我们无法用单调队列动态维护凸包（可能会在中间插入）。这时常见的有三种解决方案：</p>
+<ol>
+<li>平衡树</li>
+</ol>
+<p>平衡树可以做到在数列中动态加入数，这时我们可以在平衡树上二分查找最佳转移点。十分好理解，但是难写。</p>
+<ol>
+<li>CDQ 分治</li>
+</ol>
+<p>我们设 $\mathrm{CDQ}(l, r)$ 为计算 $[l, r]$ 这段区间的 $f$ 值。我们先递归计算 $\mathrm{CDQ}(l, mid)$。这时假设我们已经计算完了左半边，考虑左半边对右半边的贡献。我们可以将 $[l, mid]$ 的点组成的凸包建出来，因为这一部分已经计算完毕了，所以我们可以直接排序建凸包。</p>
+<p>而对于右区间 $[mid + 1,r]$，我们也可以进行按斜率排序处理，这样就可以按照斜率单调递增的做法来弹出队头转移。最后再递归处理右区间 $\mathrm{CDQ}(mid + 1, r)$。</p>
+<p>注意：处理右区间时不要将右区间的点加入凸包，因为我们计算的只是左区间对右区间的贡献，其余的贡献会继续递归处理。</p>
+<ol>
+<li>李超线段树</li>
+</ol>
+<p>我们可以再把转移方程搬过来：</p>
+<script type="math/tex; mode=display">
+f[i]-sumT[i]\times sumC[i]-s\times sumC[n]=\min _{j<i}\{f[j]-(sumT[i]+s)\times sumC[j]) \}</script><p>这时我们不按照上面的设法，我们重新理解下这个式子。</p>
+<p>我们可以理解为有 $i-1$ 条直线 $1\sim i-1$，每条直线的斜率为 $-sumC[j]$，截距为 $f[j]$，而我们要查询当 $x=sumT[i]$ 时的最大值。这个可以直接用李超线段树维护。</p>
+<h1 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h1><h3 id="Cats-Transport"><a href="#Cats-Transport" class="headerlink" title="Cats Transport"></a>Cats Transport</h3><p>有 $m$ 只猫子，$p$ 只铲屎官。有 $n$ 座山，第 $i$ 座山与第 $i-1$ 座山的距离为 $D_i$。这些猫子都去玩，猫子 $i$ 去第 $H_i$ 座山玩，在 $T_i$ 时间结束游玩，然后在 $H_i$ 傻等铲屎官来接它。铲屎官必须把所有猫子都带上，每个铲屎官以每秒 $1$ 的速度不间断的从 $H_1$ 走到 $H_n$。每个铲屎官可以带上无限的猫子。现在安排每个铲屎官的出发时间（可以为负数），最小化猫子们的等待时间之和。求出最小等待时间之和。</p>
+<p>数据范围：$m\le 100000, p\le 100$。</p>
+<hr>
+<p>我们先设 $A_i=T_i-\sum_{i=2}^{H_i}D_i$，即猫子能被接到的最早出发时间。因此如果铲屎官从 $t$ 时刻出发，则这只猫子等待时间则为 $t-A_i$。</p>
+<p>我们将 $A_i$ 排序，设 $s$ 为其排好序后的前缀和。利用临项交换法可以证明，一个铲屎官出发后带走的猫子在 $A$ 中一定是连续的一段。这时我们就可以把问题转化为上面的任务安排。</p>
+<p>我们考虑一只铲屎官带走 $[l, r]$ 这些猫的代价为：</p>
+<script type="math/tex; mode=display">
+\sum\limits _{i=l}^{r}(A_r-A_i)=(r-l+1)A_r-s_r+s_{l-1}</script><p>我们设 $f[i][j]$ 为前 $i$ 只铲屎官带走了前 $j$ 只猫子，则转移方程为：</p>
+<script type="math/tex; mode=display">
+f[i][j]=\min_{k<j}\{f[i-1][k]+(j-k)A_j-s_j+s_k \}</script><p>这样复杂度为 $O(m^2p)$ 的，考虑斜率优化。</p>
+<p>我们化简式子，能得到 $f[i][j]+s_j-j\times A_j=\min_{k&lt;j}\{f[i-1][k]+s_k-A_j\times k\}$。这样就可以直接斜率优化了。</p>
+<h3 id="Building-Bridges"><a href="#Building-Bridges" class="headerlink" title="Building Bridges"></a>Building Bridges</h3><p>有 $n$ 根柱子依次排列，每根柱子都有一个高度。第 $i$ 根柱子的高度为 $h_i$。</p>
+<p>现在想要建造若干座桥，如果一座桥架在第 $i$ 根柱子和第 $j$ 根柱子之间，那么需要 $(h_i-h_j)^2$​​ 的代价。</p>
+<p>在造桥前，所有用不到的柱子都会被拆除，因为他们会干扰造桥进程。第 $i$ 根柱子被拆除的代价为 $w_i$，注意 $w_i$ 不一定非负，因为可能政府希望拆除某些柱子。</p>
+<p>现在政府想要知道，通过桥梁把第 $1$ 根柱子和第 $n$ 根柱子连接的最小代价。注意桥梁不能在端点以外的任何地方相交。</p>
+<p>数据范围：$2\le n\le 10^5;0\le h_i,\vert w_i\vert\le 10^6$。</p>
+<hr>
+<p>本题很容易设出状态并写出转移方程：$f_i$ 表示 $1\sim i$ 建桥的代价，则 </p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+f_i & = \min _{j<i}\{f_j+(h_i-h_j)^2+sum_{i-1}-sum_{j} \}\\
+&=\min _{j<i}\{f_j-sum_{j}+h_j^2-2h_i\times h_j \}+sum_{i-1}+h_i^2
+\end{aligned}</script><p>这样就化为了斜率优化的形式，由于本题横坐标和斜率都不单调，则需要李超线段树或者 cdq 分治来优化。</p>
+<h1 id="The-End"><a href="#The-End" class="headerlink" title="The End"></a>The End</h1>
             
         </div>
         <footer class="article-footer">
-            <a data-url="http://example.com/2023/05/22/P4016%E9%A2%98%E8%A7%A3/" data-id="cljdpanho000lm4vs6z6t5uck" data-title="P4016题解"
+            <a data-url="http://example.com/2023/06/27/%E6%96%9C%E7%8E%87%E4%BC%98%E5%8C%96dp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cljdpanhr000zm4vsf00xaag8" data-title="斜率优化dp学习笔记"
                class="article-share-link">Share</a>
             
             
-    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
 
         </footer>
     </div>
@@ -189,31 +248,17 @@ x_n=x_1-[a_1+a_2+\cdots +a_{n-1}-(n-1)a]
         
     <nav id="article-nav">
         
-            <div class="article-nav-link-wrap article-nav-link-left">
-                
-                    <img data-src="https://img.paulzzh.com/touhou/konachan/image/5558d2c6085f80d3cfeade810d7aa417.jpg" data-sizes="auto" alt="CF1421E题解"
-                         class="lazyload">
-                
-                <a href="/2023/05/25/CF1421E%E9%A2%98%E8%A7%A3/"></a>
-                <div class="article-nav-caption">Newer</div>
-                <div class="article-nav-title">
-                    
-                        CF1421E题解
-                    
-                </div>
-            </div>
-        
         
             <div class="article-nav-link-wrap article-nav-link-right">
                 
-                    <img data-src="https://d-sketon.top/img/backimg/bg20.jpg" data-sizes="auto" alt="PAM学习笔记"
+                    <img data-src="https://i.imgloc.com/2023/06/27/VNdh7x.jpeg" data-sizes="auto" alt="暑假摆烂模拟赛总结"
                          class="lazyload">
                 
-                <a href="/2023/05/21/PAM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"></a>
+                <a href="/2023/06/25/%E6%9A%91%E5%81%87%E6%91%86%E7%83%82%E6%A8%A1%E6%8B%9F%E8%B5%9B%E6%80%BB%E7%BB%93/"></a>
                 <div class="article-nav-caption">Older</div>
                 <div class="article-nav-title">
                     
-                        PAM学习笔记
+                        暑假摆烂模拟赛总结
                     
                 </div>
             </div>
