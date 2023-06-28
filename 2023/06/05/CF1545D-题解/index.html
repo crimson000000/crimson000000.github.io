@@ -20,7 +20,7 @@
 <meta property="og:description" content="题目链接  题目描述 有 nnn 个人和 kkk 个间隔相同时间的时刻，每个人都向正方向做匀速直线运动。给出每个时刻（0∼k−10 \sim k - 10∼k−1）的所有人的坐标集合（无序），在这 nknknk 个数中有一个数是错误的，找出这个错误的数并将其改正。 数据范围：5≤n≤10005 \le n \le 10005≤n≤1000，7≤k≤10007 \le k \le 10007≤k≤1">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-06-05T11:36:13.000Z">
-<meta property="article:modified_time" content="2023-06-06T13:46:16.782Z">
+<meta property="article:modified_time" content="2023-06-28T09:09:15.026Z">
 <meta property="article:author" content="crimson000">
 <meta property="article:tag" content="题解">
 <meta name="twitter:card" content="summary">
@@ -137,14 +137,6 @@
 <p>有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">n</span></span></span></span> 个人和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> 个间隔相同时间的时刻，每个人都向正方向做匀速直线运动。给出每个时刻（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>∼</mo><mi>k</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0 \sim k - 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>）的所有人的坐标集合（无序），在这 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mi>k</mi></mrow><annotation encoding="application/x-tex">nk</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> 个数中有一个数是错误的，找出这个错误的数并将其改正。</p>
 <p>数据范围：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mo>≤</mo><mi>n</mi><mo>≤</mo><mn>1000</mn></mrow><annotation encoding="application/x-tex">5 \le n \le 1000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.78041em;vertical-align:-0.13597em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>7</mn><mo>≤</mo><mi>k</mi><mo>≤</mo><mn>1000</mn></mrow><annotation encoding="application/x-tex">7 \le k \le 1000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.78041em;vertical-align:-0.13597em;"></span><span class="mord">7</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83041em;vertical-align:-0.13597em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span></span></span></span>。</p>
 <p>加强版：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mo>≤</mo><mi>n</mi><mo>≤</mo><mn>1</mn><msup><mn>0</mn><mn>6</mn></msup></mrow><annotation encoding="application/x-tex">5 \le n \le 10^6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.78041em;vertical-align:-0.13597em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span></span></span></span>，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>7</mn><mo>≤</mo><mi>k</mi><mo>≤</mo><mn>1</mn><msup><mn>0</mn><mn>6</mn></msup></mrow><annotation encoding="application/x-tex">7 \le k \le 10^6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.78041em;vertical-align:-0.13597em;"></span><span class="mord">7</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83041em;vertical-align:-0.13597em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span></span></span></span>。</p>
-<p>提示：充分发挥人类智慧</p>
-<p>提示：充分发挥人类智慧</p>
-<p>提示：充分发挥人类智慧</p>
-<p>提示：充分发挥人类智慧</p>
-<p>提示：充分发挥人类智慧</p>
-<p>提示：充分发挥人类智慧</p>
-<p>提示：充分发挥人类智慧</p>
-<p>提示：充分发挥人类智慧</p>
 <h1 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> solution</h1>
 <p>本题是一道人类智慧题，基本只有灵光一闪才能想出来。</p>
 <p>我们可以考虑所有人的速度都是不变的，因此每个时间刻之间的坐标和之差是一定的。形式化的，我们可以写成下面的式子：</p>
@@ -166,7 +158,7 @@ f_{t+1} &amp;= \sum \limits_{i = 1}^n(x_i+v_i(t+1))\\
             
         </div>
         <footer class="article-footer">
-            <a data-url="http://example.com/2023/06/05/CF1545D-%E9%A2%98%E8%A7%A3/" data-id="clje7hfuj00038gvsb38t8mcy" data-title="CF1545D 题解"
+            <a data-url="http://example.com/2023/06/05/CF1545D-%E9%A2%98%E8%A7%A3/" data-id="cljfi1hk6000338vs77x7ddy2" data-title="CF1545D 题解"
                class="article-share-link">Share</a>
             
             
@@ -224,7 +216,7 @@ f_{t+1} &amp;= \sum \limits_{i = 1}^n(x_i+v_i(t+1))\\
         <div class="sidebar-state">
             <div class="sidebar-state-article">
                 <div>Posts</div>
-                <div class="sidebar-state-number">22</div>
+                <div class="sidebar-state-number">23</div>
             </div>
             <div class="sidebar-state-category">
                 <div>Categories</div>
@@ -232,7 +224,7 @@ f_{t+1} &amp;= \sum \limits_{i = 1}^n(x_i+v_i(t+1))\\
             </div>
             <div class="sidebar-state-tag">
                 <div>Tags</div>
-                <div class="sidebar-state-number">6</div>
+                <div class="sidebar-state-number">7</div>
             </div>
         </div>
         <div class="sidebar-social">
@@ -290,7 +282,7 @@ f_{t+1} &amp;= \sum \limits_{i = 1}^n(x_i+v_i(t+1))\\
     <div class="widget-wrap">
         <h3 class="widget-title">Tag Cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 16.67px;">学习笔记</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 13.33px;">总结</a> <a href="/tags/%E6%8A%BD%E8%B1%A1/" style="font-size: 10px;">抽象</a> <a href="/tags/%E6%91%86%E7%83%82/" style="font-size: 10px;">摆烂</a> <a href="/tags/%E6%96%87%E5%8C%96%E8%AF%BE/" style="font-size: 10px;">文化课</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 20px;">题解</a>
+            <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 16.67px;">学习笔记</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 13.33px;">总结</a> <a href="/tags/%E6%8A%BD%E8%B1%A1/" style="font-size: 10px;">抽象</a> <a href="/tags/%E6%91%86%E7%83%82/" style="font-size: 10px;">摆烂</a> <a href="/tags/%E6%96%87%E5%8C%96%E8%AF%BE/" style="font-size: 10px;">文化课</a> <a href="/tags/%E9%A2%93%E5%BA%9F/" style="font-size: 10px;">颓废</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 20px;">题解</a>
         </div>
     </div>
 
@@ -328,7 +320,7 @@ f_{t+1} &amp;= \sum \limits_{i = 1}^n(x_i+v_i(t+1))\\
             
                 <div>
                     <span class="icon-brush"></span>
-                    73.7k
+                    73.3k
                     &nbsp;|&nbsp;
                     <span class="icon-coffee"></span>
                     05:42
@@ -358,7 +350,7 @@ f_{t+1} &amp;= \sum \limits_{i = 1}^n(x_i+v_i(t+1))\\
         <div class="sidebar-state">
             <div class="sidebar-state-article">
                 <div>Posts</div>
-                <div class="sidebar-state-number">22</div>
+                <div class="sidebar-state-number">23</div>
             </div>
             <div class="sidebar-state-category">
                 <div>Categories</div>
@@ -366,7 +358,7 @@ f_{t+1} &amp;= \sum \limits_{i = 1}^n(x_i+v_i(t+1))\\
             </div>
             <div class="sidebar-state-tag">
                 <div>Tags</div>
-                <div class="sidebar-state-number">6</div>
+                <div class="sidebar-state-number">7</div>
             </div>
         </div>
         <div class="sidebar-social">

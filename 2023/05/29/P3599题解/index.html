@@ -19,20 +19,11 @@
 <meta property="og:site_name" content="crimson000">
 <meta property="og:description" content="本题是一道比较典的构造题，拿来扩宽扩宽大家的眼界吧。  Task 1 试判断能否构造并构造一个长度为 nnn 的 1∼n1 \sim n1∼n 的排列，满足其 nnn 个前缀和在模 nnn 的意义下互不相同。 很容易想到的一点是：nnn 一定排在第一位，因为如果排在别的位，加上 nnn 后在模 nnn 意义下是不变的，因此不满足题意，只能放在第一位。 然后我们可能有一个朴素的想法：构造出的前缀和序">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://img.paulzzh.com/touhou/konachan/jpeg/068aa04808f99c146d186a4b1006ffef.jpg">
-<meta property="og:image" content="https://img.paulzzh.com/touhou/konachan/jpeg/4a6d3c2341877e3ef8940d8a8286de4c.jpg">
-<meta property="og:image" content="https://i.imgloc.com/2023/05/25/VD5jSz.jpeg">
-<meta property="og:image" content="https://i.imgloc.com/2023/05/25/VD5IVw.jpeg">
-<meta property="og:image" content="https://i.imgloc.com/2023/05/29/VtZ9dw.jpeg">
-<meta property="og:image" content="https://i.imgloc.com/2023/05/29/VtZL2x.jpeg">
-<meta property="og:image" content="https://i.imgloc.com/2023/05/29/VtZMEk.jpeg">
-<meta property="og:image" content="https://img.paulzzh.com/touhou/konachan/image/98d8873a2eccffe3ceba78694d715132.jpg">
 <meta property="article:published_time" content="2023-05-29T02:58:58.000Z">
-<meta property="article:modified_time" content="2023-05-29T11:43:21.374Z">
+<meta property="article:modified_time" content="2023-06-28T09:09:58.452Z">
 <meta property="article:author" content="crimson000">
 <meta property="article:tag" content="题解">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img.paulzzh.com/touhou/konachan/jpeg/068aa04808f99c146d186a4b1006ffef.jpg">
     
         <link rel="alternate" href="/atom.xml" title="crimson000" type="application/atom+xml">
     
@@ -178,20 +169,10 @@
 <p>当 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">n</span></span></span></span> 为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span></span></span></span> 时，可以直接打表，当 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>&gt;</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">n &gt; 4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span></span></span></span> 时，根据上面的无解方案，我们可以知道 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">n</span></span></span></span> 一定为质数，我们就可以直接快速幂求逆元。</p>
 <p>完整代码：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> LOCAL</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt; PII;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e6</span> + <span class="number">10</span>;</span><br><span class="line">bitset&lt;N&gt; st;</span><br><span class="line"><span class="type">int</span> primes[N], cnt;</span><br><span class="line"><span class="type">int</span> a[N];</span><br><span class="line"><span class="type">int</span> type;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">qmi</span><span class="params">(ll a, ll b, ll p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ll res = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(b)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(b &amp; <span class="number">1</span>) res = res * a % p;</span><br><span class="line">        a = a * a % p;</span><br><span class="line">        b &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">(<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span>; i &lt;= n; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(!st[i])</span><br><span class="line">        &#123;</span><br><span class="line">            primes[++ cnt] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>; primes[j] &lt;= n / i; j ++ )</span><br><span class="line">        &#123;</span><br><span class="line">            st[primes[j] * i] = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span>(i % primes[j] == <span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">init</span>(<span class="number">100001</span>);</span><br><span class="line">    st[<span class="number">4</span>] = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">    type = <span class="built_in">read</span>();</span><br><span class="line">    <span class="type">int</span> T = <span class="built_in">read</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(T -- )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> n = <span class="built_in">read</span>();</span><br><span class="line">        <span class="keyword">if</span>(type == <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(n == <span class="number">1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">puts</span>(<span class="string">&quot;2 1&quot;</span>);</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(n &amp; <span class="number">1</span>) <span class="built_in">puts</span>(<span class="string">&quot;0&quot;</span>);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;2 &quot;</span>);</span><br><span class="line">                <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i ++ )</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(!(i &amp; <span class="number">1</span>)) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, n - i);</span><br><span class="line">                    <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, i);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="built_in">puts</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(st[n]) <span class="built_in">puts</span>(<span class="string">&quot;0&quot;</span>);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;2 1 &quot;</span>);</span><br><span class="line">                <span class="keyword">if</span>(n == <span class="number">4</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="built_in">printf</span>(<span class="string">&quot;3 2 4\n&quot;</span>);</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span>; i &lt; n; i ++ )</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, (ll)i * <span class="built_in">qmi</span>(i - <span class="number">1</span>, n - <span class="number">2</span>, n) % n);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, n);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="i-love-koishi"><a class="markdownIt-Anchor" href="#i-love-koishi"></a> I LOVE KOISHI</h1>
-<p><img src="https://img.paulzzh.com/touhou/konachan/jpeg/068aa04808f99c146d186a4b1006ffef.jpg" alt="" /></p>
-<p><img src="https://img.paulzzh.com/touhou/konachan/jpeg/4a6d3c2341877e3ef8940d8a8286de4c.jpg" alt="" /></p>
-<p><img src="https://i.imgloc.com/2023/05/25/VD5jSz.jpeg" alt="" /></p>
-<p><img src="https://i.imgloc.com/2023/05/25/VD5IVw.jpeg" alt="" /></p>
-<p><img src="https://i.imgloc.com/2023/05/29/VtZ9dw.jpeg" alt="" /></p>
-<p><img src="https://i.imgloc.com/2023/05/29/VtZL2x.jpeg" alt="" /></p>
-<p><img src="https://i.imgloc.com/2023/05/29/VtZMEk.jpeg" alt="" /></p>
-<p><img src="https://img.paulzzh.com/touhou/konachan/image/98d8873a2eccffe3ceba78694d715132.jpg" alt="" /></p>
-
             
         </div>
         <footer class="article-footer">
-            <a data-url="http://example.com/2023/05/29/P3599%E9%A2%98%E8%A7%A3/" data-id="clje7hfuq000j8gvs6mbjgb1h" data-title="P3599题解"
+            <a data-url="http://example.com/2023/05/29/P3599%E9%A2%98%E8%A7%A3/" data-id="cljfi1hkd000j38vsbizae7ou" data-title="P3599题解"
                class="article-share-link">Share</a>
             
             
@@ -222,7 +203,7 @@
                 
                     
                     
-                        <img data-src="https://d-sketon.top/img/backimg/bg10.jpg" data-sizes="auto" alt="抽象" class="lazyload">
+                        <img data-src="https://d-sketon.top/img/backimg/bg12.jpg" data-sizes="auto" alt="抽象" class="lazyload">
                     
                 
                 <a href="/2023/05/26/%E6%8A%BD%E8%B1%A1/"></a>
@@ -251,7 +232,7 @@
         <div class="sidebar-state">
             <div class="sidebar-state-article">
                 <div>Posts</div>
-                <div class="sidebar-state-number">22</div>
+                <div class="sidebar-state-number">23</div>
             </div>
             <div class="sidebar-state-category">
                 <div>Categories</div>
@@ -259,7 +240,7 @@
             </div>
             <div class="sidebar-state-tag">
                 <div>Tags</div>
-                <div class="sidebar-state-number">6</div>
+                <div class="sidebar-state-number">7</div>
             </div>
         </div>
         <div class="sidebar-social">
@@ -317,7 +298,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">Tag Cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 16.67px;">学习笔记</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 13.33px;">总结</a> <a href="/tags/%E6%8A%BD%E8%B1%A1/" style="font-size: 10px;">抽象</a> <a href="/tags/%E6%91%86%E7%83%82/" style="font-size: 10px;">摆烂</a> <a href="/tags/%E6%96%87%E5%8C%96%E8%AF%BE/" style="font-size: 10px;">文化课</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 20px;">题解</a>
+            <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 16.67px;">学习笔记</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 13.33px;">总结</a> <a href="/tags/%E6%8A%BD%E8%B1%A1/" style="font-size: 10px;">抽象</a> <a href="/tags/%E6%91%86%E7%83%82/" style="font-size: 10px;">摆烂</a> <a href="/tags/%E6%96%87%E5%8C%96%E8%AF%BE/" style="font-size: 10px;">文化课</a> <a href="/tags/%E9%A2%93%E5%BA%9F/" style="font-size: 10px;">颓废</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 20px;">题解</a>
         </div>
     </div>
 
@@ -355,7 +336,7 @@
             
                 <div>
                     <span class="icon-brush"></span>
-                    73.7k
+                    73.3k
                     &nbsp;|&nbsp;
                     <span class="icon-coffee"></span>
                     05:42
@@ -385,7 +366,7 @@
         <div class="sidebar-state">
             <div class="sidebar-state-article">
                 <div>Posts</div>
-                <div class="sidebar-state-number">22</div>
+                <div class="sidebar-state-number">23</div>
             </div>
             <div class="sidebar-state-category">
                 <div>Categories</div>
@@ -393,7 +374,7 @@
             </div>
             <div class="sidebar-state-tag">
                 <div>Tags</div>
-                <div class="sidebar-state-number">6</div>
+                <div class="sidebar-state-number">7</div>
             </div>
         </div>
         <div class="sidebar-social">
