@@ -20,7 +20,7 @@
 <meta property="og:description" content="2023.6.25  T1 一开始摆了，写了个 20 分暴力走人。写完 T3T4 后刚了半个小时没刚出来，直接跑路。  T2 一开始用数组存状态暴力写挂了，先使用跳题 dp，转移到 T3。写完 T4 假 O(qnlog⁡n)O(qn\log n)O(qnlogn) 做法又刚了半个小时 T1 后果断看 T2，发现 f[i,j,k]f[i, j, k]f[i,j,k] 表示状态好写，又发现直接能记忆">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-06-25T07:13:38.000Z">
-<meta property="article:modified_time" content="2023-06-28T09:12:34.000Z">
+<meta property="article:modified_time" content="2023-07-08T09:01:56.104Z">
 <meta property="article:author" content="crimson000">
 <meta property="article:tag" content="摆烂">
 <meta name="twitter:card" content="summary">
@@ -143,11 +143,22 @@
 <p>想了 5 分钟怎么优化到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>q</mi><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(qn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>。想出来了做法，但是写假了，正无穷也开大了，也不知道为什么脑梗用线段树去写去，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span> 扫不就完事了。</p>
 <hr />
 <p>主要 T4 写挂了。以后再也不把正无穷开太大了。</p>
+<h1 id="202378"><a class="markdownIt-Anchor" href="#202378"></a> 2023.7.8</h1>
+<h1 id="t1-2"><a class="markdownIt-Anchor" href="#t1-2"></a> T1</h1>
+<p>上来一眼背包，二眼不会。刚了半个小时搞出来个 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^3)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> dp，然后二维树状数组优化一下（好像也没优化到哪去），反正数据随机就过了。</p>
+<h1 id="t2-2"><a class="markdownIt-Anchor" href="#t2-2"></a> T2</h1>
+<p>一眼不可做题，刚了五分钟使用跳题 dp。</p>
+<p>写完 T4 暴力开始刚这题，刚了半个多小时干出来了个 40 分做法。最后 10 分钟想着骗点分，<code>puts(&quot;0&quot;)</code> 直接 30pts 是什么鬼啊。</p>
+<h1 id="t3-2"><a class="markdownIt-Anchor" href="#t3-2"></a> T3</h1>
+<p>这不弱智题吗……树剖维护一下就行</p>
+<h1 id="t4-2"><a class="markdownIt-Anchor" href="#t4-2"></a> T4</h1>
+<p>一眼不会，刚了五分钟观察到有 45pts 暴搜，果断暴力，甚至加了个剪枝多拿 15pts。</p>
+<hr />
 
             
         </div>
         <footer class="article-footer">
-            <a data-url="http://example.com/2023/06/25/%E6%9A%91%E5%81%87%E6%91%86%E7%83%82%E6%A8%A1%E6%8B%9F%E8%B5%9B%E6%80%BB%E7%BB%93/" data-id="cljsh97yy0013swardp3k8b3p" data-title="暑假摆烂模拟赛总结"
+            <a data-url="http://example.com/2023/06/25/%E6%9A%91%E5%81%87%E6%91%86%E7%83%82%E6%A8%A1%E6%8B%9F%E8%B5%9B%E6%80%BB%E7%BB%93/" data-id="clju29um00016yoarff0ke6dy" data-title="暑假摆烂模拟赛总结"
                class="article-share-link">Share</a>
             
             
@@ -205,7 +216,7 @@
         <div class="sidebar-state">
             <div class="sidebar-state-article">
                 <div>Posts</div>
-                <div class="sidebar-state-number">24</div>
+                <div class="sidebar-state-number">25</div>
             </div>
             <div class="sidebar-state-category">
                 <div>Categories</div>
@@ -213,7 +224,7 @@
             </div>
             <div class="sidebar-state-tag">
                 <div>Tags</div>
-                <div class="sidebar-state-number">7</div>
+                <div class="sidebar-state-number">8</div>
             </div>
         </div>
         <div class="sidebar-social">
@@ -271,7 +282,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">Tag Cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 20px;">学习笔记</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 15px;">总结</a> <a href="/tags/%E6%8A%BD%E8%B1%A1/" style="font-size: 10px;">抽象</a> <a href="/tags/%E6%91%86%E7%83%82/" style="font-size: 10px;">摆烂</a> <a href="/tags/%E6%96%87%E5%8C%96%E8%AF%BE/" style="font-size: 10px;">文化课</a> <a href="/tags/%E9%A2%93%E5%BA%9F/" style="font-size: 10px;">颓废</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 20px;">题解</a>
+            <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 20px;">学习笔记</a> <a href="/tags/%E6%80%BB%E7%BB%93/" style="font-size: 15px;">总结</a> <a href="/tags/%E6%8A%BD%E8%B1%A1/" style="font-size: 10px;">抽象</a> <a href="/tags/%E6%91%86%E7%83%82/" style="font-size: 10px;">摆烂</a> <a href="/tags/%E6%96%87%E5%8C%96%E8%AF%BE/" style="font-size: 10px;">文化课</a> <a href="/tags/%E9%A2%93%E5%BA%9F/" style="font-size: 10px;">颓废</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 20px;">题解</a> <a href="/tags/%E9%A2%98%E9%9B%86-%E6%80%BB%E7%BB%93/" style="font-size: 10px;">题集 总结</a>
         </div>
     </div>
 
@@ -309,10 +320,10 @@
             
                 <div>
                     <span class="icon-brush"></span>
-                    77k
+                    79.3k
                     &nbsp;|&nbsp;
                     <span class="icon-coffee"></span>
-                    05:56
+                    06:06
                 </div>
             
             
@@ -339,7 +350,7 @@
         <div class="sidebar-state">
             <div class="sidebar-state-article">
                 <div>Posts</div>
-                <div class="sidebar-state-number">24</div>
+                <div class="sidebar-state-number">25</div>
             </div>
             <div class="sidebar-state-category">
                 <div>Categories</div>
@@ -347,7 +358,7 @@
             </div>
             <div class="sidebar-state-tag">
                 <div>Tags</div>
-                <div class="sidebar-state-number">7</div>
+                <div class="sidebar-state-number">8</div>
             </div>
         </div>
         <div class="sidebar-social">
