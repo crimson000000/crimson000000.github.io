@@ -1,0 +1,761 @@
+
+    <!DOCTYPE html>
+    <html lang="zh-CN"
+            
+          data-theme="dark"
+            
+    >
+    <head>
+    <meta charset="utf-8">
+    
+
+    
+
+    
+    <title>
+        抽象 |
+        
+        crimson000</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CUbuntu%20Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+    
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.5.1/css/brands.min.css">
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.5.1/css/regular.min.css">
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.5.1/css/solid.min.css">
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.5.1/css/v5-font-face.min.css">
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.5.1/css/v4-font-face.min.css">
+
+    
+<link rel="stylesheet" href="/css/loader.css">
+
+    <meta name="description" content="够抽象了吧😓">
+<meta property="og:type" content="article">
+<meta property="og:title" content="抽象">
+<meta property="og:url" content="http://example.com/1970/01/01/%E6%8A%BD%E8%B1%A1/index.html">
+<meta property="og:site_name" content="crimson000">
+<meta property="og:description" content="够抽象了吧😓">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="1969-12-31T16:00:01.000Z">
+<meta property="article:modified_time" content="2023-09-24T11:55:16.602Z">
+<meta property="article:author" content="crimson000">
+<meta property="article:tag" content="抽象">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" href="/atom.xml" title="crimson000" type="application/atom+xml">
+    
+    
+        <link rel="shortcut icon" href="/images/favicon.ico">
+    
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://unpkg.com/katex@0.16.9/dist/katex.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+
+    
+    
+    
+<script src="https://unpkg.com/pace-js@1.2.4/pace.min.js"></script>
+
+    
+        
+<link rel="stylesheet" href="https://unpkg.com/wowjs@1.1.3/css/libs/animate.css">
+
+        
+<script src="https://unpkg.com/wowjs@1.1.3/dist/wow.min.js"></script>
+
+        <script>
+          new WOW({
+            offset: 0,
+            mobile: true,
+            live: false
+          }).init();
+        </script>
+    
+    
+        <script src="/sw.js"></script>
+    
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+    <body>
+    
+<div id='loader'>
+  <div class="loading-left-bg"></div>
+  <div class="loading-right-bg"></div>
+  <div class="spinner-box">
+    <div class="loading-taichi">
+      <svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+      <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="#ff6e6b" />
+      <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z" fill="#fd0d00" />
+      <path d="M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95" fill="#fd0d00" />
+    </svg>
+    </div>
+    <div class="loading-word">少女祈祷中...</div>
+  </div>
+</div>
+</div>
+
+<script>
+  var time = null;
+  const startLoading = function() {
+    time = Date.now();
+    document.getElementById('loader').classList.remove("loading");
+  }
+  const endLoading = function() {
+    if(!time) {
+      document.body.style.overflow = 'auto';
+      document.getElementById('loader').classList.add("loading");
+    } else {
+      if(Date.now() - time > 500) {
+        time = null;
+        document.body.style.overflow = 'auto';
+        document.getElementById('loader').classList.add("loading");
+      } else {
+        setTimeout(endLoading, 500 - (Date.now() - time));
+        time = null;
+      } 
+    }
+  }
+  window.addEventListener('load', endLoading);
+  document.getElementById('loader').addEventListener('click', endLoading);
+</script>
+
+
+    <div id="container">
+        <div id="wrap">
+            <div id="header-nav">
+  <nav id="main-nav">
+      
+          <span class="main-nav-link-wrap">
+              <span class="main-nav-icon"></span>
+              <a class="main-nav-link" href="/">首页</a>
+          </span>
+      
+          <span class="main-nav-link-wrap">
+              <span class="main-nav-icon"></span>
+              <a class="main-nav-link" href="/archives">归档</a>
+          </span>
+      
+          <span class="main-nav-link-wrap">
+              <span class="main-nav-icon"></span>
+              <a class="main-nav-link" href="/about">关于</a>
+          </span>
+      
+          <span class="main-nav-link-wrap">
+              <span class="main-nav-icon"></span>
+              <a class="main-nav-link" href="/friend">友链</a>
+          </span>
+      
+      <a id="main-nav-toggle" class="nav-icon"></a>
+  </nav>
+  <nav id="sub-nav">
+      
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml"
+             title="RSS 订阅"></a>
+      
+      
+      
+  </nav>
+  <div id="search-form-wrap">
+      <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+  </div>
+</div>
+<header id="header">
+    
+        <img data-src="/images/banner.jpg" data-sizes="auto" alt="抽象" class="lazyload">
+    
+    <div id="header-outer" class="outer">
+        <div id="header-title" class="inner">
+            <div id="logo-wrap">
+                
+                    
+                    
+                        <a href="/" id="logo"><h1>抽象</h1></a>
+                    
+                
+            </div>
+            
+                
+                <h2 id="subtitle-wrap">
+                    
+                </h2>
+            
+        </div>
+    </div>
+</header>
+
+            <div id="content" class="outer">
+                
+                <section id="main"><article id="post-抽象" class="h-entry article article-type-post"
+         itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <div class="article-inner">
+        <div class="article-meta">
+            <div class="article-date wow slideInLeft">
+    <a href="/1970/01/01/%E6%8A%BD%E8%B1%A1/" class="article-date-link">
+        <time datetime="1969-12-31T16:00:01.000Z"
+              itemprop="datePublished">1970-01-01</time>
+    </a>
+</div>
+
+            
+
+        </div>
+        <div class="hr-line"></div>
+        
+
+        <div class="e-content article-entry" itemprop="articleBody">
+            
+                <p>够抽象了吧😓</p>
+<span id="more"></span>
+<hr />
+<p>您说的对，但我感觉不如安塞腰鼓！好一个安塞腰鼓！ 一锤起来就发狠了，忘情了，没命了！ 百十个斜背响鼓的后生，如百十块被强震不断击起的石头，狂舞在你的面前。 骤雨一样，是急促的鼓点； 旋风一样，是飞扬的流苏；乱蛙一样，是蹦跳的脚步； 火花一样，是闪射的瞳仁； 斗虎一样，是强健的风姿。 黄土高原上，爆出一场多么壮阔、多么豪放、多么火烈的舞蹈哇——安塞腰鼓！ 您说的对，但我感觉不如安塞腰鼓！好一个安塞腰鼓！ 一锤起来就发狠了，忘情了，没命了！ 百十个斜背响鼓的后生，如百十块被强震不断击起的石头，狂舞在你的面前。 骤雨一样，是急促的鼓点； 旋风一样，是飞扬的流苏；乱蛙一样，是蹦跳的脚步； 火花一样，是闪射的瞳仁； 斗虎一样，是强健的风姿。 黄土高原上，爆出一场多么壮阔、多么豪放、多么火烈的舞蹈哇——安塞腰鼓！</p>
+<hr />
+<hr />
+<p>举报了哥，你什么都没做错，全怪我那令人作呕的嫉妒和卑微的自尊心，看见你的文字我完全破防了，我直接丢盔弃甲了，看见你这图的那一秒，我满头大汗，浑身发冷，亿郁症瞬间发作了，生活仿佛没了颜色，像是被抓住尾巴的赛亚人，带着海楼石的能力者，抽离尾兽的人柱力，像是没了光的奥特曼，彻底断绝了生的希望。我几乎都快羡慕得疯了，倒在床上蒙住被子就开始抱着枕头尖叫流泪，嘴里一边喊着卧槽卧槽，一边又忍着，我边发边哭，打字的手都是抖的，后来我的手抖得越来越厉害，从心头涌起的思想、情怀和梦想，这份歆羡和悔恨交织在一起，我的笑还挂在脸上，可是眼泪一下子就掉下来了。求你了别发了，我生活再难再穷我都不会觉得难过，只有你们发这种东西的时候，我的心里像被刀割一样的痛，打着字泪水就忍不住的往下流。每天早上6点起床晚上11点睡觉，年复一年地学到现在，憧憬着一个月赚上万块的幸福生活，憧憬着美好阳光的未来。我打开了手机，看到你的图，我感到了深深的差距，我直接跳进了家门口的井里???我真的?我要嫉妒疯了?为什么！！为什么这个人不是我?我求你了?求你了?！不要在发了，我真的要羡慕嫉妒疯了?怎么办我要嫉妒死了啊啊啊啊我急了，手机电脑全砸了，本来就有抑郁症的我，被别人说我破防了，我真的恼羞成怒了，仿佛被看穿了，躲在网络背后的我，这种感觉真的好难受，我被看穿的死死地，短短的破防两个字，我伪装出来的所有的坚强和强颜欢笑全都崩塌了，成了一个被人笑话的小丑?，我真的不想再故作坚强了，玩心态我输的什么都不剩???</p>
+<hr />
+<hr />
+<p>你说得对，但是《星战》的数据由光年之外的卡布叻星人脚气陶冶数年而成。这种新型冠状数据早在「CCF」珂学实验室中，西北望，凝聚成为最初的天狼星「总司令」，对 45 的控制。由于实验室的疏漏「那片海」很翠绿欲滴，其中的爱意甚至比月亮到地球、绿豆到病毒的距离，还要远上大鹏之烤架，更多精彩的内容——炉石，参见蓝色「秃秃」的大脑。</p>
+<hr />
+<hr />
+<p>你说的对，但 dijkstra 算法的堆优化的加速度的切面很显然对于太平洋上无数 OIers 的健康有极大影响。它们会根据无数 NTT 原根表分析出 Register_int 对于 FFT, FWT DAG 的看法。这并不影响状态压缩三重球面积分计算的复杂度是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1145141919810</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1145141919810)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mord">1</span><span class="mord">4</span><span class="mord">5</span><span class="mord">1</span><span class="mord">4</span><span class="mord">1</span><span class="mord">9</span><span class="mord">1</span><span class="mord">9</span><span class="mord">8</span><span class="mord">1</span><span class="mord">0</span><span class="mclose">)</span></span></span></span>。无论可持久化 SPFA 树套树的 n 次幂的十六进制补码的最长上升子序列是否是拉普兰德最爱的千层酥的原料之一，都不影响你说的对，大家都是傻逼。</p>
+<hr />
+<hr />
+<p>使用指数级 StayAlone 自适应线段树套块状泰勒展开快速生成指数级多项式 exp 生成常数，可以快速使得代码长度变大变高，方便携带，还能体验 tsiruot 的日常乐趣。</p>
+<hr />
+<hr />
+<p>你说得对，但是我觉得不如指数级 StayAlone 自适应线段树套块状泰勒展开。指数级 StayAlone 自适应线段树套块状泰勒展开是一款针对于解决有点无边有环 DAG 上构造对称回文后缀树的展开。指数级 StayAlone 自适应线段树套块状泰勒展开可以在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mtext>−</mtext><mn>114514</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(−114514)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">−</span><span class="mord">1</span><span class="mord">1</span><span class="mord">4</span><span class="mord">5</span><span class="mord">1</span><span class="mord">4</span><span class="mclose">)</span></span></span></span>的神经元复杂度内解决此问题。据说，算法的埋葬者 StayAlone 在经过上南泽时受到塔尔浩强先辈的错误指引，得到正确指引，对 114514 进行充分思考与锻造，最终结合《星战》中由上南泽人手气制成的数据，相互诅咒，得到了指数级 StayAlone 自适应线段树套块状泰勒展开算法。</p>
+<hr />
+<hr />
+<p>□□□□，□□《□□》□□□□□□□□□□□□□□□□□□□□□□。□□□□□□□□□□「□□□」□□□□□，□□□，□□□□□□□□□□「□□□」，□□□□□□。□□□□□□□□「□□□」□□□□□，□□□□□□□□□□□□□、□□□□□□□□，□□□□□□□□□，□□□□□□□——□□，□□□□「□□」□□□。</p>
+<hr />
+<hr />
+<p>你说得对，但这是一个原神的时代，我想，我是不是我真的太贪心了？于是今天我调整了心态开始玩原神。 锄大地时我爆了蓝面具。众所周知蓝面具＝3绿面具＝45尘辉＝3抽的副产物。即使是副产物也足显米哈游的慷慨，于是我原地跪下跪了五分钟。以此类推绿面具就是一抽的副产物。也有相当的价值，由于锄地爆率还不错，我把桌子腿全锯了方便我一直跪在地上玩游戏也能够到电脑。 走到半路发现了以前漏了的箱，开箱得了2原石，原石是付费代币，付费代币等于人民币，这是米哈游在慷慨的给我发钱，我一时难忍激动，当场给米哈游了磕个头。 开了esc菜单发现昨天邮件没领，点开就是100原石，100原石！我要开50个箱子！就是需要我磕50个头！我觉得单纯磕头已经不能表达我的感激了，于是我沐浴更衣给米哈游上了香郑重的磕了三个头。 凌晨来了，一封新的邮件。200原石！！！！！！！！！？！200！！！！！我从未想到米哈游能这么慷慨！算上前4天加起来一共达到了700原石！！米哈游非亲非故的白送了我70元，然后我又转念一想，打开了米游社手账，发现我以前的原石收益竟然有好几万。这表示米哈游，白送了我好几千人民币！然后我一时气血上涌晕了过去。 我舍友给我打的120，而我现在是躺在急救病床上，医生说我大概熬不过今晚了，但我临走之前一定要把我对米哈游的感激之情表达出来，“原神”我引以为傲，带给我无数荣耀的游戏，我终究还是要离它而去，在我的心目中这已经不在是一款游戏了，它更向是我的家人，我的父母，每天晚上我想着它入睡，早晨梦到它笑醒。我的父亲曾用一根直径20cm粗的实心钢管打我，钢管都抽断了，打的我蜷缩在地上不停的抽搐，那时能够支撑我在这个世界上活下去的信念就是原神！！！！！！ 原之巅，傲世间，有我原神便有天；罪州前，双膝下，原神救我传天下；语之巅，劝世间，看我原神劝翻天，坟之巅，葬世间，待我原神挖穿天，3A尽头谁为峰，一身荣耀是原神，谁在称扣，哪个敢言你大可过来一试，纵使我需背负骂名，一只手拖住腾讯水军，我原神，一样不无敌于世间！字打到这里我哭的泣不成声，最后我想说这个世界不能没有原神！！！你怎能不爱原神！！！呜呜呜</p>
+<hr />
+<hr />
+<p>“你敢说，你们信息学奥赛一次都没放过水？一点猫儿腻的事都没干过？”</p>
+<p>自从中国科协书记处书记程东红7月26日在全国青少年信息学奥林匹克竞赛（National OlympiadinInformatics，简称：NOI）创建25周年纪念大会上，公开表扬中国计算机学会为了保证竞赛的公正性，从来没有一次放水的“壮举”之后，学会秘书长杜子德便成为一个不断被人追问的对象。</p>
+<p>人们有理由怀疑：由于奥赛获奖者可以免试保送上国内一流的重点大学，在这一巨大利益的驱动下，各种奥赛幕后上演的各种交易总是难免的。</p>
+<p>“别人我们管不了，但我敢保证，信息学奥赛绝对没有！”</p>
+<p>杜子德不仅敢拍胸脯，甚至还有点小小的得意，因为在他手里攥着一大把的故事可说。</p>
+<p>曾经有一位西部的市委副书记找上门来，希望给他孩子加10分使其进入一等奖的分数线，并傲慢地表示：“你们有什么要求尽管提，我全都可以满足。”但是中国计算机学会不为所动，断然拒绝。</p>
+<p>有一次，外地一个穿着入时的女士找到学会，要求给她的儿子搞成一等奖。临走时，还“无意”落下了一个内装4万元人民币的纸包。一经发现，杜子德立马把她叫回并下了最后通牒，“劝你赶紧把钱拿走，否则，不仅你儿子失去参赛资格，我们还要公开通报这件事情。”</p>
+<p>还有一次，北京一个孩子差10分就可以获得一等奖，家长希望能够通融，但NOI科学委员会认为其程序设计有错误，不能加分。为此，这个家长和学会争执了很长时间，并声称要到法院控告学会。</p>
+<p>时隔一年之后，杜子德意外接到这位家长的一个电话，电话中说：“我一直在跟踪你们的奥赛活动和对有关事件的处理，我发现，你们真的是完全按规则办事的，我佩服你们！”</p>
+<p>有时，杜子德也接到某些行政部门的电话，请他“高抬贵手”，把某领导的儿子从二等奖“升”为一等奖。哪想到，“一根筋”的杜子德死活就是不给面子，唇枪舌剑之后，对方气得摔了电话。</p>
+<p>2005年，内蒙古竞赛舞弊事件被媒体曝光，NOI一时间被置于公众的聚光灯之下。</p>
+<p>面对突如其来的信任危机，杜子德并没有选择保持沉默或试图掩盖事情真相，相反，他在最短的时间内代表学会发表公开声明：承担责任，严肃处理，决不姑息。同时，立即派人调查取证，在确认事实后对当事人给予了处罚。</p>
+<p>针对此事，中国计算机学会召集科学委员会开会，每人签署自律承诺书。借此机会，学会还提出全面改革省级联赛，收缩赛点，实行学会复评制度，并新增巡视员监督制度等一系列举措，为维护NOI考试的严肃性、公正性，增加了几道安全阀。</p>
+<p>中国科协青少部五学科奥赛项目主管官员蒙星曾经评价说，信息学奥赛是最规范，最让人放心的。</p>
+<hr />
+<hr />
+<p>你说得对，但是差不多得了，屁大点事都要拐上原神，原神一没招你惹你，二没干伤天害理的事情，到底怎么你了让你一直无脑抹黑，米哈游每天费尽心思的文化输出弘扬中国文化，你这种喷子只会在网上敲键盘诋毁良心公司，中国游戏的未来就是被你这种人毁掉的。 叫我们原批的小心点 老子在大街上亲手给打过两个 我在公共座椅上无聊玩原神，有两个B就从我旁边过，看见我玩原神就悄悄说了一句:又是一个原批，我就直接上去一拳呼脸上，我根本不给他解释的机会，我也不问他为什么说我是原批，我就打，我就看他不爽，他惹我了，我就不给他解释的机会，直接照着脸和脑门就打直接给那B呼出鼻血，脸上青一块，紫一块的我没撕她嘴巴都算好了你们这还不算最狠的，我记得我以前小时候春节去老家里，有一颗核弹，我以为是鞭炮，和大地红一起点了，当时噼里啪啦得，然后突然一朵蘑菇云平地而起，当时我就只记得两眼一黑，昏过去了，整个村子没了，幸好我是体育生，身体素质不错，住了几天院就没事了，几个月下来腿脚才利落，现在已经没事了，但是那种钻心的疼还是让我一生难忘，</p>
+<hr />
+<hr />
+<p>君の言う通りです、しかし、「原神インパクト」は、ホヨバースが独自に開発した新たなオープンワールドアドベンチャーゲームである。ゲームは、「ティヴァト」と言うファンタジーの世界で起こり、神に選ばれた人は「神の目」を与えられて、要素の力を把握できる。君は「旅人」と言う神秘なキャラを操作し、自由な旅の途中で、異なる個性や能力を持っている仲間と出会い、共に強敵を倒し、離散した家族を探していく。同時に、「原神」の真実を徐々に発見する。</p>
+<hr />
+<ul>
+<li>
+<p>你说的对，但是感觉不如原根。原根，是一个数学符号。设 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">m</span></span></span></span> 是正整数，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">a</span></span></span></span> 是整数，若 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">a</span></span></span></span> 模 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">m</span></span></span></span> 的阶等于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>φ</mi><mo stretchy="false">(</mo><mi>m</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\varphi(m)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">φ</span><span class="mopen">(</span><span class="mord mathnormal">m</span><span class="mclose">)</span></span></span></span>，则称 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">a</span></span></span></span> 为模 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">m</span></span></span></span> 的一个原根。假设一个数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi></mrow><annotation encoding="application/x-tex">g</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span></span></span></span> 是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>∈</mo><mtext mathvariant="bold">P</mtext></mrow><annotation encoding="application/x-tex">p\in\textbf P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7335400000000001em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68611em;vertical-align:0em;"></span><span class="mord text"><span class="mord textbf">P</span></span></span></span></span> 的原根，那么 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∀</mi><mn>0</mn><mo>&lt;</mo><mi>i</mi><mo>&lt;</mo><mi>p</mi><mo separator="true">,</mo><msup><mi>g</mi><mi>i</mi></msup><mtext> </mtext><mo lspace="0.22em" rspace="0.22em"><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">d</mi></mrow></mo><mtext> </mtext><mi>p</mi></mrow><annotation encoding="application/x-tex">\forall 0&lt;i&lt;p,g^i \bmod p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.73354em;vertical-align:-0.0391em;"></span><span class="mord">∀</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69862em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.019104em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">p</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.824664em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.05555555555555555em;"></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin"><span class="mord"><span class="mord mathrm">m</span><span class="mord mathrm">o</span><span class="mord mathrm">d</span></span></span><span class="mspace" style="margin-right:0.05555555555555555em;"></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">p</span></span></span></span> 的结果两两不同，归根到底就是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>g</mi><mi>a</mi></msup><mo>≡</mo><mn>1</mn><mspace></mspace><mspace width="0.4444444444444444em"/><mo stretchy="false">(</mo><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">d</mi></mrow><mspace width="0.3333333333333333em"/><mi>p</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">g^a \equiv 1 \pmod p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.858832em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">a</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace allowbreak"></span><span class="mspace" style="margin-right:0.4444444444444444em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord mathrm">m</span><span class="mord mathrm">o</span><span class="mord mathrm">d</span></span></span><span class="mspace" style="margin-right:0.3333333333333333em;"></span><span class="mord mathnormal">p</span><span class="mclose">)</span></span></span></span> 当且仅当指数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">a</span></span></span></span> 为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">p-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7777700000000001em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 的倍数时成立。你的数学很差，我现在每天用原根都能做 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><msup><mn>0</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">10^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span> 次数据规模 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><msup><mn>0</mn><mn>6</mn></msup></mrow><annotation encoding="application/x-tex">10^6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span></span></span></span> 的 NTT，每个月差不多 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo>×</mo><mn>1</mn><msup><mn>0</mn><mn>6</mn></msup></mrow><annotation encoding="application/x-tex">3\times10^6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span></span></span></span> 次卷积，即 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>×</mo><mn>1</mn><msup><mn>0</mn><mn>6</mn></msup></mrow><annotation encoding="application/x-tex">2\times10^6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span></span></span></span> 次<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4723">常系数齐次线性递推</a>，也就是现实生活中 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>6.4</mn><mo>×</mo><mn>1</mn><msup><mn>0</mn><mn>19</mn></msup></mrow><annotation encoding="application/x-tex">6.4\times10^{19}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">6</span><span class="mord">.</span><span class="mord">4</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">9</span></span></span></span></span></span></span></span></span></span></span></span> 次乘法运算，换算过来最少也要算 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>×</mo><mn>1</mn><msup><mn>0</mn><mn>4</mn></msup></mrow><annotation encoding="application/x-tex">2\times10^4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span></span></span></span></span></span></span></span> 年。虽然我只有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>14</mn></mrow><annotation encoding="application/x-tex">14</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">4</span></span></span></span> 岁，但是已经超越了中国绝大多数人（包括你）的水平，这便是原根给我的骄傲的资本。</p>
+</li>
+<li>
+<p>你说的对，但是《原神》是由米哈游自主研发的一款全新开放世界冒险游戏。游戏发生在一个被称作「提瓦特」的幻想世界，在这里，被神选中的人将被授予「神之眼」，导引元素之。你将扮演一位名为「旅行者」的神秘角色，在自由的旅行中邂逅性格各异、能力独特的同伴们，和他们一起击败强敌，找回失散的亲人——同时，逐步发掘「原神」的真相。</p>
+</li>
+<li>
+<p>你说的对，但我每天玩碧蓝档案可以性骚扰十二位学生，现实生活中大概二十年有期徒刑的水平，折合成记录就是重大犯罪前科，居于最恶劣犯罪者级别，这就是碧蓝档案带给我自信的原因。</p>
+</li>
+<li>
+<p>你说得对，但是我现在每天对着优香都能打150个胶，每个月差不多打4500次的胶，也就是半年打27000次胶，换算过来最少每年也有54000次胶，虽然我只有14岁，但是已经超越了中国绝大多数人（包括你）的水平，这便是优香给我的胶傲的资本</p>
+</li>
+<li>
+<p>你说得对，但是《实践是检验真理的唯一标准》一文表明检验真理的标准只能是社会实践，理论与实践的统一是马克思主义的一个最基本的原则，从而否定了“两个凡是”的观点。文章在全国范围内引起强烈反响，引发了一场关于真理标准的大讨论，在此后半年多的时间里，全国各地主要报刊都刊登了这方面的大量文章。“实践是检验真理的唯一标准”的思想为人民所接受和肯定。</p>
+</li>
+<li>
+<p>你说的对，但是你不好好吃饭的话，会让爱你的人担心哦。</p>
+</li>
+<li>
+<p>你说得对，但是我们学习卡尔-弗拉基米尔主义怎样学呢？我向同志们提议，主要学习德胜同志的著作。这是学习卡尔-弗拉基米尔主义的捷径。卡尔、弗拉基米尔的著作那么多，里面有许多人名地名你都搞不清。最好先读德胜同志的著作。……德胜同志全面地、创造性地发展了卡尔-弗拉基米尔主义，综合了前人的成果，加上了新的内容。……我们学德胜同志的著作容易学，学了马上可以用，好好学习，是一本万利的事情。</p>
+</li>
+<li>
+<p>你这说的什么话？谁说爸爸就不能做儿子了，只要咸菜腌的好，人人都能做CEO。吃饭不吃大蒜，活着有什么意思呢？像你这种天天把钱攥在手里的人，根本不能理解我每天开飞机的乐趣。说到飞机我又想起来我的游艇忘记充电了，今天家里买了三条草鱼，你猜怎么着，我刚跑了步。</p>
+</li>
+<li>
+<p>的确，灰太狼适合现在版本！美羊羊团战不行，吃操作也吃意识，这版本还是灰太狼更行，开局一把铁剑，直接不虚你美羊羊，喜羊羊打野的话更容易抓爆懒羊羊，到后期两件肉装直接无敌，我马上就是国服灰太狼了。</p>
+</li>
+<li>
+<p>确实，我沸羊羊3技能躲过喜羊羊2技能反手一个1技能把村长拉到背面用平底锅主动技能飞身砸晕懒羊羊一个大招直接控住3个人再使用2技能一个蓄力将村长懒羊羊喜羊羊直接带走。</p>
+</li>
+<li>
+<p>你说的对，可是老干妈的酸辣并不能为广东肠粉提鲜，反而黄焖鸡米饭更让我感觉吃得放心；而实际上俄罗斯的优势在于地广人稀那么我觉得穿西装的话，还是打领带比较得体一些。</p>
+</li>
+<li>
+<p>你说的是一个方面，但从另一个角度讲，恐龙灭绝于6500万年前的白垩纪大灭绝事件，但月球上有5万个陨石坑，所以许文强和丁力可以称霸上海滩，然而很可惜日本老龄化严重，全球变暖毫无疑问会加剧这一进程，企鹅会在其中扮演什么样的角色，山顶洞人的命运将何去何从？没人知道。</p>
+</li>
+<li>
+<p>没错，你是个明白人，我明白你明白的意思，我也是明白人，明白人就应该明白我明白你明白的意思，只要大家都明白明白人应明白我明白你明白的意思，这样网络环境就是充满明白人明白其他明白人所明白的事。</p>
+</li>
+<li>
+<p>你发这些有什么目的？谁指使你的？你的动机是什么？你取得有关部门许可了吗？他们容许你发了吗？你背后是谁，发这些想做什么？你在讽刺谁？想颠覆什么？破坏什么？影射什么？回答不上来？那么跟我走一趟，顺便把你家户口本带上取证！别说我们瞎抓你，都是有理有据的！</p>
+</li>
+<li>
+<p>说的对，但是在亚洲，一分钟就过去了六十秒。据统计，在中国未婚先孕的都是女性。要是一个人每天节约一包烟钱，十天就节约了十包。谁能想到，一个十六岁的花季少女四年前只有十二岁？00后至今无人活到25。</p>
+</li>
+<li>
+<p>我觉得这个观点有点偏激了，外星人是紫色的但派大星和海绵宝宝一起去抓水母了。而且依古比古的毯子好像是红色的，打碎后加入蒜末爆香，一道老人孩子都爱吃的家常菜就做好啦。</p>
+</li>
+<li>
+<p>你的观点有其独到之处，可是这对在夏威夷跟着恶魔人学习超级赛亚奥特曼的蒙奇鸣一来说有什么作用呢？去非洲打企鹅才能更加接近掀翻敬老院的天下第一网球武道会三大将吧，就算小头爸爸不是大耳朵图图的亲生父亲，我还是认为肖战不应该偷猪猪侠的超级棒棒糖。</p>
+</li>
+<li>
+<p>的确，做红烧肉要注意色、形、味，咸淡用酱油调制，生姜要多放，胡萝卜可以很好的将红烧肉的味道在提升一个阶级，所以红烧肉人人都要会做，好吃又有排面。</p>
+</li>
+<li>
+<p>你说的对，但是釜山行里逃过了六节车厢的丧尸，却逃不过一节车厢的人心，这说明了什么？说明，一节更比六节强，王中王，火腿肠，果冻我要喜之郎。</p>
+</li>
+<li>
+<p>你说的对，但是上海汤臣一品一个平方46w，最小户型460平，均价46万，一套2.166亿，按照一个月5千的工资，得4332年，我得从战国时期开始干起。你不知道，你不在乎，你只关心一节更比六节强。</p>
+</li>
+<li>
+<p>你说得对，但是乌拉圭的人口有345.7万，同时，仅澳大利亚就有4700万只袋鼠。如果袋鼠决定入侵乌拉圭，那么每一个乌拉圭人要打14只袋鼠，你不知道，你不在乎，你只关心你自己。</p>
+</li>
+<li>
+<p>没错，因为玛卡巴卡的小车上有个喇叭，所以贝塔是开坦克的，但是依古比古的小毯子是红色的，加入蒜末姜丝爆香就成了一道美味的家常菜。</p>
+</li>
+</ul>
+<hr />
+<p>无知时诋毁原神，懂事时理解原神，成熟时追随原神，幻想中成为原神！信仰原神就会把它当作黑夜一望无际的大海上给迷途的船只指引的灯塔，在烈日炎炎的夏天吹来的一股清风，在寒风刺骨的冬天里燃起的阵阵篝火！米门</p>
+<p>我语文不好，但我会写原神；我英语不好，但我会读genshin；我数学不好，但我会开机关；我体育不好，但我会打丘丘人；我地理不好，但我能熟记原神的地图。</p>
+<p>原神最亮的月叫璃月，原神最美的雨叫甘雨，原神最甜的桃叫胡桃，原神最可爱的叫可莉，原神最帅的男人叫钟离。</p>
+<p>我生是原神人，死是原神魂。今生不悔入原神，来世还做璃月人！</p>
+<p>玩游戏不玩原神，就像追星不追肖战，上大学不上新东方，打篮球不学蔡徐坤，玩b站不关注陈睿，跳舞区不看dǎng妹，生活区不看lex，科普区不看回形针，玩沙盒不玩迷你世界，玩steam不玩三国杀，看小说不看唐家三少，看虚拟主播不看holo，看漫画不看进击的巨人，追番剧不追国王排名，买汽车不去买奔驰，吃雪糕不去吃梦龙。说明这个人文学造诣和自我修养不足，他理解不了这种内在的阳春白雪般的高雅艺术，他只能看到外表的辞藻堆砌，参不透其中深奥的精神内核，他整个人的层次就卡在这里了，只能度过一个相对失败的人生。</p>
+<p>我给原神微氪20多w，三百多天活跃天数，蒙德探索100%璃月100%稻妻86%。全角色收集，只有几个零命的三四命的，很多都满命了。</p>
+<p>出皮肤必买除芭芭拉海岛皮肤嫖来的。原神的书、音乐我都买了，我每天早晨都会听原宝的音乐。</p>
+<p>原神官方出的可莉、凝光、莫娜、刻晴、甘雨、芭芭拉手办一个不落全买了。原神抽奖必转发，米游币活动必参加，勋章吊牌立牌必买、肯德基联动我把城里的全买了遍，剩下吃不完的给了辛勤的劳动者。</p>
+<p>米游社我把随随便便白嫖来的米游币换了很多原宝的周边，不得不说米忽悠大人福利满满。</p>
+<p>我家里有很多原神家具，客厅摆着史莱姆沙发和史莱姆灯。餐桌上放着一个史莱姆灯，我屋里摆一个，爸妈屋里摆一个，门口摆一个，厨房摆一个，阳台摆一个，厕所就不摆了我怕玷污原宝。我床上还有两个公仔。</p>
+<p>我文具袋上书包上都挂着神之眼的吊饰，我最喜欢的是岩神之眼，因为他象征我们的文化底蕴。</p>
+<p>我是个重度老二次元，最喜欢的动漫是JOJO的奇妙冒险、刀剑神域、关于我转生成史莱姆这档事、国王排名、我的青春恋爱物语果然有问题、夏洛特、那年那兔那些事、回复术士的重启人生、世界顶尖的暗杀者，转生为异世界贵族、进击的巨人。</p>
+<p>我反感玩王者方舟lol的，但我不会说他们不好，毕竟人各有好，有的人就是喜欢垃圾。</p>
+<p>我不喜欢粪坑贴吧微博女拳那些素质低的平台，我经常逛米游社的论坛和哔哩哔哩，米哈游玩家素质才高。</p>
+<p>我最瞧不起的是塞尔达玩家和幻塔玩家，但我看B友们说塞尔达玩家感染新冠死了不知道是不是真的ĕ</p>
+<p>腾讯水军你们好自为之，我不愿意跟你们吵架。</p>
+<p>我就是原神57级萌新米卫兵，我给米哈游当孝子怎么了？</p>
+<hr />
+<p>你说的对，但是《Arcaea》是由lowiro自主研发的一款创新立体节奏游戏。游戏发生在一个被称作「Arcaea」的幻想世界，在这里，被华为选中的人将被授予「华为荣耀」，导引断触之力。你将扮演一位名为「零-零_五-」的神秘角色，在自由的旅行中邂逅性格各异、能力独特的搭档们，和他们一起击败强敌，找回失散的Tairitsu——同时，逐步发掘「Beyond 12」的真相。</p>
+<hr />
+<p>面对这个问题，我们需要拿出新水平、达到新境界，通过新举措、新发展，形成新突破，为此，我们必须重视新方法、看清新形式、理准新要求，只有这样，我们才能在新期待、新关系中，用好新本领、展现新风貌、走出新高度，新知识造就新事物、新实践获得新成果。<br />
+一定要认识到其中的重要性，明了紧迫性、坚持自觉性、拿出主动性，以全局性、前瞻性的眼光把握时代性、坚持实践性，特别要有针对性，面对战略性、长期性的任务，我们需要考虑到其复杂性与艰巨性，调动积极性与创造性，有计划性、敏锐性的干好事情。<br />
+同时，不能遗忘规范化、程序化与制度化的重要程度，只有在有序化、科学化、知识化、专业化的条件下，我们才能让年轻化变得正常化。<br />
+主动热心、坚强耐心，拿出诚心与决心，用我们的红心坚持铁心与公心，明确辨析大局意识、忧患意识、责任意识，注重学习意识与上进意识，最终育养出管理意识。<br />
+找准出发点、切入点、落脚点，注意着眼点、结合点、关键点、重视着重点、着力点、关键点，这些是做事情的支撑点。<br />
+重要性、紧迫性、自觉性、主动性、坚定性、民族性、时代性、实践性、针对性、全局性、前瞻性、战略性、积极性、创造性、长期性、复杂性、艰巨性、可讲性、鼓动性、计划性、敏锐性、有效性；责任感、紧迫感、危机感、认同感、荣誉感、成就感；多层次、多方面、多途径、多渠道、多措施、多力量、多元素。出发点、切入点、突破点、落脚点、着眼点、结合点、关键点、着重点、着力点、根本点、支撑点；不松劲、不懈怠、不退缩、不畏难、不罢手、不动摇、不放弃、不改变、不妥协；法制化、规范化、制度化、程序化、集约化、正常化、有序化、智能化、优质化、常态化、科学化、年轻化、知识化、专业化；新水平、新境界、新举措、新发展、新突破、新成绩、新成效、新方法、新成果、新形势、新要求、新期待、新关系、新体制、新机制、新知识、新本领、新进展、新实践、新风貌、新事物、新高度；活动力、控制力、影响力、创造力、凝聚力、战斗力、感染力、亲活力；热心、耐心、诚心、决心、核心、内心、外心、中心、甘心、攻心，进取心、责任心、上进心、公仆心；政治意识、组织意识、大局意识、忧患意识、责任意识、法律意识、廉洁意识、学习意识、上进意识、管理意识；找准出发点、把握切入点、明确落脚点、找准落脚点、抓住切入点、把握着重点、找准切入点、把握着力点、抓好落脚点；激发巨大热情，凝聚无穷力量，催生丰硕成果，展现全新魅力。当前工作要有新水平、队伍建设要有新面貌、廉政建设要有新举措、自身建设要有新发展、内部管理要有新突破。政治认同、理论认同、感情认同；历史的必然、现实的选择、未来的方向。<br />
+立足当前，着眼长远，自觉按规律办事<br />
+抓住机遇，应对挑战，勇敢顺潮流而为<br />
+突出重点，分步实施，找准切入点实施<br />
+全面推进，统筹兼顾，综合治理，融入其中，贯穿始终，切实抓好，扎实推进，加快发展，持续增收，积极稳妥，狠抓落实，从严控制， 严格执行，坚决制止，明确职责，高举旗帜，坚定不移，牢牢把握，积极争取，深入开展，注重强化，规范程序，改进作风，积极发展，努力建设，依法实行，良性 互动，优势互补，率先发展，互惠互利，做深、做细、做实、全面分析，全面贯彻，持续推进，全面落实、全面实施，逐步扭转，基本形成，普遍增加，基本建立， 更加完备，逐步完善，明显提高，逐渐好转，逐步形成，不断加强，持续增效，巩固深化，大幅提高，显著改善，不断增强，日趋完善，比较圆满。</p>
+
+            
+        </div>
+        <footer class="article-footer">
+            <a data-url="http://example.com/1970/01/01/%E6%8A%BD%E8%B1%A1/" data-id="clr8t07k3001d9kvsh3jk1nvj" data-title="抽象"
+               class="article-share-link">分享</a>
+            
+            
+                <a href="/1970/01/01/%E6%8A%BD%E8%B1%A1/#comments" class="article-comment-link">
+                    <span class="post-comments-count waline-comment-count" data-path="/1970/01/01/%E6%8A%BD%E8%B1%A1/"
+                          itemprop="commentCount"></span>
+                    留言
+                </a>
+            
+            
+            
+            
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1/" rel="tag">抽象</a></li></ul>
+
+
+        </footer>
+    </div>
+    
+        
+    <nav id="article-nav" class="wow fadeInUp">
+        
+            <div class="article-nav-link-wrap article-nav-link-left">
+                
+                    <img data-src="https://d-sketon.top/img/backimg/bg16.jpg" data-sizes="auto" alt="莫队"
+                         class="lazyload">
+                
+                <a href="/2023/05/09/%E8%8E%AB%E9%98%9F/"></a>
+                <div class="article-nav-caption">前一篇</div>
+                <h3 class="article-nav-title">
+                    
+                        莫队
+                    
+                </h3>
+            </div>
+        
+        
+            <div class="article-nav-link-wrap article-nav-link-right">
+                
+                    
+                    
+                        <img data-src="https://gitcode.net/crimson000000/mypic/-/raw/master/bg/28.jpg" data-sizes="auto" alt="Test" class="lazyload">
+                    
+                
+                <a href="/1970/01/01/Test-0/"></a>
+                <div class="article-nav-caption">后一篇</div>
+                <h3 class="article-nav-title">
+                    
+                        Test
+                    
+                </h3>
+            </div>
+        
+    </nav>
+
+
+    
+</article>
+
+
+
+
+     <div id="comments" class="wcomment"></div>
+
+
+
+
+
+
+
+
+</section>
+                
+                    <aside id="sidebar">
+    <div class="sidebar-wrap wow fadeInRight wrap-sticky">
+        
+          <div class="sidebar-toc-sidebar" ><div class="sidebar-toc">
+    <h3 class="toc-title">文章目录</h3>
+    <div class="sidebar-toc-wrapper"></div>
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+    <img data-src="/avatar/avatar.jpg" data-sizes="auto" alt="crimson000" class="lazyload">
+    <div class="sidebar-author-name">crimson000</div>
+    <div class="sidebar-description">我喜欢打 arcaea</div>
+</div>
+<div class="sidebar-state">
+    <div class="sidebar-state-article">
+        <div>文章</div>
+        <div class="sidebar-state-number">29</div>
+    </div>
+    <div class="sidebar-state-category">
+        <div>分类</div>
+        <div class="sidebar-state-number">8</div>
+    </div>
+    <div class="sidebar-state-tag">
+        <div>标签</div>
+        <div class="sidebar-state-number">16</div>
+    </div>
+</div>
+<div class="sidebar-social">
+  
+      <div class=icon-github>
+          <a href=https://github.com/crimson000000 itemprop="url" target="_blank"></a>
+      </div>
+  
+      <div class=icon-bilibili>
+          <a href=https://space.bilibili.com/652617849 itemprop="url" target="_blank"></a>
+      </div>
+  
+</div>
+<div class="sidebar-menu">
+  
+      <div class="sidebar-menu-link-wrap">
+          <a class="sidebar-menu-link-dummy" href="/"></a>
+          <span class="sidebar-menu-icon"></span>
+          <div class="sidebar-menu-link">首页</div>
+      </div>
+  
+      <div class="sidebar-menu-link-wrap">
+          <a class="sidebar-menu-link-dummy" href="/archives"></a>
+          <span class="sidebar-menu-icon"></span>
+          <div class="sidebar-menu-link">归档</div>
+      </div>
+  
+      <div class="sidebar-menu-link-wrap">
+          <a class="sidebar-menu-link-dummy" href="/about"></a>
+          <span class="sidebar-menu-icon"></span>
+          <div class="sidebar-menu-link">关于</div>
+      </div>
+  
+      <div class="sidebar-menu-link-wrap">
+          <a class="sidebar-menu-link-dummy" href="/friend"></a>
+          <span class="sidebar-menu-icon"></span>
+          <div class="sidebar-menu-link">友链</div>
+      </div>
+  
+</div>
+</div>
+        
+        
+          <div class="sidebar-btn-wrapper" style="position:static">
+              <div class="sidebar-toc-btn current"></div>
+              <div class="sidebar-common-btn"></div>
+          </div>
+         
+    </div>
+    
+    
+</aside>
+
+                
+            </div>
+            <footer id="footer" class="wow fadeInUp">
+    <div style="width: 100%; overflow: hidden"><div class="footer-line"></div></div>
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            
+            <div>
+                <span class="icon-copyright"></span>
+                2020-2024
+                <span class="footer-info-sep"></span>
+                crimson000
+            </div>
+            
+                <div>
+                    基于&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>&nbsp;
+                    Theme.<a href="https://github.com/D-Sketon/hexo-theme-reimu" target="_blank">Reimu</a>
+                </div>
+            
+            
+                <div>
+                    <span class="icon-brush"></span>
+                    186.4k
+                    &nbsp;|&nbsp;
+                    <span class="icon-coffee"></span>
+                    13:30
+                </div>
+            
+            
+                <div>
+                    <span class="icon-eye"></span>
+                    <span id="busuanzi_container_site_pv">总访问量&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+                    &nbsp;|&nbsp;
+                    <span class="icon-user"></span>
+                    <span id="busuanzi_container_site_uv">总访客量&nbsp;<span id="busuanzi_value_site_uv"></span></span>
+                </div>
+            
+        </div>
+    </div>
+</footer>
+
+            <div class="sidebar-top">
+              <img src="/images/taichi.png" height="50" width="50"/>
+              <div class="arrow-up"></div>
+            </div>
+            <div id="mask"></div>
+        </div>
+        <nav id="mobile-nav">
+    <div class="sidebar-wrap">
+        
+            <div class="sidebar-toc-sidebar" ><div class="sidebar-toc">
+    <h3 class="toc-title">文章目录</h3>
+    <div class="sidebar-toc-wrapper"></div>
+</div>
+</div>
+            <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+    <img data-src="/avatar/avatar.jpg" data-sizes="auto" alt="crimson000" class="lazyload">
+    <div class="sidebar-author-name">crimson000</div>
+    <div class="sidebar-description">我喜欢打 arcaea</div>
+</div>
+<div class="sidebar-state">
+    <div class="sidebar-state-article">
+        <div>文章</div>
+        <div class="sidebar-state-number">29</div>
+    </div>
+    <div class="sidebar-state-category">
+        <div>分类</div>
+        <div class="sidebar-state-number">8</div>
+    </div>
+    <div class="sidebar-state-tag">
+        <div>标签</div>
+        <div class="sidebar-state-number">16</div>
+    </div>
+</div>
+<div class="sidebar-social">
+  
+      <div class=icon-github>
+          <a href=https://github.com/crimson000000 itemprop="url" target="_blank"></a>
+      </div>
+  
+      <div class=icon-bilibili>
+          <a href=https://space.bilibili.com/652617849 itemprop="url" target="_blank"></a>
+      </div>
+  
+</div>
+<div class="sidebar-menu">
+  
+      <div class="sidebar-menu-link-wrap">
+          <a class="sidebar-menu-link-dummy" href="/"></a>
+          <span class="sidebar-menu-icon"></span>
+          <div class="sidebar-menu-link">首页</div>
+      </div>
+  
+      <div class="sidebar-menu-link-wrap">
+          <a class="sidebar-menu-link-dummy" href="/archives"></a>
+          <span class="sidebar-menu-icon"></span>
+          <div class="sidebar-menu-link">归档</div>
+      </div>
+  
+      <div class="sidebar-menu-link-wrap">
+          <a class="sidebar-menu-link-dummy" href="/about"></a>
+          <span class="sidebar-menu-icon"></span>
+          <div class="sidebar-menu-link">关于</div>
+      </div>
+  
+      <div class="sidebar-menu-link-wrap">
+          <a class="sidebar-menu-link-dummy" href="/friend"></a>
+          <span class="sidebar-menu-icon"></span>
+          <div class="sidebar-menu-link">友链</div>
+      </div>
+  
+</div>
+</div>
+        
+    </div>
+    
+        <div class="sidebar-btn-wrapper">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+        </div>
+    
+</nav>
+
+
+        
+<script src="https://unpkg.com/jquery@3.7.1/dist/jquery.min.js"></script>
+
+
+<script src="https://unpkg.com/lazysizes@5.3.2/lazysizes.min.js"></script>
+
+
+<script src="https://unpkg.com/clipboard@2.0.11/dist/clipboard.min.js"></script>
+
+
+
+    
+<script src="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+
+    
+<script src="https://unpkg.com/busuanzi@2.3.0/bsz.pure.mini.js"></script>
+
+
+
+
+  <script>
+    console.log(String.raw`%c 
+ ______     ______     __     __    __     __  __    
+/\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+\ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+ \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+  \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                  
+`,'color: #ff5252;')
+    console.log('%c Theme.Reimu v' + '0.0.11' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+  </script>
+  
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/pjax_script.js" data-pjax></script>
+
+
+
+
+
+
+
+    
+<script src="https://unpkg.com/valine@1.5.1/dist/Valine.min.js" data-pjax></script>
+
+    <script data-pjax type="module">
+        import { init } from "https://unpkg.com/@waline/client@v2/dist/waline.mjs";
+
+        init({
+          el: '.wcomment',
+          serverURL: 'https://aesthetic-churros-1d4a15.netlify.app/.netlify/functions/comment',
+          lang: 'zh-CN',
+          locale: {},
+          emoji: ["https://unpkg.com/@waline/emojis@1.0.1/weibo","https://unpkg.com/@waline/emojis@1.0.1/alus","https://unpkg.com/@waline/emojis@1.0.1/bilibili","https://unpkg.com/@waline/emojis@1.0.1/qq","https://unpkg.com/@waline/emojis@1.0.1/tieba","https://unpkg.com/@waline/emojis@1.0.1/tw-emoji"],
+          meta: ["nick","mail","link"],
+          requiredMeta: ["nick","mail"],
+          wordLimit: JSON.parse('0'),
+          comment: true,
+          pageSize: JSON.parse('10'),
+          dark: 'html[data-theme="dark"]'
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+<script src="https://www.unpkg.com/mouse-firework@0.0.3/dist/index.umd.js"></script>
+
+    <script>
+      firework(JSON.parse('{"excludeElements":["a"],"particles":[{"shape":"circle","move":["emit"],"easing":"easeOutExpo","colors":["#ff5252","#ff7c7c","#ffafaf","#ffd0d0"],"number":20,"duration":[1200,1800],"shapeOptions":{"radius":[16,32],"alpha":[0.3,0.5]}},{"shape":"circle","move":["diffuse"],"easing":"easeOutExpo","colors":["#ff0000"],"number":1,"duration":[1200,1800],"shapeOptions":{"radius":20,"alpha":[0.2,0.5],"lineWidth":6}}]}'))
+    </script>
+
+
+
+
+
+
+    </div>
+    <div class="site-search">
+        <div class="reimu-popup popup">
+            <div class="reimu-search">
+                <span class="reimu-search-input-icon"></span>
+                <div class="reimu-search-input" id="reimu-search-input"></div>
+            </div>
+
+            <div class="reimu-results">
+                <div id="reimu-stats"></div>
+                <div id="reimu-hits"></div>
+                <div id="reimu-pagination" class="reimu-pagination"></div>
+            </div>
+
+            <span class="popup-btn-close"></span>
+        </div>
+    </div>
+    <!-- hexo injector body_end start -->
+<script src="/js/insert_highlight.js" data-pjax></script>
+<!-- hexo injector body_end end --></body>
+    </html>
+

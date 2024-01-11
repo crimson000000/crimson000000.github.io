@@ -1,0 +1,662 @@
+
+    <!DOCTYPE html>
+    <html lang="zh-CN"
+            
+          data-theme="dark"
+            
+    >
+    <head>
+    <meta charset="utf-8">
+    
+
+    
+
+    
+    <title>
+        整体二分学习笔记 |
+        
+        crimson000</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CUbuntu%20Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+    
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.5.1/css/brands.min.css">
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.5.1/css/regular.min.css">
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.5.1/css/solid.min.css">
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.5.1/css/v5-font-face.min.css">
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.5.1/css/v4-font-face.min.css">
+
+    
+<link rel="stylesheet" href="/css/loader.css">
+
+    <meta name="description" content="一种离线算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="整体二分学习笔记">
+<meta property="og:url" content="http://example.com/2023/05/09/%E6%95%B4%E4%BD%93%E4%BA%8C%E5%88%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="crimson000">
+<meta property="og:description" content="一种离线算法">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-05-09T12:11:04.000Z">
+<meta property="article:modified_time" content="2023-08-25T13:38:40.412Z">
+<meta property="article:author" content="crimson000">
+<meta property="article:tag" content="学习笔记">
+<meta property="article:tag" content="数据结构">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" href="/atom.xml" title="crimson000" type="application/atom+xml">
+    
+    
+        <link rel="shortcut icon" href="/images/favicon.ico">
+    
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://unpkg.com/katex@0.16.9/dist/katex.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+
+    
+    
+    
+<script src="https://unpkg.com/pace-js@1.2.4/pace.min.js"></script>
+
+    
+        
+<link rel="stylesheet" href="https://unpkg.com/wowjs@1.1.3/css/libs/animate.css">
+
+        
+<script src="https://unpkg.com/wowjs@1.1.3/dist/wow.min.js"></script>
+
+        <script>
+          new WOW({
+            offset: 0,
+            mobile: true,
+            live: false
+          }).init();
+        </script>
+    
+    
+        <script src="/sw.js"></script>
+    
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+    <body>
+    
+<div id='loader'>
+  <div class="loading-left-bg"></div>
+  <div class="loading-right-bg"></div>
+  <div class="spinner-box">
+    <div class="loading-taichi">
+      <svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+      <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="#ff6e6b" />
+      <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z" fill="#fd0d00" />
+      <path d="M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95" fill="#fd0d00" />
+    </svg>
+    </div>
+    <div class="loading-word">少女祈祷中...</div>
+  </div>
+</div>
+</div>
+
+<script>
+  var time = null;
+  const startLoading = function() {
+    time = Date.now();
+    document.getElementById('loader').classList.remove("loading");
+  }
+  const endLoading = function() {
+    if(!time) {
+      document.body.style.overflow = 'auto';
+      document.getElementById('loader').classList.add("loading");
+    } else {
+      if(Date.now() - time > 500) {
+        time = null;
+        document.body.style.overflow = 'auto';
+        document.getElementById('loader').classList.add("loading");
+      } else {
+        setTimeout(endLoading, 500 - (Date.now() - time));
+        time = null;
+      } 
+    }
+  }
+  window.addEventListener('load', endLoading);
+  document.getElementById('loader').addEventListener('click', endLoading);
+</script>
+
+
+    <div id="container">
+        <div id="wrap">
+            <div id="header-nav">
+  <nav id="main-nav">
+      
+          <span class="main-nav-link-wrap">
+              <span class="main-nav-icon"></span>
+              <a class="main-nav-link" href="/">首页</a>
+          </span>
+      
+          <span class="main-nav-link-wrap">
+              <span class="main-nav-icon"></span>
+              <a class="main-nav-link" href="/archives">归档</a>
+          </span>
+      
+          <span class="main-nav-link-wrap">
+              <span class="main-nav-icon"></span>
+              <a class="main-nav-link" href="/about">关于</a>
+          </span>
+      
+          <span class="main-nav-link-wrap">
+              <span class="main-nav-icon"></span>
+              <a class="main-nav-link" href="/friend">友链</a>
+          </span>
+      
+      <a id="main-nav-toggle" class="nav-icon"></a>
+  </nav>
+  <nav id="sub-nav">
+      
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml"
+             title="RSS 订阅"></a>
+      
+      
+      
+  </nav>
+  <div id="search-form-wrap">
+      <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+  </div>
+</div>
+<header id="header">
+    
+        <img data-src="https://d-sketon.top/img/backimg/bg17.jpg" data-sizes="auto" alt="整体二分学习笔记" class="lazyload">
+    
+    <div id="header-outer" class="outer">
+        <div id="header-title" class="inner">
+            <div id="logo-wrap">
+                
+                    
+                    
+                        <a href="/" id="logo"><h1>整体二分学习笔记</h1></a>
+                    
+                
+            </div>
+            
+                
+                <h2 id="subtitle-wrap">
+                    
+                </h2>
+            
+        </div>
+    </div>
+</header>
+
+            <div id="content" class="outer">
+                
+                <section id="main"><article id="post-整体二分学习笔记" class="h-entry article article-type-post"
+         itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <div class="article-inner">
+        <div class="article-meta">
+            <div class="article-date wow slideInLeft">
+    <a href="/2023/05/09/%E6%95%B4%E4%BD%93%E4%BA%8C%E5%88%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date-link">
+        <time datetime="2023-05-09T12:11:04.000Z"
+              itemprop="datePublished">2023-05-09</time>
+    </a>
+</div>
+
+            
+    <div class="article-category wow slideInLeft">
+        <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+    </div>
+
+
+        </div>
+        <div class="hr-line"></div>
+        
+
+        <div class="e-content article-entry" itemprop="articleBody">
+            
+                <p>一种离线算法</p>
+<span id="more"></span>
+<h1 id="整体二分"><a class="markdownIt-Anchor" href="#整体二分"></a> 整体二分</h1>
+<h2 id="引入"><a class="markdownIt-Anchor" href="#引入"></a> 引入</h2>
+<p>对于一堆询问，如果每个单独的询问都可以二分解决的话，时间复杂度为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>M</mi><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(NM\log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>，但实际上每次二分都会有一些残留信息被我们扔掉，如果我们将所有询问一起二分，就可以最大时间的减小复杂度。</p>
+<h2 id="讲解"><a class="markdownIt-Anchor" href="#讲解"></a> 讲解</h2>
+<h3 id="经典例题区间第k大"><a class="markdownIt-Anchor" href="#经典例题区间第k大"></a> 经典例题：区间第k大</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">给定一个序列 a 和一个整数 S，有 2 种操作：</span><br><span class="line"></span><br><span class="line">1. 将 a 序列的第 k 个数变为 w</span><br><span class="line">2. 查询区间[l, r]中有多少数小于等于 S</span><br></pre></td></tr></table></figure>
+<p>这个题可以用一个树状数组来维护，对于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">a</span></span></span></span> 序列，我们将所有小于等于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span> 的数的位置在树状数组中 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">+</span><span class="mord">1</span></span></span></span>，表示这个位置有一个小于等于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span> 的数。</p>
+<p>对于 1 操作，我们可以看作删除一个数再添加一个数，先看 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">a_k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 是否大于 S，如果不大于则让这个位置 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mord">1</span></span></span></span>，再看 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi></mrow><annotation encoding="application/x-tex">w</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span></span></span></span> 是否大于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span>，如果小于等于就在这个位置 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">+</span><span class="mord">1</span></span></span></span>。</p>
+<p>对于 2 操作，可以直接执行 <code>ask(r) - ask(l - 1)</code>，即为这个范围内有多少数小于等于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">给定 a 序列，求第 k 小的数是几</span><br></pre></td></tr></table></figure>
+<p>这个问题也可以用二分来解决。每次二分一个 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mi>i</mi><mi>d</mi></mrow><annotation encoding="application/x-tex">mid</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">m</span><span class="mord mathnormal">i</span><span class="mord mathnormal">d</span></span></span></span>，查询值域 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>l</mi><mo separator="true">,</mo><mi>r</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[l, r]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mclose">]</span></span></span></span> 内有多少小于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mi>i</mi><mi>d</mi></mrow><annotation encoding="application/x-tex">mid</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">m</span><span class="mord mathnormal">i</span><span class="mord mathnormal">d</span></span></span></span> 的数，记为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mi>n</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">cnt</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathnormal">c</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span></span></span></span>。如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mi>n</mi><mi>t</mi><mo>&gt;</mo><mo>=</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">cnt &gt;= k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65418em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">c</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>，可以在值域 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>l</mi><mo separator="true">,</mo><mi>m</mi><mi>i</mi><mi>d</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[l, mid]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">m</span><span class="mord mathnormal">i</span><span class="mord mathnormal">d</span><span class="mclose">]</span></span></span></span> 中接着二分。如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mi>n</mi><mi>t</mi><mo>&lt;</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">cnt &lt; k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65418em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">c</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>，可以令 k -= cnt，在值域 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>m</mi><mi>i</mi><mi>d</mi><mo>+</mo><mn>1</mn><mo separator="true">,</mo><mi>r</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[mid + 1, r]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal">m</span><span class="mord mathnormal">i</span><span class="mord mathnormal">d</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mclose">]</span></span></span></span> 中继续二分。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">给定 a 序列，有 m 个询问，每次询问区间[l, r]中的第 k 小数</span><br></pre></td></tr></table></figure>
+<p>我们可以按照上面第二题的思路，每个询问进行一次二分，时间复杂度为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>M</mi><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(NM\log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>，不能承受。</p>
+<p>考虑每次二分值域，都会有一大部分信息被扔掉。所以我们应该对所有的询问全部进行二分。</p>
+<p>算法流程如下：</p>
+<ol>
+<li>值域达到边界，直接将当前的这些达到边界的询问的答案记录，返回即可。</li>
+<li>二分出 mid，按照上面第一题的方法，用树状数组查找 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>l</mi><mo separator="true">,</mo><mi>r</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[l, r]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mclose">]</span></span></span></span> 中不大于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mi>i</mi><mi>d</mi></mrow><annotation encoding="application/x-tex">mid</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">m</span><span class="mord mathnormal">i</span><span class="mord mathnormal">d</span></span></span></span> 的数的个数，记为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mi>n</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">cnt</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathnormal">c</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span></span></span></span>。</li>
+<li>再应用第二题的方法，将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>&lt;</mo><mo>=</mo><mi>c</mi><mi>n</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">k &lt;= cnt</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.73354em;vertical-align:-0.0391em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathnormal">c</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span></span></span></span> 的询问放到 lq 序列中， 将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>&gt;</mo><mi>c</mi><mi>n</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">k &gt; cnt</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.73354em;vertical-align:-0.0391em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathnormal">c</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span></span></span></span> 的询问的 k -= cnt，再放到 rq 序列中。</li>
+<li>递归二分求解 lq 和 rq 序列。</li>
+</ol>
+<p>同时，为了简化代码，将序列转化为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">n</span></span></span></span> 个插入操作，具体实现可以看上面的第一题。</p>
+<p>代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e6</span> + <span class="number">10</span>, INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Q</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> op, x, y, k;</span><br><span class="line">&#125;q[N], lq[N], rq[N];</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> ans[N];</span><br><span class="line"><span class="type">int</span> tt;</span><br><span class="line"><span class="type">int</span> n, m;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; nums;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">tree_array</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> c[N];</span><br><span class="line">    <span class="meta">#<span class="keyword">define</span> lowbit(x) x &amp; -x</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> val)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(; x &lt;= n; x += <span class="built_in">lowbit</span>(x)) c[x] += val;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">query</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="type">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(; x; x -= <span class="built_in">lowbit</span>(x)) res += c[x];</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;bit;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">(<span class="type">int</span> lval, <span class="type">int</span> rval, <span class="type">int</span> st, <span class="type">int</span> ed)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(st &gt; ed) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(lval == rval)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = st; i &lt;= ed; i ++ )</span><br><span class="line">            <span class="keyword">if</span>(q[i].op &gt; <span class="number">0</span>) ans[q[i].op] = lval;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> mid = lval + rval &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> lt = <span class="number">0</span>, rt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = st; i &lt;= ed; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(q[i].op == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(q[i].y &lt;= mid) bit.<span class="built_in">add</span>(q[i].x, <span class="number">1</span>), lq[++ lt] = q[i];</span><br><span class="line">            <span class="keyword">else</span> rq[++ rt] = q[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> l = q[i].x, r = q[i].y;</span><br><span class="line">            <span class="type">int</span> cnt = bit.<span class="built_in">query</span>(r) - bit.<span class="built_in">query</span>(l - <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span>(cnt &gt;= q[i].k) lq[++ lt] = q[i];</span><br><span class="line">            <span class="keyword">else</span> q[i].k -= cnt, rq[++ rt] = q[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = ed; i &gt;= st; i -- ) </span><br><span class="line">        <span class="keyword">if</span>(q[i].op == <span class="number">0</span> &amp;&amp; q[i].y &lt;= mid)</span><br><span class="line">            bit.<span class="built_in">add</span>(q[i].x, <span class="number">-1</span>);</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= lt; i ++ ) q[st + i - <span class="number">1</span>] = lq[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= rt; i ++ ) q[st + lt + i - <span class="number">1</span>] = rq[i];</span><br><span class="line"></span><br><span class="line">    <span class="built_in">solve</span>(lval, mid, st, st + lt - <span class="number">1</span>);</span><br><span class="line">    <span class="built_in">solve</span>(mid + <span class="number">1</span>, rval, st + lt, ed);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    n = <span class="built_in">read</span>(), m = <span class="built_in">read</span>();</span><br><span class="line">    <span class="built_in">memset</span>(bit.c, <span class="number">0</span>, <span class="keyword">sizeof</span> bit.c);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> val;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;val);</span><br><span class="line">        q[++ tt] = &#123;<span class="number">0</span>, i, val, <span class="number">0</span>&#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= m; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> l, r, k;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>, &amp;l, &amp;r, &amp;k);</span><br><span class="line">        q[++ tt] = &#123;i, l, r, k&#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">solve</span>(-INF, INF, <span class="number">1</span>, tt);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= m; i ++ )</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, ans[i]);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="扩展带修区间第-k-大"><a class="markdownIt-Anchor" href="#扩展带修区间第-k-大"></a> 扩展：带修区间第 k 大</h3>
+<p>当然可以用树套树在线做，但是也可以用整体二分，而且运行起来更加优秀。</p>
+<p>将每个修改操作看作 2 种操作，和上面的第一题一样，小于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mi>i</mi><mi>d</mi></mrow><annotation encoding="application/x-tex">mid</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">m</span><span class="mord mathnormal">i</span><span class="mord mathnormal">d</span></span></span></span> 的就 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mord">1</span></span></span></span>，添加的数小于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mi>i</mi><mi>d</mi></mrow><annotation encoding="application/x-tex">mid</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">m</span><span class="mord mathnormal">i</span><span class="mord mathnormal">d</span></span></span></span> 就 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">+</span><span class="mord">1</span></span></span></span>。</p>
+<p>时间复杂度 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N\log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>。</p>
+<p>完整代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e6</span> + <span class="number">10</span>, INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="type">int</span> n, m, tt, id;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">tree_array</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> c[N];</span><br><span class="line">    <span class="meta">#<span class="keyword">define</span> lowbit(x) x &amp; -x</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> val)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(; x &lt;= n; x += <span class="built_in">lowbit</span>(x)) c[x] += val;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">query</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="type">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(; x; x -= <span class="built_in">lowbit</span>(x)) res += c[x];</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; bit;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Q</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> op, x, y, k;</span><br><span class="line">&#125;q[N], lq[N], rq[N];</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> ans[N], a[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">(<span class="type">int</span> lval, <span class="type">int</span> rval, <span class="type">int</span> st, <span class="type">int</span> ed)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(st &gt; ed) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(lval == rval)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = st; i &lt;= ed; i ++ )</span><br><span class="line">            <span class="keyword">if</span>(q[i].op &gt; <span class="number">0</span>) </span><br><span class="line">                ans[q[i].op] = lval;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> mid = lval + rval &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> lt = <span class="number">0</span>, rt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = st; i &lt;= ed; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(q[i].op &lt;= <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(q[i].y &lt;= mid) bit.<span class="built_in">add</span>(q[i].x, q[i].k), lq[++ lt] = q[i];</span><br><span class="line">            <span class="keyword">else</span> rq[++ rt] = q[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> l = q[i].x, r = q[i].y;</span><br><span class="line">            <span class="type">int</span> cnt = bit.<span class="built_in">query</span>(r) - bit.<span class="built_in">query</span>(l - <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span>(cnt &gt;= q[i].k) lq[++ lt] = q[i];</span><br><span class="line">            <span class="keyword">else</span> q[i].k -= cnt, rq[++ rt] = q[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = st; i &lt;= ed; i ++ )</span><br><span class="line">        <span class="keyword">if</span>(q[i].op &lt;= <span class="number">0</span> &amp;&amp; q[i].y &lt;= mid)</span><br><span class="line">            bit.<span class="built_in">add</span>(q[i].x, -q[i].k);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= lt; i ++ ) q[i + st - <span class="number">1</span>] = lq[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= rt; i ++ ) q[i + lt + st - <span class="number">1</span>] = rq[i];</span><br><span class="line"></span><br><span class="line">    <span class="built_in">solve</span>(lval, mid, st, st + lt - <span class="number">1</span>);</span><br><span class="line">    <span class="built_in">solve</span>(mid + <span class="number">1</span>, rval, st + lt, ed);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    n = <span class="built_in">read</span>(), m = <span class="built_in">read</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        a[i] = <span class="built_in">read</span>();</span><br><span class="line">        q[++ tt] = &#123;<span class="number">0</span>, i, a[i], <span class="number">1</span>&#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= m; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">char</span> op[<span class="number">5</span>];</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>, op);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(op[<span class="number">0</span>] == <span class="string">&#x27;Q&#x27;</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> l = <span class="built_in">read</span>(), r = <span class="built_in">read</span>(), k = <span class="built_in">read</span>();</span><br><span class="line">            q[++ tt] = &#123;++ id, l, r, k&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> x = <span class="built_in">read</span>(), y = <span class="built_in">read</span>();</span><br><span class="line">            q[++ tt] = &#123;<span class="number">-1</span>, x, a[x], <span class="number">-1</span>&#125;;</span><br><span class="line">            q[++ tt] = &#123;<span class="number">0</span>, x, y, <span class="number">1</span>&#125;;</span><br><span class="line">            a[x] = y;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">solve</span>(-INF, INF, <span class="number">1</span>, tt);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= id; i ++ )</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, ans[i]);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="练习"><a class="markdownIt-Anchor" href="#练习"></a> 练习</h2>
+<p><strong>P1527 [国家集训队]矩阵乘法</strong></p>
+<p>本题维护一个二维树状数组，然后和区间第 k 大没有一点不同。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">tree_array</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> c[N][N];</span><br><span class="line">    <span class="meta">#<span class="keyword">define</span> lowbit(x) x &amp; -x</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y, <span class="type">int</span> val)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = x; i &lt;= n; i += <span class="built_in">lowbit</span>(i))</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = y; j &lt;= n; j += <span class="built_in">lowbit</span>(j))</span><br><span class="line">                c[i][j] += val;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">query</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!x || !y) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = x; i; i -= <span class="built_in">lowbit</span>(i))</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = y; j; j -= <span class="built_in">lowbit</span>(j))</span><br><span class="line">                res += c[i][j];</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">ask</span><span class="params">(<span class="type">int</span> x1, <span class="type">int</span> y1, <span class="type">int</span> x2, <span class="type">int</span> y2)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">query</span>(x2, y2) - <span class="built_in">query</span>(x1 - <span class="number">1</span>, y2) - <span class="built_in">query</span>(x2, y1 - <span class="number">1</span>) + <span class="built_in">query</span>(x1 - <span class="number">1</span>, y1 - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; bit;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Q</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> op, x1, y1, x2, y2, k;</span><br><span class="line">&#125;q[M], lq[M], rq[M];</span><br><span class="line"><span class="type">int</span> ans[M];</span><br><span class="line"><span class="type">int</span> tt;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">(<span class="type">int</span> lval, <span class="type">int</span> rval, <span class="type">int</span> st, <span class="type">int</span> ed)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(st &gt; ed) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(lval == rval)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = st; i &lt;= ed; i ++ )</span><br><span class="line">            <span class="keyword">if</span>(q[i].op != <span class="number">0</span>)</span><br><span class="line">                ans[q[i].op] = lval;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> mid = lval + rval &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> lt = <span class="number">0</span>, rt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = st; i &lt;= ed; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(q[i].op == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(q[i].k &lt;= mid) bit.<span class="built_in">add</span>(q[i].x1, q[i].y1, <span class="number">1</span>), lq[++ lt] = q[i];</span><br><span class="line">            <span class="keyword">else</span> rq[++ rt] = q[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> cnt = bit.<span class="built_in">ask</span>(q[i].x1, q[i].y1, q[i].x2, q[i].y2);</span><br><span class="line">            <span class="keyword">if</span>(cnt &gt;= q[i].k) lq[++ lt] = q[i];</span><br><span class="line">            <span class="keyword">else</span> q[i].k -= cnt, rq[++ rt] = q[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = st; i &lt;= ed; i ++ )</span><br><span class="line">        <span class="keyword">if</span>(q[i].op == <span class="number">0</span> &amp;&amp; q[i].k &lt;= mid)</span><br><span class="line">            bit.<span class="built_in">add</span>(q[i].x1, q[i].y1, <span class="number">-1</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= lt; i ++ ) q[i + st - <span class="number">1</span>] = lq[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= rt; i ++ ) q[st + lt + i - <span class="number">1</span>] = rq[i];</span><br><span class="line"></span><br><span class="line">    <span class="built_in">solve</span>(lval, mid, st, st + lt - <span class="number">1</span>);</span><br><span class="line">    <span class="built_in">solve</span>(mid + <span class="number">1</span>, rval, st + lt, ed);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>P3527 [POI2011]MET-Meteors</strong></p>
+<p>很明显每个询问都能二分求解，时间长的肯定有更大概率收集全。</p>
+<p>注意 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mo>&lt;</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">l &lt; r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.73354em;vertical-align:-0.0391em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span> 的情况，这种情况可以将数组开成两倍，统计时加上长度即可。</p>
+<p>统计每个国家收集多少的时候可以用图论的方式统计。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> int long long</span></span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e6</span> + <span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> n, m, k;</span><br><span class="line"><span class="type">int</span> c[N], p[N], ans[N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">tree_array</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> c[N];</span><br><span class="line">    <span class="meta">#<span class="keyword">define</span> lowbit(x) x &amp; -x</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> val)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(; x &lt;= m * <span class="number">2</span>; x += <span class="built_in">lowbit</span>(x)) c[x] += val;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">query</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="type">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(; x; x -= <span class="built_in">lowbit</span>(x)) res += c[x];</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; bit;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">C</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> x, y, val;</span><br><span class="line">&#125;ch[N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Q</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> c, k, h;</span><br><span class="line">&#125;q[N], lq[N], rq[N];</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> e[N], ne[N], idx;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    e[++ idx] = b, ne[idx] = q[a].h, q[a].h = idx;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">(<span class="type">int</span> lval, <span class="type">int</span> rval, <span class="type">int</span> st, <span class="type">int</span> ed)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(st &gt; ed) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(lval == rval)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = st; i &lt;= ed; i ++ )</span><br><span class="line">            ans[q[i].c] = lval;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> mid = lval + rval &gt;&gt; <span class="number">1</span>, lt = <span class="number">0</span>, rt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = lval; i &lt;= mid; i ++ ) </span><br><span class="line">    &#123;</span><br><span class="line">        bit.<span class="built_in">add</span>(ch[i].x, ch[i].val), bit.<span class="built_in">add</span>(ch[i].y + <span class="number">1</span>, -ch[i].val);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = st; i &lt;= ed; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> k = q[i].h; k &amp;&amp; cnt &lt;= q[i].k; k = ne[k])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> j = e[k];</span><br><span class="line">            cnt += bit.<span class="built_in">query</span>(j) + bit.<span class="built_in">query</span>(j + m);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(cnt &gt;= q[i].k) lq[++ lt] = q[i];</span><br><span class="line">        <span class="keyword">else</span> q[i].k -= cnt, rq[++ rt] = q[i];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = lval; i &lt;= mid; i ++ )</span><br><span class="line">        bit.<span class="built_in">add</span>(ch[i].x, -ch[i].val), bit.<span class="built_in">add</span>(ch[i].y + <span class="number">1</span>, ch[i].val);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= lt; i ++ ) q[i + st - <span class="number">1</span>] = lq[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= rt; i ++ ) q[i + st + lt - <span class="number">1</span>] = rq[i];</span><br><span class="line"></span><br><span class="line">    <span class="built_in">solve</span>(lval, mid, st, st + lt - <span class="number">1</span>);</span><br><span class="line">    <span class="built_in">solve</span>(mid + <span class="number">1</span>, rval, st + lt, ed);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    n = <span class="built_in">read</span>(), m = <span class="built_in">read</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= m; i ++ ) </span><br><span class="line">    &#123;</span><br><span class="line">        c[i] = <span class="built_in">read</span>();</span><br><span class="line">        <span class="built_in">add</span>(c[i], i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        q[i].k = <span class="built_in">read</span>();</span><br><span class="line">        q[i].c = i;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    k = <span class="built_in">read</span>();</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= k; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> l = <span class="built_in">read</span>(), r = <span class="built_in">read</span>(), val = <span class="built_in">read</span>();</span><br><span class="line">        <span class="keyword">if</span>(r &lt; l) r += m;</span><br><span class="line">        ch[i] = &#123;l, r, val&#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">solve</span>(<span class="number">1</span>, k + <span class="number">1</span>, <span class="number">1</span>, n);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i ++ )</span><br><span class="line">        <span class="keyword">if</span>(ans[i] == k + <span class="number">1</span>) <span class="built_in">puts</span>(<span class="string">&quot;NIE&quot;</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, ans[i]);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>P4602 [CTSC2018] 混合果汁</strong></p>
+<p>本题二分也很好想出来，唯一的难点在于怎么快速回答每个询问。</p>
+<p>维护一个权值线段树，下标存储价格，内部存储物品的个数和总价格。</p>
+<p>一开始先按美味值排序，维护一直到 mid 的前缀中的物品即可。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> int long long</span></span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e6</span> + <span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> n, m, cur;</span><br><span class="line"><span class="type">int</span> ans[N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">segment</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> v, sum;</span><br><span class="line">&#125;t[N &lt;&lt; <span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">pushup</span><span class="params">(<span class="type">int</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    t[p].v = t[p &lt;&lt; <span class="number">1</span>].v + t[p &lt;&lt; <span class="number">1</span> | <span class="number">1</span>].v;</span><br><span class="line">    t[p].sum = t[p &lt;&lt; <span class="number">1</span>].sum + t[p &lt;&lt; <span class="number">1</span> | <span class="number">1</span>].sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">change</span><span class="params">(<span class="type">int</span> p, <span class="type">int</span> l, <span class="type">int</span> r, <span class="type">int</span> pos, <span class="type">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l == r) </span><br><span class="line">    &#123;</span><br><span class="line">        t[p].v += v;</span><br><span class="line">        t[p].sum = l * t[p].v;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(pos &lt;= mid) <span class="built_in">change</span>(p &lt;&lt; <span class="number">1</span>, l, mid, pos, v);</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">change</span>(p &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, mid + <span class="number">1</span>, r, pos, v);</span><br><span class="line">    <span class="built_in">pushup</span>(p);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">query</span><span class="params">(<span class="type">int</span> p, <span class="type">int</span> l, <span class="type">int</span> r, <span class="type">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!v) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(l == r) <span class="keyword">return</span> l * v;</span><br><span class="line">    <span class="type">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(t[p &lt;&lt; <span class="number">1</span>].v &gt;= v) <span class="keyword">return</span> <span class="built_in">query</span>(p &lt;&lt; <span class="number">1</span>, l, mid, v);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> t[p &lt;&lt; <span class="number">1</span>].sum + <span class="built_in">query</span>(p &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, mid + <span class="number">1</span>, r, v - t[p &lt;&lt; <span class="number">1</span>].v);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">query1</span><span class="params">(<span class="type">int</span> p, <span class="type">int</span> l, <span class="type">int</span> r, <span class="type">int</span> pos)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l == r) <span class="keyword">return</span> t[p].sum;</span><br><span class="line">    <span class="type">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(pos &lt;= mid) <span class="keyword">return</span> <span class="built_in">query1</span>(p &lt;&lt; <span class="number">1</span>, l, mid, pos);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="built_in">query1</span>(p &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, mid + <span class="number">1</span>, r, pos);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">data</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> d, p, l;</span><br><span class="line"></span><br><span class="line">    <span class="type">bool</span> <span class="keyword">operator</span>&lt;(<span class="type">const</span> data &amp;D) <span class="type">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> d &gt; D.d;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; a[N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Q</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> id, g, l;</span><br><span class="line">&#125; q[N], lq[N], rq[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">(<span class="type">int</span> lval, <span class="type">int</span> rval, <span class="type">int</span> st, <span class="type">int</span> ed)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (st &gt; ed || lval &gt; rval)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span> (lval == rval)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = st; i &lt;= ed; i ++)</span><br><span class="line">            ans[q[i].id] = a[lval].d;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> mid = lval + rval &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(cur &lt; mid)</span><br><span class="line">        cur ++, <span class="built_in">change</span>(<span class="number">1</span>, <span class="number">1</span>, N - <span class="number">1</span>, a[cur].p, a[cur].l);</span><br><span class="line">    <span class="keyword">while</span>(cur &gt; mid)</span><br><span class="line">        <span class="built_in">change</span>(<span class="number">1</span>, <span class="number">1</span>, N - <span class="number">1</span>, a[cur].p, -a[cur].l), cur --;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> lt = <span class="number">0</span>, rt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = st; i &lt;= ed; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(q[i].l &gt; t[<span class="number">1</span>].v) rq[++ rt] = q[i];</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">query</span>(<span class="number">1</span>, <span class="number">1</span>, N - <span class="number">1</span>, q[i].l) &lt;= q[i].g) lq[++ lt] = q[i];</span><br><span class="line">        <span class="keyword">else</span> rq[++ rt] = q[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= lt; i ++ ) q[i + st - <span class="number">1</span>] = lq[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= rt; i ++ ) q[i + st + lt - <span class="number">1</span>] = rq[i];</span><br><span class="line"></span><br><span class="line">    <span class="built_in">solve</span>(lval, mid, st, st + lt - <span class="number">1</span>);</span><br><span class="line">    <span class="built_in">solve</span>(mid + <span class="number">1</span>, rval, st + lt, ed);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    n = <span class="built_in">read</span>(), m = <span class="built_in">read</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        a[i].d = <span class="built_in">read</span>(), a[i].p = <span class="built_in">read</span>(), a[i].l = <span class="built_in">read</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    a[++ n] = &#123;<span class="number">-1</span>, <span class="number">0</span>, <span class="number">0x3f3f3f3f</span>&#125;;</span><br><span class="line">    <span class="built_in">sort</span>(a + <span class="number">1</span>, a + n + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> D = <span class="built_in">read</span>(), L = <span class="built_in">read</span>();</span><br><span class="line">        q[i] = &#123;i, D, L&#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">solve</span>(<span class="number">1</span>, n, <span class="number">1</span>, m);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= m; i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, ans[i]);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            
+        </div>
+        <footer class="article-footer">
+            <a data-url="http://example.com/2023/05/09/%E6%95%B4%E4%BD%93%E4%BA%8C%E5%88%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clr8t07k4001h9kvs7cnl7mpi" data-title="整体二分学习笔记"
+               class="article-share-link">分享</a>
+            
+            
+                <a href="/2023/05/09/%E6%95%B4%E4%BD%93%E4%BA%8C%E5%88%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#comments" class="article-comment-link">
+                    <span class="post-comments-count waline-comment-count" data-path="/2023/05/09/%E6%95%B4%E4%BD%93%E4%BA%8C%E5%88%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+                          itemprop="commentCount"></span>
+                    留言
+                </a>
+            
+            
+            
+            
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
+
+
+        </footer>
+    </div>
+    
+        
+    <nav id="article-nav" class="wow fadeInUp">
+        
+            <div class="article-nav-link-wrap article-nav-link-left">
+                
+                    <img data-src="https://d-sketon.top/img/backimg/bg10.jpg" data-sizes="auto" alt="多项式全家桶"
+                         class="lazyload">
+                
+                <a href="/2023/05/10/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E5%85%A8%E5%AE%B6%E6%A1%B6/"></a>
+                <div class="article-nav-caption">前一篇</div>
+                <h3 class="article-nav-title">
+                    
+                        多项式全家桶
+                    
+                </h3>
+            </div>
+        
+        
+            <div class="article-nav-link-wrap article-nav-link-right">
+                
+                    <img data-src="https://d-sketon.top/img/backimg/bg12.jpg" data-sizes="auto" alt="淀粉质学习笔记"
+                         class="lazyload">
+                
+                <a href="/2023/05/09/%E6%B7%80%E7%B2%89%E8%B4%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"></a>
+                <div class="article-nav-caption">后一篇</div>
+                <h3 class="article-nav-title">
+                    
+                        淀粉质学习笔记
+                    
+                </h3>
+            </div>
+        
+    </nav>
+
+
+    
+</article>
+
+
+
+
+     <div id="comments" class="wcomment"></div>
+
+
+
+
+
+
+
+
+</section>
+                
+                    <aside id="sidebar">
+    <div class="sidebar-wrap wow fadeInRight wrap-sticky">
+        
+          <div class="sidebar-toc-sidebar" ><div class="sidebar-toc">
+    <h3 class="toc-title">文章目录</h3>
+    <div class="sidebar-toc-wrapper"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B4%E4%BD%93%E4%BA%8C%E5%88%86"><span class="toc-number">1.</span> <span class="toc-text"> 整体二分</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E5%85%A5"><span class="toc-number">1.1.</span> <span class="toc-text"> 引入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%B2%E8%A7%A3"><span class="toc-number">1.2.</span> <span class="toc-text"> 讲解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%8F%E5%85%B8%E4%BE%8B%E9%A2%98%E5%8C%BA%E9%97%B4%E7%AC%ACk%E5%A4%A7"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 经典例题：区间第k大</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E5%B8%A6%E4%BF%AE%E5%8C%BA%E9%97%B4%E7%AC%AC-k-%E5%A4%A7"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 扩展：带修区间第 k 大</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0"><span class="toc-number">1.3.</span> <span class="toc-text"> 练习</span></a></li></ol></li></ol></div>
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+    <img data-src="/avatar/avatar.jpg" data-sizes="auto" alt="crimson000" class="lazyload">
+    <div class="sidebar-author-name">crimson000</div>
+    <div class="sidebar-description">我喜欢打 arcaea</div>
+</div>
+<div class="sidebar-state">
+    <div class="sidebar-state-article">
+        <div>文章</div>
+        <div class="sidebar-state-number">29</div>
+    </div>
+    <div class="sidebar-state-category">
+        <div>分类</div>
+        <div class="sidebar-state-number">8</div>
+    </div>
+    <div class="sidebar-state-tag">
+        <div>标签</div>
+        <div class="sidebar-state-number">16</div>
+    </div>
+</div>
+<div class="sidebar-social">
+  
+      <div class=icon-github>
+          <a href=https://github.com/crimson000000 itemprop="url" target="_blank"></a>
+      </div>
+  
+      <div class=icon-bilibili>
+          <a href=https://space.bilibili.com/652617849 itemprop="url" target="_blank"></a>
+      </div>
+  
+</div>
+<div class="sidebar-menu">
+  
+      <div class="sidebar-menu-link-wrap">
+          <a class="sidebar-menu-link-dummy" href="/"></a>
+          <span class="sidebar-menu-icon"></span>
+          <div class="sidebar-menu-link">首页</div>
+      </div>
+  
+      <div class="sidebar-menu-link-wrap">
+          <a class="sidebar-menu-link-dummy" href="/archives"></a>
+          <span class="sidebar-menu-icon"></span>
+          <div class="sidebar-menu-link">归档</div>
+      </div>
+  
+      <div class="sidebar-menu-link-wrap">
+          <a class="sidebar-menu-link-dummy" href="/about"></a>
+          <span class="sidebar-menu-icon"></span>
+          <div class="sidebar-menu-link">关于</div>
+      </div>
+  
+      <div class="sidebar-menu-link-wrap">
+          <a class="sidebar-menu-link-dummy" href="/friend"></a>
+          <span class="sidebar-menu-icon"></span>
+          <div class="sidebar-menu-link">友链</div>
+      </div>
+  
+</div>
+</div>
+        
+        
+          <div class="sidebar-btn-wrapper" style="position:static">
+              <div class="sidebar-toc-btn current"></div>
+              <div class="sidebar-common-btn"></div>
+          </div>
+         
+    </div>
+    
+    
+</aside>
+
+                
+            </div>
+            <footer id="footer" class="wow fadeInUp">
+    <div style="width: 100%; overflow: hidden"><div class="footer-line"></div></div>
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            
+            <div>
+                <span class="icon-copyright"></span>
+                2020-2024
+                <span class="footer-info-sep"></span>
+                crimson000
+            </div>
+            
+                <div>
+                    基于&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>&nbsp;
+                    Theme.<a href="https://github.com/D-Sketon/hexo-theme-reimu" target="_blank">Reimu</a>
+                </div>
+            
+            
+                <div>
+                    <span class="icon-brush"></span>
+                    186.4k
+                    &nbsp;|&nbsp;
+                    <span class="icon-coffee"></span>
+                    13:30
+                </div>
+            
+            
+                <div>
+                    <span class="icon-eye"></span>
+                    <span id="busuanzi_container_site_pv">总访问量&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+                    &nbsp;|&nbsp;
+                    <span class="icon-user"></span>
+                    <span id="busuanzi_container_site_uv">总访客量&nbsp;<span id="busuanzi_value_site_uv"></span></span>
+                </div>
+            
+        </div>
+    </div>
+</footer>
+
+            <div class="sidebar-top">
+              <img src="/images/taichi.png" height="50" width="50"/>
+              <div class="arrow-up"></div>
+            </div>
+            <div id="mask"></div>
+        </div>
+        <nav id="mobile-nav">
+    <div class="sidebar-wrap">
+        
+            <div class="sidebar-toc-sidebar" ><div class="sidebar-toc">
+    <h3 class="toc-title">文章目录</h3>
+    <div class="sidebar-toc-wrapper"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B4%E4%BD%93%E4%BA%8C%E5%88%86"><span class="toc-number">1.</span> <span class="toc-text"> 整体二分</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E5%85%A5"><span class="toc-number">1.1.</span> <span class="toc-text"> 引入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%B2%E8%A7%A3"><span class="toc-number">1.2.</span> <span class="toc-text"> 讲解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%8F%E5%85%B8%E4%BE%8B%E9%A2%98%E5%8C%BA%E9%97%B4%E7%AC%ACk%E5%A4%A7"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 经典例题：区间第k大</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E5%B8%A6%E4%BF%AE%E5%8C%BA%E9%97%B4%E7%AC%AC-k-%E5%A4%A7"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 扩展：带修区间第 k 大</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0"><span class="toc-number">1.3.</span> <span class="toc-text"> 练习</span></a></li></ol></li></ol></div>
+</div>
+</div>
+            <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+    <img data-src="/avatar/avatar.jpg" data-sizes="auto" alt="crimson000" class="lazyload">
+    <div class="sidebar-author-name">crimson000</div>
+    <div class="sidebar-description">我喜欢打 arcaea</div>
+</div>
+<div class="sidebar-state">
+    <div class="sidebar-state-article">
+        <div>文章</div>
+        <div class="sidebar-state-number">29</div>
+    </div>
+    <div class="sidebar-state-category">
+        <div>分类</div>
+        <div class="sidebar-state-number">8</div>
+    </div>
+    <div class="sidebar-state-tag">
+        <div>标签</div>
+        <div class="sidebar-state-number">16</div>
+    </div>
+</div>
+<div class="sidebar-social">
+  
+      <div class=icon-github>
+          <a href=https://github.com/crimson000000 itemprop="url" target="_blank"></a>
+      </div>
+  
+      <div class=icon-bilibili>
+          <a href=https://space.bilibili.com/652617849 itemprop="url" target="_blank"></a>
+      </div>
+  
+</div>
+<div class="sidebar-menu">
+  
+      <div class="sidebar-menu-link-wrap">
+          <a class="sidebar-menu-link-dummy" href="/"></a>
+          <span class="sidebar-menu-icon"></span>
+          <div class="sidebar-menu-link">首页</div>
+      </div>
+  
+      <div class="sidebar-menu-link-wrap">
+          <a class="sidebar-menu-link-dummy" href="/archives"></a>
+          <span class="sidebar-menu-icon"></span>
+          <div class="sidebar-menu-link">归档</div>
+      </div>
+  
+      <div class="sidebar-menu-link-wrap">
+          <a class="sidebar-menu-link-dummy" href="/about"></a>
+          <span class="sidebar-menu-icon"></span>
+          <div class="sidebar-menu-link">关于</div>
+      </div>
+  
+      <div class="sidebar-menu-link-wrap">
+          <a class="sidebar-menu-link-dummy" href="/friend"></a>
+          <span class="sidebar-menu-icon"></span>
+          <div class="sidebar-menu-link">友链</div>
+      </div>
+  
+</div>
+</div>
+        
+    </div>
+    
+        <div class="sidebar-btn-wrapper">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+        </div>
+    
+</nav>
+
+
+        
+<script src="https://unpkg.com/jquery@3.7.1/dist/jquery.min.js"></script>
+
+
+<script src="https://unpkg.com/lazysizes@5.3.2/lazysizes.min.js"></script>
+
+
+<script src="https://unpkg.com/clipboard@2.0.11/dist/clipboard.min.js"></script>
+
+
+
+    
+<script src="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+
+    
+<script src="https://unpkg.com/busuanzi@2.3.0/bsz.pure.mini.js"></script>
+
+
+
+
+  <script>
+    console.log(String.raw`%c 
+ ______     ______     __     __    __     __  __    
+/\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+\ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+ \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+  \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                  
+`,'color: #ff5252;')
+    console.log('%c Theme.Reimu v' + '0.0.11' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+  </script>
+  
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/pjax_script.js" data-pjax></script>
+
+
+
+
+
+
+
+    
+<script src="https://unpkg.com/valine@1.5.1/dist/Valine.min.js" data-pjax></script>
+
+    <script data-pjax type="module">
+        import { init } from "https://unpkg.com/@waline/client@v2/dist/waline.mjs";
+
+        init({
+          el: '.wcomment',
+          serverURL: 'https://aesthetic-churros-1d4a15.netlify.app/.netlify/functions/comment',
+          lang: 'zh-CN',
+          locale: {},
+          emoji: ["https://unpkg.com/@waline/emojis@1.0.1/weibo","https://unpkg.com/@waline/emojis@1.0.1/alus","https://unpkg.com/@waline/emojis@1.0.1/bilibili","https://unpkg.com/@waline/emojis@1.0.1/qq","https://unpkg.com/@waline/emojis@1.0.1/tieba","https://unpkg.com/@waline/emojis@1.0.1/tw-emoji"],
+          meta: ["nick","mail","link"],
+          requiredMeta: ["nick","mail"],
+          wordLimit: JSON.parse('0'),
+          comment: true,
+          pageSize: JSON.parse('10'),
+          dark: 'html[data-theme="dark"]'
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+<script src="https://www.unpkg.com/mouse-firework@0.0.3/dist/index.umd.js"></script>
+
+    <script>
+      firework(JSON.parse('{"excludeElements":["a"],"particles":[{"shape":"circle","move":["emit"],"easing":"easeOutExpo","colors":["#ff5252","#ff7c7c","#ffafaf","#ffd0d0"],"number":20,"duration":[1200,1800],"shapeOptions":{"radius":[16,32],"alpha":[0.3,0.5]}},{"shape":"circle","move":["diffuse"],"easing":"easeOutExpo","colors":["#ff0000"],"number":1,"duration":[1200,1800],"shapeOptions":{"radius":20,"alpha":[0.2,0.5],"lineWidth":6}}]}'))
+    </script>
+
+
+
+
+
+
+    </div>
+    <div class="site-search">
+        <div class="reimu-popup popup">
+            <div class="reimu-search">
+                <span class="reimu-search-input-icon"></span>
+                <div class="reimu-search-input" id="reimu-search-input"></div>
+            </div>
+
+            <div class="reimu-results">
+                <div id="reimu-stats"></div>
+                <div id="reimu-hits"></div>
+                <div id="reimu-pagination" class="reimu-pagination"></div>
+            </div>
+
+            <span class="popup-btn-close"></span>
+        </div>
+    </div>
+    <!-- hexo injector body_end start -->
+<script src="/js/insert_highlight.js" data-pjax></script>
+<!-- hexo injector body_end end --></body>
+    </html>
+

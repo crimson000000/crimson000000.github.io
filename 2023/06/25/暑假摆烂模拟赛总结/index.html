@@ -1,0 +1,685 @@
+
+    <!DOCTYPE html>
+    <html lang="zh-CN"
+            
+          data-theme="dark"
+            
+    >
+    <head>
+    <meta charset="utf-8">
+    
+
+    
+
+    
+    <title>
+        暑假摆烂模拟赛总结 |
+        
+        crimson000</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CUbuntu%20Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+    
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.5.1/css/brands.min.css">
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.5.1/css/regular.min.css">
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.5.1/css/solid.min.css">
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.5.1/css/v5-font-face.min.css">
+<link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.5.1/css/v4-font-face.min.css">
+
+    
+<link rel="stylesheet" href="/css/loader.css">
+
+    <meta name="description" content="摆烂">
+<meta property="og:type" content="article">
+<meta property="og:title" content="暑假摆烂模拟赛总结">
+<meta property="og:url" content="http://example.com/2023/06/25/%E6%9A%91%E5%81%87%E6%91%86%E7%83%82%E6%A8%A1%E6%8B%9F%E8%B5%9B%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="crimson000">
+<meta property="og:description" content="摆烂">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/qv2wttva.png">
+<meta property="article:published_time" content="2023-06-25T07:13:38.000Z">
+<meta property="article:modified_time" content="2023-08-25T13:36:29.949Z">
+<meta property="article:author" content="crimson000">
+<meta property="article:tag" content="摆烂">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.luogu.com.cn/upload/image_hosting/qv2wttva.png">
+    
+        <link rel="alternate" href="/atom.xml" title="crimson000" type="application/atom+xml">
+    
+    
+        <link rel="shortcut icon" href="/images/favicon.ico">
+    
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://unpkg.com/katex@0.16.9/dist/katex.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+
+    
+    
+    
+<script src="https://unpkg.com/pace-js@1.2.4/pace.min.js"></script>
+
+    
+        
+<link rel="stylesheet" href="https://unpkg.com/wowjs@1.1.3/css/libs/animate.css">
+
+        
+<script src="https://unpkg.com/wowjs@1.1.3/dist/wow.min.js"></script>
+
+        <script>
+          new WOW({
+            offset: 0,
+            mobile: true,
+            live: false
+          }).init();
+        </script>
+    
+    
+        <script src="/sw.js"></script>
+    
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+    <body>
+    
+<div id='loader'>
+  <div class="loading-left-bg"></div>
+  <div class="loading-right-bg"></div>
+  <div class="spinner-box">
+    <div class="loading-taichi">
+      <svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+      <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="#ff6e6b" />
+      <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z" fill="#fd0d00" />
+      <path d="M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95" fill="#fd0d00" />
+    </svg>
+    </div>
+    <div class="loading-word">少女祈祷中...</div>
+  </div>
+</div>
+</div>
+
+<script>
+  var time = null;
+  const startLoading = function() {
+    time = Date.now();
+    document.getElementById('loader').classList.remove("loading");
+  }
+  const endLoading = function() {
+    if(!time) {
+      document.body.style.overflow = 'auto';
+      document.getElementById('loader').classList.add("loading");
+    } else {
+      if(Date.now() - time > 500) {
+        time = null;
+        document.body.style.overflow = 'auto';
+        document.getElementById('loader').classList.add("loading");
+      } else {
+        setTimeout(endLoading, 500 - (Date.now() - time));
+        time = null;
+      } 
+    }
+  }
+  window.addEventListener('load', endLoading);
+  document.getElementById('loader').addEventListener('click', endLoading);
+</script>
+
+
+    <div id="container">
+        <div id="wrap">
+            <div id="header-nav">
+  <nav id="main-nav">
+      
+          <span class="main-nav-link-wrap">
+              <span class="main-nav-icon"></span>
+              <a class="main-nav-link" href="/">首页</a>
+          </span>
+      
+          <span class="main-nav-link-wrap">
+              <span class="main-nav-icon"></span>
+              <a class="main-nav-link" href="/archives">归档</a>
+          </span>
+      
+          <span class="main-nav-link-wrap">
+              <span class="main-nav-icon"></span>
+              <a class="main-nav-link" href="/about">关于</a>
+          </span>
+      
+          <span class="main-nav-link-wrap">
+              <span class="main-nav-icon"></span>
+              <a class="main-nav-link" href="/friend">友链</a>
+          </span>
+      
+      <a id="main-nav-toggle" class="nav-icon"></a>
+  </nav>
+  <nav id="sub-nav">
+      
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml"
+             title="RSS 订阅"></a>
+      
+      
+      
+  </nav>
+  <div id="search-form-wrap">
+      <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+  </div>
+</div>
+<header id="header">
+    
+        <img data-src="https://gitcode.net/crimson000000/mypic/-/raw/master/bg/3.jpg" data-sizes="auto" alt="暑假摆烂模拟赛总结" class="lazyload">
+    
+    <div id="header-outer" class="outer">
+        <div id="header-title" class="inner">
+            <div id="logo-wrap">
+                
+                    
+                    
+                        <a href="/" id="logo"><h1>暑假摆烂模拟赛总结</h1></a>
+                    
+                
+            </div>
+            
+                
+                <h2 id="subtitle-wrap">
+                    
+                </h2>
+            
+        </div>
+    </div>
+</header>
+
+            <div id="content" class="outer">
+                
+                <section id="main"><article id="post-暑假摆烂模拟赛总结" class="h-entry article article-type-post"
+         itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <div class="article-inner">
+        <div class="article-meta">
+            <div class="article-date wow slideInLeft">
+    <a href="/2023/06/25/%E6%9A%91%E5%81%87%E6%91%86%E7%83%82%E6%A8%A1%E6%8B%9F%E8%B5%9B%E6%80%BB%E7%BB%93/" class="article-date-link">
+        <time datetime="2023-06-25T07:13:38.000Z"
+              itemprop="datePublished">2023-06-25</time>
+    </a>
+</div>
+
+            
+    <div class="article-category wow slideInLeft">
+        <a class="article-category-link" href="/categories/%E6%91%86%E7%83%82/">摆烂</a>
+    </div>
+
+
+        </div>
+        <div class="hr-line"></div>
+        
+
+        <div class="e-content article-entry" itemprop="articleBody">
+            
+                <p>摆烂</p>
+<span id="more"></span>
+<h1 id="2023625"><a class="markdownIt-Anchor" href="#2023625"></a> 2023.6.25</h1>
+<h2 id="t1"><a class="markdownIt-Anchor" href="#t1"></a> T1</h2>
+<p>一开始摆了，写了个 20 分暴力走人。写完 T3T4 后刚了半个小时没刚出来，直接跑路。</p>
+<h2 id="t2"><a class="markdownIt-Anchor" href="#t2"></a> T2</h2>
+<p>一开始用数组存状态暴力写挂了，先使用跳题 dp，转移到 T3。写完 T4 假 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>q</mi><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(qn\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span> 做法又刚了半个小时 T1 后果断看 T2，发现 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">[</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo separator="true">,</mo><mi>k</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">f[i, j, k]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">]</span></span></span></span> 表示状态好写，又发现直接能记忆化搜索。发现样例跑太慢了，果断打表。</p>
+<h2 id="t3"><a class="markdownIt-Anchor" href="#t3"></a> T3</h2>
+<p>没看到数据范围，想了半天的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">XOR</mtext><mtext> </mtext><mtext mathvariant="monospace">ZERO</mtext><mtext> </mtext><mtext mathvariant="monospace">Tree</mtext></mrow><annotation encoding="application/x-tex">\texttt{XOR ZERO Tree}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61111em;vertical-align:0em;"></span><span class="mord text"><span class="mord texttt">XOR ZERO Tree</span></span></span></span></span>。看了眼数据范围果断暴搜，顺便加个剪枝，70 分到手。</p>
+<h2 id="t4"><a class="markdownIt-Anchor" href="#t4"></a> T4</h2>
+<p>想了 5 分钟怎么优化到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>q</mi><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(qn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>。想出来了做法，但是写假了，正无穷也开大了，也不知道为什么脑梗用线段树去写去，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span> 扫不就完事了。</p>
+<hr />
+<p>主要 T4 写挂了。以后再也不把正无穷开太大了。</p>
+<h1 id="202378"><a class="markdownIt-Anchor" href="#202378"></a> 2023.7.8</h1>
+<h1 id="t1-2"><a class="markdownIt-Anchor" href="#t1-2"></a> T1</h1>
+<p>上来一眼背包，二眼不会。刚了半个小时搞出来个 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^3)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> dp，然后二维树状数组优化一下（好像也没优化到哪去），反正数据随机就过了。</p>
+<h1 id="t2-2"><a class="markdownIt-Anchor" href="#t2-2"></a> T2</h1>
+<p>一眼不可做题，刚了五分钟使用跳题 dp。</p>
+<p>写完 T4 暴力开始刚这题，刚了半个多小时干出来了个 40 分做法。最后 10 分钟想着骗点分，<code>puts(&quot;0&quot;)</code> 直接 30pts 是什么鬼啊。</p>
+<h1 id="t3-2"><a class="markdownIt-Anchor" href="#t3-2"></a> T3</h1>
+<p>这不弱智题吗……树剖维护一下就行</p>
+<h1 id="t4-2"><a class="markdownIt-Anchor" href="#t4-2"></a> T4</h1>
+<p>一眼不会，刚了五分钟观察到有 45pts 暴搜，果断暴力，甚至加了个剪枝多拿 15pts。</p>
+<hr />
+<h1 id="2023715"><a class="markdownIt-Anchor" href="#2023715"></a> 2023.7.15</h1>
+<p><s>忘写了，补上</s></p>
+<h1 id="t1-3"><a class="markdownIt-Anchor" href="#t1-3"></a> T1</h1>
+<p>上来第一眼：弱智题，半小时切了，想写对拍结果暴力写挂了不会调。</p>
+<h1 id="t2-3"><a class="markdownIt-Anchor" href="#t2-3"></a> T2</h1>
+<p>怎么又是计数啊……还是图上计数，跳了跳了</p>
+<h1 id="t3-3"><a class="markdownIt-Anchor" href="#t3-3"></a> T3</h1>
+<p>怎么还是计数？跳了。</p>
+<h1 id="t4-3"><a class="markdownIt-Anchor" href="#t4-3"></a> T4</h1>
+<p>想了一个多小时，想了各种网络流建图，也没写完，哈哈。</p>
+<h1 id="2023720"><a class="markdownIt-Anchor" href="#2023720"></a> 2023.7.20</h1>
+<h1 id="t1-4"><a class="markdownIt-Anchor" href="#t1-4"></a> T1</h1>
+<p>一看部分分 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 给 50 pts，特殊性质 25 pts，直接放弃正解去写暴力哈哈。</p>
+<h1 id="t2-4"><a class="markdownIt-Anchor" href="#t2-4"></a> T2</h1>
+<p>一眼网络流，一看数据范围感觉能拿 95 pts，写完最后才发现只有 80 pts，连忙补个 kdt 优化建图，发现还是 80 pts 跑不过去，哈哈。</p>
+<h1 id="t3-4"><a class="markdownIt-Anchor" href="#t3-4"></a> T3</h1>
+<p>一眼感觉大模拟+暴搜，直接模拟退火万岁！</p>
+<h1 id="t4-4"><a class="markdownIt-Anchor" href="#t4-4"></a> T4</h1>
+<p>我是傻逼我没清零</p>
+<h1 id="202389"><a class="markdownIt-Anchor" href="#202389"></a> 2023.8.9</h1>
+<p>T1 上了写了写画了画想了一个小时想出来个做法，估计是假了，但是能拿 80pts 就够了。T2 一眼不会，还没看见数据范围给的表格，上来写了个矩阵快速幂，白挂 5 分。T3 一眼感觉不是我能做出来的，打了个逆天复杂度的做法（还挂了）再把树的部分分写了。T4 感觉不可做，跳了、</p>
+<p>最终得分：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>80</mn><mo>+</mo><mn>10</mn><mo>+</mo><mn>35</mn><mo>+</mo><mn>0</mn><mo>=</mo><mn>125</mn></mrow><annotation encoding="application/x-tex">80 + 10 + 35 + 0 = 125</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">8</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">3</span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">2</span><span class="mord">5</span></span></span></span>。</p>
+<p>喜提 rk7，被北校暴打喽🤣🤣🤣。</p>
+<h1 id="2023810"><a class="markdownIt-Anchor" href="#2023810"></a> 2023.8.10</h1>
+<p>上来刚了一个小时 T1，没想到时光倒流，感觉像个大分讨🥰，开摆拿 vector 艹 50 分外加 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">m=1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 分讨混 60pts 跑路🥰🥰🥰。T2 想了 20 分钟依旧想不到正解，直接开摆枚举断哪条边然后 dfs 跑路，T3 上来想到了弱智 30pts 做法，最后 40 分钟想到了弱智 50pts 做法还写挂 10 分真的绝了😨。T4 一眼不可做，但一眼费用流暴力就有 34pts，调了 40 分钟没调出来费用流，最后发现的问题：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">e[idx] = b, ne[idx] = h[a], ....</span><br><span class="line"><span class="comment">// 反向边</span></span><br><span class="line">e[idx] = a, ne[idx] = h[a], h[a] = idx ++;</span><br></pre></td></tr></table></figure>
+<p>反向边连到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">a</span></span></span></span> 上（大嘘）</p>
+<p>最终得分：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>60</mn><mo>+</mo><mn>46</mn><mo>+</mo><mn>40</mn><mo>+</mo><mn>34</mn><mo>=</mo><mn>180</mn></mrow><annotation encoding="application/x-tex">60+46+40+34=180</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">6</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">4</span><span class="mord">6</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">4</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord">4</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">8</span><span class="mord">0</span></span></span></span>。</p>
+<h1 id="2023811"><a class="markdownIt-Anchor" href="#2023811"></a> 2023.8.11</h1>
+<p>T1上来不会，想了半个小时假性质发现过不去大样例，急忙打了个 30pts 暴力跳题。开了 T2 发现及其不可做，直接看 T3，发现还是不可做。最后看 T4 发现是原，上来打了 15+20pts 的暴力+ <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a_i=0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span> 的部分分。然后接着刚 T1，到 10 点半搞出来个区间 dp 的思路，修修补补和暴力拍上了，就扔了。</p>
+<p>最后 T4 又把 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mi>i</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">c_i=0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span> 的部分分拿了，刚了一个小时 T2T3 无果。最终得分 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>100</mn><mo>+</mo><mn>0</mn><mo>+</mo><mn>0</mn><mo>+</mo><mn>55</mn><mo>=</mo><mn>155</mn></mrow><annotation encoding="application/x-tex">100+0+0+55=155</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">5</span><span class="mord">5</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">5</span><span class="mord">5</span></span></span></span>。</p>
+<h1 id="2023812"><a class="markdownIt-Anchor" href="#2023812"></a> 2023.8.12</h1>
+<p>上来 “为了防止很快 AK，加了两道题”，直接 4 个小时 6 道数学题哈哈😅😅😅。上来开题 T0-T4 全不会，T2 是个原但是我没写😅，T0 写了个 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>4</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^4)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 的 dp，T3 写了个链的情况，然后就开摆了。T0.5 是个组合数学，但是看都没看🥰🥰🥰，T4 据 <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/427828">👂🐉</a> 说他们做过，然后爽睡 2h，舒服🥰🥰🥰。这不比别人刚一上午赢麻了😄😄😄</p>
+<p>最终得分：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>20</mn><mo>+</mo><mn>0</mn><mo>+</mo><mn>0</mn><mo>+</mo><mn>20</mn><mo>+</mo><mn>0</mn><mo>+</mo><mn>0</mn><mo>+</mo><mtext mathvariant="bold">睡俩小时</mtext><mo>=</mo><mtext mathvariant="bold">赢麻了</mtext></mrow><annotation encoding="application/x-tex">20+0+0+20+0+0+\mathbf{睡俩小时}=\mathbf{赢麻了}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">2</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">2</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68611em;vertical-align:0em;"></span><span class="mord"><span class="mord mathbf cjk_fallback">睡</span><span class="mord mathbf cjk_fallback">俩</span><span class="mord mathbf cjk_fallback">小</span><span class="mord mathbf cjk_fallback">时</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68611em;vertical-align:0em;"></span><span class="mord"><span class="mord mathbf cjk_fallback">赢</span><span class="mord mathbf cjk_fallback">麻</span><span class="mord mathbf cjk_fallback">了</span></span></span></span></span></p>
+<h1 id="2023813"><a class="markdownIt-Anchor" href="#2023813"></a> 2023.8.13</h1>
+<p>上来 T1 想了半个小时想到个做法，写了十几分钟发现假了。又想了个做法，写写写然后过了大样例，然后每 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn></mrow><annotation encoding="application/x-tex">5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">5</span></span></span></span> 分钟就能拍出来一个错，大样例我谢谢你😊😊😊。T2 感觉是排列组合，写了个大 dp 跑了，考完发现 WA 了，但是不知道 WA 哪了。T3 看着不太可做，跳了。T4 完全不可做，跳了。</p>
+<p>最终得分：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>92</mn><mo>+</mo><mn>0</mn><mo>+</mo><mn>0</mn><mo>+</mo><mn>0</mn><mo>=</mo><mn>92</mn><mi>p</mi><mi>t</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">92+0+0+0=92pts</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">9</span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">9</span><span class="mord">2</span><span class="mord mathnormal">p</span><span class="mord mathnormal">t</span><span class="mord mathnormal">s</span></span></span></span>。</p>
+<h1 id="2023814"><a class="markdownIt-Anchor" href="#2023814"></a> 2023.8.14</h1>
+<p>上来比赛出事故了属于是，没给大样例（但是后来发了），上来把题目都看了一眼，发现有原，就把原打了，顺带经典一句话🤣👉：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/qv2wttva.png" alt="" /></p>
+<p>FJOI 属于是了。</p>
+<p>确实是 45min 打完的，很熟练啊（赞赏），花了十多分钟用拍调了调就过了，然后看 T1。上来：64MB，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≤</mo><mn>3</mn><mo>×</mo><mn>1</mn><msup><mn>0</mn><mn>6</mn></msup></mrow><annotation encoding="application/x-tex">n\le 3\times 10^6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span></span></span></span>。属于明摆着告诉时间复杂度了呗。然后就想了一会发现右端点单增，找区间最大最小可以用单调队列维护，然后就写了个双指针。后来发现过不去大样例，拍了下调了调就过了🥰🥰。然后发现 T3 和 T4 怎么两道构造啊（恼），看了看 T3 感觉太恶心了就去看 T4，发现两个特殊性质很好拿就开始写，搞了个树上启发式合并出来（但是最后数组开小 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>22</mn><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">22\rightarrow 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">2</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>）。剩了几十分钟看 T3，发现有了某个性质后直接搜复杂度是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mn>2</mn><mfrac><mi>n</mi><mn>2</mn></mfrac></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(2^{\frac{n}{2}})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.09708em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.84708em;"><span style="top:-3.363em;margin-right:0.05em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6915428571428572em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.2255000000000003em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.384em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span></span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 的，就开始写，写完了也过了大样例就扔了。数据真的太难造了。后面的时间刚了刚 T4 也没刚出来。</p>
+<p>最终得分：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>100</mn><mo>+</mo><mn>100</mn><mo>+</mo><mn>40</mn><mo>+</mo><mn>0</mn><mo>=</mo><mn>240</mn></mrow><annotation encoding="application/x-tex">100 + 100 +40 + 0 = 240</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">4</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">4</span><span class="mord">0</span></span></span></span>。</p>
+
+            
+        </div>
+        <footer class="article-footer">
+            <a data-url="http://example.com/2023/06/25/%E6%9A%91%E5%81%87%E6%91%86%E7%83%82%E6%A8%A1%E6%8B%9F%E8%B5%9B%E6%80%BB%E7%BB%93/" data-id="clr8t07k5001n9kvsa1my56fi" data-title="暑假摆烂模拟赛总结"
+               class="article-share-link">分享</a>
+            
+            
+                <a href="/2023/06/25/%E6%9A%91%E5%81%87%E6%91%86%E7%83%82%E6%A8%A1%E6%8B%9F%E8%B5%9B%E6%80%BB%E7%BB%93/#comments" class="article-comment-link">
+                    <span class="post-comments-count waline-comment-count" data-path="/2023/06/25/%E6%9A%91%E5%81%87%E6%91%86%E7%83%82%E6%A8%A1%E6%8B%9F%E8%B5%9B%E6%80%BB%E7%BB%93/"
+                          itemprop="commentCount"></span>
+                    留言
+                </a>
+            
+            
+            
+            
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%91%86%E7%83%82/" rel="tag">摆烂</a></li></ul>
+
+
+        </footer>
+    </div>
+    
+        
+    <nav id="article-nav" class="wow fadeInUp">
+        
+            <div class="article-nav-link-wrap article-nav-link-left">
+                
+                    <img data-src="https://gitcode.net/crimson000000/mypic/-/raw/master/bg/47.jpg" data-sizes="auto" alt="斜率优化dp学习笔记"
+                         class="lazyload">
+                
+                <a href="/2023/06/27/%E6%96%9C%E7%8E%87%E4%BC%98%E5%8C%96dp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"></a>
+                <div class="article-nav-caption">前一篇</div>
+                <h3 class="article-nav-title">
+                    
+                        斜率优化dp学习笔记
+                    
+                </h3>
+            </div>
+        
+        
+            <div class="article-nav-link-wrap article-nav-link-right">
+                
+                    <img data-src="https://gitcode.net/crimson000000/mypic/-/raw/master/bg/44.jpg" data-sizes="auto" alt="图论杂题"
+                         class="lazyload">
+                
+                <a href="/2023/06/18/%E5%9B%BE%E8%AE%BA%E6%9D%82%E9%A2%98/"></a>
+                <div class="article-nav-caption">后一篇</div>
+                <h3 class="article-nav-title">
+                    
+                        图论杂题
+                    
+                </h3>
+            </div>
+        
+    </nav>
+
+
+    
+</article>
+
+
+
+
+     <div id="comments" class="wcomment"></div>
+
+
+
+
+
+
+
+
+</section>
+                
+                    <aside id="sidebar">
+    <div class="sidebar-wrap wow fadeInRight wrap-sticky">
+        
+          <div class="sidebar-toc-sidebar" ><div class="sidebar-toc">
+    <h3 class="toc-title">文章目录</h3>
+    <div class="sidebar-toc-wrapper"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2023625"><span class="toc-number">1.</span> <span class="toc-text"> 2023.6.25</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#t1"><span class="toc-number">1.1.</span> <span class="toc-text"> T1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t2"><span class="toc-number">1.2.</span> <span class="toc-text"> T2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t3"><span class="toc-number">1.3.</span> <span class="toc-text"> T3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t4"><span class="toc-number">1.4.</span> <span class="toc-text"> T4</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#202378"><span class="toc-number">2.</span> <span class="toc-text"> 2023.7.8</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#t1-2"><span class="toc-number">3.</span> <span class="toc-text"> T1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#t2-2"><span class="toc-number">4.</span> <span class="toc-text"> T2</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#t3-2"><span class="toc-number">5.</span> <span class="toc-text"> T3</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#t4-2"><span class="toc-number">6.</span> <span class="toc-text"> T4</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023715"><span class="toc-number">7.</span> <span class="toc-text"> 2023.7.15</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#t1-3"><span class="toc-number">8.</span> <span class="toc-text"> T1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#t2-3"><span class="toc-number">9.</span> <span class="toc-text"> T2</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#t3-3"><span class="toc-number">10.</span> <span class="toc-text"> T3</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#t4-3"><span class="toc-number">11.</span> <span class="toc-text"> T4</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023720"><span class="toc-number">12.</span> <span class="toc-text"> 2023.7.20</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#t1-4"><span class="toc-number">13.</span> <span class="toc-text"> T1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#t2-4"><span class="toc-number">14.</span> <span class="toc-text"> T2</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#t3-4"><span class="toc-number">15.</span> <span class="toc-text"> T3</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#t4-4"><span class="toc-number">16.</span> <span class="toc-text"> T4</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#202389"><span class="toc-number">17.</span> <span class="toc-text"> 2023.8.9</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023810"><span class="toc-number">18.</span> <span class="toc-text"> 2023.8.10</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023811"><span class="toc-number">19.</span> <span class="toc-text"> 2023.8.11</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023812"><span class="toc-number">20.</span> <span class="toc-text"> 2023.8.12</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023813"><span class="toc-number">21.</span> <span class="toc-text"> 2023.8.13</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023814"><span class="toc-number">22.</span> <span class="toc-text"> 2023.8.14</span></a></li></ol></div>
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+    <img data-src="/avatar/avatar.jpg" data-sizes="auto" alt="crimson000" class="lazyload">
+    <div class="sidebar-author-name">crimson000</div>
+    <div class="sidebar-description">我喜欢打 arcaea</div>
+</div>
+<div class="sidebar-state">
+    <div class="sidebar-state-article">
+        <div>文章</div>
+        <div class="sidebar-state-number">29</div>
+    </div>
+    <div class="sidebar-state-category">
+        <div>分类</div>
+        <div class="sidebar-state-number">8</div>
+    </div>
+    <div class="sidebar-state-tag">
+        <div>标签</div>
+        <div class="sidebar-state-number">16</div>
+    </div>
+</div>
+<div class="sidebar-social">
+  
+      <div class=icon-github>
+          <a href=https://github.com/crimson000000 itemprop="url" target="_blank"></a>
+      </div>
+  
+      <div class=icon-bilibili>
+          <a href=https://space.bilibili.com/652617849 itemprop="url" target="_blank"></a>
+      </div>
+  
+</div>
+<div class="sidebar-menu">
+  
+      <div class="sidebar-menu-link-wrap">
+          <a class="sidebar-menu-link-dummy" href="/"></a>
+          <span class="sidebar-menu-icon"></span>
+          <div class="sidebar-menu-link">首页</div>
+      </div>
+  
+      <div class="sidebar-menu-link-wrap">
+          <a class="sidebar-menu-link-dummy" href="/archives"></a>
+          <span class="sidebar-menu-icon"></span>
+          <div class="sidebar-menu-link">归档</div>
+      </div>
+  
+      <div class="sidebar-menu-link-wrap">
+          <a class="sidebar-menu-link-dummy" href="/about"></a>
+          <span class="sidebar-menu-icon"></span>
+          <div class="sidebar-menu-link">关于</div>
+      </div>
+  
+      <div class="sidebar-menu-link-wrap">
+          <a class="sidebar-menu-link-dummy" href="/friend"></a>
+          <span class="sidebar-menu-icon"></span>
+          <div class="sidebar-menu-link">友链</div>
+      </div>
+  
+</div>
+</div>
+        
+        
+          <div class="sidebar-btn-wrapper" style="position:static">
+              <div class="sidebar-toc-btn current"></div>
+              <div class="sidebar-common-btn"></div>
+          </div>
+         
+    </div>
+    
+    
+</aside>
+
+                
+            </div>
+            <footer id="footer" class="wow fadeInUp">
+    <div style="width: 100%; overflow: hidden"><div class="footer-line"></div></div>
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            
+            <div>
+                <span class="icon-copyright"></span>
+                2020-2024
+                <span class="footer-info-sep"></span>
+                crimson000
+            </div>
+            
+                <div>
+                    基于&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>&nbsp;
+                    Theme.<a href="https://github.com/D-Sketon/hexo-theme-reimu" target="_blank">Reimu</a>
+                </div>
+            
+            
+                <div>
+                    <span class="icon-brush"></span>
+                    186.4k
+                    &nbsp;|&nbsp;
+                    <span class="icon-coffee"></span>
+                    13:30
+                </div>
+            
+            
+                <div>
+                    <span class="icon-eye"></span>
+                    <span id="busuanzi_container_site_pv">总访问量&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+                    &nbsp;|&nbsp;
+                    <span class="icon-user"></span>
+                    <span id="busuanzi_container_site_uv">总访客量&nbsp;<span id="busuanzi_value_site_uv"></span></span>
+                </div>
+            
+        </div>
+    </div>
+</footer>
+
+            <div class="sidebar-top">
+              <img src="/images/taichi.png" height="50" width="50"/>
+              <div class="arrow-up"></div>
+            </div>
+            <div id="mask"></div>
+        </div>
+        <nav id="mobile-nav">
+    <div class="sidebar-wrap">
+        
+            <div class="sidebar-toc-sidebar" ><div class="sidebar-toc">
+    <h3 class="toc-title">文章目录</h3>
+    <div class="sidebar-toc-wrapper"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2023625"><span class="toc-number">1.</span> <span class="toc-text"> 2023.6.25</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#t1"><span class="toc-number">1.1.</span> <span class="toc-text"> T1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t2"><span class="toc-number">1.2.</span> <span class="toc-text"> T2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t3"><span class="toc-number">1.3.</span> <span class="toc-text"> T3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t4"><span class="toc-number">1.4.</span> <span class="toc-text"> T4</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#202378"><span class="toc-number">2.</span> <span class="toc-text"> 2023.7.8</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#t1-2"><span class="toc-number">3.</span> <span class="toc-text"> T1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#t2-2"><span class="toc-number">4.</span> <span class="toc-text"> T2</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#t3-2"><span class="toc-number">5.</span> <span class="toc-text"> T3</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#t4-2"><span class="toc-number">6.</span> <span class="toc-text"> T4</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023715"><span class="toc-number">7.</span> <span class="toc-text"> 2023.7.15</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#t1-3"><span class="toc-number">8.</span> <span class="toc-text"> T1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#t2-3"><span class="toc-number">9.</span> <span class="toc-text"> T2</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#t3-3"><span class="toc-number">10.</span> <span class="toc-text"> T3</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#t4-3"><span class="toc-number">11.</span> <span class="toc-text"> T4</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023720"><span class="toc-number">12.</span> <span class="toc-text"> 2023.7.20</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#t1-4"><span class="toc-number">13.</span> <span class="toc-text"> T1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#t2-4"><span class="toc-number">14.</span> <span class="toc-text"> T2</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#t3-4"><span class="toc-number">15.</span> <span class="toc-text"> T3</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#t4-4"><span class="toc-number">16.</span> <span class="toc-text"> T4</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#202389"><span class="toc-number">17.</span> <span class="toc-text"> 2023.8.9</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023810"><span class="toc-number">18.</span> <span class="toc-text"> 2023.8.10</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023811"><span class="toc-number">19.</span> <span class="toc-text"> 2023.8.11</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023812"><span class="toc-number">20.</span> <span class="toc-text"> 2023.8.12</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023813"><span class="toc-number">21.</span> <span class="toc-text"> 2023.8.13</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023814"><span class="toc-number">22.</span> <span class="toc-text"> 2023.8.14</span></a></li></ol></div>
+</div>
+</div>
+            <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+    <img data-src="/avatar/avatar.jpg" data-sizes="auto" alt="crimson000" class="lazyload">
+    <div class="sidebar-author-name">crimson000</div>
+    <div class="sidebar-description">我喜欢打 arcaea</div>
+</div>
+<div class="sidebar-state">
+    <div class="sidebar-state-article">
+        <div>文章</div>
+        <div class="sidebar-state-number">29</div>
+    </div>
+    <div class="sidebar-state-category">
+        <div>分类</div>
+        <div class="sidebar-state-number">8</div>
+    </div>
+    <div class="sidebar-state-tag">
+        <div>标签</div>
+        <div class="sidebar-state-number">16</div>
+    </div>
+</div>
+<div class="sidebar-social">
+  
+      <div class=icon-github>
+          <a href=https://github.com/crimson000000 itemprop="url" target="_blank"></a>
+      </div>
+  
+      <div class=icon-bilibili>
+          <a href=https://space.bilibili.com/652617849 itemprop="url" target="_blank"></a>
+      </div>
+  
+</div>
+<div class="sidebar-menu">
+  
+      <div class="sidebar-menu-link-wrap">
+          <a class="sidebar-menu-link-dummy" href="/"></a>
+          <span class="sidebar-menu-icon"></span>
+          <div class="sidebar-menu-link">首页</div>
+      </div>
+  
+      <div class="sidebar-menu-link-wrap">
+          <a class="sidebar-menu-link-dummy" href="/archives"></a>
+          <span class="sidebar-menu-icon"></span>
+          <div class="sidebar-menu-link">归档</div>
+      </div>
+  
+      <div class="sidebar-menu-link-wrap">
+          <a class="sidebar-menu-link-dummy" href="/about"></a>
+          <span class="sidebar-menu-icon"></span>
+          <div class="sidebar-menu-link">关于</div>
+      </div>
+  
+      <div class="sidebar-menu-link-wrap">
+          <a class="sidebar-menu-link-dummy" href="/friend"></a>
+          <span class="sidebar-menu-icon"></span>
+          <div class="sidebar-menu-link">友链</div>
+      </div>
+  
+</div>
+</div>
+        
+    </div>
+    
+        <div class="sidebar-btn-wrapper">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+        </div>
+    
+</nav>
+
+
+        
+<script src="https://unpkg.com/jquery@3.7.1/dist/jquery.min.js"></script>
+
+
+<script src="https://unpkg.com/lazysizes@5.3.2/lazysizes.min.js"></script>
+
+
+<script src="https://unpkg.com/clipboard@2.0.11/dist/clipboard.min.js"></script>
+
+
+
+    
+<script src="https://unpkg.com/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+
+    
+<script src="https://unpkg.com/busuanzi@2.3.0/bsz.pure.mini.js"></script>
+
+
+
+
+  <script>
+    console.log(String.raw`%c 
+ ______     ______     __     __    __     __  __    
+/\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+\ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+ \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+  \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                  
+`,'color: #ff5252;')
+    console.log('%c Theme.Reimu v' + '0.0.11' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+  </script>
+  
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/pjax_script.js" data-pjax></script>
+
+
+
+
+
+
+
+    
+<script src="https://unpkg.com/valine@1.5.1/dist/Valine.min.js" data-pjax></script>
+
+    <script data-pjax type="module">
+        import { init } from "https://unpkg.com/@waline/client@v2/dist/waline.mjs";
+
+        init({
+          el: '.wcomment',
+          serverURL: 'https://aesthetic-churros-1d4a15.netlify.app/.netlify/functions/comment',
+          lang: 'zh-CN',
+          locale: {},
+          emoji: ["https://unpkg.com/@waline/emojis@1.0.1/weibo","https://unpkg.com/@waline/emojis@1.0.1/alus","https://unpkg.com/@waline/emojis@1.0.1/bilibili","https://unpkg.com/@waline/emojis@1.0.1/qq","https://unpkg.com/@waline/emojis@1.0.1/tieba","https://unpkg.com/@waline/emojis@1.0.1/tw-emoji"],
+          meta: ["nick","mail","link"],
+          requiredMeta: ["nick","mail"],
+          wordLimit: JSON.parse('0'),
+          comment: true,
+          pageSize: JSON.parse('10'),
+          dark: 'html[data-theme="dark"]'
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+<script src="https://www.unpkg.com/mouse-firework@0.0.3/dist/index.umd.js"></script>
+
+    <script>
+      firework(JSON.parse('{"excludeElements":["a"],"particles":[{"shape":"circle","move":["emit"],"easing":"easeOutExpo","colors":["#ff5252","#ff7c7c","#ffafaf","#ffd0d0"],"number":20,"duration":[1200,1800],"shapeOptions":{"radius":[16,32],"alpha":[0.3,0.5]}},{"shape":"circle","move":["diffuse"],"easing":"easeOutExpo","colors":["#ff0000"],"number":1,"duration":[1200,1800],"shapeOptions":{"radius":20,"alpha":[0.2,0.5],"lineWidth":6}}]}'))
+    </script>
+
+
+
+
+
+
+    </div>
+    <div class="site-search">
+        <div class="reimu-popup popup">
+            <div class="reimu-search">
+                <span class="reimu-search-input-icon"></span>
+                <div class="reimu-search-input" id="reimu-search-input"></div>
+            </div>
+
+            <div class="reimu-results">
+                <div id="reimu-stats"></div>
+                <div id="reimu-hits"></div>
+                <div id="reimu-pagination" class="reimu-pagination"></div>
+            </div>
+
+            <span class="popup-btn-close"></span>
+        </div>
+    </div>
+    <!-- hexo injector body_end start -->
+<script src="/js/insert_highlight.js" data-pjax></script>
+<!-- hexo injector body_end end --></body>
+    </html>
+
