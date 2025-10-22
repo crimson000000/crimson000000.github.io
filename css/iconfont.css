@@ -127,6 +127,9 @@
   font-family: "iconfont";
   content: "\e630";
 }
+.icon-github:before {
+  content: "\e619";
+}
 .sidebar-toc-btn:before {
   font-family: "iconfont";
   content: "\e633";

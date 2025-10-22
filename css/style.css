@@ -380,6 +380,9 @@ body [data-aos='zoom-in'] {
   font-family: "iconfont";
   content: "\e630";
 }
+.icon-github:before {
+  content: "\e619";
+}
 .sidebar-toc-btn:before {
   font-family: "iconfont";
   content: "\e633";
@@ -539,6 +542,7 @@ body {
   text-size-adjust: 100%;
   font-family: 'Mulish','Noto Serif SC', '-apple-system','PingFang SC','Microsoft YaHei','sans-serif';
   transition: background 1s;
+  text-autospace: normal;
   color: var(--color-default);
 }
 body ::selection {
@@ -1376,30 +1380,6 @@ button {
   display: block;
   max-width: 100%;
   margin: 0 auto;
-}
-.katex-display {
-  overflow-x: auto;
-  overflow-y: hidden;
-}
-.katex-display::-webkit-scrollbar {
-  display: none;
-}
-.katex {
-  width: calc(100% - 2px);
-}
-.katex-html {
-  padding: 4px;
-}
-.katex-html .base {
-  margin: 0 auto;
-}
-.katex-html:has(span.tag) {
-  display: flex !important;
-}
-.katex-display>.katex>.katex-html>.tag {
-  position: relative !important;
-  float: right;
-  margin-left: 0.25rem;
 }
 .post-link {
   position: absolute;

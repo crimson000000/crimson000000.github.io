@@ -43,7 +43,7 @@
 <meta property="og:description" content="做题的一些总结">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-10-15T08:21:34.000Z">
-<meta property="article:modified_time" content="2025-10-15T08:34:07.621Z">
+<meta property="article:modified_time" content="2025-10-22T14:34:26.874Z">
 <meta property="article:author" content="crimson000">
 <meta property="article:tag" content="算法竞赛">
 <meta name="twitter:card" content="summary">
@@ -58,14 +58,6 @@
 <link rel="stylesheet" href="/css/style.css">
 
   <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL&#x2F;toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx&#x2F;1oA&#x2F;0l8ysE" crossorigin="anonymous">
-  
-    
-      
-        
-<link rel="stylesheet" href="https://npm.webcache.cn/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l&#x2F;9On385z&#x2F;&#x2F;&#x2F;+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
-
-      
-    
   
   
   
@@ -146,40 +138,40 @@
   <nav id="main-nav" aria-label="Primary navigation">
     
       
-        <span class="main-nav-link-wrap">
+        <a class="main-nav-link-wrap" href="/">
           <div class="main-nav-icon icon rotate">
              
               &#xe62b;
              
           </div>
-          <a class="main-nav-link" href="/">首页</a>
+          <span class="main-nav-link">首页</span>
         </span>
       
-        <span class="main-nav-link-wrap">
+        <a class="main-nav-link-wrap" href="/archives">
           <div class="main-nav-icon icon rotate">
              
               &#xe62b;
              
           </div>
-          <a class="main-nav-link" href="/archives">归档</a>
+          <span class="main-nav-link">归档</span>
         </span>
       
-        <span class="main-nav-link-wrap">
+        <a class="main-nav-link-wrap" href="/about">
           <div class="main-nav-icon icon rotate">
              
               &#xe62b;
              
           </div>
-          <a class="main-nav-link" href="/about">关于</a>
+          <span class="main-nav-link">关于</span>
         </span>
       
-        <span class="main-nav-link-wrap">
+        <a class="main-nav-link-wrap" href="/friend">
           <div class="main-nav-icon icon rotate">
              
               &#xe62b;
              
           </div>
-          <a class="main-nav-link" href="/friend">友链</a>
+          <span class="main-nav-link">友链</span>
         </span>
       
     
@@ -191,6 +183,7 @@
     
     
   </nav>
+  
   
 </div>
 <header id="header" aria-label="Site header">
@@ -247,14 +240,14 @@
 </div>
 </div>
           <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
-  <img data-src="/avatar/avatar.jpg" data-sizes="auto" alt="crimson000" class="lazyload">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="crimson000" class="lazyload">
   <div class="sidebar-author-name">crimson000</div>
   <div class="sidebar-description">我喜欢打 arcaea</div>
 </div>
 <div class="sidebar-state">
   <div class="sidebar-state-article">
     <div>文章</div>
-    <div class="sidebar-state-number">2</div>
+    <div class="sidebar-state-number">3</div>
   </div>
   <div class="sidebar-state-category">
     <div>分类</div>
@@ -341,7 +334,7 @@
       <div class="article-date">
   <span class="article-date-link icon-calendar" data-aos="zoom-in">
     <time datetime="2025-10-15T08:21:34.000Z" itemprop="datePublished">2025-10-15</time>
-    <time style="display: none;" id="post-update-time">2025-10-15</time>
+    <time style="display: none;" id="post-update-time">2025-10-22</time>
   </span>
   
 </div>
@@ -407,6 +400,7 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
 <h1 id="图论"><a class="markdownIt-Anchor" href="#图论"></a> 图论</h1>
 <p>带边权树的重心和无边权树重心相同（有无点权不影响），带边权树重心定义：让 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∑</mo><mrow><mi>u</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><mi>d</mi><mi>i</mi><mi>s</mi><mo stretchy="false">(</mo><mi>u</mi><mo separator="true">,</mo><mi>x</mi><mo stretchy="false">)</mo><mo>×</mo><mi>w</mi><mo stretchy="false">(</mo><mi>u</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\sum_{u=1}^ndis(u, x)\times w(u)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.104em;vertical-align:-0.2997em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8043em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">u</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mopen">(</span><span class="mord mathnormal">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mopen">(</span><span class="mord mathnormal">u</span><span class="mclose">)</span></span></span></span> 最小的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span>。<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3345">[ZJOI2015] 幻想乡战略游戏</a></p>
 <p>求带点权树的重心：先树剖，然后线段树维护区间内点的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>i</mi><mi>z</mi></mrow><annotation encoding="application/x-tex">siz</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span></span></span></span> 的最大值，然后线段树二分，尽可能取靠右的点使得 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>i</mi><msub><mi>z</mi><mi>x</mi></msub><mo>×</mo><mn>2</mn><mo>≥</mo><mi>a</mi><mi>l</mi><mi>l</mi></mrow><annotation encoding="application/x-tex">siz_x\times 2\ge all</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8095em;vertical-align:-0.15em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal">i</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">ll</span></span></span></span>。<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3345">[ZJOI2015] 幻想乡战略游戏</a></p>
+<p>DAG 容斥系数是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mo>−</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mrow><mi mathvariant="normal">∣</mi><mi>T</mi><mo>−</mo><mi>S</mi><mi mathvariant="normal">∣</mi><mo>+</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">(-1)^{|T-S|+1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.138em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">−</span><span class="mord">1</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.888em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∣</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span><span class="mbin mtight">−</span><span class="mord mathnormal mtight" style="margin-right:0.05764em;">S</span><span class="mord mtight">∣</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span></p>
 <h1 id="数学"><a class="markdownIt-Anchor" href="#数学"></a> 数学</h1>
 <p>计数题如果出现了一些操作让你求最终得到的东西个数，一定要从最后得到的东西下手，不要从操作下手，因为会重复。或者强制规定一种唯一的构造方案。</p>
 <p>记 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">S(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span> 为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 数位和，那么不存在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>10</mn><mo separator="true">,</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">n\ge 10, x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">10</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">x</span></span></span></span> 满足 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo stretchy="false">(</mo><mi>n</mi><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>n</mi><mi>S</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">S(nx)=nS(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span></p>
@@ -435,6 +429,7 @@ H400000v40H845.2724
 s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
 c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
 M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1133em;"><span></span></span></span></span></span></span></span></span> 的质因子一个数里面只会有一个，所以按照这个质因子排序就会形成一堆连续段，在段结尾单独计算大质数的贡献就可以。<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P13568">[CCPC 2024 重庆站] 乘积，欧拉函数，求和</a></p>
+<p>如果值域很小并且有异或问题，可以考虑直接搜出来所有线性基的状态，大小为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn></mrow><annotation encoding="application/x-tex">5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">5</span></span></span></span> 的线性基只有 374 个，完全可以存状态里面。</p>
 <h1 id="杂项"><a class="markdownIt-Anchor" href="#杂项"></a> 杂项</h1>
 <p>旋转偶数边长的矩阵不会改变逆序对数量，旋转奇数边长的矩阵不会改变每个数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x+y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span> 的奇偶性。</p>
 
@@ -457,6 +452,23 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
   </div>
   
   <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
+    
+      
+      <div class="article-nav-link-wrap left">
+        
+          
+          
+            <img data-src="/covers/1.jpg" data-sizes="auto" alt="dp豪题" class="lazyload">
+          
+        
+        <a href="/2025/10/22/dp%E8%B1%AA%E9%A2%98/" aria-label="前一篇: dp豪题" title="前一篇: dp豪题"></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">
+          
+            dp豪题
+          
+        </h3>
+      </div>
     
     
     
@@ -517,10 +529,10 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
     
       <div>
         <span class="icon-brush"></span>
-        951
+        2.1k
         &nbsp;|&nbsp;
         <span class="icon-coffee"></span>
-        00:05
+        00:11
       </div>
     
     
@@ -558,14 +570,14 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
 </div>
 </div>
         <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
-  <img data-src="/avatar/avatar.jpg" data-sizes="auto" alt="crimson000" class="lazyload">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="crimson000" class="lazyload">
   <div class="sidebar-author-name">crimson000</div>
   <div class="sidebar-description">我喜欢打 arcaea</div>
 </div>
 <div class="sidebar-state">
   <div class="sidebar-state-article">
     <div>文章</div>
-    <div class="sidebar-state-number">2</div>
+    <div class="sidebar-state-number">3</div>
   </div>
   <div class="sidebar-state-category">
     <div>分类</div>
@@ -715,7 +727,7 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
           description: "",
           stripContent: "做题的一些总结   字符串 能够被分为两个回文串的回文串周期一定整除长度。 如果一个字符串有长度为 d1,d2d_1, d_2d1​,d2​ 的周期，那么 gcd⁡(d1,d2)\gcd(d_1, d_2)gcd(d1​,d2​) 也是它的一个周期 随机生成的字符串，后缀树树高是 log 的  ds 区间问题可以右端点扫描线，也可以枚举最小值 如果三维偏序问题出现了 ∀i,xi&amp;lt;yi\forall i, x_i&amp;lt;y_i∀i,xi​&amp;lt;yi​ 的情况，可以把这个看成区间，用莫队维护",
           date: "Wed Oct 15 2025 16:21:34 GMT+0800",
-          updated: "Wed Oct 15 2025 16:34:07 GMT+0800",
+          updated: "Wed Oct 22 2025 22:34:26 GMT+0800",
           cover: "/images/banner.webp",
         };
       </script>
@@ -778,7 +790,7 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
   \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
                                                   
 `,'color: #ff5252;')
-    console.log('%c Theme.Reimu v' + '1.10.1' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+    console.log('%c Theme.Reimu v' + '1.10.2' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
   </script>
   
 
@@ -801,8 +813,6 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
 </script>
 
 
-
-  
 
 
 
