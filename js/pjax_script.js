@@ -28,18 +28,22 @@ var scrollIntoViewAndWait = (element) => {
 
 // anchor
 _$$(
-  ".article-entry h1>a, .article-entry h2>a, .article-entry h3>a, .article-entry h4>a, .article-entry h5>a, .article-entry h6>a"
+  ".article-entry h1>a:first-of-type, .article-entry h2>a:first-of-type, .article-entry h3>a:first-of-type, .article-entry h4>a:first-of-type, .article-entry h5>a:first-of-type, .article-entry h6>a:first-of-type"
 ).forEach((element) => {
   if (window.REIMU_CONFIG.icon_font) {
     // iconfont
     element.innerHTML = window.REIMU_CONFIG.anchor_icon
       ? `&#x${window.REIMU_CONFIG.anchor_icon};`
-      : window.REIMU_CONFIG.anchor_icon === false ? "" : "&#xe635;";
+      : window.REIMU_CONFIG.anchor_icon === false
+      ? ""
+      : "&#xe635;";
   } else {
     // fontawesome
     element.innerHTML = window.REIMU_CONFIG.anchor_icon
       ? `&#x${window.REIMU_CONFIG.anchor_icon};`
-      : window.REIMU_CONFIG.anchor_icon === false ? "" : "&#xf292;";
+      : window.REIMU_CONFIG.anchor_icon === false
+      ? ""
+      : "&#xf292;";
   }
 });
 
@@ -345,8 +349,19 @@ if (shareWeixinHandler) {
 }
 shareWeixinHandler = (e) => {
   if (e.target.closest(".share-icon.icon-weixin")) return;
-  _$("#share-weixin")?.classList.remove("active");
-}
+  const sw = _$("#share-weixin");
+  if (sw && sw.classList.contains("active")) {
+    sw.classList.remove("active");
+    sw.addEventListener(
+      "transitionend",
+      function handler() {
+        sw.style.display = "none";
+        sw.removeEventListener("transitionend", handler);
+      },
+      { once: true },
+    );
+  }
+};
 document.on("click", shareWeixinHandler);
 
 _$(".share-icon.icon-weixin")
@@ -363,7 +378,23 @@ _$(".share-icon.icon-weixin")
       shareWeixin.style.left = "-138px";
     }
     if (e.target === this) {
-      shareWeixin.classList.toggle("active");
+      const el = shareWeixin;
+      if (!el) return;
+      if (!el.classList.contains("active")) {
+        el.style.display = "block";
+        requestAnimationFrame(() => {
+          el.classList.add("active");
+        });
+      } else {
+        el.classList.remove("active");
+        const onEnd = (ev) => {
+          if (ev.propertyName === "opacity") {
+            el.style.display = "none";
+            el.removeEventListener("transitionend", onEnd);
+          }
+        };
+        el.addEventListener("transitionend", onEnd);
+      }
     }
     // if contains img return
     if (_$(".share-weixin-canvas").children.length) {
@@ -381,21 +412,26 @@ _$(".share-icon.icon-weixin")
         return;
       }
       _$("#share-weixin-qr").src = dataUrl;
-      snapdom.toPng(_$(".share-weixin-dom")).then((img) => {
-        _$(".share-weixin-canvas").appendChild(img);
-      }).catch(() => {
-        // we assume that the error is caused by the browser's security policy
-        // so we will remove the banner and try again
-        _$("#share-weixin-banner").remove();
-        snapdom.toPng(_$(".share-weixin-dom")).then((img) => {
+      snapdom
+        .toPng(_$(".share-weixin-dom"))
+        .then((img) => {
           _$(".share-weixin-canvas").appendChild(img);
-        }).catch(() => {
-          console.error("Failed to generate weixin share image.");
+        })
+        .catch(() => {
+          // we assume that the error is caused by the browser's security policy
+          // so we will remove the banner and try again
+          _$("#share-weixin-banner").remove();
+          snapdom
+            .toPng(_$(".share-weixin-dom"))
+            .then((img) => {
+              _$(".share-weixin-canvas").appendChild(img);
+            })
+            .catch(() => {
+              console.error("Failed to generate weixin share image.");
+            });
         });
-      });
     });
   });
-
 
 var imgElement = _$("#header > img");
 if (imgElement.src || imgElement.style.background) {
