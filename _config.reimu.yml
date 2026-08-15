@@ -1,0 +1,80 @@
+theme_version_check: false
+theme_config_check: true
+
+menu:
+  - name: home
+    url: /
+    icon:
+  - name: archives
+    url: /archives
+    icon:
+  - name: about
+    url: /about
+    icon:
+  - name: friend
+    url: /friend
+    icon:
+
+banner: /images/banner.webp
+banner_srcset:
+  enable: false
+favicon: /images/favicon.ico
+avatar: avatar.jpg
+
+open_graph:
+  enable: true
+  options:
+    default_og_image: /images/banner.webp
+
+rss: atom.xml
+
+footer:
+  since: 2020
+  powered: true
+  count: true
+  busuanzi: true
+  icon:
+    url: ../images/taichi.png
+    rotate: true
+    mask: true
+
+sidebar: right
+social: {}
+widgets: []
+
+reimu_cursor:
+  enable: true
+  cursor:
+    default: ../images/cursor/reimu-cursor-default.png
+    pointer: ../images/cursor/reimu-cursor-pointer.png
+    text: ../images/cursor/reimu-cursor-text.png
+
+dark_mode:
+  enable: auto
+
+code_block:
+  expand: true
+
+preloader:
+  enable: true
+  text:
+    zh-CN: 少女祈祷中...
+  icon:
+  rotate: true
+
+firework:
+  enable: true
+  disable_on_mobile: false
+
+comment:
+  default: waline
+waline:
+  enable: false
+valine:
+  enable: false
+twikoo:
+  enable: false
+gitalk:
+  enable: false
+giscus:
+  enable: false
