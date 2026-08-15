@@ -1,0 +1,811 @@
+  <!DOCTYPE html>
+  <html lang="zh-CN"  
+      data-theme-mode="auto"
+  >
+  <head>
+  <meta charset="utf-8">
+  
+  
+  
+  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_4k4bc36ef96';window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'https://crimson000000.github.io';</script>
+  <title>
+    一些杂题 | crimson000
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish%3A400%2C400italic%2C700%2C700italic%7CNoto+Serif+SC%3A400%2C400italic%2C700%2C700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish%3A400%2C400italic%2C700%2C700italic%7CNoto+Serif+SC%3A400%2C400italic%2C700%2C700italic&display=swap" media="print" onload="this.media&#x3D;&#39;all&#39;">
+    <link rel="preload" href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    
+<link rel="stylesheet" href="/css/loader.css">
+
+    <meta name="description" content="一些杂题，主要是贪心（模拟费用流）和构造，以及一些思维题。（部分来自 zzz 课件）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一些杂题">
+<meta property="og:url" content="https://crimson000000.github.io/2023/07/11/%E4%B8%80%E4%BA%9B%E6%9D%82%E9%A2%98/index.html">
+<meta property="og:site_name" content="crimson000">
+<meta property="og:description" content="一些杂题，主要是贪心（模拟费用流）和构造，以及一些思维题。（部分来自 zzz 课件）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/eohcr3l2.png">
+<meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/pys9cqtx.png">
+<meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/6t3cfg9x.png">
+<meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/wc7b7fva.png">
+<meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/zrmb4au0.png">
+<meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/2ktsyqmg.png">
+<meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/y1d2mna2.png">
+<meta property="og:image" content="https://gitcode.net/crimson000000/mypic/-/raw/master/study/16.png">
+<meta property="article:published_time" content="2023-07-11T13:32:35.000Z">
+<meta property="article:modified_time" content="2026-08-15T08:51:39.567Z">
+<meta property="article:author" content="crimson000">
+<meta property="article:tag" content="题集">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.luogu.com.cn/upload/image_hosting/eohcr3l2.png">
+    <link rel="alternate" href="/atom.xml" title="crimson000" type="application/atom+xml">
+    <link rel="shortcut icon" href="/images/favicon.png">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL&#x2F;toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx&#x2F;1oA&#x2F;0l8ysE" crossorigin="anonymous">
+    
+<script src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js" integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script>
+
+    
+<link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css" integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous">
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+  <body>
+      <div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate">
+          <svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+           M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
+          </svg>
+      </div>
+      <div class="loading-word">少女祈祷中...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script>
+<div id="copy-tooltip"></div>
+<div id="heatmap-tooltip"></div>
+
+
+    <div id="container">
+      <div id="wrap">
+        <div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation">
+        <a class="main-nav-link-wrap" href="/">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">首页</span>
+        </span>
+        <a class="main-nav-link-wrap" href="/archives">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">归档</span>
+        </span>
+        <a class="main-nav-link-wrap" href="/about">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">关于</span>
+        </span>
+        <a class="main-nav-link-wrap" href="/friend">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">友链</span>
+        </span>
+    <a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation">
+      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅" aria-label="RSS 订阅" target="_blank"></a>
+  </nav>
+</div>
+<header id="header" aria-label="Site header">
+    <picture></picture>
+    <img  fetchpriority="high" src="https://gitcode.net/crimson000000/mypic/-/raw/master/bg/16.jpg" alt="一些杂题">
+  <div id="header-outer">
+    <div id="header-title">
+          <span id="logo">
+            <h1 data-aos="slide-up">一些杂题</h1>
+          </span>
+        <h2 id="subtitle-wrap" data-aos="slide-down">
+        </h2>
+    </div>
+  </div>
+</header>
+
+        <div id="content" aria-label="Page content"  class="sidebar-right" >
+          <aside id="sidebar" aria-label="Sidebar">
+  <div class="sidebar-wrapper-container sticky">
+  <div class="sidebar-wrapper">
+    <div class="sidebar-wrap" data-aos="fade-up">
+          <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD%EF%BC%8C%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0"><span class="toc-number">1.</span> <span class="toc-text">未完待续，持续更新</span></a></li></ol>
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.jpg" data-sizes="auto" alt="crimson000" class="lazyload">
+  <div class="sidebar-author-name">crimson000</div>
+  <div class="sidebar-description">我喜欢打源神和舞萌</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">11</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">8</div>
+  </div>
+</div>
+<div class="sidebar-social">
+</div>
+<div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+</div>
+</div>
+          <div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div>
+    </div>
+  </div>
+  <div class="sidebar-widget">
+  </div>
+  </div>
+</aside>
+
+          <section id="main" aria-label="Main content"><article id="post-一些杂题" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner" data-aos="fade-up">
+    <div class="article-meta">
+      <div class="article-date">
+  <span class="article-date-link icon-calendar" data-aos="zoom-in">
+    <time datetime="2023-07-11T13:32:35.000Z" itemprop="datePublished">2023-07-11</time>
+    <time style="display: none;" id="post-update-time">2026-08-15</time>
+  </span>
+</div>
+
+        <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/" title="算法竞赛">算法竞赛</a><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/%E9%A2%98%E7%9B%AE/" title="题目">题目</a>
+  </div>
+
+    </div>
+    
+    <div class="hr-line"></div>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+        <p>一些杂题，主要是贪心（模拟费用流）和构造，以及一些思维题。（部分来自 zzz 课件）</p>
+<span id="more"></span>
+
+<p><strong>Bohater</strong></p>
+<p>有 $n$ 只怪物，为了打败第 $i$ 只怪物，你会下降 $d_i$ 的血量。击败怪物后，会掉落回复 $a_i$ 生命值的血药。任何时刻血量都不能小于等于 $0$。问是否存在一种打怪顺序使得自身不死掉。</p>
+<p>数据范围：$n \le 10^5$。</p>
+<hr>
+<p>简单贪心，我们把怪物分为两种类型：击败后加血和击败后扣血。对于第一种怪物，我们可以采取先打 $d_i$ 小的，因为我们需要攒血量去打 $d_i$ 大的怪物。对于第二种怪物，我们倒着考虑。我们这样就可以发现，倒着看时，$d_i$ 为血药，$a_i$ 为减小的血量，为了使得血量不小于 $0$，我们需要把减少的血量小的放前面，在原顺序中也就是把 $a_i$ 小的放后面。</p>
+<p><strong>不离</strong></p>
+<p>有 $2$ 个属性 $x$ 和 $y$ 以及 $n$ 件装备，第 $i$ 件装备需要在 $x \ge a_i, y \ge b_i$ 时才能穿上，穿上后会使 $x$ 加上 $c_i$，使 $y$ 加上 $d_i$。如果想让所有装备都穿上，最初的 $x$ 最小应该是多少。在 $x$ 最小的前提下，$y$ 最小是多少。</p>
+<p>数据范围：$n\le 10^5$。</p>
+<hr>
+<p>我们先考虑 $x$。我们可以先把装备按 $a_i$ 排序，一件一件穿。当 $x$ 无法达到 $a_i$ 时，我们就提升初始的 $x$，把这段差值补上。这样就求出了最小的初始 $x$。</p>
+<p>我们再考虑 $y$。既然有了初始的最小 $x$，我们就可以模拟穿装备的过程。一件一件穿，当力量值大于 $a_i$ 时，我们把这件装备扔到按 $b_i$ 排序的堆里。当力量值小于 $a_i$ 时，我们再从堆里一件一件拿装备穿，过程和求 $x$ 的过程一样。由于 $x$ 是我们求出的最小解，因此一定有解。</p>
+<p><strong>专业网络</strong></p>
+<p>有 $n$ 个人，可以花费 $b_i$ 元和这个人成为朋友，也可以在朋友数超过 $a_i$ 时和它成为朋友。询问和这些人成为朋友的最小花费。</p>
+<p>数据范围：$n\le 2\times 10^5$。</p>
+<hr>
+<p>我们考虑能够最多节约多少钱。我们先把所有人按照 $a_i$ 排序，这时我们发现正着考虑不太好，因为我们花钱一定是买 $a_i$ 更大的，因此我们从后往前考虑。我们先认为所有人都是花钱买的，我们遇到一个人先把它扔到堆里，同时把他的钱节约下来，让他成为不通过花钱交上朋友的人。如果我们发现当前 $a_i$ 要大于现在买的人数，那我们就取出堆顶，把他买下来。这样就完成了。</p>
+<p><strong>排列鞋子</strong></p>
+<p>有 $n$ 双鞋子，分左右鞋，放在编号为 $0\sim 2n-1$ 的位置上。我们要求最终的序列为：编号 $2i$ 位置上的鞋子是左鞋，编号为 $2i+1$ 的位置上的鞋子是右鞋，并且编号 $2i$ 和 $2i+1$ 的位置上的鞋子的大小相等。每次可以交换相邻的两只鞋子，问最少交换多少次可以满足上面的条件。</p>
+<p>数据范围：$n\le 10^5$。</p>
+<hr>
+<p>我们可以从右往左扫这个序列，遇到没有用过的鞋子就在它左边找到和它配对的，把那只鞋子移过来即可。我们来证明一下这个算法的正确性。</p>
+<p>首先，如果我们要把这两只鞋子移动到一起，如果最终移动到的位置在这两个鞋子之间，那么操作次数不变。我们考虑对其他鞋子的影响。首先对左半部分的鞋子不会有影响，它们的位置不变。而对于在这两个鞋子之间的鞋子 $x$，如果与它配对的鞋子在最终移动到的位置的右边，则操作数不变，如果在最终移动到的位置的左边，则操作数会增加。则我们需要尽可能减少这样的情况出现。而移动到最右端时这样的情况就会变为 $0$。因此这样是最优的。</p>
+<p>这样就可做了。用一个树状数组统计答案即可。</p>
+<p><strong>Buy Low Sell High</strong></p>
+<p>已知接下来 $n$ 天的股票价格，每天你可以买进一股股票，卖出一股股票，或者什么也不做。最终最多能赚多少钱。</p>
+<p>数据范围：$n\le 3\times 10^5$。</p>
+<hr>
+<p><del>模拟费用流开始</del></p>
+<p>本题很容易建出费用流模型。见下图。</p>
+<img src="https://cdn.luogu.com.cn/upload/image_hosting/eohcr3l2.png">
+
+<p>其中源点向每天连流量为 $1$，费用为 $-c_i$ 的边，每天向下一天连流量为 $+\infty$，费用为 $0$ 的边，每天向汇点连流量为 $1$，费用为 $c_i$ 的边。每新加进来一天就会多增加三条边。我们考虑增加了这三条边会对网络产生什么影响。见下图。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/pys9cqtx.png"></p>
+<p>（图二中为将负环消掉，也是费用流中的一个算法）</p>
+<p>我们可以发现，新一轮增广只会选择之前没有选择的一天来买股票，或者反悔掉之前卖出的一股股票来现在卖。这样就可以开一个堆维护了。</p>
+<p><strong>数据备份</strong></p>
+<p>长度为 $n$ 的序列，要求选 $k$ 个数，要求这 $k$ 个数不能相邻，求选出的数最大总和。</p>
+<p>数据范围：$n\le 10^5$。</p>
+<hr>
+<p>本题也是比较经典的模拟费用流例题。我们先把费用流模型建出来，见图一。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/6t3cfg9x.png"></p>
+<p>我们这里把数字与数字之间的间隙看作点，把数看作边。我们考虑一次增广的情况，见图二。可以发现，单次增广会把一段区间的状态全部取反，同时这段区间必须满足 <code>0 101...101 0</code>，即两边都不选，并且中间选和不选交替。我们还能发现，这样一次增广后，会把三段区间变为一段区间。用堆和链表维护即可。</p>
+<p>我们也可以从贪心的角度来说明这个结论。每次的决策必然是选择最小的，或者是最小值的两边的值。我们可以先选择上最小值，然后删除这三个数，加入值为 $a_{i-1}+a_{i+1}-a_i$ 的数。这样如果下次再选择到这个数，就代表着我们反悔了。代码和上面的做法完全一样。</p>
+<p>另外，由于本题建出了费用流模型，我们可以用 wqs 二分来解决，这里不再说明。</p>
+<p><strong>Olympiad in Programming and Sports</strong></p>
+<p>有 $n$ 个学生，每人有两种技能，分别是 $a,b$ 表示编程能力和运动能力。你需要将他们分为两个团队分别参加编程比赛和体育比赛，编程团队有 $p$ 人，体育团队有 $s$ 人，一个学生只能参加其中一项。每个团队的力量是其成员在对应领域能力总和，两个团队的实力和最大是多少。</p>
+<p>数据范围：$n\le 3000$。</p>
+<hr>
+<p>本题依旧可以建出费用流模型。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/wc7b7fva.png"></p>
+<p>图一即为网络。图二、三、四都为单次增广可能的路径，我们可以选择一个没有被选择的人来让他选择编程或者运动，或者是让它顶替掉一个选择过别的运动的人。我们可以按照这个想出反悔贪心策略：开三个堆来维护 $a_i, b_i, b_i-a_i$。一开始先选择编程能力最大的，然后每轮不断取出最大的 $b_i$ 和最大的 $a_i+(b_i-a_i)$，重复 $s$ 轮即可。</p>
+<p><strong>Raffles</strong></p>
+<p>有 $n$ 个奖池，第 $i$ 个奖池有 $p_i$ 元奖金，已经有 $l_i$ 张彩票押在上面。现在有 $t$ 张彩票，你要把这些彩票押到奖金池中，并且在每个奖金池中你押的彩票数不能超过原有的彩票数。如果你在第 $i$ 个彩票池押了 $t_i$ 张彩票，你中奖的概率就是 $\frac{t_i}{t_i+l_i}$，中奖会获得该彩票池的所有奖金。一共有 $q$ 次事件，每次事件会使一个彩票池中 $l_i$ 加一或减一。每次事件后输出获得奖金的最大期望值。</p>
+<p>数据范围：$n, q, t\le 2\times 10^5$。</p>
+<hr>
+<p>我们考虑往某个池子里放一个彩票增加的期望钱数。</p>
+<p>$$<br>\begin{aligned}<br>\frac{t_i+1}{t_i+1+l_i}-\frac{t_i}{t_i+l_i}   &amp;&#x3D;\frac{(t_i+1)(t_i+l_i)-t_i(t_i+1+l_i)}{(t_i+1+l_i)(t_i+l_i)} \<br>&amp;&#x3D;\frac{l_i}{(t_i+1+l_i)(t_i+l_i)}<br>\end{aligned}<br>$$</p>
+<p>我们再考虑如果没有修改操作如何求出答案。我们只需要维护两个堆，一个存放当前的决策，一个存放下一次的决策（就比如当前池子里押了 $x$，下一次决策即为 $x+1$）。每次拿出下次决策收益最大的，循环 $t$ 次即可。</p>
+<p>当有修改时，我们可以先将其在堆中的信息更新一遍，然后从下一次决策中取出最大的和当前决策进行比较，如果更大就替换。这样复杂度其实是对的，因为我们每次重新跑一遍只会引起一张彩票的变化。</p>
+<p><strong>Cardboard Box</strong></p>
+<p>$n$ 个关卡，对每个关卡，你可以花 $a_i$ 代价得到一颗星，也可以花 $b_i$ 代价得到两颗星，也可以不玩。问获得 $w$ 颗星最少代价。</p>
+<p>数据范围：$n\le 3\times 10^5$。</p>
+<hr>
+<p>我们考虑从有 $i$ 颗星变为 $i+1$ 颗星的方法：</p>
+<ol>
+<li>直接选一个之前 $0$ 颗星的关卡增加一颗星，代价 $a_i$。</li>
+<li>选已经选了一颗星的关卡变为两颗星，代价 $b_i-a_i$。</li>
+<li>让之前一颗星的关卡变为零颗星，一个零颗星的关卡变为两颗星，代价 $b_i-a_j$。</li>
+<li>让之前两颗星的关卡变为一颗星，一个零颗星的关卡变为两颗星，代价 $b_i-b_j+a_j$。</li>
+</ol>
+<p>我们分类讨论完就可以直接开五个堆分别维护 $a_i,b_i, -a_i, b_i-a_i, -b_i+a_i$。每次从上面的决策中选择最大值即可。</p>
+<p><strong>序列</strong></p>
+<p>给定两个长度为 $n$ 的正整数序列 ${a_i}$ 与 ${b_i}$，确定两个长度为 $K$ 的序列 ${c_i}, {d_i}$，其中 $1 \leq c_1 &lt; c_2 &lt; \cdots &lt; c_K \leq n , 1 \leq d_1 &lt; d_2 &lt; \cdots &lt; d_K \leq n$，并要求 ${c_1, c_2, \cdots , c_K} \cap {d_1, d_2, · · · , d_K}\geq L$。目标是最大化 $\sum^{K}<em>{i&#x3D;1} a</em>{c_i} +\sum^{K}<em>{i&#x3D;1} b</em>{d_i}$。</p>
+<p>数据范围：$n\le 2\times 10^5$。</p>
+<hr>
+<p>我们建出费用流模型。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/zrmb4au0.png"></p>
+<p>可以发现，只要弧 CD 有流量，那么一定会去选择流它。当弧 CD 没有流量后，我们有如下选择：</p>
+<ol>
+<li>选择相同下标的数字。</li>
+<li>找一个可用的左部点和一个左部点被选择的右部点。</li>
+<li>上面的对称情况。</li>
+</ol>
+<p>模拟即可，同时当我们第二或第三种情况后某个点的左部点和右部点都被选择，则可以为弧 CD 增加一点流量。也就是上图中的图四。</p>
+<p><strong>Raper</strong></p>
+<p>你需要生产 $k$ 张光盘。每张光盘都要经过两道工序：先在 A 工厂进行挤压，再送到 B 工厂涂上反光层。</p>
+<p>你知道每天 A、B 工厂分别加工一张光盘的花费。你现在有 $n$ 天时间，每天可以先送一张光盘到 A 工厂（或者不送），然后再送一张已经在 A 工厂加工过的光盘到 B 工厂（或者不送），每家工厂一天只能对一张光盘进行操作，同一张光盘在一天内生产出来是允许的。我们假定将未加工的或半成品的光盘保存起来不需要费用。求生产出 $k$ 张光盘的最小花费。</p>
+<p>数据范围：$n, k\le 5\times 10^5$。</p>
+<hr>
+<p>我们建出费用流模型。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/2ktsyqmg.png"></p>
+<p>我们先用 wqs 二分消去 $k$ 的限制，这时，我们的模型就变为了最小费用可行流（即花费最小的费用跑出来的流，只需要不断增广至单次费用大于 $0$）。我们就可以像前面的一道题一样开始模拟费用流。</p>
+<p><del>所以为什么加个 wqs 二分就能上黑</del></p>
+<p><strong>IIIDX</strong></p>
+<p>Konano 接到了一个任务，他需要给正在制作中的游戏《IIIDX》安排曲目的解锁顺序。游戏内共有 $n$ 首曲目，每首曲目都会有一个难度 $d$，游戏内第 $i$ 首曲目会在玩家 Pass 第 $\left\lfloor \frac i k \right\rfloor$ 首曲目后解锁（$\left\lfloor x \right\rfloor$ 为下取整符号）若 $\left\lfloor \frac i k \right\rfloor &#x3D; 0$，则说明这首曲目无需解锁。Konano 的工作，便是安排这些曲目的顺序，使得每次解锁出的曲子的难度<strong>不低于</strong>作为条件需要玩家通关的曲子的难度，即使得确定顺序后的曲目的难度对于每个 $i$ 满足 $d_i \geq d_{\left\lfloor \frac ik \right\rfloor}$。同时保证最终字典序最大。</p>
+<p>数据范围：$n\le 5\times 10^5$。</p>
+<hr>
+<p>本题如果所有数都互不相同，那么很好做，只需要贪心地往最小的子树内放最大的就行。而当有重复时，这个做法就行不通了，我们需要换新的思路。</p>
+<p>我们先把 $d$ 排序离散化了，设 $f(x)$ 为大于等于 $x$ 的数的个数，一个位置能被填上 $x$ 当且仅当 $siz_u \ge f(x)$。而当它填上 $x$ 后，$1\sim x$ 这些位置都会减去 $siz_u$，这个操作可以称作预定。由于要求字典序最大，我们可以编号从小到大考虑，每次在线段树上二分出第一个 $siz_u\ge f(x)$ 的位置，将前面的位置全部减去 $1$。</p>
+<p>这里有一点要注意，就是进入子树时，我们需要将父亲的更改撤销掉，而再新加上子树的修改。这样也很好理解，就是你的父亲已经给子树全部占了座了，但是到你该坐的时候座位还是被占着的，这样就不行了。</p>
+<p><strong>没有题目</strong></p>
+<p>大小为 $n$ 的 01 矩阵 $A$，满足 $A^k &#x3D; 0$，求 $A$ 里面最多有多少个 $1$。</p>
+<p>数据范围：$n \le 10^{18}, k \le 1145141919810$</p>
+<hr>
+<p>我们可以把矩阵看作邻接矩阵，这样就可以变成一个图论问题。我们思考邻接矩阵的幂次是什么意义：经过 $k$ 条边后从 $i$ 走到 $j$ 的方案数。为了让它全为 $0$，我们只需要构造一张 DAG，其中最长链不超过 $k$ 即可。</p>
+<p>具体点说，我们可以把所有点均匀分成 $k$ 部分，部分内部不连边，剩下的边全部连上。这样就满足了边数最多且最长链不超过 $k$。</p>
+<p><strong>Complicated Computations</strong></p>
+<p>求一个数列的所有连续子序列的 mex 值的 mex。</p>
+<p>数据范围：$n\le 10^5$。</p>
+<hr>
+<p>考虑枚举 $\mathrm{mex}$，观察是否该值满足在所有不出现它的区间内的 $\mathrm{mex}$ 不为它。如果对于所有的区间都是这样，我们就可以判断它是 $\mathrm{mex}$。</p>
+<p>我们可以维护一个 $lst_i$，表示该值在我们扫描的过程中上次出现的位置。当我们扫到 $x$ 时，我们检查是否有 $\min_{i&#x3D;1}^{x-1}{lst_i }\le lst_x$。如果成立，则证明 $x$ 在该区间不为 $\mathrm{mex}$。这样就能标记出所有的值。</p>
+<p>时间复杂度 $O(n\log n)$。</p>
+<p><strong>阿狸和桃子的游戏</strong></p>
+<p>阿狸和桃子正在玩一个游戏，游戏是在一个带权图 $G&#x3D;(V, E)$ 上进行的，设节点权值为 $w(v)$，边权为 $c(e)$。游戏规则是这样的：</p>
+<ol>
+<li><p>阿狸和桃子轮流将图中的顶点染色，阿狸会将顶点染成红色，桃子会将顶点染成粉色。已经被染过色的点不能再染了，而且每一轮都必须给一个且仅一个顶点染色。</p>
+</li>
+<li><p>为了保证公平性，节点的个数N为偶数。</p>
+</li>
+<li><p>经过 $\frac{n}{2}$ 轮游戏之后，两人都得到了一个顶点集合。对于顶点集合 $S$，得分计算方式为</p>
+</li>
+</ol>
+<p>$$<br>\sum_{v \in S}w(v) + \sum_{e&#x3D;(u,v)\in E \land u,v\in S}c(e)<br>$$</p>
+<p>由于阿狸石头剪子布输给了桃子，所以桃子先染色。两人都想要使自己的分数比对方多，且多得越多越好。如果两人都是采用最优策略的，求最终桃子的分数减去阿狸的分数。</p>
+<p>数据范围：$n\le 10000, m\le 100000$。</p>
+<hr>
+<p>由于最终要求的是分数之差，因此我们可以把边权拆成两半分到点权上。这样做的话，当两个人分别选了一条边的两个点时，做差之后边权下放到的点权就抵消了。而当一个人选了一条边的两个点时，边权由于算到两个点里了，也会加上边权。因此拆边权后贪心模拟即可。</p>
+<p><strong>东兴保卫战</strong></p>
+<p>有一颗 $n$ 个节点的树，一开始每个节点都没有军队。现在 $A, B$ 两个人轮流选择一个没有放置军队的点放军队，直到所有点被占领。设 $a$ 为 $A$ 人所占领的点形成的连通块数量，$b$ 为 $B$ 所占领的点形成的连通块数量。$A$ 先手，$A$ 想要让 $a-b$ 最大，$B$ 想让 $a-b$ 最小。求都采用最优策略的情况下，$a-b$ 的最小值。</p>
+<p>数据范围：$n\le 100000$。</p>
+<hr>
+<p>我们考虑一个结论：在树中，设 $t$ 为连通块数，则 $|V|-|S|&#x3D;t$。有了这个结论，我们就可以按照上一题的思路，点权设为 $1$，边权设为 $-1$ 即可。</p>
+<p><strong>Boxes</strong></p>
+<p>$n$ 个数字 $a_i$（顺时针给出）构成一个环，每次可以从一个起点出发顺时针给这个环依次 $-1$、$-2$ …. $-n$。问是否存在一种方案使得能把所有数恰好都减成 $0$。</p>
+<p>数据范围：$n\le 10^5, a_i\le 10^9$。</p>
+<hr>
+<p>我们考虑区间加等差数列这个操作，这样会导致差分数组中有一个数减去 $n-1$，剩下的数全部加 $1$。我们设 $c&#x3D;\frac{n(n+1)}{2}$，即每次操作减少的值，显然一个存在方案的必要条件是：$\sum a_i \bmod c &#x3D; 0$。</p>
+<p>我们再设 $M&#x3D;\frac{\sum a_i}{c}$，即一共操作的次数，$m_i$ 为该点进行减 $n-1$ 操作的次数，$d_i$ 为差分数组，则有：</p>
+<p>$$<br>\begin{aligned}<br>d_i &amp; &#x3D; (M-m_i)-(n-1)m_i\<br>m_i&amp;&#x3D;\frac{M-d_i}{n}<br>\end{aligned}<br>$$</p>
+<p>当 $m_i$ 为非负整数时有解。</p>
+<p><strong>Decrementing</strong></p>
+<p>黑板上写着 $n$ 个整数。第 $i$ 个整数是 $a_i$ ，它们的最大公约数为 $1$ 。</p>
+<p>A 和 B 将使用这些数来玩一个游戏。A 在这个游戏中是先手，他们将轮流进行以下操作（以下两步相当于一次操作）：</p>
+<ul>
+<li>选择黑板中大于 $1$ 的一个数，将其减 $1$ 。</li>
+<li>此后，将黑板上所有数全部除以所有数的最大公约数。</li>
+</ul>
+<p>当黑板上的数全部为 $1$ 时，不能再进行操作的人就失败了。两人都选择最好的方式行动，请求出哪边会最终胜利。</p>
+<p>数据范围：$1\le n\le 10^5, 1\le a_i\le 10^9$。</p>
+<hr>
+<p>首先没有除以 $\gcd$ 的操作时，我们可以通过奇偶性来判断谁胜。而带上除以 $\gcd$ 操作时，可能就会翻盘。由于只有除以偶数的 $\gcd$ 才可能会改变和的奇偶性，我们肯定要对奇数和偶数下手。下面进行一个分类讨论：</p>
+<ul>
+<li>当出现 $1$ 时，就相当于没有第二个操作了，直接判断奇偶性。如果场上有奇数个偶数，则先手必胜，否则后手必胜。</li>
+<li>当场上有奇数个偶数时，先手只需要保持住当前的局面即可。先手可以取走一个偶数的 $1$，而后手无论如何取也会使得偶数的数量回归奇数。先手必胜。</li>
+<li>当场上有偶数个偶数，且奇数的数量大于 $1$ 时，上面的情况就会转到后手，因此后手必胜。</li>
+<li>而当场上仅有一个奇数，有偶数个偶数时，先手就可能可以翻盘。先手可以取走奇数，这时所有的数都会除去一个偶的 $\gcd$，剩下的摊子就留给后手去管。</li>
+</ul>
+<p>这样前三个操作都是直接结束，最后一个操作会使所有数除以至少 $2$，求 $\gcd$ 的复杂度为 $O(\log n)$。因此复杂度为 $O(n\log^2 V)$。</p>
+<p><strong>Modulo Matrix</strong></p>
+<p>构造一个 $n\times n$ 的矩阵. 要求:</p>
+<ul>
+<li>所有元素互不相同。</li>
+<li>满足 $a_{i,j}\leq 10^{15}$。</li>
+<li>对于任意两个相邻的数字 ，$\max(x,y)\bmod \min(x,y)$ 都相等，且均为正整数。<br>可以证明方案一定存在。</li>
+</ul>
+<p>数据范围：$n\le 500$。</p>
+<hr>
+<p>由于是相邻的数字去取模，我们可以先构造斜线中填的数字，最后构造填数字后中间的数字。一个想法是周围四个格子中全部放质数，中间的格子放旁边质数的 $\operatorname{lcm}+1$。但是这样出现的值的级别是 $O(n^8)$，无法通过。</p>
+<p>我们考虑优化填数。我们可以这样填：一部分质数从左下到右上填，一部分从右下到左上填，交叉的部分就填乘积。可以看下图：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/y1d2mna2.png"></p>
+<p>这样就能把填的数字控制在 $O(n^4)$ 级别，再调整一下质数的顺序即可通过。</p>
+<p><strong>Distance Sums</strong></p>
+<p>给出 $n$ 个互不相同的数 $d_i$，表示树上的节点 $i$ 到其他所有点的距离和。请判断是否存在这样一棵树，其中每条边的长度均为 $1$。若存在请输出一种方案，否则输出 <code>-1</code>。</p>
+<p>数据范围：$1 \leq n \leq 10^5$，$1 \leq d_i \leq 10^{12}$。</p>
+<hr>
+<p>显然的一个结论是：$d_i$ 最小的点为重心，$d_i$ 最大的点是叶子。我们就可以从叶子开始构造，首先先找出最大的点，它的 $siz$ 显然是 $1$。根据树形 dp 的公式：$d_v&#x3D;d_u+n-2siz_v$，我们就可以反推出它父亲的 $d$ 值，查询即可。同时记得给父亲加上它的 $siz$。这样循环 $n-1$ 次即可构建出整颗树。</p>
+<p>但是这样我们算的只是 $d$ 的差值，我们还需要检验 $d$ 是否和题目中给出的相同。直接从重心跑一遍 $dfs$ 比较即可。</p>
+<p><strong>赶路</strong></p>
+<p>给定二维平面内的一些点，要寻找一个排列 $p$ 使得按照这个排列走，形成的线段不会相交。其中 $p_1&#x3D;1, p_n&#x3D;n$。</p>
+<p>数据范围：$n\le 500$。</p>
+<hr>
+<p>有意思的题。</p>
+<p>我们假设一定有解。设 $solve(l, r)$ 为走 $[l, r]$ 这段区间的点的方案。我们随机选择一个点 $k$，和 $l$ 连个线，把平面分成两半，我们可以沿着一半走到 $k$，然后再从另一半走到 $r$。而至于怎么走，交给剩下的，因为我们假定一定有解，而分成的两半又不相交。</p>
+<p><strong>Double Knapsack</strong></p>
+<p>给你两个可重集 $A, B$，$A, B$ 的元素个数都为 $n$，它们中每个元素的大小 $x\in [1,n]$。请你分别找出 $A, B$ 的子集，使得它们中的元素之和相等。</p>
+<p>数据范围：$n\leq 10^6$。</p>
+<hr>
+<p>北京高考考 *3000 是吧</p>
+<p>我们可以把集合中的子集和看作是一段序列的子段和，我们通过下面的证明我们可以证明这样做是一定有解的。</p>
+<p>我们设 $A$ 集合的前缀和为 $suma$，$B$ 集合的前缀和为 $sumb$。我们先假设 $sumb_n\ge suma_n$，那么对于所有 $0\le i\le n$，我们都可以找到一个恰好小于等于 $sumb_i$ 的 $suma_{i’}$，这里的恰好小于等于的意思就是 $suma_{i’}\le sumb_i&lt; suma_{i’+1}$。</p>
+<p>由于 $a_i$ 都是小于等于 $n$ 的，那么我们就可以得到 $0\le sumb_i-suma_{i’}\le n-1$，一共有 $n$ 种可能，但是我们的 $i$ 的取值一共有 $n+1$ 种。由于鸽巢原理，我们可以得到一定会存在一组 $(i, j)$ 满足 $sumb_i-suma_{i’}&#x3D;sumb_{j}-suma_{j’}$。</p>
+<p>我们移项可以得到 $sumb_{i}-sumb_{j}&#x3D;suma_{i’}-suma_{j’}$，也就对应着一段区间的和，至此构造完成。</p>
+<p><strong>Swedish Heroes</strong></p>
+<p>有一个长度为 $n$ 的序列，你要进行恰好 $n-1$ 次操作，每次操作你需要选择连续的两个数 $a_i,a_{i+1}$，然后从序列中删掉这两个数，并将 $-(a_i+a_{i+1})$ 插回到原位置。你需要让所有操作结束后序列剩下的唯一一个数最大，输出这个值。</p>
+<p>数据范围：$n\le 10^5$。</p>
+<hr>
+<p>一个比较显然的性质是：答案一定是 $a$ 序列所有数加加减减得到的，更严谨地说，$a$ 序列中每个数对答案的贡献取决于它在答案中的正负号。</p>
+<p>因此我们可以考虑什么样的正负号排列才是合法的。我们统计一下 <code>-</code> 的数量 $p$, <code>+</code> 的数量 $q$，我们可以发现一个规律：$2p+q \equiv 1 \pmod{3}$。</p>
+<p>证明：显然对于 $n&#x3D;1,2,3$ 的情况都成立，考虑当长度为 $n$ 时的情况：</p>
+<p>每个情况一定都是两种合法情况的组合，那么：</p>
+<p>$$<br>\begin{aligned}<br>-[(2p_1+q_1)+(2p_2+q_2)] &amp;\equiv -(1+1) \pmod{3} \<br>&amp;\equiv 1 \pmod{3}<br>\end{aligned}<br>$$</p>
+<p>但是还有一种情况：<code>+-+-+-+-......</code>。这种情况是不合法的。所以我们还要考虑上这点。</p>
+<p>想到这个性质之后我们就可以开始 dp 了，我们设 $f[i][j][k][u]$ 表示当前考虑到第 $i$ 个数，$2p+q$ 在模 $3$ 意义下为 $j$，上一个符号为 $k$，是否出现了两个相同符号相邻 $u$。</p>
+<p>状态设计出来后就可以开始 dp 了。</p>
+<p>$$<br>f[i+1][(j+2)\bmod 3][0][u|(k&#x3D;&#x3D;0)]\leftarrow f[i][j][k][u]-a_{i+1}<br>$$</p>
+<p>$$<br>f[i+1][(j+1)\bmod 3][1][u|(k&#x3D;&#x3D;1)]\leftarrow f[i][j][k][u]+a_{i+1}<br>$$</p>
+<p>时间复杂度 $O(n)$。</p>
+<p><strong>AquaMoon and Wrong Coordinate</strong></p>
+<p>有 $n$ 个人和 $k$ 个间隔相同时间的时刻，每个人都向正方向做匀速直线运动。给出每个时刻（$0 \sim k - 1$）的所有人的坐标集合（无序），在这 $nk$ 个数中有一个数是错误的，找出这个错误的数并将其改正。</p>
+<p>数据范围：$5 \le n \le 1000$，$7 \le k \le 1000$。</p>
+<hr>
+<p>我们可以考虑所有人的速度都是不变的，因此每个时间刻之间的坐标和之差是一定的。形式化的，我们可以写成下面的式子：</p>
+<p>设 $f_t&#x3D;\sum \limits_{i&#x3D;1}^n(x_i+v_it)$，则</p>
+<p>$$<br>\begin{aligned}<br>f_{t+1} &amp;&#x3D; \sum \limits_{i &#x3D; 1}^n(x_i+v_i(t+1))\<br>&amp;&#x3D;\sum \limits_{i&#x3D;1}^n(x_i+v_it)+\sum \limits_{i&#x3D;1}^nv_i\<br>&amp;&#x3D;f_t+\sum \limits_{i&#x3D;1}^n v_i<br>\end{aligned}<br>$$</p>
+<p>我们就可以用这个性质找到哪一列出现了问题。但是这无法定位到哪个数。因此我们需要再次动用人类智慧。</p>
+<p>我们设 $s_t&#x3D;\sum \limits_{i&#x3D;1}^n (x_i+v_it)^2$。那么我们再次作差，展开就可以得到下面的式子：</p>
+<p>$$<br>s_{t+1}+s_{t-1}-2s_t&#x3D;\sum \limits_{i&#x3D;1}^n 2v_i^2<br>$$</p>
+<p>然后枚举即可。时间复杂度 $O(n)$。</p>
+<p><strong>Largest Smallest Cyclic Shift</strong></p>
+<p>你有 $a$ 个 <code>a</code>，$b$ 个 <code>b</code>，$c$ 个 <code>c</code>。要求用这 $a+b+c$ 个字母拼接成一个字符串，使得这个字符串的最小表示法在所有能拼成的字符串中最大。</p>
+<p>数据范围：$a+b+c \le 50$。</p>
+<hr>
+<p>算法流程比较简单：</p>
+<ol>
+<li>将所有字符串存下来。</li>
+<li>找到这些字符串中最小的和最大的，拼接到一起后插入，然后删除原来的两个字符串。</li>
+<li>重复 2 操作，直到只剩一个字符串为止。</li>
+</ol>
+<p>证明：考虑数学归纳法，假设当你有三个字符串 $s_1, s_2, s_3$（假设 $s_1 &lt; s_2 &lt; s_3$）时，拼接的最优方案为 $s_1 s_2 s_3$ 成立，那么当我们有一个串 $s_1s_2\cdots s_k$ 时，有一个另外的字符串 $s_{k+1}$（$s_1&lt;s_2&lt;\cdots &lt; s_{k+1}$），那么我们把后面 $s_2s_3\cdots s_k$ 看作一个整体，即为 $s$，那么易知 $s&lt;s_{k+1}$。那么我们可以得到最大的字符串即为 $s_1 s_{k+1} s$。</p>
+<p>而当最小的情况（$1$ 个 <code>a</code>，<code>b</code>，<code>c</code>）时，易证该情况成立。</p>
+<p>因此我们上面的算法正确。</p>
+<p>当然这里还有一点漏洞，就是我们必须保证集合中的所有字符串都为最小表示法。而我们的算法中最小和最大拼接的时候就可以保证这一点性质。因此可以这么做。</p>
+<p>用 multiset 就可以做。时间复杂度 $O((a+b+c)\log (a+b+c))$。</p>
+<p><strong>Strange Sorting</strong></p>
+<p>对一个长度至少为 $d$ 的字符串（下标从0开始），定义 d-sorting 的排序方式为，循环 $i$ 从 $0$ 到 $(d-1)$，将字符串中下标 $\bmod\ d$ 为 $i$ 的字符按原顺序取出来依次加到末尾。</p>
+<p>给定长度为 $n$ 的字符串，$m$ 次操作，每次将所有长度为 $k$ 的子串按左到右的顺序进行一次 d-sorting，每次操作后输出当前串。</p>
+<p>数据范围：$m\times n\le 10^6$。</p>
+<hr>
+<p>我们发现一次操作我们相当于是固定一个长度为 $k$ 的滑动窗口向右划，同时在窗口内进行一次 sorting。我们可以把 sorting 的过程看作是一个置换。我们发现每次向右移动窗口太麻烦，我们考虑把窗口固定，让字符串移动。</p>
+<p>我们可以再定义一个置换来让字符串向左移动一位。这样我们只需要把 sorting 的置换和这个左移置换复合，然后循环做 $n-k+1$ 次即可。最后别忘了消除左移的影响。</p>
+<p>时间复杂度 $O(n\log n)$。</p>
+<p><strong>Similar Sets</strong></p>
+<p>对于两个序列 $A,B$，如果存在两个不同的整数 $x,y$ 满足 $x,y\in A$ 且 $x,y\in B$，就说 $A,B$ 是“相似”的。</p>
+<p>给定 $k$ 个序列，输出一对“相似”序列，或告知无解。</p>
+<p>数据范围：$\sum n\le 2\times 10^5$。</p>
+<hr>
+<p>我们先从暴力入手。很容易就可以想到两个暴力：</p>
+<ol>
+<li>固定一个序列，看其他的序列是否有和它有两个相同的元素。时间复杂度 $O(n\times k)$ 。</li>
+<li>枚举二元组 $(u, v)$，看是否有两个序列会产生相同的二元组。时间复杂度 $O(\frac{n^2}{k})$。</li>
+</ol>
+<p>我们直接进行一个根号分治。我们让长度大的序列进行第一个暴力，长度小的序列进行第二个暴力即可。阈值取 $\sqrt n$，时间复杂度 $O(n\sqrt n)$。</p>
+<p><strong>Minimum Path</strong></p>
+<p>给定一个包含 $n$ 个点，$m$ 条带权无向边的图，保证这个图没有自环与重边。点编号为 $1$ 到 $n$，第 $i$ 条边连接编号为 $u_i,v_i$ 的点，有权值 $w_i$。</p>
+<p>我们规定若一条路径所包含的边边集为 $E$，那么这条路径的权值为 $\sum_{i\in E}w_i-\max_{i\in E}w_i+\min_{i\in E}w_i$。</p>
+<p>现在你需要求出对于所有整数 $i$ 满足 $2\leq i\leq n$，从编号为 $1$ 的点到编号为 $i$ 的点所有路径权值的最小值。</p>
+<p>数据范围：$2\leq n\leq2\times10^5,1\leq m\leq2\times10^5;$</p>
+<hr>
+<p>我们发现我们要求的是一个最小值，我们考虑放缩一下。我们把减去 $\max w_i$ 放缩为在这条路径上删去一条边，加上 $\min w_i$ 变为在这条路径上再加上一条边的权值。我们发现如果减去&#x2F;加上的边不是最大&#x2F;最小值的话，我们得到的结果一定不是最优的。</p>
+<p>因此我们建分层图，一个点 $(u, 0&#x2F;1, 0&#x2F;1)$ 表示当前在 $u$ 这个点，是否减去一条边，是否加上一条边，然后跑分层图最短路即可。</p>
+<p><strong>k-Maximum Subsequence Sum</strong></p>
+<p>长度为 $n$ 的数列，支持两种操作： </p>
+<ol>
+<li>修改某个位置的值 </li>
+<li>询问区间 $[l,r]$ 里选出至多 $k$ 个不相交的子段和的最大值。</li>
+</ol>
+<p>数据范围：$n, m\le 10^5, k\le 20$。</p>
+<hr>
+<p>我们先考虑单次询问怎么做。我们建出费用流模型。</p>
+<p><img src="https://gitcode.net/crimson000000/mypic/-/raw/master/study/16.png"></p>
+<p>我们可以直接开始模拟费用流，每次选出最大的子段，然后将这些边取反即可。就可以直接用线段树来维护，重复 $k$ 轮即可。</p>
+<p>维护的东西比较多，可以重定义运算符减少码量。</p>
+<p>时间复杂度 $O(nk\log n)$。</p>
+<p><strong>Game On Tree</strong></p>
+<p>crimson000 和 rain 在玩一个游戏。他们有一棵由 $n$ 个结点组成的树。一开始，rain 有 $k$ 个卡片，其中第 $i$ 个卡片位于结点 $a_i$（注意：所有的结点都是唯一的）。在游戏开始之前，crimson000 将在这棵树的一个结点上放置一个卡片。</p>
+<p>这个游戏由一些回合组成。每个回合都将有以下事件发生（完全按照以下顺序）：</p>
+<ol>
+<li>crimson000 可以把她的卡片移到相邻的结点，或者不移动；</li>
+<li>对于 rain 的每一张卡片，他可以把这张卡片移到相邻的结点，或者不移动。注意：每个卡片的选择都是独立的。</li>
+</ol>
+<p>当 crimson000 的卡片与 rain 的任意一张（或多张）卡片在同一结点时，游戏结束。（rain 自己的多张卡片可以置于同一结点上）</p>
+<p>crimson000 希望游戏回合越多越好，rain 则相反。</p>
+<p>如果某回合中间游戏结束（即 crimson000 把卡片移到了有 rain 卡片的结点上），这回合依然算入总回合数。</p>
+<p>对于每个结点，计算 crimson000 一开始将卡片放在该结点时游戏将持续的回合数。</p>
+<p>数据范围：$n\le 2\times 10^5$。</p>
+<hr>
+<p>我们先让被追者停在原地不动，看在每个点它存活的时间，我们记为 $f_u$。被追者的策略就是：走到一个能走到的 $f_u$ 最大的点，然后停在原地等死。</p>
+<p>现在我们就要找到能走到的 $f_u$ 最大的点 $v$。我们考虑点分治。设当前分治中心为 $x$，显然这个点 $v$ 一定满足 $f_v&gt;dep_u+dep_v$，我们稍微推下式子可以得到：$f_v-dep_v-1\ge dep_u$，我们设 $a_i$ 为 $f_v-dep_v-1&#x3D;i$ 的点的 $f_v$ 的 $\max$，那么当前的决策就是 $\max_{i&#x3D;dep_u}^{+\infty} a_i$，对 $a$ 做后缀 $\max$ 即可。</p>
+<p>时间复杂度 $O(n\log n)$。</p>
+<p><strong>Gregor and the Two Painters</strong></p>
+<p>给定两个长度分别为 $n,m$ 的序列 $a,b$ 和一个参数 $x$。生成一个 $n\times m$ 的黑白矩阵，$(i,j)$ 为黑当且仅当 $a_i+b_j\leq x$。求矩阵内黑色四连通块数</p>
+<p>数据范围：$n,m,a_i,b_i\leq 2\times 10^5$。</p>
+<hr>
+<p>我们进行一个钦定代表元。我们钦定一个连通块的代表元为其 $a_i+b_j$ 最小的那一个。我们只需要对这个代表元计数即可。</p>
+<p>我们考虑一个点如何成为代表元。只有可能是 $a_i+b_j$ 更小的点与其不连通。我们固定 $j$，考虑 $a$ 如何让它和更小的不连通。我们设 $la_i$ 为 $i$ 左侧第一个小于等于它的位置，$ra_i$ 为 $i$ 右侧第一个小于等于它的位置，那么 $la_i, ra_i$ 和 $i$ 不能连通，也就是 $\min(\max_{j&#x3D;la_i}^i a_i, \max_{j&#x3D;i}^{ra_i}a_i)+b_j&gt;x$，我们记前面那堆为 $ma_i$，同理我们对 $b$ 也做相同的事情，就能得到一个点 $(i, j)$ 成为代表元的条件：$a_i+b_j\le x, ma_i+b_j&gt;x, a_i+mb_j&gt;x$。直接二维数点，树状数组即可。</p>
+<p>时间复杂度 $O(n\log n)$。</p>
+<h1 id="未完待续，持续更新"><a href="#未完待续，持续更新" class="headerlink" title="未完待续，持续更新"></a>未完待续，持续更新</h1>
+    </div>
+    <footer class="article-footer">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E9%9B%86/" rel="tag" title="题集">题集</a></li></ul>
+
+    </footer>
+  </div>
+    <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
+      <div class="article-nav-link-wrap left">
+          <img data-src="https://gitcode.net/crimson000000/mypic/-/raw/master/bg/6.jpg" data-sizes="auto" alt="字符串总结" class="lazyload">
+        <a href="/2023/07/17/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%80%BB%E7%BB%93/" aria-label="前一篇: 字符串总结" title="前一篇: 字符串总结"></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">
+            字符串总结
+        </h3>
+      </div>
+    <div class="article-nav-link-wrap right">
+        <img data-src="https://gitcode.net/crimson000000/mypic/-/raw/master/bg/13.jpg" data-sizes="auto" alt="计数杂题" class="lazyload">
+      <a href="/2023/07/08/%E8%AE%A1%E6%95%B0%E6%9D%82%E9%A2%98/" aria-label="后一篇: 计数杂题"  title="后一篇: 计数杂题"></a>
+      <div class="article-nav-caption">后一篇</div>
+      <h3 class="article-nav-title">
+          计数杂题
+      </h3>
+    </div>
+  </nav>
+
+</article>
+
+
+</section>
+        </div>
+        <footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info">
+    <div>
+      <span class="icon-copyright"></span>
+        2020-2026
+      <span class="footer-info-sep rotate"></span>
+      crimson000
+    </div>
+      <div>
+        基于&nbsp;<a href="https://hexo.io/" rel="noopener nofollow noreferrer" target="_blank">Hexo</a>&nbsp;
+        Theme.<a href="https://github.com/D-Sketon/hexo-theme-reimu" rel="noopener nofollow noreferrer" target="_blank">Reimu</a>
+      </div>
+      <div>
+        <span class="icon-brush"></span>
+        85.3k
+        &nbsp;|&nbsp;
+        <span class="icon-coffee"></span>
+        05:54
+      </div>
+      <div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv">总访问量&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv">总访客量&nbsp;<span id="busuanzi_value_site_uv"></span></span>
+      </div>
+  </div>
+</footer>
+
+          <div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div>
+        <div id="mask" class="hide"></div>
+      </div>
+      <nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap">
+        <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD%EF%BC%8C%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0"><span class="toc-number">1.</span> <span class="toc-text">未完待续，持续更新</span></a></li></ol>
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.jpg" data-sizes="auto" alt="crimson000" class="lazyload">
+  <div class="sidebar-author-name">crimson000</div>
+  <div class="sidebar-description">我喜欢打源神和舞萌</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">11</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">8</div>
+  </div>
+</div>
+<div class="sidebar-social">
+</div>
+<div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+</div>
+</div>
+  </div>
+      <div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div>
+</nav>
+
+    </div>
+    
+<script src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js" integrity="sha384-3gT&#x2F;vsepWkfz&#x2F;ff7PpWNUeMzeWoH3cDhm&#x2F;A8jM7ouoAK0&#x2F;fP&#x2F;9bcHHR5kHq2nf+e" crossorigin="anonymous"></script>
+
+
+<script src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js" integrity="sha384-J08i8An&#x2F;QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  
+<script src="/js/aos.js"></script>
+
+  <script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', aosInit);
+    } else {
+      aosInit();
+    }
+  </script>
+
+
+<script src="/js/pjax_script.js" data-pjax></script>
+
+
+
+
+  
+<script src="https://npm.webcache.cn/mouse-firework@0.1.1/dist/index.umd.js" integrity="sha384-8LyaidD9GPxQQgLJO&#x2F;WRw&#x2F;O2h3BoNq&#x2F;ApI&#x2F;ecpvM6RsrCz2qP2ppBXUKihP4V&#x2F;2d" crossorigin="anonymous"></script>
+
+  <script>
+    if (!false || !window.matchMedia('(max-width: 768px)').matches) {
+      window.firework && window.firework(JSON.parse('{"excludeElements":["a","button"],"particles":[{"shape":"circle","move":["emit"],"easing":"easeOutExpo","colors":["var(--red-1)","var(--red-2)","var(--red-3)","var(--red-4)"],"number":20,"duration":[1200,1800],"shapeOptions":{"radius":[16,32],"alpha":[0.3,0.5]}},{"shape":"circle","move":["diffuse"],"easing":"easeOutExpo","colors":["var(--red-0)"],"number":1,"duration":[1200,1800],"shapeOptions":{"radius":20,"alpha":[0.2,0.5],"lineWidth":6}}]}'));
+    }
+  </script>
+
+
+
+
+
+<div id="lazy-script">
+  <div>
+      
+      
+      <script data-pjax>
+        window.REIMU_POST = {
+          author: "crimson000",
+          title: "一些杂题",
+          url: "https://crimson000000.github.io/2023/07/11/%E4%B8%80%E4%BA%9B%E6%9D%82%E9%A2%98/",
+          excerpt: "一些杂题，主要是贪心（模拟费用流）和构造，以及一些思维题。（部分来自 zzz 课件）",
+          description: "",
+          stripContent: "一些杂题，主要是贪心（模拟费用流）和构造，以及一些思维题。（部分来自 zzz 课件）   Bohater 有 $n$ 只怪物，为了打败第 $i$ 只怪物，你会下降 $d_i$ 的血量。击败怪物后，会掉落回复 $a_i$ 生命值的血药。任何时刻血量都不能小于等于 $0$。问是否存在一种打怪顺序使得自身不死掉。 数据范围：$n \le 10^5$。  简单贪心，我们把怪物分为两种类型：击败后加血和击败后扣血。对于第一种怪物，我们可以采取先打 $d_i$ 小的，因为我们需要攒血量去打 $d_i$ 大的",
+          date: "Tue Jul 11 2023 21:32:35 GMT+0800",
+          updated: "Sat Aug 15 2026 16:51:39 GMT+0800",
+          cover: "https://gitcode.net/crimson000000/mypic/-/raw/master/bg/16.jpg",
+        };
+      </script>
+        
+<script src="/js/insert_highlight.js" data-pjax></script>
+
+      <script type="module" data-pjax>
+        const PhotoSwipeLightbox = (await safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js", "sha384-DiL6M/gG+wmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF/N6lrZi/")).default;
+        const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,
+              pswpModule: () => safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8+oTJ7m3DfYEWX1fu1scuS4+s")
+            }).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script>
+        
+
+  </div>
+</div>
+
+
+  <script>
+    console.log(String.raw`%c 
+ ______     ______     __     __    __     __  __    
+/\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+\ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+ \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+  \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                  
+`,'color: #ff5252;')
+    console.log('%c Theme.Reimu v' + '1.10.4' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+  </script>
+  
+
+
+  
+<script src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js" integrity="sha384-0M75wtSkhjIInv4coYlaJU83+OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id+S" crossorigin="anonymous" async></script>
+
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      for (let registration of registrations) {
+        registration.unregister();
+      }
+    });
+  }
+</script>
+
+
+
+
+
+  </body>
+  </html>

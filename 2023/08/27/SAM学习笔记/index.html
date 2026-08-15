@@ -1,0 +1,651 @@
+  <!DOCTYPE html>
+  <html lang="zh-CN"  
+      data-theme-mode="auto"
+  >
+  <head>
+  <meta charset="utf-8">
+  
+  
+  
+  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_4k4bc36ef96';window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'https://crimson000000.github.io';</script>
+  <title>
+    SAM学习笔记 | crimson000
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish%3A400%2C400italic%2C700%2C700italic%7CNoto+Serif+SC%3A400%2C400italic%2C700%2C700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish%3A400%2C400italic%2C700%2C700italic%7CNoto+Serif+SC%3A400%2C400italic%2C700%2C700italic&display=swap" media="print" onload="this.media&#x3D;&#39;all&#39;">
+    <link rel="preload" href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    
+<link rel="stylesheet" href="/css/loader.css">
+
+    <meta name="description" content="写写 SAM 这抽象玩意。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SAM学习笔记">
+<meta property="og:url" content="https://crimson000000.github.io/2023/08/27/SAM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="crimson000">
+<meta property="og:description" content="写写 SAM 这抽象玩意。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitcode.net/crimson000000/mypic/-/raw/master/study/Parent_Tree.png">
+<meta property="article:published_time" content="2023-08-27T08:27:48.000Z">
+<meta property="article:modified_time" content="2026-08-15T08:51:39.510Z">
+<meta property="article:author" content="crimson000">
+<meta property="article:tag" content="字符串">
+<meta property="article:tag" content="学习笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitcode.net/crimson000000/mypic/-/raw/master/study/Parent_Tree.png">
+    <link rel="alternate" href="/atom.xml" title="crimson000" type="application/atom+xml">
+    <link rel="shortcut icon" href="/images/favicon.png">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL&#x2F;toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx&#x2F;1oA&#x2F;0l8ysE" crossorigin="anonymous">
+    
+<script src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js" integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script>
+
+    
+<link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css" integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous">
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+  <body>
+      <div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate">
+          <svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+           M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
+          </svg>
+      </div>
+      <div class="loading-word">少女祈祷中...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script>
+<div id="copy-tooltip"></div>
+<div id="heatmap-tooltip"></div>
+
+
+    <div id="container">
+      <div id="wrap">
+        <div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation">
+        <a class="main-nav-link-wrap" href="/">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">首页</span>
+        </span>
+        <a class="main-nav-link-wrap" href="/archives">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">归档</span>
+        </span>
+        <a class="main-nav-link-wrap" href="/about">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">关于</span>
+        </span>
+        <a class="main-nav-link-wrap" href="/friend">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">友链</span>
+        </span>
+    <a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation">
+      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅" aria-label="RSS 订阅" target="_blank"></a>
+  </nav>
+</div>
+<header id="header" aria-label="Site header">
+    <picture></picture>
+    <img  fetchpriority="high" src="https://gitcode.net/crimson000000/mypic/-/raw/master/bg/32.jpg" alt="SAM学习笔记">
+  <div id="header-outer">
+    <div id="header-title">
+          <span id="logo">
+            <h1 data-aos="slide-up">SAM学习笔记</h1>
+          </span>
+        <h2 id="subtitle-wrap" data-aos="slide-down">
+        </h2>
+    </div>
+  </div>
+</header>
+
+        <div id="content" aria-label="Page content"  class="sidebar-right" >
+          <aside id="sidebar" aria-label="Sidebar">
+  <div class="sidebar-wrapper-container sticky">
+  <div class="sidebar-wrapper">
+    <div class="sidebar-wrap" data-aos="fade-up">
+          <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Parent-Tree"><span class="toc-number">1.</span> <span class="toc-text">Parent Tree</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SAM"><span class="toc-number">2.</span> <span class="toc-text">SAM</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E9%A2%98%E7%9B%AE"><span class="toc-number">3.</span> <span class="toc-text">一些题目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#The-End"><span class="toc-number">4.</span> <span class="toc-text">The End</span></a></li></ol>
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.jpg" data-sizes="auto" alt="crimson000" class="lazyload">
+  <div class="sidebar-author-name">crimson000</div>
+  <div class="sidebar-description">我喜欢打源神和舞萌</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">11</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">8</div>
+  </div>
+</div>
+<div class="sidebar-social">
+</div>
+<div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+</div>
+</div>
+          <div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div>
+    </div>
+  </div>
+  <div class="sidebar-widget">
+  </div>
+  </div>
+</aside>
+
+          <section id="main" aria-label="Main content"><article id="post-SAM学习笔记" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner" data-aos="fade-up">
+    <div class="article-meta">
+      <div class="article-date">
+  <span class="article-date-link icon-calendar" data-aos="zoom-in">
+    <time datetime="2023-08-27T08:27:48.000Z" itemprop="datePublished">2023-08-27</time>
+    <time style="display: none;" id="post-update-time">2026-08-15</time>
+  </span>
+</div>
+
+        <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/" title="算法竞赛">算法竞赛</a><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="学习笔记">学习笔记</a>
+  </div>
+
+    </div>
+    
+    <div class="hr-line"></div>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+        <p>写写 SAM 这抽象玩意。</p>
+<span id="more"></span>
+
+<p>SAM（Suffix Automaton），后缀自动机，是用来解决有关字符串子串问题的一种数据结构。</p>
+<p>我们知道，一个字符串的所有子串，其实也就是所有前缀的后缀。因此我们就诞生了一个想法：把所有后缀都扔到 trie 树上，这样我们就可以直接沿着字符走，并且能够获得所有子串的信息。</p>
+<p>但是这样的空间复杂度是能够达到 $O(n^2)$ 级别的。因此我们需要优化一下这个东西，我们可以发现大部分的转移边和点是重复的。因此我们需要把自动机的状态压缩。</p>
+<p>在我们考虑这个问题之前，我们先来看另外一种东西，这个东西就是我们压缩自动机状态的关键。</p>
+<h1 id="Parent-Tree"><a href="#Parent-Tree" class="headerlink" title="Parent Tree"></a>Parent Tree</h1><blockquote>
+<p>为了方便叙述，我们定义整个字符串为 $t$。</p>
+</blockquote>
+<p>我们定义 $\mathrm{Endpos}(s)$ 为 $s$ 这个字符串在 $t$ 中出现的位置的结尾。比如，我们设 $t&#x3D;\texttt{abcaabcc}$，那么 $\mathrm{Endpos}(\texttt{abc})&#x3D;{3, 7 }$。根据 $\mathrm{Endpos}$，我们就可以把所有该字符串的子串划分成一堆等价类。</p>
+<p>而关于 $\mathrm{Endpos}$，有很多性质，这里不再一一证明，仅罗列在下面：</p>
+<ol>
+<li>当 $\mathrm{Endpos}(a)&#x3D;\mathrm{Endpos}(b), |a|&lt;|b|$ 时，在 $t$ 中每次出现时，$a$ 都作为 $b$ 的后缀出现。</li>
+<li>两个字符串 $a, b$（假设 $|a|&lt;|b|$），要么 $\mathrm{Endpos}(a) \cup \mathrm{Endpos}(b) &#x3D; \varnothing$，要么 $\mathrm{Endpos}(b) \subseteq  \mathrm{Endpos}(a)$</li>
+<li>对于同一 $\mathrm{Endpos}$ 等价类的两个子串，其中长度较短者为长度较长者的后缀，且该等价类中字符串的长度完全覆盖 $[x, y]$ 这段区间且不相交。</li>
+</ol>
+<p>我们根据这几条性质，我们可以想到树形结构。具体地说，一个等价类可以看作一个点，而等价类的包含关系则对应着树上的父子关系。这样我们就能建立一棵树，而每个点对应的父亲也就是我们在 SAM 中见到的 $\mathrm{link}$。</p>
+<p>更具体的定义 $\mathrm{link(u)}$，即为大小最小的，且包含 $u$ 这个等价类并且不与 $u$ 这个等价类相等的等价类。（OIwiki 上没看懂，因此就自己照着理解写了写）</p>
+<hr>
+<details>
+<summary>这里是 OIwiki 的定义</summary>
+
+<p>考虑 SAM 中某个不是 $t_0$ 的状态 $v$。我们已经知道，状态 $v$ 对应于具有相同 $\mathrm{endpos}$ 的等价类。我们如果定义 $w$ 为这些字符串中最长的一个，则所有其它的字符串都是 $w$ 的后缀。</p>
+<p>我们还知道字符串 $w$ 的前几个后缀（按长度降序考虑）全部包含于这个等价类，且所有其它后缀（至少有一个——空后缀）在其它的等价类中。我们记 $t$ 为最长的这样的后缀，然后将 $v$ 的后缀链接连到 $t$ 上。</p>
+<p>换句话说，一个 <strong>后缀链接</strong> $\mathrm{link(v)}$ 连接到对应于 $w$ 的最长后缀的另一个 $\mathrm{endpos}$ 等价类的状态。</p>
+</details>
+
+<hr>
+<p>我们再设一个初始状态 $t_0$，它的 $\mathrm{Endpos}&#x3D;{-1, 0, \cdots |t|-1 }$。这样我们就把根据 $\mathrm{link}$ 构建出的一个森林转化为了一棵树。</p>
+<p>同时，我们定义 $\mathrm{len}(u)$ 为 $u$ 这个等价类中，最长的字符串的长度，$\mathrm{minlen}(u)$ 为最短的字符串长度。根据上面的性质 3，我们可以得到下面的结论：</p>
+<p>$$<br>\mathrm{len}({link}(u))+1&#x3D;\mathrm{minlen}(u)<br>$$</p>
+<p>同时我们也可以得到一个等价类中包含的字符串的个数为 $\mathrm{len}(u)-\mathrm{minlen}(u)$。</p>
+<p>根据我们上面说的这些，我们构建出来的一棵树就叫做 Parent Tree。</p>
+<p>下图是根据字符串 $\texttt{abcbc}$ 构建出的 Parent Tree：</p>
+<p><img src="https://gitcode.net/crimson000000/mypic/-/raw/master/study/Parent_Tree.png" alt="图片来源：OIWIKI"></p>
+<p>我们可以证明，Parent Tree 中点的个数的数量级为 $O(n)$。而对于 SAM，我们就可以利用 Parent Tree 来作为我们 SAM 的节点。</p>
+<h1 id="SAM"><a href="#SAM" class="headerlink" title="SAM"></a>SAM</h1><p>上面我们介绍了 Parent Tree，我们这里就要利用 Parent Tree 来构建 SAM。</p>
+<p>SAM 的构建是在线算法，也就是说，我们可以每加入一个字符然后就进行扩展自动机。</p>
+<p>这里先把构建的全过程放在这里：</p>
+<p>首先，SAM 初始状态为只有一个节点 $0$，表示空节点（也就是 $t_0$），为了方便，我们设 $\mathrm{len}(0)&#x3D;0, \mathrm{link}(0)&#x3D;-1$。</p>
+<ul>
+<li>设 $last$ 为添加字符 $c$ 前对应的状态（初始为 $0$，最后一步更新 $last$）</li>
+<li>创建新状态 $cur$，令 $\mathrm{len}(cur)&#x3D;\mathrm{len}(last)+1$。</li>
+<li>接下来遍历 $last$ 的后缀链接，如果所到的节点没有 $c$ 的转移，那么我们就加入 $c$ 的转移。</li>
+<li>如果到达了虚拟状态 $-1$，我们就令 $\mathrm{link}(cur)&#x3D;0$ 并直接跳转到最后。</li>
+<li>否则设第一个有 $c$ 的转移的点为 $p$，$p$ 通过 $c$ 转移到的点为 $q$。</li>
+<li>如果 $\mathrm{len}(q)&#x3D;\mathrm{len}(p)+1$，那么我们直接令 $\mathrm{link}(cur)&#x3D;q$ 并跳转到最后。</li>
+<li>否则则进入最麻烦的情况：<ul>
+<li>我们对 $q$ 创建一个副本 $copy$，把 $q$ 的后缀链接和转移全部复制给 $copy$，同时令 $\mathrm{len}(copy)&#x3D;\mathrm{len}(p)+1$。</li>
+<li>然后我们把 $\mathrm{link}(q)$ 和 $\mathrm{link}(cur)$ 赋值为 $copy$。</li>
+<li>最后我们再从 $p$ 开始遍历后缀链接，如果遇到向 $q$ 的转移，我们就把它重定向到 $copy$，直到转移到的点不为 $q$。</li>
+</ul>
+</li>
+<li>最后，令 $last$ 为 $cur$。</li>
+</ul>
+<p>算法的正确性证明我不会&#x2F;kk，所以我再把 OIWIKI 的讲解赫到这里&#x2F;kel。</p>
+<hr>
+<details>
+<summary>正确性证明</summary>
+
+<ul>
+<li>若一个转移 $(p,q)$ 满足 $\operatorname{len}(p)+1&#x3D;\operatorname{len}(q)$，则我们称这个转移是 <strong>连续的</strong>。否则，即当 $\operatorname{len}(p)+1&lt;\operatorname{len}(q)$ 时，这个转移被称为 <strong>不连续的</strong>。从算法描述中可以看出，连续的、不连续的转移是算法的不同情况。连续的转移是固定的，我们不会再改变了。与此相反，当向字符串中插入一个新的字符时，不连续的转移可能会改变（转移边的端点可能会改变）。</li>
+<li>为了避免引起歧义，我们记向 SAM 中插入当前字符 $c$ 之前的字符串为 $s$。</li>
+<li>算法从创建一个新状态 $\textit{cur}$ 开始，对应于整个字符串 $s+c$。我们创建一个新的节点的原因很清楚。与此同时我们也创建了一个新的字符和一个新的等价类。</li>
+<li>在创建一个新的状态之后，我们会从对应整个字符串 $s$ 的状态通过后缀链接进行遍历。对于每一个状态，我们尝试添加一个通过字符 $c$ 到新状态 $\textit{cur}$ 的转移。然而我们只能添加与原有转移不冲突的转移。因此我们只要找到已存在的 $c$ 的转移，我们就必须停止。</li>
+<li>最简单的情况是我们到达了虚拟状态 $-1$，这意味着我们为所有 $s$ 的后缀添加了 $c$ 的转移。这也意味着，字符 $c$ 从未在字符串 $s$ 中出现过。因此 $\textit{cur}$ 的后缀链接为状态 $0$。</li>
+<li>第二种情况下，我们找到了现有的转移 $(p,q)$。这意味着我们尝试向自动机内添加一个 <strong>已经存在的</strong> 字符串 $x+c$（其中 $x$ 为 $s$ 的一个后缀，且字符串 $x+c$ 已经作为 $s$ 的一个子串出现过了）。因为我们假设字符串 $s$ 的自动机的构造是正确的，我们不应该在这里添加一个新的转移。然而，难点在于，从状态 $\textit{cur}$ 出发的后缀链接应该连接到哪个状态呢？我们要把后缀链接连到一个状态上，且其中最长的一个字符串恰好是 $x+c$，即这个状态的 $\operatorname{len}$ 应该是 $\operatorname{len}(p)+1$。然而还不存在这样的状态，即 $\operatorname{len}(q)&gt;\operatorname{len}(p)+1$。这种情况下，我们必须通过拆开状态 $q$ 来创建一个这样的状态。</li>
+<li>如果转移 $(p,,q)$ 是连续的，那么 $\operatorname{len}(q)&#x3D;\operatorname{len}(p)+1$。在这种情况下一切都很简单。我们只需要将 $\textit{cur}$ 的后缀链接指向状态 $q$。</li>
+<li>否则转移是不连续的，即 $\operatorname{len}(q)&gt;\operatorname{len}(p)+1$，这意味着状态 $q$ 不只对应于长度为 $\operatorname{len}(p)+1$ 的后缀 $s+c$，还对应于 $s$ 的更长的子串。除了将状态 $q$ 拆成两个子状态以外我们别无他法，所以第一个子状态的长度就是 $\operatorname{len}(p)+1$ 了。<br>我们如何拆开一个状态呢？我们 <strong>复制</strong> 状态 $q$，产生一个状态 $\textit{clone}$，我们将 $\operatorname{len}(\textit{clone})$ 赋值为 $\operatorname{len}(p)+1$。由于我们不想改变遍历到 $q$ 的路径，我们将 $q$ 的所有转移复制到 $\textit{clone}$。我们也将从 $\textit{clone}$ 出发的后缀链接设置为 $q$ 的后缀链接的目标，并设置 $q$ 的后缀链接为 $\textit{clone}$。<br>在拆开状态后，我们将从 $\textit{cur}$ 出发的后缀链接设置为 $\textit{clone}$。<br>最后一步我们将一些到 $q$ 转移重定向到 $\textit{clone}$。我们需要修改哪些转移呢？只重定向相当于所有字符串 $w+c$（其中 $w$ 是 $p$ 的最长字符串）的后缀就够了。即，我们需要继续沿着后缀链接遍历，从结点 $p$ 直到虚拟状态 $-1$ 或者是转移到不是状态 $q$ 的一个转移。</details></li>
+</ul>
+<hr>
+<p>根据上面的构造方法，我们还能证明，自动机中的节点数的量级为 $O(n)$ 级别的。</p>
+<details>
+<summary>构建方法</summary>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">extend</span><span class="params">(<span class="type">char</span> *s)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n = <span class="built_in">strlen</span>(s + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> p = last, cur = ++ idx, c = s[i] - <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">        f[cur] = siz[cur] = <span class="number">1</span>;</span><br><span class="line">        len[cur] = len[p] + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(p != <span class="number">-1</span> &amp;&amp; !tr[p][c])</span><br><span class="line">        &#123;</span><br><span class="line">            tr[p][c] = cur;</span><br><span class="line">            p = link[p];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(p == <span class="number">-1</span>) link[cur] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> q = tr[p][c];</span><br><span class="line">            <span class="keyword">if</span>(len[q] == len[p] + <span class="number">1</span>) link[cur] = q;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="type">int</span> copy = ++ idx;</span><br><span class="line">                len[copy] = len[p] + <span class="number">1</span>;</span><br><span class="line">                link[copy] = link[q];</span><br><span class="line">                <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">26</span>; i ++ ) tr[copy][i] = tr[q][i];</span><br><span class="line">                <span class="keyword">while</span>(p != <span class="number">-1</span> &amp;&amp; tr[p][c] == q)</span><br><span class="line">                &#123;</span><br><span class="line">                    tr[p][c] = copy;</span><br><span class="line">                    p = link[p];</span><br><span class="line">                &#125;</span><br><span class="line">                link[cur] = link[q] = copy;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; </span><br><span class="line">        last = cur;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= idx; i ++ ) G[link[i]].<span class="built_in">emplace_back</span>(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</details>
+
+<blockquote>
+<p><font color="red">注意</font>：SAM 中节点数最多能够达到 $2n-1$，因此需要将数组开两倍。</p>
+</blockquote>
+<h1 id="一些题目"><a href="#一些题目" class="headerlink" title="一些题目"></a>一些题目</h1><p><strong><a id="模板题"><font color="black">【模板】后缀自动机（SAM）</font></a></strong></p>
+<p>给定一个只包含小写字母的字符串 $S$，求出 $S$ 的所有出现次数不为 $1$ 的子串的出现次数乘上该子串长度的最大值。</p>
+<p>数据范围：$|S| \le 10^6$。</p>
+<hr>
+<p>模板题。我们先建出 SAM，然后在 Parent Tree 上进行 DP。$u$ 节点代表的字符串出现的次数就是它在 Parent Tree 上子树的大小。因此直接统计即可。</p>
+<p>时间复杂度 $O(n)$。</p>
+<p><strong>[JSOI2012] 玄武密码</strong></p>
+<p>给定 $n$ 个字符串 $t$，对于每一段字符串 $t$，求出其最长的前缀 $p$，满足 $p$ 是 $s$ 的子串。</p>
+<p>数据范围：$|s|\le 10^7, \sum |t|\le 10^7$，字符集大小为 $4$。</p>
+<hr>
+<p>SAM 裸题。由于 SAM 上存储了所有后缀的前缀，因此我们直接把 $t$ 放到 SAM 上跑即可，跑了多长不能跑了就为答案。</p>
+<p>时间复杂度 $O(n)$。</p>
+<p><strong>[TJOI2015] 弦论</strong></p>
+<p>对于一个给定的长度为 $n$ 的字符串，求出它的第 $k$ 小子串。</p>
+<p>这里有两种询问：不同位置的相同子串算作一个和不同位置的相同子串算作多个。</p>
+<p>数据范围：$n\le 10^5$。</p>
+<hr>
+<p>大杂烩题目，感觉像两道题拼起来的。</p>
+<p>我们先考虑不同位置相同子串算一个的情况。这时我们可以先 dp，由于 SAM 为一张 DAG，因此我们可以记录从某个点开始走一共会走出多少种字符串。然后输出方案时，我们从小到大遍历出边，同时减去走这条边的方案数。直到 $k$ 小于走这条边的方案数就走这条边。</p>
+<p>而对于不同位置算多个的，我们可以先按照<a href="#模板题">上面模板题</a>的思路，先统计出每个点出现的次数，然后按照上面的重新 dp 即可。</p>
+<p><strong>Longest Common Substring</strong></p>
+<p>输入两个字符串，输出它们的最长公共子串长度。</p>
+<p>数据范围：$|s|, |t|\le 2.5\times 10^5$。</p>
+<hr>
+<p>我们先对一个串建 SAM，然后把另一个串放到 SAM 上跑。由于后缀链接记录的是前缀的后缀，因此跑不了的时候我们就一直跳后缀链接，同时记录一个最大长度即可。</p>
+<p>时间复杂度 $O(n)$。</p>
+<p><strong>[AHOI2013] 差异</strong></p>
+<p>给定一个长度为 $n$ 的字符串 $S$，令 $T_i$ 表示它从第 $i$ 个字符开始的后缀。求</p>
+<p>$$<br>\sum_{1\leqslant i&lt;j\leqslant n}\mathrm{len}(T_i)+\mathrm{len}(T_j)-2\times\mathrm{lcp}(T_i,T_j)<br>$$</p>
+<p>数据范围：$n\le 5\times 10^5$。</p>
+<hr>
+<p>前面两项好搞，我们先提出来。这样我们的目标就变为了求 $\sum_{1\leqslant i&lt;j\leqslant n}\mathrm{lcp}(T_i,T_j)$。</p>
+<p>lcp 不好求，但是 SAM 适合求 lcs，我们就把字符串翻转过来，就变成了求 lcs。一个结论：$i$ 前缀和 $j$ 前缀的 lcs 即为在 Parent Tree 上的 $lca$ 的 $\mathrm{len}$。因此我们可以直接树形 dp，对于每个点算一下有多少对点的 $lca$ 是它即可。</p>
+<p>时间复杂度 $O(n)$。</p>
+<p><strong>Yet Another LCP Problem</strong></p>
+<p>给定一个字符串，每次询问的时候给出两个正整数集合 $A$ 和 $B$，求 $\sum_{i \in A,j \in B}lcp(i,j)$</p>
+<p>数据范围：$|s|\le 2\times 10^5, \sum |A|, \sum |B|\le 2\times 10^5$。</p>
+<hr>
+<p>我们先把字符串翻转，将 $lcp$ 转化为 $lcs$。根据上一道题的套路，我们建出来 SAM，这样两个点在 parent tree 上对应的 lca 的 $len$ 即为最长公共后缀。</p>
+<p>但是这里有多组询问，我们就可以每组询问建虚树，然后在虚树上进行 dp 计算答案。具体的说，我们设 $sum_{u, 0}$ 为 $u$ 子树中 $A$ 集合点的数量，$sum_{u, 1}$ 为 $u$ 子树中 $B$ 集合点的数量。通过容斥我们就能算出有多少 $a\in A, b\in B$ 的 lca 是 $u$。最终再乘上 $len_u$ 即可。</p>
+<p>时间复杂度 $O(n\log n)$。</p>
+<p><strong>[NOI2018] 你的名字</strong></p>
+<p>给定一个字符串 $S$，多次询问。询问给定一个字符串 $T$，有多少 $T$ 的子串满足其不为 $S[l\sim r]$ 构成的字符串的子串。</p>
+<p>数据范围：$|S|\le 5\times 10^5, \sum |T|\le 10^6$</p>
+<hr>
+<p>我们先考虑 $L&#x3D;1, R &#x3D; |S|$ 的情况。这时我们对 $S$ 和 $T$ 分别建 SAM，对 $T$ 的第 $i$ 个前缀，我们要找出它最长的后缀且这个后缀是 $S$ 的子串。我们加入 $T$ 的第 $i$ 个字符后，我们看当前节点是否有这一个转移，如果没有就一直跳 $link$。</p>
+<p>最后我们将每一个前缀的满足上面要求的最长后缀记录为 $lim_i$。我们再设 SAM 上第 $i$ 个节点对应字符串中的位置是 $tag_i$。那么最后的答案就是：</p>
+<p>$$<br>\sum \limits_{p&#x3D;1}^{idx}\max(0, \mathrm{len}(p)-\max(\mathrm{len}(\mathrm{link}(p)), lim_{tag_p}))<br>$$</p>
+<p>也就是对于每个节点，我们用它的长度减去它匹配的长度就是它不为 $S$ 子串的长度。</p>
+<p>而对于有了区间限制这个东西，我们可以思考一下我们上面用 SAM 都做了什么：跳 $link$ 和看是否有转移。我们可以直接用线段树维护每个点的 $\mathrm{endpos}$ 集合。当这个集合中有我们限制的区间之内的位置，我们才可以进行转移，否则就跳出了这个区间。</p>
+<p>而对于 $\mathrm{endpos}$，在 parent tree 上是父亲包含儿子的关系，因此我们直接线段树合并维护一下就好了。</p>
+<p>时间复杂度 $O(n\log n)$。</p>
+<p><strong>区间本质不同子串个数</strong></p>
+<p>给定一个长度为 $n$ 的字符串 $S$，$m$ 次询问由 $S$ 的第 $L$ 到第 $R$ 个字符组成的字符串包含多少个本质不同的子串。</p>
+<p>数据范围：$n\le 10^5, m\le 2\times 10^5$。</p>
+<hr>
+<p>对于区间数不同颜色这种问题，一个常见的套路为讲询问离线，然后右端点扫描线，同时只维护每个不同元素在最右端出现的位置。</p>
+<p>而对于这题我们也可以这么做。我们把询问离线后做扫描线，发现每次新加入的元素的 $\mathrm{endpos}$ 都包含新加入的右端点，也就是都是以右端点为结尾的子串。可以发现这些字符串在 parent tree 上对应着到根的一条链，于是我们的任务就变成了把这条链上的原来的影响消除，并且把它们在新位置的贡献加上。</p>
+<p>我们就可以沿用<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3703">[SDOI2017] 树点涂色</a>的套路，用 LCT 来维护这个过程。具体地说，我们在 LCT 的每个点维护一个 $val$，表示它目前 $\mathrm{endpos}$ 的最大值。每次 access 时我们把一整条链的影响全部消除，同时把最终这条实链的 $val$ 全部覆盖为当前的右端点。然后我们再把当前新增加的字符串的开始位置加上即可。</p>
+<p>时间复杂度 $O(n\log^2n)$。</p>
+<p><del>说着很麻烦但是写起来都是板子反而相当好写&#x2F;yiw</del></p>
+<h1 id="The-End"><a href="#The-End" class="headerlink" title="The End"></a>The End</h1><p>其实 SAM 还有很多东西没讲完，但是限于作者本人能力问题，有很多应用和证明都没有讲。以后可能会再更新一点。</p>
+<p>参考资料：OIWIKI -<a target="_blank" rel="noopener" href="https://oi-wiki.org/string/sam/">https://oi-wiki.org/string/sam/</a></p>
+
+    </div>
+    <footer class="article-footer">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag" title="字符串">字符串</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag" title="学习笔记">学习笔记</a></li></ul>
+
+    </footer>
+  </div>
+    <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
+      <div class="article-nav-link-wrap left">
+          <img data-src="https://gitcode.net/crimson000000/mypic/-/raw/master/bg/72.jpg" data-sizes="auto" alt="概率期望杂题" class="lazyload">
+        <a href="/2023/09/07/%E6%A6%82%E7%8E%87%E6%9C%9F%E6%9C%9B%E6%9D%82%E9%A2%98/" aria-label="前一篇: 概率期望杂题" title="前一篇: 概率期望杂题"></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">
+            概率期望杂题
+        </h3>
+      </div>
+    <div class="article-nav-link-wrap right">
+        <img data-src="https://gitcode.net/crimson000000/mypic/-/raw/master/bg/41.jpg" data-sizes="auto" alt="多项式计数相关" class="lazyload">
+      <a href="/2023/07/26/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E8%AE%A1%E6%95%B0%E7%9B%B8%E5%85%B3/" aria-label="后一篇: 多项式计数相关"  title="后一篇: 多项式计数相关"></a>
+      <div class="article-nav-caption">后一篇</div>
+      <h3 class="article-nav-title">
+          多项式计数相关
+      </h3>
+    </div>
+  </nav>
+
+</article>
+
+
+</section>
+        </div>
+        <footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info">
+    <div>
+      <span class="icon-copyright"></span>
+        2020-2026
+      <span class="footer-info-sep rotate"></span>
+      crimson000
+    </div>
+      <div>
+        基于&nbsp;<a href="https://hexo.io/" rel="noopener nofollow noreferrer" target="_blank">Hexo</a>&nbsp;
+        Theme.<a href="https://github.com/D-Sketon/hexo-theme-reimu" rel="noopener nofollow noreferrer" target="_blank">Reimu</a>
+      </div>
+      <div>
+        <span class="icon-brush"></span>
+        85.3k
+        &nbsp;|&nbsp;
+        <span class="icon-coffee"></span>
+        05:54
+      </div>
+      <div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv">总访问量&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv">总访客量&nbsp;<span id="busuanzi_value_site_uv"></span></span>
+      </div>
+  </div>
+</footer>
+
+          <div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div>
+        <div id="mask" class="hide"></div>
+      </div>
+      <nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap">
+        <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Parent-Tree"><span class="toc-number">1.</span> <span class="toc-text">Parent Tree</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SAM"><span class="toc-number">2.</span> <span class="toc-text">SAM</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E9%A2%98%E7%9B%AE"><span class="toc-number">3.</span> <span class="toc-text">一些题目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#The-End"><span class="toc-number">4.</span> <span class="toc-text">The End</span></a></li></ol>
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.jpg" data-sizes="auto" alt="crimson000" class="lazyload">
+  <div class="sidebar-author-name">crimson000</div>
+  <div class="sidebar-description">我喜欢打源神和舞萌</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">11</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">8</div>
+  </div>
+</div>
+<div class="sidebar-social">
+</div>
+<div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+</div>
+</div>
+  </div>
+      <div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div>
+</nav>
+
+    </div>
+    
+<script src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js" integrity="sha384-3gT&#x2F;vsepWkfz&#x2F;ff7PpWNUeMzeWoH3cDhm&#x2F;A8jM7ouoAK0&#x2F;fP&#x2F;9bcHHR5kHq2nf+e" crossorigin="anonymous"></script>
+
+
+<script src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js" integrity="sha384-J08i8An&#x2F;QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  
+<script src="/js/aos.js"></script>
+
+  <script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', aosInit);
+    } else {
+      aosInit();
+    }
+  </script>
+
+
+<script src="/js/pjax_script.js" data-pjax></script>
+
+
+
+
+  
+<script src="https://npm.webcache.cn/mouse-firework@0.1.1/dist/index.umd.js" integrity="sha384-8LyaidD9GPxQQgLJO&#x2F;WRw&#x2F;O2h3BoNq&#x2F;ApI&#x2F;ecpvM6RsrCz2qP2ppBXUKihP4V&#x2F;2d" crossorigin="anonymous"></script>
+
+  <script>
+    if (!false || !window.matchMedia('(max-width: 768px)').matches) {
+      window.firework && window.firework(JSON.parse('{"excludeElements":["a","button"],"particles":[{"shape":"circle","move":["emit"],"easing":"easeOutExpo","colors":["var(--red-1)","var(--red-2)","var(--red-3)","var(--red-4)"],"number":20,"duration":[1200,1800],"shapeOptions":{"radius":[16,32],"alpha":[0.3,0.5]}},{"shape":"circle","move":["diffuse"],"easing":"easeOutExpo","colors":["var(--red-0)"],"number":1,"duration":[1200,1800],"shapeOptions":{"radius":20,"alpha":[0.2,0.5],"lineWidth":6}}]}'));
+    }
+  </script>
+
+
+
+
+
+<div id="lazy-script">
+  <div>
+      
+      
+      <script data-pjax>
+        window.REIMU_POST = {
+          author: "crimson000",
+          title: "SAM学习笔记",
+          url: "https://crimson000000.github.io/2023/08/27/SAM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/",
+          excerpt: "写写 SAM 这抽象玩意。",
+          description: "",
+          stripContent: "写写 SAM 这抽象玩意。   SAM（Suffix Automaton），后缀自动机，是用来解决有关字符串子串问题的一种数据结构。 我们知道，一个字符串的所有子串，其实也就是所有前缀的后缀。因此我们就诞生了一个想法：把所有后缀都扔到 trie 树上，这样我们就可以直接沿着字符走，并且能够获得所有子串的信息。 但是这样的空间复杂度是能够达到 $O(n^2)$ 级别的。因此我们需要优化一下这个东西，我们可以发现大部分的转移边和点是重复的。因此我们需要把自动机的状态压缩。 在我们考虑这个问题之前，我",
+          date: "Sun Aug 27 2023 16:27:48 GMT+0800",
+          updated: "Sat Aug 15 2026 16:51:39 GMT+0800",
+          cover: "https://gitcode.net/crimson000000/mypic/-/raw/master/bg/32.jpg",
+        };
+      </script>
+        
+<script src="/js/insert_highlight.js" data-pjax></script>
+
+      <script type="module" data-pjax>
+        const PhotoSwipeLightbox = (await safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js", "sha384-DiL6M/gG+wmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF/N6lrZi/")).default;
+        const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,
+              pswpModule: () => safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8+oTJ7m3DfYEWX1fu1scuS4+s")
+            }).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script>
+        
+
+  </div>
+</div>
+
+
+  <script>
+    console.log(String.raw`%c 
+ ______     ______     __     __    __     __  __    
+/\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+\ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+ \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+  \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                  
+`,'color: #ff5252;')
+    console.log('%c Theme.Reimu v' + '1.10.4' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+  </script>
+  
+
+
+  
+<script src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js" integrity="sha384-0M75wtSkhjIInv4coYlaJU83+OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id+S" crossorigin="anonymous" async></script>
+
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      for (let registration of registrations) {
+        registration.unregister();
+      }
+    });
+  }
+</script>
+
+
+
+
+
+  </body>
+  </html>

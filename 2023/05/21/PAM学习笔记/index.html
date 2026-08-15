@@ -1,0 +1,569 @@
+  <!DOCTYPE html>
+  <html lang="zh-CN"  
+      data-theme-mode="auto"
+  >
+  <head>
+  <meta charset="utf-8">
+  
+  
+  
+  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_4k4bc36ef96';window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'https://crimson000000.github.io';</script>
+  <title>
+    PAM学习笔记 | crimson000
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish%3A400%2C400italic%2C700%2C700italic%7CNoto+Serif+SC%3A400%2C400italic%2C700%2C700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish%3A400%2C400italic%2C700%2C700italic%7CNoto+Serif+SC%3A400%2C400italic%2C700%2C700italic&display=swap" media="print" onload="this.media&#x3D;&#39;all&#39;">
+    <link rel="preload" href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    
+<link rel="stylesheet" href="/css/loader.css">
+
+    <meta name="description" content="PAM（回文自动机）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PAM学习笔记">
+<meta property="og:url" content="https://crimson000000.github.io/2023/05/21/PAM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="crimson000">
+<meta property="og:description" content="PAM（回文自动机）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitcode.net/crimson000000/picture/-/raw/master/%E5%8D%9A%E5%AE%A2%E7%94%A8%E5%9B%BE/QQ%E5%9B%BE%E7%89%8720230521183931.png">
+<meta property="og:image" content="https://gitcode.net/crimson000000/picture/-/raw/master/%E5%8D%9A%E5%AE%A2%E7%94%A8%E5%9B%BE/QQ%E5%9B%BE%E7%89%8720230521185034.png">
+<meta property="og:image" content="https://gitcode.net/crimson000000/picture/-/raw/master/%E5%8D%9A%E5%AE%A2%E7%94%A8%E5%9B%BE/QQ%E5%9B%BE%E7%89%8720230521195826.png">
+<meta property="og:image" content="https://oi-wiki.org/string/images/pam6.png">
+<meta property="article:published_time" content="2023-05-21T09:21:19.000Z">
+<meta property="article:modified_time" content="2026-08-15T08:51:39.453Z">
+<meta property="article:author" content="crimson000">
+<meta property="article:tag" content="学习笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitcode.net/crimson000000/picture/-/raw/master/%E5%8D%9A%E5%AE%A2%E7%94%A8%E5%9B%BE/QQ%E5%9B%BE%E7%89%8720230521183931.png">
+    <link rel="alternate" href="/atom.xml" title="crimson000" type="application/atom+xml">
+    <link rel="shortcut icon" href="/images/favicon.png">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL&#x2F;toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx&#x2F;1oA&#x2F;0l8ysE" crossorigin="anonymous">
+    
+<script src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js" integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script>
+
+    
+<link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css" integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous">
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+  <body>
+      <div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate">
+          <svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+           M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
+          </svg>
+      </div>
+      <div class="loading-word">少女祈祷中...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script>
+<div id="copy-tooltip"></div>
+<div id="heatmap-tooltip"></div>
+
+
+    <div id="container">
+      <div id="wrap">
+        <div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation">
+        <a class="main-nav-link-wrap" href="/">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">首页</span>
+        </span>
+        <a class="main-nav-link-wrap" href="/archives">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">归档</span>
+        </span>
+        <a class="main-nav-link-wrap" href="/about">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">关于</span>
+        </span>
+        <a class="main-nav-link-wrap" href="/friend">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">友链</span>
+        </span>
+    <a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation">
+      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅" aria-label="RSS 订阅" target="_blank"></a>
+  </nav>
+</div>
+<header id="header" aria-label="Site header">
+    <picture></picture>
+    <img  fetchpriority="high" src="https://d-sketon.top/img/backimg/bg20.jpg" alt="PAM学习笔记">
+  <div id="header-outer">
+    <div id="header-title">
+          <span id="logo">
+            <h1 data-aos="slide-up">PAM学习笔记</h1>
+          </span>
+        <h2 id="subtitle-wrap" data-aos="slide-down">
+        </h2>
+    </div>
+  </div>
+</header>
+
+        <div id="content" aria-label="Page content"  class="sidebar-right" >
+          <aside id="sidebar" aria-label="Sidebar">
+  <div class="sidebar-wrapper-container sticky">
+  <div class="sidebar-wrapper">
+    <div class="sidebar-wrap" data-aos="fade-up">
+          <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#PAM"><span class="toc-number">1.</span> <span class="toc-text">PAM</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%84"><span class="toc-number">1.1.</span> <span class="toc-text">结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#trie"><span class="toc-number">1.1.1.</span> <span class="toc-text">trie</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fail-%E6%8C%87%E9%92%88"><span class="toc-number">1.1.2.</span> <span class="toc-text">fail 指针</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA"><span class="toc-number">1.2.</span> <span class="toc-text">构建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98"><span class="toc-number">1.3.</span> <span class="toc-text">例题</span></a></li></ol></li></ol>
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.jpg" data-sizes="auto" alt="crimson000" class="lazyload">
+  <div class="sidebar-author-name">crimson000</div>
+  <div class="sidebar-description">我喜欢打源神和舞萌</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">11</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">8</div>
+  </div>
+</div>
+<div class="sidebar-social">
+</div>
+<div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+</div>
+</div>
+          <div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div>
+    </div>
+  </div>
+  <div class="sidebar-widget">
+  </div>
+  </div>
+</aside>
+
+          <section id="main" aria-label="Main content"><article id="post-PAM学习笔记" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner" data-aos="fade-up">
+    <div class="article-meta">
+      <div class="article-date">
+  <span class="article-date-link icon-calendar" data-aos="zoom-in">
+    <time datetime="2023-05-21T09:21:19.000Z" itemprop="datePublished">2023-05-21</time>
+    <time style="display: none;" id="post-update-time">2026-08-15</time>
+  </span>
+</div>
+
+        <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/" title="算法竞赛">算法竞赛</a><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="学习笔记">学习笔记</a>
+  </div>
+
+    </div>
+    
+    <div class="hr-line"></div>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+        <p>PAM（回文自动机）</p>
+<span id="more"></span>
+
+<h1 id="PAM"><a href="#PAM" class="headerlink" title="PAM"></a>PAM</h1><p>回文树（又称回文自动机 $\texttt{PAM}$），是一种可以高效解决大部分回文串问题的算法，在大部分情况下可以替代马拉车（当然模板题好像都替代不了），是一种不错的算法。</p>
+<h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><h3 id="trie"><a href="#trie" class="headerlink" title="trie"></a>trie</h3><p>类似于其他的自动机（$\texttt {AC}$ 自动机、$\texttt{SAM}$），$\texttt{PAM}$ 也有一颗 $\texttt{trie}$ 树以及相应的 $\texttt{fail}$ 指针。但是不太相同的是，在 $\texttt{PAM}$ 中，有两棵树。</p>
+<p>为什么呢？因为回文串分为奇回文串和偶回文串，奇回文串当然可以直接插入，但是偶回文串就出现了问题。我们当然可以用类似马拉车的方法，添加不存在的字符来使它变成奇回文串，但是这样太麻烦了。于是我们可以建立两棵树，一颗奇树，一颗偶树，奇树的儿子都代表奇回文串，偶树的儿子都代表偶回文串。</p>
+<p>下图是字符串为 $\texttt{abaaabacca}$ 的回文树。</p>
+<p><img src="https://gitcode.net/crimson000000/picture/-/raw/master/%E5%8D%9A%E5%AE%A2%E7%94%A8%E5%9B%BE/QQ%E5%9B%BE%E7%89%8720230521183931.png" alt="手绘不行请见谅"></p>
+<p>在这个字符串中，出现了以下这些回文串：</p>
+<p>$$<br>\texttt{a},\texttt{b},\texttt{c},\texttt{aba},\texttt{aaa},\texttt{cc},\texttt{acca},\texttt{baaab},\texttt{abaaaba}<br>$$</p>
+<p>我们可以注意到，在这个 trie 树上，一条转移边代表的是在字符串两边加上同一个字符，这也符合回文串的定义。</p>
+<h3 id="fail-指针"><a href="#fail-指针" class="headerlink" title="fail 指针"></a>fail 指针</h3><p>在 PAM 中，也拥有 fail 指针，且意义与 AC 自动机的相同，定义 $fail[x]$ 为 $x$ 代表的回文子串的最长回文后缀。</p>
+<p>在 trie 树上，我们可以画出所有的 fail 指针。</p>
+<p><img src="https://gitcode.net/crimson000000/picture/-/raw/master/%E5%8D%9A%E5%AE%A2%E7%94%A8%E5%9B%BE/QQ%E5%9B%BE%E7%89%8720230521185034.png" alt="红边为 fail（别吐槽画工了）"></p>
+<p>我们可以注意到，$0$ 号点的 $fail$ 指向了 $-1$ 号点，这是因为奇根不可能失配（单个字符也是回文串）。</p>
+<h2 id="构建"><a href="#构建" class="headerlink" title="构建"></a>构建</h2><p>在构建时，我们可以发现：如果我们要插入第 $i$ 个位置的字符，它会和原字符串的末尾字符形成新的回文串。我们设这个最大回文串的长度为 $len$。</p>
+<p>因为这个串是回文串，因此 $s[i - len - 1\sim i]$ 为回文串，两边同时扣掉一个字符，我们就可以发现 $s[i - len \sim i - 1]$ 也为回文串。因此我们只需要找一个最长的后缀回文串，满足 $s[i - len - 1] &#x3D; s[i]$，我们就可以把这个字符插入到 $s[i-len-1]$ 这个位置所代表的点后。</p>
+<p>用图片描述就是：</p>
+<p><img src="https://gitcode.net/crimson000000/picture/-/raw/master/%E5%8D%9A%E5%AE%A2%E7%94%A8%E5%9B%BE/QQ%E5%9B%BE%E7%89%8720230521195826.png"></p>
+<p>如何找到这个最长的后缀呢？我们就可以利用 fail 指针。因为我们要找的都是后缀回文串，所以我们可以一直跳 fail，直到 $s[i-len-1]$ 和 $s[i]$ 相等为止。</p>
+<p>而新建的这个点的 fail 指针也就可以指向匹配的点（这里也说不清楚），长度就是它父节点加二。</p>
+<p>我们在构建时也可以求出一个十分常用的数组 trans，表示长度小于等于当前点的一半的最长回文后缀。</p>
+<p>建树代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">getfail</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(i - len[x] &lt; <span class="number">1</span> || s[i - len[x] - <span class="number">1</span>] != s[i]) x = fail[x];</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">build</span><span class="params">(<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    len[<span class="number">1</span>] = <span class="number">-1</span>, fail[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    idx = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        pos = <span class="built_in">getfail</span>(cur, i);</span><br><span class="line">        <span class="type">int</span> u = s[i] - <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">        <span class="keyword">if</span>(!tr[pos][u])</span><br><span class="line">        &#123;</span><br><span class="line">            fail[++ idx] = tr[<span class="built_in">getfail</span>(fail[pos], i)][u];</span><br><span class="line">            tr[pos][u] = idx;</span><br><span class="line">            len[idx] = len[pos] + <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(len[idx] &lt;= <span class="number">2</span>) trans[idx] = fail[idx];</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="type">int</span> tmp = trans[cur];</span><br><span class="line">                <span class="keyword">while</span>(s[i - len[tmp] - <span class="number">1</span>] != s[i] || ((len[tmp] + <span class="number">2</span>) &lt;&lt; <span class="number">1</span>) &gt; len[idx])</span><br><span class="line">                    tmp = fail[tmp];</span><br><span class="line">                trans[idx] = tr[tmp][u];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        cur = tr[pos][u];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p><strong>【模板】回文自动机（PAM）</strong></p>
+<p>作为模板题，还是比较简单的，统计答案只需要在 fail 指针的基础上加一即可。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i ++ )</span><br><span class="line">&#123;</span><br><span class="line">    s[i] = (s[i] - <span class="number">97</span> + last) % <span class="number">26</span> + <span class="number">97</span>;</span><br><span class="line">    <span class="type">int</span> pos = <span class="built_in">getfail</span>(cur, i);</span><br><span class="line">    <span class="keyword">if</span>(!t[pos][s[i] - <span class="string">&#x27;a&#x27;</span>])</span><br><span class="line">    &#123;</span><br><span class="line">        fail[++ idx] = t[<span class="built_in">getfail</span>(fail[pos], i)][s[i] - <span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">        t[pos][s[i] - <span class="string">&#x27;a&#x27;</span>] = idx;</span><br><span class="line">        len[idx] = len[pos] + <span class="number">2</span>;</span><br><span class="line">        num[idx] = num[fail[idx]] + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cur = t[pos][s[i] - <span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">    last = num[cur];</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, last);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>P3649 [APIO2014] 回文串</strong></p>
+<p>本题需要我们统计回文串的出现次数，而当一个回文串出现时，它所对应的 fail 指针所对应的回文串也会出现一次，而它 fail 的 fail 也会出现。而我们如果每次都选择跳 fail，就会导致时间复杂度爆炸。</p>
+<p>我们可以按照类似于<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5357">AC自动机加强版</a>的思路，因为我们插入字符串时是按照拓扑序，所以我们可以先在找到的点上打个标记，最后按照拓扑序向上统计答案即可。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">topsort</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = idx; i &gt;= <span class="number">0</span>; i -- ) cnt[fail[i]] += cnt[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt;= idx; i ++ ) ans = <span class="built_in">max</span>(ans, (ll)len[i] * cnt[i]);</span><br></pre></td></tr></table></figure>
+
+<p><strong>P4287 [SHOI2011]双倍回文</strong></p>
+<p>本题就用到了我们上面提到的 trans 数组。当一个点的 trans 指向的点的长度恰好为当前点长度的一半时，这个点即为一个双重回文串。</p>
+<p><strong>P4762 [CERC2014]Virus synthesis</strong></p>
+<p>因为进行一次 2 操作一定优于进行一次 1 操作，因此我们要尽可能的进行 2 操作。</p>
+<p>我们设 $f[i]$ 表示形成在 PAM 中编号为 $i$ 的点所对应的回文串所需的最小操作次数。我们可以有如下转移：</p>
+<ol>
+<li><p>在 PAM 上，我们设 $x$ 扩展出 $i$，则当我们将 $x$ 的一半加上一个字母，再翻折一下，就可以得到 $i$ 对应的字符串。因此 $f[i] &#x3D; \min (f[x] + 1, f[i])$。</p>
+</li>
+<li><p>设 $trans_i &#x3D; p$，我们就可以得到下面的转移方程：$f[i] &#x3D; \min(f[i], f[p] + \frac{len_i}{2} - len_p + 1)$。</p>
+</li>
+</ol>
+<p>最后统计答案，$ans &#x3D; \min { f[i] + n - len_i }$。</p>
+<p>我们可以在 bfs 过程中进行状态的转移。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">queue&lt;<span class="type">int</span>&gt; q;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">bfs</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(q.<span class="built_in">size</span>()) q.<span class="built_in">pop</span>();</span><br><span class="line">    q.<span class="built_in">push</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">while</span>(q.<span class="built_in">size</span>())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> u = q.<span class="built_in">front</span>();</span><br><span class="line">        q.<span class="built_in">pop</span>();</span><br><span class="line">        ans = <span class="built_in">min</span>(ans, f[u] + n - len[u]);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i ++ )</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> v = tr[u][i];</span><br><span class="line">            <span class="keyword">if</span>(!v) <span class="keyword">continue</span>;</span><br><span class="line">            f[v] = <span class="built_in">min</span>(f[u] + <span class="number">1</span>, f[trans[v]] + len[v] / <span class="number">2</span> - len[trans[v]] + <span class="number">1</span>);</span><br><span class="line">            q.<span class="built_in">push</span>(v);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Palindrome Partition</strong></p>
+<p>本题将字符串转换一下即可变为一个回文划分问题。</p>
+<p>回文划分问题：将字符串 $s$ 分成 $k$ 段，使得 $s_1, s_2 \cdots s_k$ 均为回文串。</p>
+<p>在本题中，设 $f_i$ 表示长度为 $i$ 的前缀的划分方案。于是我们不难得出下面的转移方程：</p>
+<p>设谓词 $\mathrm{G(x)}$ 为 $x$ 满足回文性质，则</p>
+<p>$$<br>f_i&#x3D;\sum \limits _{\mathrm{G} (s[j+1\sim i])}f_j<br>$$</p>
+<p>这个转移的复杂度是 $O(n^2)$ 的，我们考虑优化。</p>
+<p>这里我们再引入两个信息：$diff[u]$ 和 $slink[u]$。$diff[u]$ 表示该节点和它的 $fail$ 指针节点的长度差，即为 $len[u] - len[fail[u]]$。$slink[u]$ 表示 $u$ 节点一直沿着它的 $fail$ 指针向上跳，一直跳到第一个满足 $diff[x] \not\ne diff[u]$ 的 $x$ 号点。可以证明，一个节点从 $slink$ 开始跳，跳到根节点的次数不会超过 $\log |s|$ 次。</p>
+<p>我们就可以将每一段等差数列中的 $f$ 值之和存到该等差数列的末端。记为 $g$。为了求出这个 $g$，我们可以看下图：</p>
+<p><img src="https://oi-wiki.org/string/images/pam6.png" alt="来源：OIwiki"></p>
+<p>当前跳到了 $x$ 号节点，我们将要求当前节点的 $g[x]$。由于当前回文后缀是回文的，我们可以把它的下一级回文后缀反转到前面，这时我们可以发现它的 fail 的 $g$ 就存储了等差数列中的一部分值（蓝色部分），我们只差了 $f[i-diff[x]-len[slink[x]]]$，我们就可以在跳 $slink$ 的过程中不断更新 $f$。</p>
+<p>代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">insert</span><span class="params">(<span class="type">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    pos = <span class="built_in">getfail</span>(cur, i);</span><br><span class="line">    <span class="type">int</span> u = s[i] - <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">    <span class="keyword">if</span>(!tr[pos][u])</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> x = <span class="built_in">New</span>(len[pos] + <span class="number">2</span>);</span><br><span class="line">        fail[x] = tr[<span class="built_in">getfail</span>(fail[pos], i)][u];</span><br><span class="line">        tr[pos][u] = x;</span><br><span class="line">        diff[x] = len[x] - len[fail[x]];</span><br><span class="line">        <span class="keyword">if</span>(diff[x] == diff[fail[x]])</span><br><span class="line">            slink[x] = slink[fail[x]];</span><br><span class="line">        <span class="keyword">else</span> slink[x] = fail[x];</span><br><span class="line">    &#125;</span><br><span class="line">    cur = tr[pos][u];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">build</span><span class="params">(<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">init</span>();</span><br><span class="line">    f[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">insert</span>(i);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> x = cur; x &gt; <span class="number">1</span>; x = slink[x])</span><br><span class="line">        &#123;</span><br><span class="line">            g[x] = f[i - len[slink[x]] - diff[x]];</span><br><span class="line">            <span class="keyword">if</span>(diff[x] == diff[fail[x]]) g[x] = <span class="built_in">add</span>(g[x], g[fail[x]]);</span><br><span class="line">            <span class="keyword">if</span>((i &amp; <span class="number">1</span>) == <span class="number">0</span>) f[i] = <span class="built_in">add</span>(f[i], g[x]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+    <footer class="article-footer">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag" title="学习笔记">学习笔记</a></li></ul>
+
+    </footer>
+  </div>
+    <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
+      <div class="article-nav-link-wrap left">
+          <img data-src="https://gitcode.net/crimson000000/mypic/-/raw/master/bg/1.jpg" data-sizes="auto" alt="组合数学总结" class="lazyload">
+        <a href="/2023/06/07/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6%E6%80%BB%E7%BB%93/" aria-label="前一篇: 组合数学总结" title="前一篇: 组合数学总结"></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">
+            组合数学总结
+        </h3>
+      </div>
+    <div class="article-nav-link-wrap right">
+        <img data-src="https://d-sketon.top/img/backimg/bg27.jpg" data-sizes="auto" alt="十二重计数法" class="lazyload">
+      <a href="/2023/05/13/%E5%8D%81%E4%BA%8C%E9%87%8D%E8%AE%A1%E6%95%B0%E6%B3%95/" aria-label="后一篇: 十二重计数法"  title="后一篇: 十二重计数法"></a>
+      <div class="article-nav-caption">后一篇</div>
+      <h3 class="article-nav-title">
+          十二重计数法
+      </h3>
+    </div>
+  </nav>
+
+</article>
+
+
+</section>
+        </div>
+        <footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info">
+    <div>
+      <span class="icon-copyright"></span>
+        2020-2026
+      <span class="footer-info-sep rotate"></span>
+      crimson000
+    </div>
+      <div>
+        基于&nbsp;<a href="https://hexo.io/" rel="noopener nofollow noreferrer" target="_blank">Hexo</a>&nbsp;
+        Theme.<a href="https://github.com/D-Sketon/hexo-theme-reimu" rel="noopener nofollow noreferrer" target="_blank">Reimu</a>
+      </div>
+      <div>
+        <span class="icon-brush"></span>
+        85.3k
+        &nbsp;|&nbsp;
+        <span class="icon-coffee"></span>
+        05:54
+      </div>
+      <div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv">总访问量&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv">总访客量&nbsp;<span id="busuanzi_value_site_uv"></span></span>
+      </div>
+  </div>
+</footer>
+
+          <div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div>
+        <div id="mask" class="hide"></div>
+      </div>
+      <nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap">
+        <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#PAM"><span class="toc-number">1.</span> <span class="toc-text">PAM</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%84"><span class="toc-number">1.1.</span> <span class="toc-text">结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#trie"><span class="toc-number">1.1.1.</span> <span class="toc-text">trie</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fail-%E6%8C%87%E9%92%88"><span class="toc-number">1.1.2.</span> <span class="toc-text">fail 指针</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA"><span class="toc-number">1.2.</span> <span class="toc-text">构建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98"><span class="toc-number">1.3.</span> <span class="toc-text">例题</span></a></li></ol></li></ol>
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.jpg" data-sizes="auto" alt="crimson000" class="lazyload">
+  <div class="sidebar-author-name">crimson000</div>
+  <div class="sidebar-description">我喜欢打源神和舞萌</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">11</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">8</div>
+  </div>
+</div>
+<div class="sidebar-social">
+</div>
+<div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+</div>
+</div>
+  </div>
+      <div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div>
+</nav>
+
+    </div>
+    
+<script src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js" integrity="sha384-3gT&#x2F;vsepWkfz&#x2F;ff7PpWNUeMzeWoH3cDhm&#x2F;A8jM7ouoAK0&#x2F;fP&#x2F;9bcHHR5kHq2nf+e" crossorigin="anonymous"></script>
+
+
+<script src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js" integrity="sha384-J08i8An&#x2F;QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  
+<script src="/js/aos.js"></script>
+
+  <script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', aosInit);
+    } else {
+      aosInit();
+    }
+  </script>
+
+
+<script src="/js/pjax_script.js" data-pjax></script>
+
+
+
+
+  
+<script src="https://npm.webcache.cn/mouse-firework@0.1.1/dist/index.umd.js" integrity="sha384-8LyaidD9GPxQQgLJO&#x2F;WRw&#x2F;O2h3BoNq&#x2F;ApI&#x2F;ecpvM6RsrCz2qP2ppBXUKihP4V&#x2F;2d" crossorigin="anonymous"></script>
+
+  <script>
+    if (!false || !window.matchMedia('(max-width: 768px)').matches) {
+      window.firework && window.firework(JSON.parse('{"excludeElements":["a","button"],"particles":[{"shape":"circle","move":["emit"],"easing":"easeOutExpo","colors":["var(--red-1)","var(--red-2)","var(--red-3)","var(--red-4)"],"number":20,"duration":[1200,1800],"shapeOptions":{"radius":[16,32],"alpha":[0.3,0.5]}},{"shape":"circle","move":["diffuse"],"easing":"easeOutExpo","colors":["var(--red-0)"],"number":1,"duration":[1200,1800],"shapeOptions":{"radius":20,"alpha":[0.2,0.5],"lineWidth":6}}]}'));
+    }
+  </script>
+
+
+
+
+
+<div id="lazy-script">
+  <div>
+      
+      
+      <script data-pjax>
+        window.REIMU_POST = {
+          author: "crimson000",
+          title: "PAM学习笔记",
+          url: "https://crimson000000.github.io/2023/05/21/PAM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/",
+          excerpt: "PAM（回文自动机）",
+          description: "",
+          stripContent: "PAM（回文自动机）   PAM回文树（又称回文自动机 $\texttt{PAM}$），是一种可以高效解决大部分回文串问题的算法，在大部分情况下可以替代马拉车（当然模板题好像都替代不了），是一种不错的算法。 结构trie类似于其他的自动机（$\texttt {AC}$ 自动机、$\texttt{SAM}$），$\texttt{PAM}$ 也有一颗 $\texttt{trie}$ 树以及相应的 $\texttt{fail}$ 指针。但是不太相同的是，在 $\texttt{PAM}$ 中，有两棵树。",
+          date: "Sun May 21 2023 17:21:19 GMT+0800",
+          updated: "Sat Aug 15 2026 16:51:39 GMT+0800",
+          cover: "https://d-sketon.top/img/backimg/bg20.jpg",
+        };
+      </script>
+        
+<script src="/js/insert_highlight.js" data-pjax></script>
+
+      <script type="module" data-pjax>
+        const PhotoSwipeLightbox = (await safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js", "sha384-DiL6M/gG+wmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF/N6lrZi/")).default;
+        const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,
+              pswpModule: () => safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8+oTJ7m3DfYEWX1fu1scuS4+s")
+            }).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script>
+        
+
+  </div>
+</div>
+
+
+  <script>
+    console.log(String.raw`%c 
+ ______     ______     __     __    __     __  __    
+/\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+\ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+ \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+  \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                  
+`,'color: #ff5252;')
+    console.log('%c Theme.Reimu v' + '1.10.4' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+  </script>
+  
+
+
+  
+<script src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js" integrity="sha384-0M75wtSkhjIInv4coYlaJU83+OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id+S" crossorigin="anonymous" async></script>
+
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      for (let registration of registrations) {
+        registration.unregister();
+      }
+    });
+  }
+</script>
+
+
+
+
+
+  </body>
+  </html>

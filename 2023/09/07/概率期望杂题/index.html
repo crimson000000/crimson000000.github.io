@@ -1,0 +1,785 @@
+  <!DOCTYPE html>
+  <html lang="zh-CN"  
+      data-theme-mode="auto"
+  >
+  <head>
+  <meta charset="utf-8">
+  
+  
+  
+  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_4k4bc36ef96';window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'https://crimson000000.github.io';</script>
+  <title>
+    概率期望杂题 | crimson000
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish%3A400%2C400italic%2C700%2C700italic%7CNoto+Serif+SC%3A400%2C400italic%2C700%2C700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish%3A400%2C400italic%2C700%2C700italic%7CNoto+Serif+SC%3A400%2C400italic%2C700%2C700italic&display=swap" media="print" onload="this.media&#x3D;&#39;all&#39;">
+    <link rel="preload" href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    
+<link rel="stylesheet" href="/css/loader.css">
+
+    <meta name="description" content="发现自己期望太差了，写写题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="概率期望杂题">
+<meta property="og:url" content="https://crimson000000.github.io/2023/09/07/%E6%A6%82%E7%8E%87%E6%9C%9F%E6%9C%9B%E6%9D%82%E9%A2%98/index.html">
+<meta property="og:site_name" content="crimson000">
+<meta property="og:description" content="发现自己期望太差了，写写题。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-09-07T11:17:55.000Z">
+<meta property="article:modified_time" content="2026-08-15T08:51:39.850Z">
+<meta property="article:author" content="crimson000">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="题集">
+<meta name="twitter:card" content="summary">
+    <link rel="alternate" href="/atom.xml" title="crimson000" type="application/atom+xml">
+    <link rel="shortcut icon" href="/images/favicon.png">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL&#x2F;toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx&#x2F;1oA&#x2F;0l8ysE" crossorigin="anonymous">
+    
+<script src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js" integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script>
+
+    
+<link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css" integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous">
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+  <body>
+      <div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate">
+          <svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+           M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
+          </svg>
+      </div>
+      <div class="loading-word">少女祈祷中...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script>
+<div id="copy-tooltip"></div>
+<div id="heatmap-tooltip"></div>
+
+
+    <div id="container">
+      <div id="wrap">
+        <div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation">
+        <a class="main-nav-link-wrap" href="/">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">首页</span>
+        </span>
+        <a class="main-nav-link-wrap" href="/archives">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">归档</span>
+        </span>
+        <a class="main-nav-link-wrap" href="/about">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">关于</span>
+        </span>
+        <a class="main-nav-link-wrap" href="/friend">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">友链</span>
+        </span>
+    <a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation">
+      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅" aria-label="RSS 订阅" target="_blank"></a>
+  </nav>
+</div>
+<header id="header" aria-label="Site header">
+    <picture></picture>
+    <img  fetchpriority="high" src="https://gitcode.net/crimson000000/mypic/-/raw/master/bg/72.jpg" alt="概率期望杂题">
+  <div id="header-outer">
+    <div id="header-title">
+          <span id="logo">
+            <h1 data-aos="slide-up">概率期望杂题</h1>
+          </span>
+        <h2 id="subtitle-wrap" data-aos="slide-down">
+        </h2>
+    </div>
+  </div>
+</header>
+
+        <div id="content" aria-label="Page content"  class="sidebar-right" >
+          <aside id="sidebar" aria-label="Sidebar">
+  <div class="sidebar-wrapper-container sticky">
+  <div class="sidebar-wrapper">
+    <div class="sidebar-wrap" data-aos="fade-up">
+          <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#The-End"><span class="toc-number">1.</span> <span class="toc-text">The End</span></a></li></ol>
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.jpg" data-sizes="auto" alt="crimson000" class="lazyload">
+  <div class="sidebar-author-name">crimson000</div>
+  <div class="sidebar-description">我喜欢打源神和舞萌</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">11</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">8</div>
+  </div>
+</div>
+<div class="sidebar-social">
+</div>
+<div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+</div>
+</div>
+          <div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div>
+    </div>
+  </div>
+  <div class="sidebar-widget">
+  </div>
+  </div>
+</aside>
+
+          <section id="main" aria-label="Main content"><article id="post-概率期望杂题" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner" data-aos="fade-up">
+    <div class="article-meta">
+      <div class="article-date">
+  <span class="article-date-link icon-calendar" data-aos="zoom-in">
+    <time datetime="2023-09-07T11:17:55.000Z" itemprop="datePublished">2023-09-07</time>
+    <time style="display: none;" id="post-update-time">2026-08-15</time>
+  </span>
+</div>
+
+        <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/" title="算法竞赛">算法竞赛</a><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/%E9%A2%98%E7%9B%AE/" title="题目">题目</a>
+  </div>
+
+    </div>
+    
+    <div class="hr-line"></div>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+        <p>发现自己期望太差了，写写题。</p>
+<span id="more"></span>
+
+<p>大部分题目来自<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/training/4922">这个题单</a></p>
+<p><strong>绿豆蛙的归宿</strong></p>
+<p>给出一张 $n$ 个点 $m$ 条边的有向无环图，起点为 $1$，终点为 $n$，每条边都有一个长度，并且从起点出发能够到达所有的点，所有的点也都能够到达终点。从起点出发，走向终点。 到达每一个顶点时，如果该节点有 $k$ 条出边，可以选择任意一条边离开该点，并且走向每条边的概率为 $\frac{1}{k}$ 。求出从起点走到终点的所经过的路径总长度期望。</p>
+<p>数据范围：$n\le 10^5, m\le 2\times 10^5$。</p>
+<hr>
+<p>典题。由于是有向无环图，我们可以进行一个拓扑 dp。我们设 $f_u$ 为 $u$ 到终点的期望步数，那么我们枚举走那条出边可以得到转移方程：<br>$$<br>f_u&#x3D;\frac{1}{dout_u} \sum\limits_{(u, v)\in E} f_v<br>$$<br>初始状态为：$f_{end}&#x3D;0$。</p>
+<p>时间复杂度 $O(n)$。</p>
+<p><strong>单选错位</strong></p>
+<p>试卷上共有 $n$ 道单选题，第 $i$ 道单选题有 $a_i$ 个选项，这 $a_i$ 个选项编号是 $1,2,3,\ldots,a_i$，每个选项成为正确答案的概率都是相等的。将第 $i$ 个位置的正确答案填到第 $i+1$ 个位置（第 $n$ 个位置的答案填到第 $1$ 个位置），求期望答对多少题。</p>
+<p>数据范围：$n\le 10^7$。</p>
+<hr>
+<p>我们进行一个分类讨论。</p>
+<p>当 $a_i &gt;a_{i+1}$ 时，我们需要先确保第 $i$ 题的答案不在第 $a_{i+1}+1\sim a_i$ 这段区间，然后再保证这两道题的答案相同，因此第 $i+1$ 题答对的概率是：$\frac{a_{i+1}}{a_{i}}\times \frac{1}{a_i^2}\times a_i&#x3D;\frac{1}{a_i}$。</p>
+<p>同理我们可以得到当 $a_i\le a_{i+1}$ 时第 $i+1$ 题答对的概率是 $\frac{1}{a_{i+1}}$。因此第 $i+1$ 题答对的概率为 $\frac{1}{\max(a_i,a_{i+1})}$。</p>
+<p>最后我们把每道题答对的概率相加即为答案。时间复杂度 $O(n)$。</p>
+<p><strong>Vasya and Magic Matrix</strong></p>
+<p>一个 $n$ 行 $m$ 列的矩阵,每个位置有权值 $a_{i,j}$。给定一个出发点,每次可以等概率的移动到一个权值小于当前点权值的点（不能移动就停止），同时得分加上两个点之间欧几里得距离的平方，问得分的期望。</p>
+<p>数据范围：$n, m\le 1000$。</p>
+<hr>
+<p>我们设 $f_{i, j}$ 为 $(i, j)$ 这个位置一直移动到不能移动为止的期望步数。我们可以从小到大加入权值，这样就不会受其他权值的影响。我们设 $S$ 为已经加入的点的点集，我们在考虑完一批值相同的点之后才会将它们加入 $S$。</p>
+<p>我们来考虑如何转移 $f_{i, j}$。转移其实很简单，就是它到场上每个点的距离和。因此转移为<br>$$<br>\begin{aligned}<br>f_{x, y}&amp;&#x3D;\sum \limits_{(a, b)\in S} \left((x-a)^2+(y-b)^2+f_{a, b}  \right)\<br>&amp;&#x3D;\sum \limits_{(a, b)\in S} (x-a)^2+\sum \limits_{(a, b)\in S}(y-b)^2+\sum \limits_{(a, b)\in S} f_{a, b}<br>\end{aligned}<br>$$<br>后面 $f$ 的和可以直接维护，而前面的平方可以拆开，这样就只用维护 $x$ 的和，$x$ 的平方和以及 $y$ 的这些信息了。</p>
+<p>时间复杂度 $O(nm)$。</p>
+<p><strong>OSU!</strong></p>
+<p>一共有 $n$ 次操作，每次操作只有成功与失败之分，成功对应 $1$，失败对应 $0$，$n$ 次操作对应为 $1$ 个长度为 $n$ 的 01 串。在这个串中连续的 $X$ 个 $1$ 可以贡献 $X^3$ 的分数，这 $x$ 个 $1$ 不能被其他连续的 $1$ 所包含（也就是极长的一串 $1$）。给出每个操作的成功率 $p_i$，求出期望分数。</p>
+<p>数据范围：$n \leq 1 \times 10 ^ 5$。</p>
+<hr>
+<p>根据期望的性质：$E(x+y)&#x3D;E(x)+E(y)$，因此我们可以得到：$E((x+1)^3)&#x3D;E(x^3+3x^2+3x+1)&#x3D;E(x^3)+3E(x^2)+3E(x)+1$。因此我们设 $a_i$ 为最后以 $i$ 为末尾的连续 $1$ 段长度的期望，$b_i$ 为为最后以 $i$ 为末尾的连续 $1$ 段长度平方的期望，$f_i$ 为前 $i$ 个操作的期望得分，那么我们就能得到方程：<br>$$<br>a_i&#x3D;(a_{i-1}+1)\times p_i<br>$$</p>
+<p>$$<br>b_i&#x3D;(b_{i-1}+2a_{i-1}+1)\times p_i<br>$$</p>
+<p>我们可以发现 $x+1$ 和 $x$ 的答案只相差了 $3E(x^2)+3E(x)+1$，因此得到<br>$$<br>f_i&#x3D;f_{i-1}+(3\times b_{i-1}+3\times a_{i-1}+1)\times p_i<br>$$<br>时间复杂度 $O(n)$。</p>
+<p><strong>Fish</strong></p>
+<p>有 $n$ 条鱼，每天有一对鱼相遇，彼此相遇的概率是一样的。如果两条标号为 $i$ 和 $j$ 的鱼见面，第一只吃第二只的概率为 $a_{i,j}$，第二只会吃第一只的概率为 $a_{j,i}&#x3D;1-a_{i,j}$。该过程进行到湖里只剩下一条鱼。请你算出每只鱼最后存活在湖里的可能性。</p>
+<p>数据范围：$n\le 18$。</p>
+<hr>
+<p>简单状压。我们可以设 $f_{s}$ 为 $s$ 这些鱼都存活下来的概率。转移时我们就可以枚举哪两只鱼相遇，同时看谁吃掉谁。假设 $i$ 吃掉 $j$ 之后的状态为 $T$，$s$ 状态中还剩下 $x$ 条鱼，则转移为：<br>$$<br>f_T\leftarrow \frac{f_s \times a_{i, j}}{x\times (x-1)}<br>$$<br>这里分母没有除以二的原因是作者直接 $i, j$ 都是全部枚举的，每个会计算两遍就达到了分母除以二的效果。</p>
+<p>时间复杂度 $O(n^22^n)$。</p>
+<p><strong>换教室</strong></p>
+<p>有 $n$ 节课程，$v$ 个教室，$e$ 条道路，每节课程原先是在第 $c_i$ 个教室上课，可以申请换到第 $d_i$ 个教室上课。每节课结束后都会从当前教室选择耗费体力最少的道路到下一个教室上课。</p>
+<p>现在有 $m$ 次申请换教室的机会（可以不用完），对于第 $i$ 节课程，申请通过的概率为 $p_i$，每节课程只能申请一次。问怎么申请才能让他移动消耗的体力值的期望最小，求出最小值。</p>
+<p>数据范围：$n,m\le 2000, v\le 300, e\le 90000$。</p>
+<hr>
+<p>我们先跑一遍 floyd，求出两点之间的最短路，方便后面的 dp。</p>
+<p>我们设 $f[i][j][0&#x2F;1]$ 为当前考虑到第 $i$ 节课程，用了 $j$ 次申请机会，当前这节课程是否申请的期望。分析一下就能得出以下转移方程：</p>
+<p>$$<br>\begin{aligned}<br>f[i][j][0] &amp;&#x3D; \min(f[i][j][0], f[i - 1][j][0] + dist[c[i - 1]][c[i]]);\<br>f[i][j][0] &amp;&#x3D; \min(f[i][j][0], f[i - 1][j][1] + dist[d[i - 1]][c[i]] * p[i - 1] + dist[c[i - 1]][c[i]] * (1 - p[i - 1]));<br>\end{aligned}<br>$$</p>
+<p>当前申请的转移方程也同理可以推出，这里就不再写出。</p>
+<p>时间复杂度 $O(n^3+nm)$。</p>
+<p><strong>Expected diameter of a tree</strong></p>
+<p>给一片森林，$q$ 次询问，每个询问两个点，问在这两个点所在的树中各随机选取两个点，将这两个点连接起来组成的新树，它的直径的期望值是多少。</p>
+<p>数据范围：$n, q\le 10^5$</p>
+<hr>
+<p>我们可以首先求出所有连接情况直径的和，最后再除以 $siz_x\times siz_y$ 即可。</p>
+<p>我们先设 $ans_x$ 为 $x$ 这棵树的直径，$mx_u$ 为 $u$ 在树中最远能走多远。我们最终的直径一定是这样一个形式：$\max (ans_x, ans_y, mx_x+mx_y+1)$。我们枚举一棵树中的点 $x$，考虑另一棵树中有多少 $y$ 能让 $mx_x+mx_y+1$ 成为最终的答案。</p>
+<p>我们假设 $dx&#x3D;\max(ans_x, ans_y)$，那么我们移项可得：$mx_y\ge dx - mx_x-1$。我们只需要找出所有满足这个条件的 $y$ 的数量以及它们的 $mx$ 之和。这个东西可以直接前缀和搞。</p>
+<p>最后我们考虑时间复杂度，我们可以枚举点的时候枚举小树的点。同时我们可以进行一个记忆化。可以证明这样的时间复杂度为 $O(n\sqrt n)$。</p>
+<p><strong>亚瑟王</strong></p>
+<p>玩家有一套卡牌，共 $n$ 张。游戏时，玩家将 $n$ 张卡牌排列成某种顺序，排列后将卡牌按从前往后依次编号为 $1 -  n$。本题中，顺序已经确定，即为输入的顺序。每张卡牌都有一个技能。第 $i$ 张卡牌的技能发动概率为 $p_i$，如果成功发动，则会对敌方造成 $d_i$ 点伤害。也只有通过发动技能，卡牌才能对敌方造成伤害。基于现实因素以及小 K 非洲血统的考虑，$p_i$ 不会为 $0$，也不会为 $1$，即 $0 &lt; p_i &lt; 1$。 一局游戏一共有 $r$ 轮。在每一轮中，系统将从第一张卡牌开始，按照顺序依次考虑每张卡牌。在一轮中，对于依次考虑的每一张卡牌：</p>
+<ol>
+<li>如果这张卡牌在这一局游戏中已经发动过技能，则如果这张卡牌不是最后一张，则跳过之（考虑下一张卡牌）； 否则（是最后一张），结束这一轮游戏。</li>
+</ol>
+<p>​	2. 否则（这张卡牌在这一局游戏中没有发动过技能），设这张卡牌为第 $i$ 张，将其以 $p_i$ 的概率发动技能。如果技能发动，则对敌方造成 $d_i$ 点伤害，并结束这一轮。如果这张卡牌已经是最后一张（即 $i$ 等于 $n$），则结束这一轮；否则，考虑下一张卡牌。</p>
+<p>请帮助小 K 求出这一套卡牌在一局游戏中能造成的伤害的期望值。</p>
+<p>数据范围：$1 \leq T \leq 444, 1 \leq n \leq 220, 0 \leq r \leq 132, 0 &lt; p_i &lt; 1, 0 \leq d_i \leq 1000$。</p>
+<hr>
+<p>我们可以对每个卡牌算出它发动的概率 $D_i$，那么最终的伤害的期望就是每个卡牌造成的伤害再乘上它发动的概率之和。</p>
+<p>我们现在就要求出所有卡牌的概率。我们可以发现第一张卡牌不发动的概率为 $(1-p_1)^{r}$，发动的概率为 $1-(1-p_1)^r$。而对于后面的卡牌，我们发现如果在一轮中，它前面的卡牌发动过，那么它就没法发动。因此我们设 $f_{i, j}$ 为在这 $r$ 轮中，前 $i$ 张卡牌，发动 $j$ 张的概率。转移就看是否发动当前这一张即可。</p>
+<p>发动这一张，那么转移为：<br>$$<br>f_{i, j}\leftarrow f_{i-1, j-1}\times (1-(1-p_j)^{r-j+1})<br>$$<br>不发动这一张，转移为：<br>$$<br>f_{i, j}\leftarrow f_{i-1, j}\times (1-p_j)^{r-j}<br>$$<br>最终我们求的 $D_i$ 就是 $\sum \limits_{j&#x3D;0}^{\min(i-1, r)}f_{i-1, j}\times (1-(1-p_i)^{r-j})$。</p>
+<p>时间复杂度 $O(nm)$。</p>
+<p><strong>游走</strong></p>
+<p>给定一个 $n$ 个点 $m$ 条边的无向连通图，顶点从 $1$ 编号到 $n$，边从 $1$ 编号到 $m$。在该图上进行随机游走，初始时在 $1$ 号顶点，每一步以相等的概率随机选择当前顶点的某条边，沿着这条边走到下一个顶点，获得等于这条边的编号的分数。当到达 $n$ 号顶点时游走结束，总分为所有获得的分数之和。 现在，请你对这 $m$ 条边进行编号，使得获得的总分的期望值最小。</p>
+<p>数据范围：$n\le 500, m\le 125000$。</p>
+<hr>
+<p>我们发现边的数量太多不好求每条边的期望，但是如果我们求出了每个点期望经过的次数 $f_u$，那么一条边 $(x, y)$ 期望经过的次数就是 $\frac{f_u}{deg_u}+\frac{f_v}{deg_v}$。</p>
+<p>现在只需要求出 $f_u$。我们可以把转移的式子写出来：<br>$$<br>f_u&#x3D;\sum \limits_{(u, v)\in E}\frac{f_v}{deg_v} +[u&#x3D;1]<br>$$<br>高斯消元即可。时间复杂度 $O(n^3)$。</p>
+<p><strong>分手是祝愿</strong></p>
+<p>B 君在玩一个游戏，这个游戏由 $n$ 个灯和 $n$ 个开关组成，给定这 $n$ 个灯的初始状态，下标为从 $1$ 到 $n$ 的正整数。</p>
+<p>每个灯有两个状态亮和灭，我们用 $1$ 来表示这个灯是亮的，用 $0$ 表示这个灯是灭的，游戏的目标是使所有灯都灭掉。</p>
+<p>但是当操作第 $i$ 个开关时，所有编号为 $i$ 的约数（包括 $1$ 和 $i$）的灯的状态都会被改变，即从亮变成灭，或者是从灭变成亮。</p>
+<p>B 君发现这个游戏很难，于是想到了这样的一个策略，每次等概率随机操作一个开关，直到所有灯都灭掉。</p>
+<p>这个策略需要的操作次数很多，B 君想到这样的一个优化。如果当前局面，可以通过操作小于等于 $k$ 个开关使所有灯都灭掉，那么他将不再随机，直接选择操作次数最小的操作方法（这个策略显然小于等于 $k$ 步）操作这些开关。</p>
+<p>B 君想知道按照这个策略（也就是先随机操作，最后小于等于 $k$ 步，使用操作次数最小的操作方法）的操作次数的期望。</p>
+<p>数据范围：$n\le 100000$。</p>
+<hr>
+<p>首先我们考虑 $k&#x3D;n$ 的测试点，我们可以发现高位的灯不可能由低位的灯给按灭，而且我们为了按灭所有灯所做的所有操作都不能省略。因此我们有一个方案：从高位往低位按，模拟即可。这样我们就能算出最小操作次数 $x$。</p>
+<p>我们再考虑随机操作。我们可以假设当前局面还需要按 $i$ 次才能全灭（我们设 $f_i$ 为从按 $i$ 次全灭走到按 $i-1$ 次全灭的状态的期望步数），由于我们操作的顺序不会影响结果，因此我们在这个局面随机按一次有 $\frac{i}{n}$ 的概率走到 $f_{i-1}$，有 $\frac{n-i}{n}$ 的概率走到 $f_{i+1}$。因此转移方程为：<br>$$<br>f_i&#x3D;\frac{i}{n}+\frac{n-i}{n}(f_{i+1}+f_i+1)<br>$$<br>可以得到 $f_i&#x3D;\frac{(n-i)f_{i+1}+n}{i}$。初始状态 $f_n&#x3D;1$，最终答案为 $k+\sum \limits_{i&#x3D;k+1}^x f_i$。</p>
+<p>时间复杂度 $O(n\sqrt n)$ 或者可以做到 $O(n\log n)$。</p>
+<p><strong>仓鼠找sugar II</strong></p>
+<p>给定一棵树，随机选取两个点 $a, b$，从 $a$ 开始随机游走（走每个出边的概率相同），期望走多少步到 $b$。</p>
+<p>数据范围：$n\le 10^5$。</p>
+<hr>
+<p>树上随机游走模板题。</p>
+<p>我们先分析边有边权的情况。设 $f_u$ 为 $u$ 期望走多远走到它的父亲节点。<br>$$<br>f_u&#x3D;\frac{w_{u, fa}+\sum\limits_{v\in son_u} (w_{u, v}+f_v+f_v)}{deg_u}<br>$$<br>分母是向每条出边走的概率都相同，分子第一项是直接向父亲走，第二项是先向儿子走，再从儿子走回来再走向父亲的距离。我们继续推式子。<br>$$<br>\begin{aligned}<br>f_u&amp;&#x3D;\frac{w_{u, fa}+\sum\limits_{v\in son_u} (w_{u, v}+f_v+f_v)}{deg_u}\<br>&amp;&#x3D;\frac{w_{u, fa}+\sum\limits_{v\in son_u} (w_{u, v}+f_v)+(deg_u-1)f_v}{deg_u}\<br>&amp;&#x3D;w_{u, fa}+\sum\limits_{v\in son_u} (w_{u, v}+f_v)\<br>&amp;&#x3D;\sum \limits_{(u, v)\in E} w_{u, v}+\sum \limits_{v\in son_u}f_v<br>\end{aligned}<br>$$<br>而在本题中就是 $w&#x3D;1$ 的情况，这时式子变为：<br>$$<br>f_u&#x3D;deg_u+\sum \limits_{v\in son_u}f_v<br>$$<br>也就是子树所有点的度数和，这个值就等于 $2\times siz_u-1$。</p>
+<p>在本题中我们可以固定一个根，让每个节点往上走，这时每条边的贡献就是 $(2\times siz_u-1)\times siz_u$。最后换根 dp 一下就可以。</p>
+<p>时间复杂度 $O(n)$。</p>
+<p><strong>Game on Tree</strong></p>
+<p>给定一棵有根树，结点编号从 $1$ 到 $n$。根结点为 $1$ 号结点。</p>
+<p>对于每一次操作，等概率的选择一个尚未被删去的结点并将它及其子树全部删去。当所有结点被删除之后，游戏结束；也就是说，删除 $1$ 号结点后游戏即结束。</p>
+<p>要求求出删除所有结点的期望操作次数。</p>
+<p>数据范围：$n\le 10^5$。</p>
+<hr>
+<p>设 $f_i$ 为 $i$ 号点被选中的次数，那么我们要求的答案为 $E(\sum f_u)&#x3D;\sum E(f_u)$，也就是每个点被选中的概率之和。</p>
+<p>我们考虑一个点如何才能被选中，也就是它在它任意一个祖先选中之前被选中，而它有 $dep_u-1$ 个祖先，因此它排在所有祖先之前的概率是 $\frac{1}{dep_u}$。因此答案为 $\sum \frac{1}{dep_u}$。</p>
+<p>时间复杂度 $O(n)$。</p>
+<p><strong>重建</strong></p>
+<p>给定一张 $n$ 个点的完全图，给出每条边的出现概率，求出最终成为一颗生成树的概率。</p>
+<p>数据范围：$n\le 50$。</p>
+<hr>
+<p>矩阵树定理其实求的是这么个玩意：<br>$$<br>\sum_{T\in Tree}\prod_{e\in T} w_e<br>$$<br>但是这题我们要求的东西是这个玩意：<br>$$<br>\sum_{T\in Tree}\prod_{e\in T} p_e\prod_{e\not \in T}(1-p_e)<br>$$<br>我们可以把后面的式子化开：<br>$$<br>\begin{aligned}<br>\sum_{T\in Tree}\prod_{e\in T} p_e\prod_{e\not \in T}(1-p_e)&amp;&#x3D;\sum_{T\in Tree}\prod_{e\in T} p_e\frac{\prod_{e}(1-p_e)}{\prod_{e\in T}(1-p_e)}\<br>&amp;&#x3D;\prod_{e}(1-p_e)\sum_{T}\prod_{e\in T}\frac{p_e}{1-p_e}<br>\end{aligned}<br>$$<br>我们可以把每条边的边权弄成 $\frac{p_e}{1-p_e}$，然后矩阵树定理即可。</p>
+<p>时间复杂度 $O(n^3)$。</p>
+<p><strong>随机树</strong></p>
+<p>一棵含 $n$ 个叶结点的二叉树可以通过如下方式生成：初始时只有根结点。首先，将根结点展开（本题中的展开是指给一个叶结点添上左、右两个子结点）；然后，等概率地随机将两个叶结点中的一个展开，即生成以下两棵树之一:之后，每次在当前二叉树的所有叶结点中，等概率地随机选择一个，将其展开。</p>
+<p>不断地重复这一操作，直至产生 $n$ 个叶结点为止。对于这样随机生成的一颗 $n$ 个叶子节点的二叉树，求出叶节点的平均深度的数学期望、树最大深度的数学期望。</p>
+<p>数据范围：$n\le 100$。</p>
+<hr>
+<p>第一问很好解决。我们设 $f_i$ 为 $i$ 个叶子节点的树的叶子的平均深度，展开一个叶子节点，那么深度总和平均下来会增加 $f_{i-1}+2$。因此转移方程为：<br>$$<br>f_i&#x3D;\frac{(i-1)f_{i-1}+f_{i-1}+2}{i}&#x3D;f_{i-1}+\frac{2}{i}<br>$$<br>而对于第二问，有一个公式：$E(x)&#x3D;\sum P(i\le x)$。也就是随机变量 $x$ 的期望就等于对于所有 $i$，$i\le x$ 的概率之和。</p>
+<p>这样我们可以设 $g_{i, j}$ 为有 $i$ 个叶子，树深度大于等于 $j$ 的概率。转移时我们枚举一颗子树内有多少叶子，然后令它的叶子节点深度大于等于 $j-1$ 即可。同时这样我们会计算两遍两棵子树深度都大于 $j-1$ 的情况，减去即可。</p>
+<p>因此转移为：<br>$$<br>g_{i, j}&#x3D;\frac{1}{i-1}\sum\limits_{k&#x3D;1}^{i-1} (f_{k, j-1}+f_{i-k, j-1}-f_{k, j-1}\times f_{i-k, j-1})<br>$$<br>然后根据我们上面的公式，我们就可以得到最终的答案：$\sum \limits_{i&#x3D;1}^{n-1}f_{n, i}$。</p>
+<p>补充：关于 $g_{i, j}$ 的转移过程中，前面除去 $i-1$ 的原因：</p>
+<p>我们设 $P_k$ 为一颗左儿子有 $k$ 个叶子，右儿子有 $i-k$ 个叶子的树，深度大于 $j$ 的概率，根据上面的分析我们可以得到 $P_k&#x3D;(f_{k, j-1}+f_{i-k, j-1}-f_{k, j-1}\times f_{i-k, j-1})$。</p>
+<p>我们再设 $P_k’$ 为生成一颗左儿子有 $k$ 个叶子，右儿子有 $i-k$ 个叶子的树的概率，那么我们上面求的 $g_{i, j}$ 即为 $\sum\limits_{k&#x3D;1}^{i-1}P_k’P_k$。因此我们要证明的就是 $P_k’&#x3D;\frac{1}{i-1}$。</p>
+<p>我们考虑把生成的这个过程用 $L$（分裂左儿子）和 $R$（分裂右儿子）来表示，那么最终生成这棵树的序列即为一个长度为 $i-2$，且有 $k-1$ 个 $L$，$i-k-1$ 个 $R$ 的序列（根节点一开始被分裂）。我们就能知道这个操作序列的排列有 $\frac{(i-2)!}{(k-1)!(i-k-1)!}$ 种。</p>
+<p>而对于 $L$ 和 $R$ 内部的排布，当我们有 $1$ 个 $L$ 时我们分裂 $L$ 只有 $1$ 种选择，两个 $L$ 就能有两种选择，以此类推 $L$ 内部的排列就有 $(i-1)!$ 种。$R$ 同理有 $(i-k-1)!$ 种。我们用乘法原理把这些步骤乘起来，就能得到一共有 $(i-2)!$ 种左儿子有 $k$ 个的树，也就和 $k$ 无关了。因此这样做才是正确的。</p>
+<p>时间复杂度 $O(n^3)$。</p>
+<p><strong>游戏</strong></p>
+<p>有 $n$ 个办公室，编号为 $l\sim l+n-1$，当检查完编号为 $i$ 的办公室后这个办公室的人会通知所有编号为 $i$ 的倍数的办公室的人认真工作。</p>
+<p>对于一个检查办公室的顺序 $p$，当检查完 $p_1, p_2\cdots p_x$ 这些办公室后所有办公室都开始认真工作，那么就把 $x$ 称为 $p$ 的检查时间。</p>
+<p>求出对于所有顺序 $p$，它们的检查时间之和。</p>
+<p>数据范围：$l, n\le 10^7$。</p>
+<hr>
+<p>我们发现后面的办公室是没法更新前面的办公室的。因此我们先从前往后扫一遍，用类似埃筛的思想筛出除了自己之外无法被别的办公室更新的点的数量 $x$，我们称之为有效点。</p>
+<p>显然，一个顺序的检查时间就等于它最后出现的有效点的位置。我们可以算出有多少个无效点会在最后一个有效点之后：</p>
+<p>$k$ 个有效点会将序列分为 $k+1$ 段，那么就期望有 $\frac{n-k}{k+1}$ 个点会在最后一个有效点之后。那么最后一个有效点的位置期望就是 $n-\frac{n-k}{k+1}&#x3D;\frac{nk+n-n+k}{k+1}&#x3D;\frac{k(n+1)}{k+1}$。</p>
+<p>而我们算出的是期望值，我们只需要乘一下有多少个顺序就可以得到答案。因此最终答案为 $\frac{k}{k+1}(n+1)!$。</p>
+<p>时间复杂度 $O(n\log\log n)$。</p>
+<p><strong>yyf hates dagequ</strong></p>
+<p>给你一些卡牌的技能，技能分为$2$种类型：</p>
+<ol>
+<li>加分，每连击 $c$ 次有 $p$ 的概率加 $s$ 分</li>
+<li>改判，每连击 $c$ 次有 $p$ 的概率触发强判定效果，持续 $t$ 个节奏图标（设连击数为 $c$ 的倍数时为第 $i$ 个节奏图标，则强判定效果在第 $[i+1,i+t]$ 个节奏图标被触发）</li>
+</ol>
+<p>这些技能在连击数为$c$的倍数且连击数不为 $0$ 时有概率触发，多个技能可以同时触发。其中，加分技能有 $\mathrm{score}$ 个，改判技能有 $\mathrm{judge}$ 个。</p>
+<p>再给你 $n$ 个节奏图标（crimson000 是按给出的顺序击打的）crimson000 击打的原始（相对于“强判定效果”修正后）结果，分为 $2$，$1$，$0$ 三种。在”强判定效果”的持续期间内所有的击打结果 $1$ 会视作击打结果 $2$，击打结果 $0$ 仍视作击打结果 $0$，击打结果 $2$ 仍视作击打结果 $2$ 。下文中的“击打结果”若无说明均指修正后的击打结果。</p>
+<p>“连击数”的定义为到目前为止连续的击打结果为 $2$ 的次数（若这次的击打结果为 $2$ 则这次击打也算入当前的连击数，否则当前的连击数为 $0$）。</p>
+<p>多个“强判定效果”可以重叠，但持续时间不会叠加（设当前“强判定效果”剩余时间为 $t_1$，此时同时触发两个“强判定效果”，持续时间分别为 $t_2$ 和 $t_3$ ，则下一次击打时的“强判定效果”剩余时间为 $\max(t_1-1,t_2,t_3)$）。</p>
+<p>一次击打的得分为这次的击打结果乘以当前的连击数加一。即：设当前的击打结果为 $x$ ，当前的连击数为 $\mathrm{combo}$ ，则这次击打的得分为 $\mathrm{x*(combo+1)}$。最终得分为每次（共 $n$ 次）击打的得分之和加上加分技能的加分之和</p>
+<p>请求出 crimson000 这次被歌暴打的期望得分。</p>
+<p>数据范围：$5 \le n \le 1000$，$0 \le \mathrm{score} \le 1000$，$0 \le \mathrm{judge} \le 1000$，$1 \le c \le 5$，$0.01 \le p \le 0.99$，$1 \le s \le 10$，$1 \le t \le 5$。</p>
+<hr>
+<p>我们可以注意到改判持续的时间很短，因此我们可以直接把它记录到状态里面。</p>
+<p>因此我们设 $f[i, j, k]$ 为当前该打第 $i$ 个音符，已经有了 $j$ 个 combo，改判还有 $k$ 个音符结束的期望得分。我们注意到加分的操作只和 combo 数有关，因此我们可以预处理出一个数组 $sc[i]$，为当 combo 数为 $i$ 时期望加的分数。</p>
+<p>转移时我们就看当前 $a_i$ 和 $k$，当 $a_i&#x3D;0$ 或 $k&#x3D;0, a_i&#x3D;1$ 的情况很好处理，而对于其他情况，我们就要考虑当前是否有可能触发改判操作。</p>
+<p>首先一个直观的想法就是枚举集合，看触发哪些改判操作。这样转移的复杂度会达到 $O(2^{\mathrm{judge}})$。我们考虑优化。</p>
+<p>我们可以注意到当一个 $t$ 更大的改判执行时，$t$ 小的改判执不执行已经不重要了，因此我们可以先对改判操作排序，然后预处理出当某个改判作为 $t$ 最大的改判执行的概率。而我们在转移的时候我们就可以枚举那个改判持续的时间是多少，这样只用枚举 $t$ 个数就可以完成转移。</p>
+<p>时间复杂度 $O(n^2t^2)$。</p>
+<p><strong>概率充电器</strong></p>
+<p>概率充电器由 $n-1$ 条导线连通了 $n$ 个充电元件。进行充电时，每条导线 $(u, v)$ 是否可以导电以概率 $p_{u, v}$ 决定，每一个充电元件自身是否直接进行充电也由概率 $q_u$ 决定。随后电能可以从直接充电的元件经过通电的导线使得其他充电元件进行间接充电。求出进入充电状态的元件个数的期望。</p>
+<p>数据范围：$n\le 10^5$。</p>
+<hr>
+<p>我们设 $f_u$ 为 $u$ 充上电的概率，那么答案就是 $\sum_{i&#x3D;1}^n f_i$。</p>
+<p>我们考虑一个点充上电的概率来自哪里：</p>
+<ol>
+<li>它自己充上电的 $q_i$。</li>
+<li>它子树中的电传到他这里。</li>
+<li>电从它父亲传到它。</li>
+</ol>
+<p>我们可以先考虑第二种，然后再一次 dfs 来统计第三种。</p>
+<p>下文中设 $u$ 为父亲，$v$ 为儿子。</p>
+<p>我们考虑第二种的转移。我们设 $P(A)$ 为通过其他方式 $u$ 充上电的概率（也就是当前的 $f_u$，我们设为 $f_u’$），$P(B)$ 为 $v$ 传给它电的概率。那么我们根据概率的公式，我们可以得到：<br>$$<br>\begin{aligned}<br>f_u&amp;&#x3D;P(A)+P(B)-P(AB)\<br>&amp;&#x3D;f_u’+f_v\times p_{u, v}-f_u’\times f_v\times p_{u, v}<br>\end{aligned}<br>$$<br>这样就完成了对子树的统计，而对于父亲来的电，我们先把这颗子树对父亲的贡献去掉。</p>
+<p>我们假设更新完了 $u$ 通过上面三种情况来电的概率，那么我们设 $P(A)$ 为 $u$ 通过除去 $v$ 子树以外的来电的概率，$P(B)$ 为 $v$ 子树给 $u$ 供上电的概率，那么可以得到等式：<br>$$<br>f_u&#x3D;P(B)+P(A)-P(AB)<br>$$<br>其中 $P(B)&#x3D;f_v\times p_{u, v}$，那么我们就可以得到 $P(A)&#x3D;\frac{f_u-P(B)}{1-P(B)}$。</p>
+<p>我们再考虑更新 $f_v$。我们设 $f_v’$ 为更新前的 $f_v$，那么还是根据那个公式，我们可以得到：<br>$$<br>f_v&#x3D;f_v’+P(A)\times p_{u, v}-f_v\times P(A)\times p_{u, v}<br>$$<br>时间复杂度 $O(n)$。</p>
+<p><strong>Intergalaxy Trips</strong></p>
+<p>给定一张 $n$ 个点的有向完全图，$i \to j$ 的边每天出现的概率均为 $p_{i,j}$，若 $i &#x3D; j$，有 $p_{i,j} &#x3D; 1$。每天可以选择一条存在的出边走过去或停留在原地不动。求最优策略下从 $1$ 到 $n$ 的期望天数。</p>
+<p>数据范围：$n \le 10^3$。</p>
+<hr>
+<p>我们设 $f_u$ 为 $u\to n$ 的期望步数，那么显然 $f_n&#x3D;0$。我们考虑转移。</p>
+<p>我们可以发现，如果有一条 $(u, v)$ 的边出现了，那么当 $f_v&gt;f_u$ 时，我们一定不会去走 $(u, v)$ 这条边。因为我们这样走的期望步数还会增加，还不如直接走个自环。而当如果所有 $f_{v’}&lt;f_v$ 的 $(u, v’)$ 这条边不存在时，我们才会走 $(u, v)$ 这条边。</p>
+<p>因此我们可以初步写出一个方程：<br>$$<br>f_u&#x3D;\sum_{v}^{f_v&lt;f_u}p_{u, v}f_v\prod <em>{k}^{f_k&lt;f_v}(1-p</em>{u, k})+f_u\prod <em>{v}^{f_v&lt;f_u}(1-p</em>{u,v})+1<br>$$<br>移项得到：<br>$$<br>f_u&#x3D;\frac{\sum_{v}^{f_v&lt;f_u}p_{u, v}f_v\prod <em>{k}^{f_k&lt;f_v}(1-p</em>{u, k})+1}{1-\prod_{v}^{f_v&lt;f_u}(1-p_{u, v})}<br>$$<br>这就是我们要的转移式子。</p>
+<p>我们再考虑如何更新。我们可以发现一个点如果考虑的点越多，它的 $f$ 是不增的，同时不可能会用更大的 $f$ 来更新它。换句话说就是如果一个点的 $f$ 是全局最小，那么就没有别的点会更新它，也就是它的 $f$ 值已经固定了。我们就可以用类似 dijkstra 的思路来更新了。</p>
+<p>时间复杂度 $O(n^2)$。</p>
+<p><strong>Rainbow Balls</strong></p>
+<p>有一袋球，有 $n$ 种颜色，其中第 $i$ 个颜色的球有 $a_i$ 个。</p>
+<p>当袋子里至少有两个不同颜色的球时，执行以下步骤:</p>
+<ol>
+<li><p>一个接一个的按照顺序随机取出两个的球，这些球的颜色可能是一样的。</p>
+</li>
+<li><p>把第二个球涂成第一个球的颜色，然后把两个球放回袋子里。</p>
+</li>
+</ol>
+<p>所有这些动作只需要一秒钟。输出无法操作时候的期望时间</p>
+<p>数据范围：$n\le 2500,1\le a_i \le 10^5$。</p>
+<hr>
+<p>设 $s&#x3D;\sum a_i$。我们先设一个目标颜色 $x$，也就是我们最终要的颜色全部相同的颜色。我们再设 $f_i$ 为当前有 $i$ 个目标颜色，到最终全部是 $x$ 的期望时间。最终答案就是 $\sum f_{a_i}$</p>
+<p>我们考虑转移。我们先设 $p$ 为从盒子中选出两个球，其中第一个是 $x$，第二个不是 $x$ 的概率，显然 $p&#x3D;\frac{i(s-i)}{s(s-1)}$。那么我们转移就能写出来为：<br>$$<br>f_i&#x3D;(f_{i+1}+f_{i-1})p+(1-2p)f_i+\color{red}1<br>$$<br>但是我们发现这样转移是错误的，因为我们转移时不能保证它不到达 $f_0$ 这个情况，这时 $f_0$ 不存在。因此我们转移时加上的应该是它能不经过 $f_0$ 走到 $f_s$ 的概率，我们记作 $v$。</p>
+<p>如何求出 $v$ 呢，我们可以设 $g_i$ 为有 $i$ 个 $x$ 时 $x$ 留到最后的概率，那么我们可以写出转移：<br>$$<br>g_i&#x3D;g_{i-1}p+g_{i+1}p+(1-2p)g_i<br>$$<br>我们可以得出这么一个结论：$g_{i+1}-g_{i}&#x3D;g_i-g_{i-1}$。而初始状态为：$g_0&#x3D;0, g_s&#x3D;1$。那么我们就可以得到 $v&#x3D;g_i&#x3D;\frac{i}{s}$。</p>
+<p>我们带回原式即可得到：<br>$$<br>\begin{aligned}<br>f_i&amp;&#x3D;(f_{i+1}+f_{i-1})p+(1-2p)f_i+\frac{i}{s}\<br>2pf_i&amp;&#x3D;(f_{i+1}+f_{i-1})p+\frac{i}{s}\<br>2f_i&amp;&#x3D;f_{i+1}+f_{i-1}+\frac{i}{s\times \frac{i(s-i)}{s(s-1)}}\<br>2f_i&amp;&#x3D;f_{i+1}+f_{i-1}+\frac{s-1}{s-i}\<br>f_{i+1}&amp;&#x3D;2f_i-f_{i-1}-\frac{s-1}{s-i}<br>\end{aligned}<br>$$<br>我们就得到了递推的公式，但是现在 $f_1$ 和 $f_2$ 未知，无法计算。我们考虑求出这俩玩意。</p>
+<p>首先当 $i&#x3D;0$ 时 $f_0$ 不存在，因此 $f_2&#x3D;2f_1-1$。我们再设 $g_i&#x3D;f_{i+1}-f_i$，根据上面我们推导的式子 $f_{i+1}-f_{i}&#x3D;f_i-f_{i-1}-\frac{s-1}{s-i}$，我们就能得到 $g_i&#x3D;g_{i-1}-\frac{s-1}{s-i}$，特殊情况即为 $g_0&#x3D;f_1$，因此 $g_i&#x3D;f_1-\sum\limits_{j&#x3D;1}^i\frac{s-1}{s-j}$。</p>
+<p>我们又知道 $f_s&#x3D;0$，同时 $f_s&#x3D;f_1+\sum\limits_{i&#x3D;1}^{n-1}g_i$。我们再推下式子：<br>$$<br>\begin{aligned}<br>0&amp;&#x3D;f_1+\sum_{i&#x3D;1}^{s-1}g_i\<br>&amp;&#x3D;f_1+\sum_{i&#x3D;1}^{s-1}(f_1-\sum_{j&#x3D;1}^i \frac{s-1}{s-j})\<br>&amp;&#x3D;sf_1-\sum\limits_{i&#x3D;1}^{s-1}\sum_{j&#x3D;1}^i\frac{s-1}{s-j}\<br>&amp;&#x3D;sf_1-\sum_{j&#x3D;1}^{s-1}\sum_{i&#x3D;j}^{s-1}\frac{s-1}{s-j}\<br>&amp;&#x3D;sf_1-\sum_{j&#x3D;1}^{s-1}\frac{s-1}{s-j}(s-j)\<br>&amp;&#x3D;sf_1-(s-1)^2<br>\end{aligned}<br>$$<br>解得 $f_1&#x3D;\frac{(s-1)^2}{s}$。再根据 $f_2&#x3D;2f_1-1$ 就可以递推了。</p>
+<p>时间复杂度 $O(\max(a_i))$。</p>
+<p><strong>Student’s Camp</strong></p>
+<p>有一个 $(n+2) \times m$ 的网格。除了第一行和最后一行，其他每一行每一天最左边和最右边的格子都有 $p$ 的概率消失。求 $k$ 天后，网格始终保持连通的概率。</p>
+<p>数据范围：$n,m \le 1.5 \times 10^3$，$k \le 10^5$。</p>
+<hr>
+<p>我们设 $D(i)$ 为这 $k$ 天从一边消失恰好 $i$ 个格子的概率，显然 $D(i)&#x3D;\dbinom{k}{i}p^i(1-p)^{k-i}$。我们再设 $P(l, r)$ 为 $k$ 天后一行网格中恰好 $[l, r]$ 这段区间保持连通的概率，那么由于左右两边是相互独立的，就有 $P(l,r)&#x3D;D(l-1)D(m-r)$。</p>
+<p>我们设 $f[i, l, r]$ 为第 $i$ 行 $[l,r]$ 没有消失，且和前 $i-1$ 行保持连通的概率，那么比较显然的转移是进行一个区间 dp，上一行的区间只要和这一行有交即可。但是这样转移的复杂度是 $O(nm^4)$ 的，我们考虑用容斥优化一下。</p>
+<p>我们发现要减去的情况只有 $r’&lt;l$ 和 $r&lt;l’$ 这两种情况，于是我们就可以写出转移：<br>$$<br>f[i, l, r]&#x3D;P(l, r)\left(\sum\limits_{l’\le r’}f[i-1,l’,r’]-\sum\limits_{r’&lt;l}f[i-1, l’, r’]-\sum\limits_{l’&gt;r}f[i-1, l’, r’]  \right)<br>$$<br>我们把这三个 $\sum$ 都表示出来：<br>$$<br>F_i&#x3D;\sum\limits_{l’\le r’}f[i,l’,r’]<br>$$</p>
+<p>$$<br>L[i, x]&#x3D;\sum\limits_{l\le r &lt;x} f[i, l, r]<br>$$</p>
+<p>$$<br>R[i, x]&#x3D;\sum \limits_{x&lt;l\le r} f[i, l, r]<br>$$</p>
+<p>那么 $f$ 的转移式就能写成：$f[i, l, r]&#x3D;P(l, r)(F_{i-1}-L[i - 1, l]-R[i - 1, r])$。而且最终我们的答案也就是 $F_n$。</p>
+<p>首先我们可以发现 $L$ 和 $R$ 其实是完全对称的，因此 $L[i, x]&#x3D;R[i, m-x]$。</p>
+<p>我们再设 $S[i, r]&#x3D;\sum\limits_{l\le r}f[i, l, r]$，也就是所有右端点在 $r$ 的 $f$ 之和。我们发现对 $S$ 做一遍前缀和就能得到 $L$，那么我们只用考虑求出 $S$ 了。我们把 $f$ 的转移方程带入到计算 $S$ 的式子里面：<br>$$<br>\begin{aligned}<br>S[i, r]&amp;&#x3D;\sum\limits_{l\le r}f[i,l, r]\<br>&amp;&#x3D;\sum\limits_{l\le r}P(l, r)(F_{i-1}-L[i - 1, l]-R[i - 1, r])\<br>&amp;&#x3D;D(m-r)\sum_{l\le r} D(l-1)(F_{i-1}-L[i-1, l]-R[i-1, r])\<br>&amp;&#x3D;D(m-r)\left((F_{i-1} - R[i-1, r])\sum_{l\le r}D(l-1)-\sum_{l\le r}D(l-1)L[i-1,l]\right)<br>\end{aligned}<br>$$<br>到了这里就比较清楚了，我们可以直接对 $D$ 和 $D(l-1)L[i-1, l]$ 做前缀和，转移就可以做到 $O(1)$。而要求 $F_i$ 也直接对 $L[i]$ 做一遍前缀和即可。</p>
+<p>时间复杂度 $O(nm)$。</p>
+<p><strong>小 Y 和恐怖的奴隶主</strong></p>
+<p>Boss 有 $10^{100}$ 点生命值，它只带了一个随从——一个只有 $m$ 点生命值的“恐怖的奴隶主”。</p>
+<p>这个“恐怖的奴隶主”有一个特殊的技能：每当它被扣减生命值但没有死亡（死亡即生命值 $\leq 0$），且 Boss 的随从数量小于上限 $k$，便会召唤一个新的具有 $m$ 点生命值的“恐怖的奴隶主”。</p>
+<p>现在进行 $n$ 次攻击，每次攻击时，会从 Boss 以及 Boss 的所有随从中的等概率随机选择一个，并扣减 $1$ 点生命值，求出进行 $n$ 次攻击后扣减 Boss 的生命值点数的期望。</p>
+<p>数据范围：$1 \leq T \leq 1000, 1 \leq n \leq {10}^{18}, 1 \leq m \leq 3, 1 \leq k \leq 8$。</p>
+<hr>
+<p>我们发现 $k$ 和 $m$ 很小，稍微权衡一下就能得到状态设计：$f[i, a, b, c]$ 为前 $i$ 次攻击，当前有 $a$ 个 $1$ 血量的随从，$b$ 个 $2$ 血量的随从，$c$ 个 $3$ 血量的随从的概率。</p>
+<p>我们可以发现这样只有 $166$ 个状态，允许我们加速递推。</p>
+<p>我们很容易就能得到转移方程（下面只用 $m&#x3D;3$ 来举例）：</p>
+<p>设 $add&#x3D;[a+b+c\not&#x3D;k]$，则有：<br>$$<br>f_{i+1, a-1, b, c}\leftarrow \frac{a}{a+b+c+1} f_{i, a, b, c}(a&gt;0)<br>$$</p>
+<p>$$<br>f_{i+1, a+1, b-1, c+add}\leftarrow \frac{b}{a+b+c+1} f_{i, a, b, c}(b&gt;0)<br>$$</p>
+<p>$$<br>f_{i+1, a, b+1, c-1+add}\leftarrow \frac{c}{a+b+c+1} f_{i, a, b, c}(c&gt;0)<br>$$</p>
+<p>$$<br>f_{i+1, a, b, c}\leftarrow \frac{1}{a+b+c+1} f_{i, a, b, c}<br>$$</p>
+<p>而对于伤害的期望，我们可以在转移时记录一个 $g_i$，表示第 $i$ 次攻击时期望伤害，让所有 $f_{i, a, b, c}$ 以 $\frac{1}{a+b+c+1}$ 的系数转移过来即可。</p>
+<p>我们可以直接预处理递推矩阵的 $2^k$ 次幂，然后每次询问 $O(166^2\log n)$ 即可。</p>
+<p>时间复杂度 $O(166^3\log n+T166^2\log n)$。</p>
+<p><strong>斗主地</strong></p>
+<p>一副牌一共有 $n$ 张牌，从上到下依次标号为 $1 - n$。标号为 $i$ 的牌分数是 $f(i)$。在 本题，$f(i)$ 有且仅有两种可能：$f(i) &#x3D; i$ 或 $f(i) &#x3D; i^2$。</p>
+<p>洗牌环节一共分 $m$ 轮，这 $m$ 轮洗牌依次进行。第 $i$ 轮洗牌时：</p>
+<ol>
+<li>拿出从最上面往下数的前 $A_i$ 张牌。这样这副牌就被分成了两堆：第一堆是最上面的 $A_i$ 张牌，第二堆是剩下的 $n-A_i$ 张牌，且这两堆牌内相对顺序不变。 特别地，当$A_i &#x3D; n$ 或 $A_i &#x3D; 0$ 时，有一堆牌是空的。</li>
+<li>接下来对两堆牌进行合并，从而产生新的第三堆牌。当第一堆牌还剩下 $X$ 张，第二堆牌还剩下 $Y$ 张的时候，以 $\dfrac{X}{X+Y}$ 的概率取出第一堆牌的最下面的牌，并将它 放入新的第三堆牌的最上面， $\dfrac{Y}{X+Y}$  的概率取出第二堆牌的最下面的牌，并将它放 入新的第三堆牌的最上面</li>
+<li>重复操作 $2$，一直取到两堆牌都为空为止。这样我们就完成了一轮洗牌。</li>
+</ol>
+<p>因为洗牌过程是随机的，所以小 $S$ 发现自己没法知道某个位置上具体是哪张牌。但 crimson000 想问你在经历了这 $m$ 轮洗牌后，某个位置上的牌的<strong>期望分数</strong>是多少。一共有 $Q$ 个这样的问题。</p>
+<p>数据范围：$3\le n \le 10^7$，$1\le m,Q\le5\times 10^5$，$0\le A_i\le n$，$type\in {1,2}$。</p>
+<hr>
+<p>我们先来证明一个结论：经过一轮洗牌后，可能出现的序列的出现概率相同。</p>
+<ul>
+<li>我们可以把第一堆的牌看作 $0$，第二堆牌看作 $1$，而对于题目中的洗牌方式我们可以看作从剩下的所有 $0$ 和 $1$ 中选出一个数放到序列最后。我们考虑给每个点附一个编号，那么这 $n!$ 种排列的出现概率都是相同的。而每一个 $01$ 序列去附编号的方案数都是 $A(n-A)$，因此所有序列的出现概率都是相同的。</li>
+</ul>
+<p>有了这个结论我们就可以去 dp 了。我们设 $f_{i, j, k}$ 为 $i$ 轮洗牌后第 $j$ 个位置的牌跑到第 $k$ 个位置的概率，我们枚举这一轮中这个牌在哪，再根据我们上面的结论就可以得到下面的转移：<br>$$<br>f_{i, j, k}&#x3D;\sum_{l&#x3D;1}^{A_i}\frac{\dbinom{k-1}{l-1}\dbinom{n-k}{A_i-l}}{\dbinom{n}{A_i}}f_{i-1, j, l}+\sum_{l&#x3D;A_i+1}^{n}\frac{\dbinom{k-1}{l-A_i-1}\dbinom{n-k}{n-l}}{\dbinom{n}{A_i}}f_{i-1, j, l}<br>$$<br>其中 $\dbinom{k-1}{l-1}\dbinom{n-k}{A_i-l}$ 和 $\dbinom{k-1}{l-A_i-1}\dbinom{n-k}{n-l}$ 的意思是看这个牌和它同一堆的，在它前面的放哪，在它后面的放哪。</p>
+<p>这样的时间复杂度是 $O(mn^3)$ 的。我们考虑直接设期望。</p>
+<p>我们设 $f_{i, j}$ 为第 $i$ 次打乱后第 $j$ 个位置的期望分数，那么我们可以把上面的转移照搬下来：<br>$$<br>f_{i, j}&#x3D;\sum_{l&#x3D;1}^{A_i}\frac{\dbinom{j-1}{l-1}\dbinom{n-j}{A_i-l}}{\dbinom{n}{A_i}}f_{i-1, l}+\sum_{l&#x3D;A_i+1}^{n}\frac{\dbinom{j-1}{l-A_i-1}\dbinom{n-j}{n-l}}{\dbinom{n}{A_i}}f_{i-1, l}<br>$$<br>时间复杂度 $O(mn^2)$。我们考虑暴力求出来 $t&#x3D;1, i&#x3D;1$ 时的 $f$ 值：<br>$$<br>\begin{aligned}<br>f_{1, x}&amp;&#x3D;\sum_{j&#x3D;1}^{A_1}\frac{\dbinom{x-1}{j-1}\dbinom{n-x}{A_1-j}}{\dbinom{n}{A_1}}\times j+\sum_{l&#x3D;A_1+1}^{n}\frac{\dbinom{x-1}{j-A_1-1}\dbinom{n-x}{n-j}}{\dbinom{n}{A_1}}\times j\<br>\end{aligned}<br>$$<br>我们发现左右两边长得差不多，我们只单独弄出来左半边来。<br>$$<br>\begin{aligned}<br>\sum_{j&#x3D;1}^{A_1}\frac{\dbinom{x-1}{j-1}\dbinom{n-x}{A_1-j}}{\dbinom{n}{A_1}}\times j&amp;&#x3D;\sum_{j&#x3D;1}^{A_1}\frac{\dbinom{x-1}{j-1}\dbinom{n-x}{A_1-j}}{\dbinom{n}{A_1}}\times (j-1)+\sum_{j&#x3D;1}^{A_1}\frac{\dbinom{x-1}{j-1}\dbinom{n-x}{A_1-j}}{\dbinom{n}{A_1}}\<br>&amp;&#x3D;\sum_{j&#x3D;1}^{A_1}\frac{\dbinom{x-2}{j-2}\dbinom{n-x}{A_1-j}}{\dbinom{n}{A_1}}\times (x-1)+\frac{\dbinom{n-1}{A_1-1}}{\dbinom{n}{A_1}}\<br>&amp;&#x3D;\frac{\dbinom{x-2}{A_1-2}}{\dbinom{n}{A_1}}\times (x-1)+\frac{\dbinom{n-1}{A_1-1}}{\dbinom{n}{A_1}}\<br>\end{aligned}<br>$$<br>我们发现最终的式子只和 $x$ 线性相关，那么我们可以把 $kx+b$ 再带入 $f_2$ 中，我们依旧能得到相同的结论。因此我们就能证明 $f_m(x)$ 为关于 $x$ 的一次函数。</p>
+<p>而对于 $t&#x3D;2$，我们可以把二次式化为 $a(x-1)(x-2)+b(x-1)+c$，然后和上面一样推式子，我们可以证明它依旧是一个二次函数。我们就可以递推出 $f_m$ 的系数，每次询问 $O(1)$ 回答即可。</p>
+<p>时间复杂度 $O(n+m+k)$。</p>
+<p><strong>[ZJOI2017] 树状数组</strong></p>
+<p>漆黑的晚上，crimson001 躺在床上辗转反侧。难以入眠的她想起了若干年前她的一次悲惨的 OI 比赛经历。那是一道基础的树状数组题。</p>
+<p>给出一个长度为 $n$ 的数组 $A$，初始值都为 $0$，接下来进行 $m$ 次操作，操作有两种：</p>
+<ul>
+<li>$1\ x$，表示将 $A_x$  变成 $(A_x + 1) \bmod 2$。</li>
+<li>$2\ l\ r$，表示询问 $(\sum_{i&#x3D;l}^r A_i) \bmod 2$。</li>
+</ul>
+<p>尽管那个时候的 crimson001 非常的 simple，但是她还是发现这题可以用树状数组做。当时非常 young 的她写了如下的算法：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(; x; x -= <span class="built_in">lowbit</span>(x)) c[x] = (c[x] + <span class="number">1</span>) % <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(; x &lt;= n; x += <span class="built_in">lowbit</span>(x)) ans = (ans + c[x]) % <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Query</span><span class="params">(<span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> ansl = <span class="built_in">find</span>(l - <span class="number">1</span>);</span><br><span class="line">    <span class="type">int</span> ansr = <span class="built_in">find</span>(r);</span><br><span class="line">    <span class="keyword">return</span> (ansr - ansl + <span class="number">2</span>) % <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果你对树状数组比较熟悉，不难发现可怜把树状数组写错了：$\text{Add}$ 和 $\text{Find}$ 中 $x$  变化的方向反了。因此这个程序在最终测试时华丽的爆 0 了。</p>
+<p>然而奇怪的是，在当时，这个程序通过了出题人给出的大样例——这也是 crimson001 没有进行对拍的原因。</p>
+<p>现在，crimson001 想要算一下，这个程序回答对每一个询问的概率是多少，这样她就可以再次的感受到自己是一个多么非的人了。然而时间已经过去了很多年，即使是 crimson001 也没有办法完全回忆起当时的大样例。幸运的是，她回忆起了大部分内容，唯一遗忘的是每一次第一类操作的 $x$ 的值，因此她假定这次操作的 $x$ 是在 $[l_i, r_i]$  范围内<strong>等概率随机</strong>的。</p>
+<p>具体来说，crimson001 给出了一个长度为 $n$ 的数组 $A$，初始为 $0$，接下来进行了 $m$ 次操作：</p>
+<ul>
+<li>$1\ l\ r$，表示在区间 $[l, r]$ 中等概率选取一个 $x$ 并执行 $\text{Add}(x)$ 。</li>
+<li>$2\ l\ r$，表示询问执行 $\text{Query}(l, r)$ 得到的结果是正确的概率是多少。</li>
+</ul>
+<p>数据范围：$n, m\le 10^5$。</p>
+<hr>
+<p>我们转化完题意就能发现，我们要求的其实就是 $a_{l-1}&#x3D;a_r$ 的概率。我们设 $p_{x, y}$ 为 $a_x&#x3D;a_y$ 的概率，进行一个分类讨论。</p>
+<ul>
+<li>当 $x&lt;l,l\le y\le r$ 时，$a_x$ 和 $a_y$ 相同情况变化的概率为 $\frac{1}{r-l+1}$。</li>
+<li>当 $l\le x\le r, r&lt;y$ 时，变化的概率为 $\frac{1}{r-l+1}$。</li>
+<li>当 $l\le x&lt;y\le r$ 时，变化的概率为 $\frac{2}{r-l+1}$。</li>
+<li>这里还有一个特殊情况为 $l&#x3D;1$ 时，这次这一次询问答案不变就等价于 $sum_{1\sim r}&#x3D;sum_{r\sim n}$。那么再对这种情况分类讨论：<ul>
+<li>当 $x&#x3D;1, l\le y\le r$ 时，变化的概率为 $\frac{r-l}{r-l+1}$。</li>
+<li>当 $y&lt;l$ 或 $y&gt;r$ 时，变化的概率是 $1$。</li>
+</ul>
+</li>
+</ul>
+<p>于是我们可以用树套树来维护。设当前操作不变的概率为 $q$，原先相等的概率为 $p$，那么新的相等的概率为 $pq+(1-p)(1-q)$。树套树标记永久化一下即可。</p>
+<p>时间复杂度 $O(n\log ^2n)$。</p>
+<h1 id="The-End"><a href="#The-End" class="headerlink" title="The End"></a>The End</h1><p>这堆题说实话大部分都不是自己做出来的，有的时候还是要看题解，甚至有题 5 月份做了现在还不会&#x2F;qd。只能以后再多做做题了。</p>
+
+    </div>
+    <footer class="article-footer">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag" title="数学">数学</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E9%9B%86/" rel="tag" title="题集">题集</a></li></ul>
+
+    </footer>
+  </div>
+    <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
+      <div class="article-nav-link-wrap left">
+          <img data-src="https://gitcode.net/crimson000000/mypic/-/raw/master/bg/91.jpg" data-sizes="auto" alt="Atcoder 做题记录" class="lazyload">
+        <a href="/2023/09/18/Atcoder%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/" aria-label="前一篇: Atcoder 做题记录" title="前一篇: Atcoder 做题记录"></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">
+            Atcoder 做题记录
+        </h3>
+      </div>
+    <div class="article-nav-link-wrap right">
+        <img data-src="https://gitcode.net/crimson000000/mypic/-/raw/master/bg/32.jpg" data-sizes="auto" alt="SAM学习笔记" class="lazyload">
+      <a href="/2023/08/27/SAM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" aria-label="后一篇: SAM学习笔记"  title="后一篇: SAM学习笔记"></a>
+      <div class="article-nav-caption">后一篇</div>
+      <h3 class="article-nav-title">
+          SAM学习笔记
+      </h3>
+    </div>
+  </nav>
+
+</article>
+
+
+</section>
+        </div>
+        <footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info">
+    <div>
+      <span class="icon-copyright"></span>
+        2020-2026
+      <span class="footer-info-sep rotate"></span>
+      crimson000
+    </div>
+      <div>
+        基于&nbsp;<a href="https://hexo.io/" rel="noopener nofollow noreferrer" target="_blank">Hexo</a>&nbsp;
+        Theme.<a href="https://github.com/D-Sketon/hexo-theme-reimu" rel="noopener nofollow noreferrer" target="_blank">Reimu</a>
+      </div>
+      <div>
+        <span class="icon-brush"></span>
+        85.3k
+        &nbsp;|&nbsp;
+        <span class="icon-coffee"></span>
+        05:54
+      </div>
+      <div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv">总访问量&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv">总访客量&nbsp;<span id="busuanzi_value_site_uv"></span></span>
+      </div>
+  </div>
+</footer>
+
+          <div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div>
+        <div id="mask" class="hide"></div>
+      </div>
+      <nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap">
+        <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#The-End"><span class="toc-number">1.</span> <span class="toc-text">The End</span></a></li></ol>
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.jpg" data-sizes="auto" alt="crimson000" class="lazyload">
+  <div class="sidebar-author-name">crimson000</div>
+  <div class="sidebar-description">我喜欢打源神和舞萌</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">11</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">8</div>
+  </div>
+</div>
+<div class="sidebar-social">
+</div>
+<div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+</div>
+</div>
+  </div>
+      <div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div>
+</nav>
+
+    </div>
+    
+<script src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js" integrity="sha384-3gT&#x2F;vsepWkfz&#x2F;ff7PpWNUeMzeWoH3cDhm&#x2F;A8jM7ouoAK0&#x2F;fP&#x2F;9bcHHR5kHq2nf+e" crossorigin="anonymous"></script>
+
+
+<script src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js" integrity="sha384-J08i8An&#x2F;QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  
+<script src="/js/aos.js"></script>
+
+  <script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', aosInit);
+    } else {
+      aosInit();
+    }
+  </script>
+
+
+<script src="/js/pjax_script.js" data-pjax></script>
+
+
+
+
+  
+<script src="https://npm.webcache.cn/mouse-firework@0.1.1/dist/index.umd.js" integrity="sha384-8LyaidD9GPxQQgLJO&#x2F;WRw&#x2F;O2h3BoNq&#x2F;ApI&#x2F;ecpvM6RsrCz2qP2ppBXUKihP4V&#x2F;2d" crossorigin="anonymous"></script>
+
+  <script>
+    if (!false || !window.matchMedia('(max-width: 768px)').matches) {
+      window.firework && window.firework(JSON.parse('{"excludeElements":["a","button"],"particles":[{"shape":"circle","move":["emit"],"easing":"easeOutExpo","colors":["var(--red-1)","var(--red-2)","var(--red-3)","var(--red-4)"],"number":20,"duration":[1200,1800],"shapeOptions":{"radius":[16,32],"alpha":[0.3,0.5]}},{"shape":"circle","move":["diffuse"],"easing":"easeOutExpo","colors":["var(--red-0)"],"number":1,"duration":[1200,1800],"shapeOptions":{"radius":20,"alpha":[0.2,0.5],"lineWidth":6}}]}'));
+    }
+  </script>
+
+
+
+
+
+<div id="lazy-script">
+  <div>
+      
+      
+      <script data-pjax>
+        window.REIMU_POST = {
+          author: "crimson000",
+          title: "概率期望杂题",
+          url: "https://crimson000000.github.io/2023/09/07/%E6%A6%82%E7%8E%87%E6%9C%9F%E6%9C%9B%E6%9D%82%E9%A2%98/",
+          excerpt: "发现自己期望太差了，写写题。",
+          description: "",
+          stripContent: "发现自己期望太差了，写写题。   大部分题目来自这个题单 绿豆蛙的归宿 给出一张 $n$ 个点 $m$ 条边的有向无环图，起点为 $1$，终点为 $n$，每条边都有一个长度，并且从起点出发能够到达所有的点，所有的点也都能够到达终点。从起点出发，走向终点。 到达每一个顶点时，如果该节点有 $k$ 条出边，可以选择任意一条边离开该点，并且走向每条边的概率为 $\frac{1}{k}$ 。求出从起点走到终点的所经过的路径总长度期望。 数据范围：$n\le 10^5, m\le 2\times 10^5",
+          date: "Thu Sep 07 2023 19:17:55 GMT+0800",
+          updated: "Sat Aug 15 2026 16:51:39 GMT+0800",
+          cover: "https://gitcode.net/crimson000000/mypic/-/raw/master/bg/72.jpg",
+        };
+      </script>
+        
+<script src="/js/insert_highlight.js" data-pjax></script>
+
+      <script type="module" data-pjax>
+        const PhotoSwipeLightbox = (await safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js", "sha384-DiL6M/gG+wmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF/N6lrZi/")).default;
+        const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,
+              pswpModule: () => safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8+oTJ7m3DfYEWX1fu1scuS4+s")
+            }).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script>
+        
+
+  </div>
+</div>
+
+
+  <script>
+    console.log(String.raw`%c 
+ ______     ______     __     __    __     __  __    
+/\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+\ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+ \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+  \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                  
+`,'color: #ff5252;')
+    console.log('%c Theme.Reimu v' + '1.10.4' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+  </script>
+  
+
+
+  
+<script src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js" integrity="sha384-0M75wtSkhjIInv4coYlaJU83+OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id+S" crossorigin="anonymous" async></script>
+
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      for (let registration of registrations) {
+        registration.unregister();
+      }
+    });
+  }
+</script>
+
+
+
+
+
+  </body>
+  </html>

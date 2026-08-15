@@ -1,0 +1,787 @@
+  <!DOCTYPE html>
+  <html lang="zh-CN"  
+      data-theme-mode="auto"
+  >
+  <head>
+  <meta charset="utf-8">
+  
+  
+  
+  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_4k4bc36ef96';window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'https://crimson000000.github.io';</script>
+  <title>
+    计数杂题 | crimson000
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish%3A400%2C400italic%2C700%2C700italic%7CNoto+Serif+SC%3A400%2C400italic%2C700%2C700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish%3A400%2C400italic%2C700%2C700italic%7CNoto+Serif+SC%3A400%2C400italic%2C700%2C700italic&display=swap" media="print" onload="this.media&#x3D;&#39;all&#39;">
+    <link rel="preload" href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    
+<link rel="stylesheet" href="/css/loader.css">
+
+    <meta name="description" content="搞一点计数题放在这，看到有意思的计数就更（虽然在组合数学那已经更了好多了）。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计数杂题">
+<meta property="og:url" content="https://crimson000000.github.io/2023/07/08/%E8%AE%A1%E6%95%B0%E6%9D%82%E9%A2%98/index.html">
+<meta property="og:site_name" content="crimson000">
+<meta property="og:description" content="搞一点计数题放在这，看到有意思的计数就更（虽然在组合数学那已经更了好多了）。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/59fh9r68.png">
+<meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/0alajqn5.png">
+<meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/uvwc5h6e.png">
+<meta property="og:image" content="https://codeforces.com/predownloaded/61/e9/61e9c25b977bad7af00165b92070a9acabf16704.png">
+<meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/82p409eq.png">
+<meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/19jyfcbz.png">
+<meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/gv0qevk2.png">
+<meta property="og:image" content="https://gitcode.net/crimson000000/mypic/-/raw/master/study/14.png">
+<meta property="og:image" content="https://gitcode.net/crimson000000/mypic/-/raw/master/study/15.png">
+<meta property="og:image" content="https://gitcode.net/crimson000000/mypic/-/raw/master/study/17.png">
+<meta property="article:published_time" content="2023-07-08T11:40:04.000Z">
+<meta property="article:modified_time" content="2026-08-15T08:51:39.960Z">
+<meta property="article:author" content="crimson000">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="题集">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.luogu.com.cn/upload/image_hosting/59fh9r68.png">
+    <link rel="alternate" href="/atom.xml" title="crimson000" type="application/atom+xml">
+    <link rel="shortcut icon" href="/images/favicon.png">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL&#x2F;toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx&#x2F;1oA&#x2F;0l8ysE" crossorigin="anonymous">
+    
+<script src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js" integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script>
+
+    
+<link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css" integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous">
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+  <body>
+      <div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate">
+          <svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+           M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
+          </svg>
+      </div>
+      <div class="loading-word">少女祈祷中...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script>
+<div id="copy-tooltip"></div>
+<div id="heatmap-tooltip"></div>
+
+
+    <div id="container">
+      <div id="wrap">
+        <div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation">
+        <a class="main-nav-link-wrap" href="/">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">首页</span>
+        </span>
+        <a class="main-nav-link-wrap" href="/archives">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">归档</span>
+        </span>
+        <a class="main-nav-link-wrap" href="/about">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">关于</span>
+        </span>
+        <a class="main-nav-link-wrap" href="/friend">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">友链</span>
+        </span>
+    <a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation">
+      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅" aria-label="RSS 订阅" target="_blank"></a>
+  </nav>
+</div>
+<header id="header" aria-label="Site header">
+    <picture></picture>
+    <img  fetchpriority="high" src="https://gitcode.net/crimson000000/mypic/-/raw/master/bg/13.jpg" alt="计数杂题">
+  <div id="header-outer">
+    <div id="header-title">
+          <span id="logo">
+            <h1 data-aos="slide-up">计数杂题</h1>
+          </span>
+        <h2 id="subtitle-wrap" data-aos="slide-down">
+        </h2>
+    </div>
+  </div>
+</header>
+
+        <div id="content" aria-label="Page content"  class="sidebar-right" >
+          <aside id="sidebar" aria-label="Sidebar">
+  <div class="sidebar-wrapper-container sticky">
+  <div class="sidebar-wrapper">
+    <div class="sidebar-wrap" data-aos="fade-up">
+          <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD%EF%BC%8C%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0"><span class="toc-number">1.</span> <span class="toc-text">未完待续，持续更新</span></a></li></ol>
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.jpg" data-sizes="auto" alt="crimson000" class="lazyload">
+  <div class="sidebar-author-name">crimson000</div>
+  <div class="sidebar-description">我喜欢打源神和舞萌</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">11</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">8</div>
+  </div>
+</div>
+<div class="sidebar-social">
+</div>
+<div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+</div>
+</div>
+          <div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div>
+    </div>
+  </div>
+  <div class="sidebar-widget">
+  </div>
+  </div>
+</aside>
+
+          <section id="main" aria-label="Main content"><article id="post-计数杂题" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner" data-aos="fade-up">
+    <div class="article-meta">
+      <div class="article-date">
+  <span class="article-date-link icon-calendar" data-aos="zoom-in">
+    <time datetime="2023-07-08T11:40:04.000Z" itemprop="datePublished">2023-07-08</time>
+    <time style="display: none;" id="post-update-time">2026-08-15</time>
+  </span>
+</div>
+
+        <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/" title="算法竞赛">算法竞赛</a><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/%E9%A2%98%E7%9B%AE/" title="题目">题目</a>
+  </div>
+
+    </div>
+    
+    <div class="hr-line"></div>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+        <p>搞一点计数题放在这，看到有意思的计数就更（虽然在组合数学那已经更了好多了）。</p>
+<span id="more"></span>
+
+<p><strong>[CTSC2017] 吉夫特</strong></p>
+<p>给定一个长度为 $n$ 的序列 $a$，保证 $a_i$ 互不相同。求出有多少个长度大于等于二的序列满足</p>
+<p>$$\prod <em>{i&#x3D;2}^{k} \binom{a</em>{b_{i-1}}}{a_{b_i}} \bmod 2 &#x3D; \binom{a_{b_1}}{a_{b_2}} \times \binom{a_{b_2}}{a_{b_3}} \times \cdots \binom{a_{b_{k-1}}}{a_{b_k}} \bmod 2 &gt; 0$$ </p>
+<p>方案数对 $10^9+7$ 取模。</p>
+<p>数据范围：$n\le 211985, a_i\le 233333$。</p>
+<hr>
+<p>我们考虑这个序列的性质，即这些组合数中不能出现偶数。我们考虑如何利用这个性质。</p>
+<p>我们把组合数的计算公式搬出来：$\dbinom{n}{m}&#x3D;\frac{n!}{m!(n-m)!}$，为了让它为奇数，我们需要让上下阶乘的 $2$ 的个数相等。</p>
+<p>我们考虑把阶乘分解，设 $f(x)$ 为 $x!$ 所含的 $2$ 的个数，则易得：</p>
+<p>$$<br>f(x)&#x3D;\sum_{i&#x3D;1}^{+\infty} \frac{x}{2^i}<br>$$</p>
+<p>我们再设 $g(x)&#x3D;x$，$h(x)$ 为 $x$ 二进制中 $1$ 的个数，则</p>
+<p>$$<br>\begin{aligned}<br>g(x)&amp;&#x3D;g(\frac{x}{2})+\frac{x}{2}+(x\bmod 2)\<br>  &amp;&#x3D;\sum _{i&#x3D;1}^{+\infty} \frac{x}{2^i}+h(x) \<br>  &amp;&#x3D;f(x)+h(x)<br>\end{aligned}<br>$$</p>
+<p>则 $f(x)&#x3D;g(x)-h(x)&#x3D;x-h(x)$。再根据需要让上下阶乘 $2$ 的个数相等，能得出来 $h(n)&#x3D;h(m)+h(n-m)$，即 $n$ 二进制下 $1$ 的个数等于 $m$ 二进制下 $1$ 的个数加 $n-m$ 二进制下 $1$ 的个数。我们考虑如何满足这个条件。</p>
+<p>考虑 $n&#x3D;(\cdots 00100\cdots)_2, m&#x3D;(\cdots 00010\cdots)_2$，那么 $n-m&#x3D;(\cdots 00010\cdots)_2$。显然不可能 $1$ 的个数相等，因此我们必须满足 $m$ 是 $n$ 的子集。</p>
+<p>这样就好做了。我们先把所有数存一下位置，从后往前扫，枚举 $a_i$ 的子集，看是否在 $i$ 后面，转移即可。</p>
+<p>时间复杂度：$O(\mathrm{能过} )$。</p>
+<p><strong>[HNOI2012] 集合选数</strong></p>
+<p>给定一个集合 ${1, 2, 3\cdots n }$，问有多少满足下述限制的子集：如果 $x$ 在该集合中，那么 $2x, 3x$ 不能在该集合中。</p>
+<p>数据范围：$n\le 10^5$。</p>
+<hr>
+<p>很有意思的一道题。</p>
+<p>我们考虑从一个数为左上角开始构造出一个矩阵，这个矩阵每个数都是它左边数的 $2$ 倍，是它上面的数的 $3$ 倍。比如以 $1$ 为例，构建出的矩阵即为：</p>
+<p>$$<br>\begin{bmatrix}<br>  1&amp;  2&amp;  4&amp; 8&amp; \cdots&amp;\<br>  3&amp;  6&amp;  12&amp; 24&amp; \cdots&amp;\<br>  9&amp;  18&amp;  36&amp; \cdots &amp;\cdots&amp;\<br>  27&amp; \cdots&amp; \cdots&amp; \cdots&amp; \cdots&amp;\<br>\cdots &amp;\cdots &amp;\cdots &amp;\cdots &amp;\cdots<br>\end{bmatrix}<br>$$</p>
+<p>这样，我们就把问题转化为了：在这个矩阵中选择数字，满足选择的数字不相邻。同时我们发现，每个矩阵的方案互不干扰。我们就可以每个矩阵求一遍。</p>
+<p>不难看出，这个矩阵的大小最多为 $\log_2 n\times \log_3 n$。我们可以直接状压 dp，是一个比较经典的状压 dp 问题。<del>可以直接用插头 dp 解决。</del></p>
+<p>时间复杂度：$O(\mathrm{能过})$。</p>
+<p><strong>Piling Up</strong></p>
+<p>一开始有 $n$ 个颜色为黑白的球，但不知道黑白色分别有多少。$m$ 次操作，每次先拿出一个球，再放入黑白球各一个，再拿出一个球，最后拿出的球按顺序排列会形成一个颜色序列，求颜色序列有多少种。</p>
+<p>数据范围：$1 \le n \le 3000,1 \le m \le 3000$</p>
+<hr>
+<p>很容易设计出状态 $f[i, j]$ 为 $i$ 次操作后有 $j$ 个黑球时的方案数，也很容易写出状态转移：</p>
+<p>$$<br>f[i, j]&#x3D;f[i-1, j-1]+f[i-1, j+1]+f[i-1,j]+f[i-1,j]<br>$$</p>
+<p>即四种拿出球的顺序：黑黑、白白、黑白、白黑。答案即为 $\sum f[m][i]$。</p>
+<p>但是我们发现这样会计算重复。见下图：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/59fh9r68.png"></p>
+<p>在这张图中，横坐标为操作数，纵坐标为盒子中黑球的数量，折线即为黑球的变化量，其中折线不能低于 x 轴，也不能高于我们规定的盒子中球的数量（也就是上图中的红线）。我们发现这样会被计算多次，我们就考虑去掉重复，只保留一条折线。我们就可以将红线向下平移一单位，保留下来的方案即为多计算的。见下图：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/0alajqn5.png"></p>
+<p>这样就可以避免重复计算。时间复杂度 $O(n^2)$。</p>
+<p><strong>方格染色</strong></p>
+<p>有一个 $n\times m$ 的网格，每个格子可以被染成红色或蓝色。要求每个 $2\times 2$ 的区域内每种颜色的个数必须是奇数。现在已经有 $k$ 个格子被染色，求有多少合法的染色方案数。</p>
+<p>数据范围：$n, m, k\le 10^5$。</p>
+<hr>
+<p>有意思的找规律题。我们首先可以发现，如果这个网格的第一行和第一列确定后，整个网格就能被确定。因此我们就把问题转化为了对第一行和第一列的计数。我们发现一个 $2\times 2$ 的区域中的数字异或起来必定为 $1$，稍微分析一下即可得到一个被染色的格子只会影响到第一行、第一列、原点构成的矩形的顶点。再找找规律就能找到这三个的异或关系。</p>
+<p>这时我们就可以枚举原点的状态，然后把问题转化为 2-SAT，用边带权并查集即可。</p>
+<p><strong>城市规划</strong></p>
+<p>求 $n$ 个点有标号连通图的个数。</p>
+<p>数据范围：$n\le 130000$。</p>
+<hr>
+<p>本题可能不是那么精妙，但是是下一道题的前置。</p>
+<p>我们设 $c_i$ 为 $i$ 个点有标号连通图个数，$\varphi(i)$ 为 $i$ 个点的图的个数，易知 $\varphi(x)&#x3D;2^{\frac{x(x-1)}{2} }$，只需要看点与点之间的边是否在图中即可。</p>
+<p>我们考虑容斥，求出不连通图的个数。我们可以枚举一号点所在连通块的大小，就能得到转移方程</p>
+<p>$$<br>c(n)&#x3D;\varphi(n)-\sum \limits _{i&#x3D;1}^{n-1}\dbinom{n-1}{i-1}c_i\varphi(n-i)<br>$$</p>
+<p>这个转移方程右半部分的含义是：$1$ 号点所在连通块的方案数为 $c_i$，同时我们需要选出 $i-1$ 个点和它在一个连通块中。剩下的点就不用管了，形成任意的图都可以。</p>
+<p>考虑加速计算这个式子：</p>
+<p>$$<br>\begin{aligned}<br>c_n&amp;&#x3D;\varphi(n)-\sum \limits _{i &#x3D; 1}^{n-1}\frac{(n-1)!}{(i-1)!(n-i)!}c_i\varphi(n-i)\<br>\frac{c_n}{(n-1)!} &amp;&#x3D;\frac{\varphi(n)}{(n-1)!}- \sum \limits _{i &#x3D; 1}^{n-1}\frac{c_i}{(i-1)!}\frac{\varphi(n-i)}{(n-i)!}<br>\end{aligned}<br>$$</p>
+<p>设 $\phi (x)&#x3D;\frac{c(x)}{(x-1)!}$，$\pi (x)&#x3D;\frac{g(x)}{x!}$。那么上面的式子就变为了</p>
+<p>$$<br>\phi(n)&#x3D;\frac{g(n)}{n!}-\sum \limits_{i&#x3D;1}^{n-1}\phi (i)\pi(n-i)<br>$$</p>
+<p>直接分治 FFT 即可。时间复杂度 $O(n\log^2 n)$。</p>
+<p><strong>How Many of Them</strong></p>
+<p>求有 $n$ 个点，割边数量不超过 $m$ 的无向连通图的数量。</p>
+<p>数据范围：$n, m\le 50$。</p>
+<hr>
+<p>比较 nb 的不用多项式的图论计数。</p>
+<p>我们设 $F[i, j]$ 为 $i$ 个点，$j$ 条割边的无向连通图的数量。我们考虑去掉 $1$ 号点所在的双连通分量，那么整张图就会分为一堆连通块。我们再设 $G[i, j, k]$ 为 $i$ 个点，$j$ 条割边，$k$ 个连通块的无向图的数量。那么我们枚举 $1$ 号点所在连通分量的大小，就能对于 $0&lt;j&lt;i$ 得到转移方程：</p>
+<p>$$<br>F[i, j]&#x3D;\sum \limits _{p&#x3D;1}^{i-1}(F[p, 0]\times\dbinom{i-1}{p-1}\times \sum \limits _{q&#x3D;1}^j (G[i-p,j-q,q]\times p^q))<br>$$</p>
+<p>$p$ 枚举的是 $1$ 号点所在连通分量的大小，$q$ 枚举的是 $1$ 号点所在的连通分量去掉后会剩下多少连通块，而割边也会随之减少 $q$，可以看下图理解：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/uvwc5h6e.png" alt="由于边双的性质，最后一定会形成一棵树"></p>
+<p>然后 $p^q$ 的含义即为我们每个连通分量一定会选择 $1$ 号点所在的连通块中一个点连边，那么方案数即为 $p^q$。</p>
+<p>再考虑求出 $F[i, 0]$。根据容斥，我们只需要用连通图的数量减去含割边的图的数量即可，而连通图的数量则看上一道题。因此：</p>
+<p>$$<br>F[i, 0]&#x3D;c_i-\sum \limits _{j&#x3D;1}^{i-1}F[i,j]<br>$$</p>
+<p>最后我们再考虑求出 $G$ 数组。我们依旧枚举 $1$ 号点所在连通块大小 $p$，同时我们再枚举一号点连通块割边的数量 $q$，我们就能得到转移方程：</p>
+<p>$$<br>G[i,j,k]&#x3D;\sum\limits_{p&#x3D;1}^i\sum\limits _{q&#x3D;0}^j(f[p,q]\times p\times \dbinom{i-1}{p-1}\times G[i-p,j-q,k-1])<br>$$</p>
+<p>我们注意到其中多乘了一个 $p$，这其实代表着我们求出的是“有根双连通分量”，因为我们要在这个双连通分量中选一个点来和一开始去掉的边双连边。因此我们多乘了一个 $p$，而在别的情景中需要视情况而定。</p>
+<p>时间复杂度：$O(n^5)$。</p>
+<p><strong>串珠子</strong></p>
+<p>有 $n$ 颗珠子，所有的珠子互不相同，用整数 $1$ 到 $n$ 编号。对于第 $i$ 个珠子和第 $j$ 个珠子，可以选择不用绳子连接，或者在 $c_{i,j}$ 根不同颜色的绳子中选择一根将它们连接。如果把珠子看作点，把绳子看作边，将所有珠子连成一个整体即为所有点构成一个连通图。特别地，珠子不能和自己连接。有多少种不同的方案将所有珠子连成一个整体。</p>
+<p>数据范围：$n\le 16$。</p>
+<hr>
+<p>我们回顾一下无向连通图的转移方程：</p>
+<p>$$<br>c(n)&#x3D;\varphi(n)-\sum \limits _{i&#x3D;1}^{n-1}\dbinom{n-1}{i-1}c_i\varphi(n-i)<br>$$</p>
+<p>我们本题可以类似的这样做。我们设 $f_s$ 为 $s$ 集合组成的无向连通图个数，$g_s$ 为 $s$ 集合组成的无向图个数。我们考虑 $s$ 中第一个 $1$ 所代表的点所在的联通块的集合，有如下转移：</p>
+<p>$$<br>f_s&#x3D;g_s-\sum \limits f_tg_{\complement _s t}<br>$$</p>
+<p>而对于 $g_s$，我们只需枚举每条边看看是哪种状况即可。</p>
+<p>时间复杂度 $O(3^n)$。</p>
+<p><strong>Uniformly Branched Trees</strong></p>
+<p>求有多少种 $n$ 个点的不同构的树满足：除了度数为 $1$ 的结点外，其余结点的度数均为 $d$。</p>
+<p>数据范围：$1 \le n \le 1000, 2 \le d \le 10$。</p>
+<hr>
+<p><del>我怎么选了这么多图论计数</del></p>
+<p>本题和上面的图论计数不同的是，本题没有标号。因此我们需要有一个明确的规则来防止计算重复。</p>
+<p>我们首先先选定一个根，使得这棵树比较特殊。我们很容易就可以发现可以选择重心作为根，因为树的重心最多只有 $2$ 个，方便统计。而且这样它的子树大小都不超过 $\frac{n}{2}$。然后我们考虑如何计算方案。</p>
+<p>我们设 $f[i, j, k]$ 为 $i$ 个节点，根有 $j$ 个儿子，且子树大小都不超过 $k$ 的方案数。当所有的子树大小都小于 $k$ 时，方案数为 $f[i-1, j, k-1]$，直接加上。然后我们枚举有多少子树大小等于 $t$，这样除去这些子树的方案数即为 $f[i-k\times t, j-t, k-1]$，而这些大小为 $k$ 的子树的总方案数可以看作是有 $t$ 个相同的小球，放到 $f[k, d-1, k-1]$ 个盒子里，盒子可空的方案数，直接插板法即可。因此转移方程为：</p>
+<p>$$<br>f[i, j, k]&#x3D;f[i,j,k-1]+\sum \limits _{t\ge 1}(f[i-t\times k, j-t, k-1]\times \dbinom{f[k,d-1,k-1]+t-1}{t})<br>$$</p>
+<p>根据重心的定义，答案即为 $f[n, d, \frac{n}{2}]$。但是我们有时候会重复计算，因为重心可能会有两个，在这时如果两个重心两边的树如果不同，那么就会被算重复。我们需要减去这些重复的方案，即 $\dbinom{f[\frac{n}{2}, d-1, \frac{n}{2}-1]}{2}$。这样就能统计完。</p>
+<p>时间复杂度 $O(n^2d^2)$。</p>
+<p><strong>Mr. Kitayuta’s Gift</strong></p>
+<p>给定一个小写字符串 $s$ 和一个正整数 $n$。要求在 $s$ 中插入恰好 $n$ 个小写字符使其回文的方案数，两个方案不同当且仅当它们得到的串不同，与插入顺序和位置无关。</p>
+<p>数据范围：$|s| \le 200$，$n \le 10^9$。</p>
+<hr>
+<p>首先为了防止记重复，我们填入字符肯定是从两边忘中间填。因此我们设 $f[i][l][r]$ 为只考虑最终回文串的前 $i$ 个字符和后 $i$ 个字符，且给定字符串还有 $s[l\sim r]$ 没有匹配时的方案数，注意，我们状态这里定义的是<strong>尽可能</strong>与 $s$ 进行匹配。</p>
+<p>这样做的原因是因为，假如我们在考虑 <code>sx...ys</code> 这个字符串时，我们首先会在 <code>sx...ys</code> 外面加入 <code>s</code> 来成为回文串，而当我们进到里面时，我们又会在 <code>x...y</code> 这里重新加入一次 <code>s</code>，这样就会让 <code>ssx...yss</code> 算重。因此我们要让它尽可能与 $s$ 进行匹配。</p>
+<p>这时我们填入的字母就有 $k&#x3D;\frac{n+|s|}{2}$（我们先只考虑偶回文串）。</p>
+<p>状态设出来我们就可以转移了。</p>
+<ul>
+<li>当 $s_l &#x3D; s_r$ 时，我们的转移为：</li>
+</ul>
+<p>$$<br>\begin{aligned}<br>f_{i+1,l, r}&amp;\leftarrow f_{i, l+1, r-1}\<br>f_{i+1,l, r}&amp;\leftarrow 25\times f_{i, l, r}<br>\end{aligned}<br>$$</p>
+<ul>
+<li>当 $s_l\not&#x3D;s_r$ 时，我们的转移为：</li>
+</ul>
+<p>$$<br>\begin{aligned}<br>f_{i+1,l, r}&amp;\leftarrow f_{i, l+1, r}\<br>f_{i+1,l, r}&amp;\leftarrow f_{i, l, r-1}\<br>f_{i+1,l, r}&amp;\leftarrow 24\times f_{i, l, r}<br>\end{aligned}<br>$$</p>
+<ul>
+<li>而当 $l&gt;r$ 时，我们可以把它设为终点 $g_i$，而对于 $g_i$ 来说，两边放什么字母都无所谓了。因此转移为：</li>
+</ul>
+<p>$$<br>g_{i+1} \leftarrow 26\times g_i<br>$$</p>
+<p>我们当然可以暴力矩阵快速幂加速，复杂度为 $O(|s|^6\log n)$。</p>
+<p>我们知道，dp 可以转化为在自动机上转移的过程，因此我们把自动机建出来，见下图：</p>
+<p><img src="https://codeforces.com/predownloaded/61/e9/61e9c25b977bad7af00165b92070a9acabf16704.png"></p>
+<p>图中绿色的点为 $s_l&#x3D;s_r$ 的情况，因此走自环的方案数有 $25$ 中，红色点同理。</p>
+<p>而我们要求的答案就是从起点出发，走到终点且路径长度为 $k$ 的方案数。</p>
+<p>我们发现最终走向 $g_i$ 的点一定都是绿点（因为最终两边一定相等），那么我们就可以考虑把这个自动机优化一下状态。</p>
+<p>我们发现绝大多数时候都是在走自环，我们就考虑自环如何插入到路径中。我们可以发现一条路径上有 $a$ 个红点和 $b$ 个绿点的路径和另一条有 $a$ 个红点和 $b$ 个绿点的路径是等价的，只需要让自环一一对应即可（这里能对应上是因为最终走到终点的一定是绿点）。因此我们总的方案数为 $\sum F(a, b)G(a, b)$，其中 $F(a, b)$ 为 $a$ 个红点和 $b$ 个绿点的路径走 $k$ 条边到终点的方案数，$G(a, b)$ 为走 $a$ 个红点和 $b$ 个绿点的路径数。</p>
+<p>我们首先考虑求出 $G(a, b)$。这个其实可以直接在自动机上跑拓扑序 dp，我们设 $f_{l, r, a, b}$ 为在自动机上 ${l, r}$ 这个节点，经过了 $a$ 个红点和 $b$ 个绿点时的方案数。但是复杂度为 $O(|s|^4)$。但是我们可以发现有了红点的数量后绿点的数量也可以直接求出来。由于每个红点会使得字符串长度减一，绿点减二，因此绿点的数量为 $\left \lceil\frac{|s|-a}{2}  \right \rceil$。复杂度可以降到 $O(|s|^3)$。</p>
+<p>我们再考虑求出 $F(a, b)$。一个朴素的想法就是每次求 $F(a, b)$ 的时候就搞出来一条有 $a$ 个红点，$b$ 个绿点的链（我们前面已经说了是路径等价的），然后跑矩阵快速幂即可。就像下图：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/82p409eq.png"></p>
+<p>但是我们发现这样要构建出来 $O(|s|^2)$ 条链，复杂度即为 $O(|s|^5\log n)$。不能接受。</p>
+<p>但是我们考虑利用矩阵快速幂能求出图中任意两点走 $k$ 条路的方案数，我们可以把上面的图再次压缩一下：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/19jyfcbz.png"></p>
+<p>这样构建出来图，每次只需要选取合适的起点和终点就可以获得和上面那张图一样的链和效果。</p>
+<p>这样复杂度为 $O(|s|^3\log n)$。</p>
+<p>而对于奇回文串的情况，我们发现最终 $f_{i, l, l +1}$ 的情况不能转移到 $g_i$。因此我们考虑把这些方案减去即可。我们按照上面的思路，依旧是 DAG 上 dp 和矩阵快速幂即可。</p>
+<p><strong>kangaroo</strong></p>
+<p>有一个园子，里面有 $n$ 个草丛排成一排，标号 $1\sim n$，有一个袋鼠，从 $s$ 出发，每次跳一步跳到一个其他的草丛，经过每个草丛恰好一次，最终到达 $t$。显然他会跳跃 $n-1$次为了不被人类发现，袋鼠每次跳跃的方向必须与前一次不同。</p>
+<p>具体地，如果他现在在 $now$，他是从 $prev $ 跳跃一次到达 $now$ 的，然后他跳跃一次到达 $next$：</p>
+<ul>
+<li><p>那么如果 $prev&lt;now$，就必须有 $next&lt;now$；</p>
+</li>
+<li><p>如果 $now&lt;prev$，就必须有 $now&lt;next$。</p>
+</li>
+</ul>
+<p>问从 $s$ 到 $t$ 的方案数模 $10^9+7$的结果。</p>
+<p>数据范围：$n\le 2000$。</p>
+<hr>
+<p>本题的 dp 是另一种套路，这里整理一下。</p>
+<p>这里我们发现在状态里面设填到排列的第 $i$ 位不好转移，我们考虑换一种思路。</p>
+<p>我们可以从小到大来填入 $1\sim n$。这时我们可以在状态里面设一维为填完 $i$ 时的方案数。这时我们还可以发现我们填数的过程可能会形成一堆连通块（也就是中间不能插入数字的部分）。因此我们可以把状态设为 $f_{i, j}$ 为填完 $i$，且当前有 $j$ 个连通块时的方案数。</p>
+<p>我们考虑转移。因为我们已经填入的数字都是小于 $i$ 的，因此我们不需要考虑过多。转移的情况也就只有两种：新开一个连通块、合并两个连通块。这里没有在一个连通块旁边加入的转移是因为这样就不会符合题目的要求。这样直接转移即可。</p>
+<p>而这种方法不会记重记漏的原因就是：一个排列就对应着一颗笛卡尔树。我们合并两个连通块就是用 LCA 来合并，新开一个连通块就是新加入一个点，而对于在连通块边加入点就是加入父亲节点。</p>
+<p>时间复杂度 $O(n^2)$。</p>
+<p><strong>Around the World</strong></p>
+<p>给定一张无向联通图，大小为 $n$ ，有 $m$ 条边，每条边有边权，保证无重边自环。同时保证，不存在一个长度 $&gt;3$ 的简单环经过了 $1$ 号点。</p>
+<p>求解有多少种方案删除若干条与 $1$ 号节点相连的边，使得不存在任意一条路径（不一定是简单路径）满足下列 $3$ 个条件：</p>
+<ul>
+<li><p>其以  $1$ 号节点为起点，$1$ 号节点为终点。</p>
+</li>
+<li><p>此路径经过的所有边的边权异或和为 $0$ 。</p>
+</li>
+<li><p>其至少经过了一条边奇数次。</p>
+</li>
+</ul>
+<p>你需要输出这个方案数对 $10^9+7$ 取模的结果。</p>
+<p>数据范围：$n,m\le 10^5,w\le 31$。</p>
+<hr>
+<p>先想最大 XOR 路径中的套路：把所有的环找出来，这些就是能拿的异或值。我们先考虑一个及其暴力的dp：设 $f_{i, j}$ 为考虑前 $i$ 个连通块时，且能表示出来 $j$ 这个状态的数的可行性（$j&#x3D;2^{32}$）。转移时就看下一个连通块能表示出来什么然后转移即可。</p>
+<p>状态数太多，考虑优化。我们发现异或能表示出来什么数这种东西很像线性基，我们考虑大小为 $5$ 的本质不同的线性基一共有多少。通过打表可以发现：一共有 $374$ 种。非常少，我们就可以把它们放到第二维。我们再处理出一个 $ok$ 数组，表示当前连通块是否能凑出来 $0$ 这个数。当 $ok_i&#x3D;0$ 时，这个连通块直接跳过即可。 </p>
+<p>同时我们可以预处理出来所有的转移，这样不用每次转移时都做一次 $O(\log^2 w)$ 的线性基合并了。</p>
+<p>我们再考虑 $1$ 在环中的情况。由于题目中说了只会包含在三元环中，因此一个连通块最多只会和 $1$ 有两条边，我们考虑是否两条边都走，或者就走一条边，或者全部删掉。不同之处只有两条边都走这个选择，我们这时会加上三元环的贡献，我们加上即可。因此这种情况的转移方程为：</p>
+<p>$$<br>\begin{aligned}<br>f_{i, s}&amp;\leftarrow f_{i-1, s}\<br>f_{i, s\cup t}&amp;\leftarrow 2\times f_{i-1, s}\<br>f_{i, s\cup t\cup w}&amp;\leftarrow f_{i-1, s}\<br>\end{aligned}<br>$$</p>
+<p>时间复杂度不会算，反正能过。</p>
+<p><strong>仙人掌</strong></p>
+<p>有一张<strong>无自环无重边的无向连通图</strong>，要在图上连上一些新的边，使得加边后得到的图为一棵仙人掌。总共有多少不同的加边方案。</p>
+<p>两个加边方案是不同的当且仅当一个方案中存在一条另一个方案中没有的边。</p>
+<p>数据范围：$n\le 5\times 10^5, m\le 10^6$。</p>
+<hr>
+<p>我们考虑如果原图本身就不是一颗仙人掌，那无论如何都不可能是仙人掌。而如果原图中有环，那么这个环也不能被加入的边覆盖到，因为这样就不满足每个边只在一个简单环中的要求了。</p>
+<p>因此整张图就被这些环分成了一堆部分，每个部分都是一颗树，并且每部分分开计算，因此我们就可以只考虑树的情况。</p>
+<p>由于仙人掌中的割边不利于我们dp，我们强制让割边都连一条重边，这样就好dp了。我们设 $f_i$ 为子树内加边的方案，$g_i$ 为往上扩展一条边的方案。为了方便转移，再设 $h_i$ 为有 $i$ 个儿子时子树内连边的方案数。</p>
+<p>首先 $h_i$ 的递推式很容易计算，我们只需考虑最后一条边是和父亲连还是子树内再找一个来配对，因此</p>
+<p>$$<br>h_i&#x3D;h_{i-1}+(i-1)h_{i-2}<br>$$</p>
+<p>我们再考虑 $f$ 和 $g$ 的转移方程。</p>
+<p>我们记 $ch$ 为儿子的个数，每个子节点向上连边是独立的，而这些子节点又是可以互相连边的，因此 $f$ 的方程为：</p>
+<p>$$<br>f_{u}&#x3D;h_{ch}\times \prod \limits _{v\in son_u} g_v<br>$$</p>
+<p>再考虑 $g$ 的方程，首先 $u$ 本身可以直接向上扩展，或者是从子节点中选出一个点向上扩展，这时剩下的点其实也不影响，也可以向上扩展到 $u$，或者内部自己连边，因此转移方程为：</p>
+<p>$$<br>g_u&#x3D;f_u+h_{ch-1}\times ch\times \prod \limits _{v\in son_u} g_v<br>$$</p>
+<p>时间复杂度 $O(n)$。</p>
+<p><strong>猪国杀（某次模拟赛题）</strong></p>
+<p>给定一个长度为 $n$ 的正整数序列，其中所有数都在 $[1, A]$ 之间随机生成。得到序列后可以选择一些数且这些数的和不大于 $m$。如果每次都尽可能多地获得数字，那么单次期望获得多少个数。</p>
+<p>数据范围：$n\le 100, m\le 1000, A\le 1000$。</p>
+<hr>
+<p>我们先把问题转化为求所有序列的可以获得个数之和 $ans$，那么答案即为 $\frac{ans}{A^n}$。</p>
+<p>我们考虑求出 $ans$。我们要求的是对于所有序列，它所能选的牌数之和。我们转化为对于所有牌数 $d$，选的牌数为 $d$ 的序列乘上 $d$ 之和。</p>
+<p>设 $g_{i, j, k}$ 为 $i$ 个数，且这 $i$ 个数都不超过 $j$，并且它们的和小于等于 $k$ 的方案数。我们考虑我们把序列排序之后的样子：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/gv0qevk2.png"></p>
+<p>我们枚举图中的 $i, j, k, t$，然后再让它们插入到序列中，我们就能得到下面的式子：<br>$$<br>ans&#x3D;\sum_{i&#x3D;0}^{n}\sum_{j&#x3D;1}^A\sum_{k&#x3D;1}^{n-i}g_{i, j-1, m-j\times k}\dbinom{n}{i}\sum_{t&#x3D;k}^{n-i}\dbinom{n-i}{t}(A-j)^{n-t-i}<br>$$<br>而这里没有乘以牌数的原因是因为：我们会在每一个放置新数的位置都对这个序列记一次数，也就达到了上面乘以牌数的效果。</p>
+<p>而对于 $g_{i, j, k}$ 的求法，我们可以用二项式反演来求：</p>
+<p>简单地说，我们要求的简化版为下面这个式子：<br>$$<br>x_1+x_2+\cdots +x_n&#x3D;k\ \ x_i\le r<br>$$<br>设 $f_j$ 为恰好 $j$ 个条件不满足，$g_j$ 至少 $j$ 个不满足，二项式反演可得：<br>$$<br>f_i&#x3D;\sum _{j&#x3D;i}^n(-1)^{j-i}\dbinom{j}{i}g_j<br>$$<br>先从 $n$ 个限制选 $j$ 个不满足，让这 $j$ 个变为 $x_i&gt;r$。然后再减去这 $j\times r$，变为 $x_i&gt;0$。因为 $x_i&gt;0$，所以直接变为 $k-r\times j$ 个小球放 $n$ 个盒子，盒子非空的模型：<br>$$<br>g_j&#x3D;\dbinom{n}{j}\dbinom{k-r\times j-1}{n-1}<br>$$<br>因此 $f_i&#x3D;\sum _{j&#x3D;i}^n(-1)^{j-i}\dbinom{j}{i}\dbinom{n}{j}\dbinom{k-r\times j-1}{n-1}$，$f_0&#x3D;\sum _{j&#x3D;0}^n(-1)^{j}\dbinom{n}{j}\dbinom{k-r\times j-1}{n-1}$</p>
+<p>而要求的 $g_{n, r, x}$ 为和小于等于 $x$ 的方案数，可以在前面再加个 $\sum$。<br>$$<br>\begin{aligned}<br>g_{n, r, x}&amp;&#x3D;\sum_{k&#x3D;1}^{x}\sum _{j&#x3D;0}^n(-1)^{j}\dbinom{n}{j}\dbinom{k-r\times j-1}{n-1}\<br>&amp;&#x3D;\sum <em>{j&#x3D;0}^n(-1)^{j}\dbinom{n}{j}\sum</em>{k&#x3D;1}^{x}\dbinom{k-r\times j-1}{n-1}\<br>&amp;&#x3D;\sum <em>{j&#x3D;0}^n(-1)^{j}\dbinom{n}{j}\sum</em>{k&#x3D;1-r\times j-1}^{x-r\times j-1}\dbinom{k}{n-1}\<br>&amp;&#x3D;\sum <em>{j&#x3D;i}^n(-1)^{j}\dbinom{n}{j}\sum</em>{k&#x3D;0}^{x-r\times j-1}\dbinom{k}{n-1}\<br>\end{aligned}<br>$$<br>由于 $\sum <em>{i&#x3D;0}^n\dbinom{i}{m}&#x3D;\dbinom{n+1}{m+1}$，所以 $g</em>{n, r, x}&#x3D;\sum _{j&#x3D;0}^n(-1)^{j}\dbinom{n}{j}\dbinom{x-r\times j}{n}$。</p>
+<p>这样我们就求出来了 $g$。</p>
+<p>前面那一坨为 $0$ 时可以跳过，那么复杂度可能是 $O(n^2m\log m)$ 的，我也不会算。</p>
+<p><strong>Three Permutations</strong></p>
+<p>给定两个排列 $p, q$，要求统计满足 $\forall i, r_i\not&#x3D; p_i, r_i \not&#x3D; q_i$ 的排列 $r$ 的数量。</p>
+<p>数据范围：$n \le 3000$。</p>
+<hr>
+<p>题目中要求的东西和错排很相似，我们考虑容斥。设 $h_i$ 为只看其中 $i$ 条限制，这 $i$ 条限制都不满足的情况数。因此答案即为 $\sum \limits_{i&#x3D;0}^{n}(-1)^ih_i$。</p>
+<p>现在问题转变为了如何求这个 $h$。我们从 $p_i$ 向 $q_i$ 连边，这样一定会出现至少一个环。第 $i$ 个位置填 $r_i$ 就意味着第 $i$ 条边对应着第 $r_i$ 个点。</p>
+<p>而我们考虑不满足要求的情况，就是这条边正好对应着它的起点或者终点。而没有对应的情况我们就可以直接把这条边从图中删去。</p>
+<p>在一个大小为 $n$ 的环中，如果我们删去 $i$ 条边，我们就会剩下 $i + 1$ 个连通块，如果我们在这个环上不删去任何一条边，那么就意味着这个环上每条边都对应着自己的起点或者终点。这时有两种情况：全都对应自己的起点和全都对应自己的终点，一共两种情况。</p>
+<p>而当出现链时，我们考虑这条链上边选择点的方案数。我们可以枚举每个点，这个点左边的边全部选起点，右边的点全部选终点，这样一条链的方案数就是这条链的大小。</p>
+<p>设 $dp[n, m]$ 为一个大小为 $n$ 的链删去 $m$ 条边的方案数，我们可以枚举第一个点所在链的大小 $i$，便可推出方程 $dp_{n, m}&#x3D;\sum \limits <em>{i&#x3D;1}^{n}dp</em>{n-i,m-1}i$。这样就求出了链上的情况统计。</p>
+<p>我们再考虑环上的统计。设 $f[n,m]$ 为一个大小为 $n$ 的环删去 $m$ 条边的方案数。根据上面的分析，我们可以得到边界条件 $f[n,0]&#x3D;2$。我们也可以像上面一样，枚举第一个点所在的连通块的大小，我们可以得到转移方程 $f_{n, m}&#x3D;\sum \limits <em>{i&#x3D;1}^{n}i^2dp</em>{n-i,m-1}$。</p>
+<p>我们统计了一个环的情况，我们再考虑多个环。我们设 $g[n,m]$ 为前 $n$ 个环删去 $m$ 条边的方案数。枚举最后一个环删去多少条边，我们能得到转移方程 $g_{n, m}&#x3D;\sum \limits <em>{i&#x3D;1}^{v_n}g</em>{n-1,m-i}f_{v_n,i}$ （$v_n$ 为第 $n$ 个环的大小）。</p>
+<p>我们已经求出了所有环删去一些边的方案数，这时我们再考虑回去，我们会发现，删去一条边就意味着这条边不对应它的起点或终点，也就意味着它在 $r$ 排列中合法，那么减去这些删去的边，剩下的就是不满足要求的个数 $h$ 了。也就是 $h_i&#x3D;g_{cnt,n-i}$。</p>
+<p>但是现在我们的复杂度还是 $O(n^3)$。我们考虑使用前缀和优化，就可以做到 $O(n^2)$。</p>
+<p><strong>Beautiful Bracket Sequence</strong></p>
+<p>给定一个含 <code>?</code> 的括号序列。定义一个括号序列的权值为：删除一些字符使其成为合法的字符序列后，括号匹配的最深深度。求把 <code>?</code> 替换成括号的所有方案中，括号序列的权值之和。</p>
+<p>数据范围：$n\le 10^6$。</p>
+<hr>
+<p>我们可以先枚举最终括号匹配的中间点，然后枚举左右的括号数来计算权值，但是我们可以发现：一个括号序列最终匹配的中间点可能不只有一个，因此我们需要一个规则来防止算重。</p>
+<p>我们先确定一个括号序列，然后设 $a_i$ 为 $[1, i]$ 这段区间内 <code>(</code> 的个数，$b_i$ 为 $[i+1, n]$ 这段区间内的 <code>)</code> 的个数，那么显然，这个括号序列的权值为 $\max_{i&#x3D;1}^n (\min(a_i, b_i))$。我们考虑找到这个决策点。</p>
+<p>我们可以发现，当我们让 $i$ 向右扫时，如果扫到了 <code>(</code>，那么会让 $a_i$ 加一；扫到 <code>)</code> 会让 $b_i$ 减一。因此我们可以得到：$a_i$ 单调递增，$b_i$ 单调递减。我们把 $a$ 和 $b$ 的图像画出来可能就是下面的样子：</p>
+<p><img src="https://gitcode.net/crimson000000/mypic/-/raw/master/study/14.png"></p>
+<p>而我们要求的答案即为下图中的绿色部分。</p>
+<p><img src="https://gitcode.net/crimson000000/mypic/-/raw/master/study/15.png"></p>
+<p>我们可以发现，$a_i&#x3D;b_i$ 为其最优决策点，且该序列的权值为当前的 $a_i$。</p>
+<p>回归到最上面的问题，我们的目的是解决计算重复。显然对于一个括号序列，满足 $a_i&#x3D;b_i$ 的位置有且仅有一个，那么我们可以直接在 $a_i&#x3D;b_i$ 的时候来计算答案。</p>
+<p>我们还是枚举中间点 $p$，设左边的 <code>(</code> 有 $x$ 个，<code>?</code> 有 $a$ 个，右边的 <code>)</code> 有 $y$ 个，<code>?</code> 有 $b$ 个。并且我们让左右两边的左右括号数量相等，那么我们可以列出下面的式子：<br>$$<br>ans_p&#x3D;\sum_{i&#x3D;0}^a (x+i)\dbinom{a}{i}\dbinom{b}{x+i-y}<br>$$<br>我们用这个式子可以 $O(n^2)$ 出答案，我们考虑把这个式子再推推：<br>$$<br>\begin{aligned}<br>ans_p&amp;&#x3D;\sum_{i&#x3D;0}^a (x+i)\dbinom{a}{i}\dbinom{b}{x+i-y}\<br>&amp;&#x3D;x\sum_{i&#x3D;0}^a\dbinom{a}{i}\dbinom{b}{b+y-x-i}+\sum_{i&#x3D;0}^a i\dbinom{a}{i}\dbinom{b}{b+y-x-i}<br>\end{aligned}<br>$$<br>考虑经典结论 $m\dbinom{n}{m}&#x3D;n\dbinom{n-1}{m-1}$ 以及范德蒙德卷积，我们可以得到最终的式子：<br>$$<br>ans_p&#x3D;x\dbinom{a+b}{b+y-x}+a\dbinom{a+b-1}{b+y-x-1}<br>$$<br>时间复杂度 $O(n)$。</p>
+<p><strong>Formalism for Formalism</strong></p>
+<p>给出正整数 $n$，所有不足 $n$ 位（十进制）的数用前导零补充。</p>
+<p>给出 $m$ 组无序数对 $(u_i,v_i)$，若一个数字的相邻两位数 $x,y$ 满足 $(x,y)$ 存在于这 $m$ 组数对中，则可以交换 $x,y$ 的位置。若 $A$ 可以通过若干次（包含零次）交换得到 $B$，则认为 $A$ 和 $B$ 是等价的。</p>
+<p>求出最大整数 $k$，使得存在一组非负整数 $x_1,x_2,\ldots,x_k(0\leq x_i&lt;10^n)$ 满足对于任意 $1\leq i&lt;j\leq k$，$x_i$ 与 $x_j$ 不等价。</p>
+<p>数据范围：$n\le 50000$。</p>
+<hr>
+<p>本题中要对这些数字的等价类计数，我们考虑选出代表元。可以直接钦定一个等价类中，字典序最小的数为代表元。那么我们就考虑哪些数字可能成为代表元。</p>
+<p>我们发现如果一个数存在 $i&lt;j$，使得 $a_i&gt;a_j$ 并且 $j$ 可以交换到 $i$ 这个位置，那么这个数绝对不是字典序最小的。证明是显然的。那么我们现在的目标就是：找到有多少个数满足对于每个位置都不存在在它后面可以交换到它并且比它小的数。</p>
+<p>我们考虑 dp。我们设 $f_{i, s}$ 为当前填到了第 $i$ 位，下一位不能填 $s$ 这个集合中的数字。转移则枚举下一位填什么。我们再预处理出来 $to_{s, i}$ 来方便转移，其含义为：$s$ 中的数字不能填，下一位填 $i$ 时会转移到什么状态。$to$ 的预处理是平凡的。</p>
+<p>复杂度 $O(n\times 2^{10}\times 10)$。</p>
+<p><strong>Sum of SCC</strong></p>
+<p>考虑一张竞赛图 $G$，其中有 $n$ 个节点，节点编号为 $1,2,\dots,n$且 $G$ 满足：对于 $G$ 中的所有边 $u\to v$，恰好有 $m$ 条边满足 $u&lt;v$。</p>
+<p>设 $f(G)$ 表示图 $G$ 中的强连通分量数量。请你求出所有满足条件的 $G$ 的 $f(G)$ 之和。</p>
+<p>数据范围：$1\le n\le30$，$0\le m\le\frac{N(N-1)}2$。</p>
+<hr>
+<p>我们发现对强连通分量计数很难，我们考虑选取一种基本等价的方式来对强连通分量计数。</p>
+<p>我们发现，一个竞赛图强连通分量个数等价于将这张图分为 $A, B$ 两个可空集合，且两集合之间的连边都为 $A\to B$ 的方案数减一。这个结论比较显然。</p>
+<p>有了这个结论就可以开始 dp 了。我们设 $f_{i, j, k}$ 为 $A$ 集合有 $i$ 个点，$B$ 集合有 $j$ 个点，当前有 $k$ 条题目中要求的边的方案数。转移就考虑放入 $A$ 还是 $B$，可以得到：<br>$$<br>f_{i+1, j, k+x}\leftarrow \dbinom{i}{x} f_{i, j, k}<br>$$</p>
+<p>$$<br>f_{i, j+1, k+x+i}\leftarrow \dbinom{j}{x}f_{i, j, k}<br>$$</p>
+<p>最终答案即为 $\sum_{i&#x3D;0}^{n-1}f_{i, n-i, m}$。</p>
+<p>时间复杂度 $O(n^3m)$。</p>
+<p><strong>Strongly Connected Tournament</strong></p>
+<p>有 $n$ 个点，这些点组成一个集合。现在把集合中两两点之间连有向边，对于 $i&lt;j$，$(i, j)$ 这条边出现的概率是 $p$，$(j, i)$ 出现的概率是 $(1-p)$。一共会连 $\dbinom{n}{2}$ 条边。连一条边的代价是 $1$。</p>
+<p>这些边连完后对这张竞赛图进行缩点。缩点后把每一个强连通分量中的点看作一个新的集合，重新做一遍上面的连边操作以及当前的缩点操作，直到每个连通分量大小都为 $1$ 为止。</p>
+<p>求期望代价。</p>
+<p>数据范围：$n\le 2000$。</p>
+<hr>
+<p>一个竞赛图缩点后一定会有一个拓扑序最小的强连通分量，我们枚举它的大小。</p>
+<p>我们设 $f_i$ 为 $i$ 个点定向后仍然是一个强连通分量的概率，$dp_{i, j}$ 为大小为 $i$ 的图，拓扑序最小的强连通分量大小为 $j$ 个点（不考虑强连通分量内部连边）的概率。我们一个一个加入点，可以得到 $dp$ 的转移方程：<br>$$<br>dp_{i, j}&#x3D;dp_{i-1, j-1}\times (1-p)^{i-j}+dp_{i-1, j}\times p^j<br>$$<br>根据容斥可以得到 $f_i$ 的转移方程：<br>$$<br>f_i&#x3D;1-\sum_{j&#x3D;1}^{i-1}f_jdp_{i, j}<br>$$<br>我们再设 $g_i$ 为 $i$ 个点的图期望代价，答案即为 $g_n$，设 $h_i$ 为已经定向过的图重新定向至结束的期望代价。</p>
+<p>转移依旧是枚举第一个强连通分量大小，可以得到：<br>$$<br>g_n&#x3D;f_ng_n+\sum_{i&#x3D;1}^n dp_{n, i}f_i (g_i+h_{n-i}) +\dbinom{n}{2}<br>$$</p>
+<p>$$<br>h_n&#x3D;f_ng_n+\sum_{i&#x3D;1}^{n-1}dp_{n, i}f_i(g_i+h_{n-i})<br>$$</p>
+<p>时间复杂度 $O(n^2)$。</p>
+<p><strong>Slalom</strong></p>
+<p>一个 $n \times m$ 的网格，其中有 $k$ 个矩形障碍，保证这些障碍不重叠。求从 $(1,1)$ 走到 $(n,m)$，每步只能往右或往上走，不经过任何障碍的方案数。</p>
+<p>两种方案被视为不同，当且仅当存在一个障碍，它在第一种方案里被从右侧绕过，而在第二种方案里被从左侧绕过（第一种左，第二种右同理）。</p>
+<p>数据范围：$n, m \leq 10^6$，$k \leq 10^5$。</p>
+<hr>
+<p>我们发现题目中的要求让我们很难通过普通的方式计数，我们考虑选出所有等价路径中最靠下的那一条。</p>
+<p>我们设 $f_{i, j}$ 为走到 $(i, j)$ 的方案数，转移我们可以看下图：</p>
+<img src="https://gitcode.net/crimson000000/mypic/-/raw/master/study/17.png" width="70%">
+
+<p>我们要转移 $now$ 这个点的方案，我们考虑用 $a, b, c$ 这三条路径来更新，而和 $d$ 这条路径没有关系。因此如果我们记一个点能到达的最靠下且没有障碍物的位置是 $low$，那么转移方程即为<br>$$<br>f_{i. j}&#x3D;\sum_{k&#x3D;low}^{j}f_{i-1, k}<br>$$<br>显然这个式子可以上线段树来优化，我们的目标就变为了找到 $low$。</p>
+<p>我们可以直接用 set 维护一下线段，做一下差分即可。</p>
+<p>时间复杂度 $O(n\log n)$。</p>
+<h1 id="未完待续，持续更新"><a href="#未完待续，持续更新" class="headerlink" title="未完待续，持续更新"></a>未完待续，持续更新</h1>
+    </div>
+    <footer class="article-footer">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag" title="数学">数学</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E9%9B%86/" rel="tag" title="题集">题集</a></li></ul>
+
+    </footer>
+  </div>
+    <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
+      <div class="article-nav-link-wrap left">
+          <img data-src="https://gitcode.net/crimson000000/mypic/-/raw/master/bg/16.jpg" data-sizes="auto" alt="一些杂题" class="lazyload">
+        <a href="/2023/07/11/%E4%B8%80%E4%BA%9B%E6%9D%82%E9%A2%98/" aria-label="前一篇: 一些杂题" title="前一篇: 一些杂题"></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">
+            一些杂题
+        </h3>
+      </div>
+    <div class="article-nav-link-wrap right">
+        <img data-src="https://gitcode.net/crimson000000/mypic/-/raw/master/bg/44.jpg" data-sizes="auto" alt="图论杂题" class="lazyload">
+      <a href="/2023/06/18/%E5%9B%BE%E8%AE%BA%E6%9D%82%E9%A2%98/" aria-label="后一篇: 图论杂题"  title="后一篇: 图论杂题"></a>
+      <div class="article-nav-caption">后一篇</div>
+      <h3 class="article-nav-title">
+          图论杂题
+      </h3>
+    </div>
+  </nav>
+
+</article>
+
+
+</section>
+        </div>
+        <footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info">
+    <div>
+      <span class="icon-copyright"></span>
+        2020-2026
+      <span class="footer-info-sep rotate"></span>
+      crimson000
+    </div>
+      <div>
+        基于&nbsp;<a href="https://hexo.io/" rel="noopener nofollow noreferrer" target="_blank">Hexo</a>&nbsp;
+        Theme.<a href="https://github.com/D-Sketon/hexo-theme-reimu" rel="noopener nofollow noreferrer" target="_blank">Reimu</a>
+      </div>
+      <div>
+        <span class="icon-brush"></span>
+        85.3k
+        &nbsp;|&nbsp;
+        <span class="icon-coffee"></span>
+        05:54
+      </div>
+      <div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv">总访问量&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv">总访客量&nbsp;<span id="busuanzi_value_site_uv"></span></span>
+      </div>
+  </div>
+</footer>
+
+          <div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div>
+        <div id="mask" class="hide"></div>
+      </div>
+      <nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap">
+        <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD%EF%BC%8C%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0"><span class="toc-number">1.</span> <span class="toc-text">未完待续，持续更新</span></a></li></ol>
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.jpg" data-sizes="auto" alt="crimson000" class="lazyload">
+  <div class="sidebar-author-name">crimson000</div>
+  <div class="sidebar-description">我喜欢打源神和舞萌</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">11</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">8</div>
+  </div>
+</div>
+<div class="sidebar-social">
+</div>
+<div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+</div>
+</div>
+  </div>
+      <div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div>
+</nav>
+
+    </div>
+    
+<script src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js" integrity="sha384-3gT&#x2F;vsepWkfz&#x2F;ff7PpWNUeMzeWoH3cDhm&#x2F;A8jM7ouoAK0&#x2F;fP&#x2F;9bcHHR5kHq2nf+e" crossorigin="anonymous"></script>
+
+
+<script src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js" integrity="sha384-J08i8An&#x2F;QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  
+<script src="/js/aos.js"></script>
+
+  <script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', aosInit);
+    } else {
+      aosInit();
+    }
+  </script>
+
+
+<script src="/js/pjax_script.js" data-pjax></script>
+
+
+
+
+  
+<script src="https://npm.webcache.cn/mouse-firework@0.1.1/dist/index.umd.js" integrity="sha384-8LyaidD9GPxQQgLJO&#x2F;WRw&#x2F;O2h3BoNq&#x2F;ApI&#x2F;ecpvM6RsrCz2qP2ppBXUKihP4V&#x2F;2d" crossorigin="anonymous"></script>
+
+  <script>
+    if (!false || !window.matchMedia('(max-width: 768px)').matches) {
+      window.firework && window.firework(JSON.parse('{"excludeElements":["a","button"],"particles":[{"shape":"circle","move":["emit"],"easing":"easeOutExpo","colors":["var(--red-1)","var(--red-2)","var(--red-3)","var(--red-4)"],"number":20,"duration":[1200,1800],"shapeOptions":{"radius":[16,32],"alpha":[0.3,0.5]}},{"shape":"circle","move":["diffuse"],"easing":"easeOutExpo","colors":["var(--red-0)"],"number":1,"duration":[1200,1800],"shapeOptions":{"radius":20,"alpha":[0.2,0.5],"lineWidth":6}}]}'));
+    }
+  </script>
+
+
+
+
+
+<div id="lazy-script">
+  <div>
+      
+      
+      <script data-pjax>
+        window.REIMU_POST = {
+          author: "crimson000",
+          title: "计数杂题",
+          url: "https://crimson000000.github.io/2023/07/08/%E8%AE%A1%E6%95%B0%E6%9D%82%E9%A2%98/",
+          excerpt: "搞一点计数题放在这，看到有意思的计数就更（虽然在组合数学那已经更了好多了）。",
+          description: "",
+          stripContent: "搞一点计数题放在这，看到有意思的计数就更（虽然在组合数学那已经更了好多了）。   [CTSC2017] 吉夫特 给定一个长度为 $n$ 的序列 $a$，保证 $a_i$ 互不相同。求出有多少个长度大于等于二的序列满足 $$\prod {i&amp;#x3D;2}^{k} \binom{a{b_{i-1}}}{a_{b_i}} \bmod 2 &amp;#x3D; \binom{a_{b_1}}{a_{b_2}} \times \binom{a_{b_2}}{a_{b_3}} \times \cdots \bin",
+          date: "Sat Jul 08 2023 19:40:04 GMT+0800",
+          updated: "Sat Aug 15 2026 16:51:39 GMT+0800",
+          cover: "https://gitcode.net/crimson000000/mypic/-/raw/master/bg/13.jpg",
+        };
+      </script>
+        
+<script src="/js/insert_highlight.js" data-pjax></script>
+
+      <script type="module" data-pjax>
+        const PhotoSwipeLightbox = (await safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js", "sha384-DiL6M/gG+wmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF/N6lrZi/")).default;
+        const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,
+              pswpModule: () => safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8+oTJ7m3DfYEWX1fu1scuS4+s")
+            }).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script>
+        
+
+  </div>
+</div>
+
+
+  <script>
+    console.log(String.raw`%c 
+ ______     ______     __     __    __     __  __    
+/\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+\ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+ \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+  \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                  
+`,'color: #ff5252;')
+    console.log('%c Theme.Reimu v' + '1.10.4' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+  </script>
+  
+
+
+  
+<script src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js" integrity="sha384-0M75wtSkhjIInv4coYlaJU83+OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id+S" crossorigin="anonymous" async></script>
+
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      for (let registration of registrations) {
+        registration.unregister();
+      }
+    });
+  }
+</script>
+
+
+
+
+
+  </body>
+  </html>

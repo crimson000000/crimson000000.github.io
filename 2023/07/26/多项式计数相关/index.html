@@ -1,0 +1,595 @@
+  <!DOCTYPE html>
+  <html lang="zh-CN"  
+      data-theme-mode="auto"
+  >
+  <head>
+  <meta charset="utf-8">
+  
+  
+  
+  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_4k4bc36ef96';window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'https://crimson000000.github.io';</script>
+  <title>
+    多项式计数相关 | crimson000
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish%3A400%2C400italic%2C700%2C700italic%7CNoto+Serif+SC%3A400%2C400italic%2C700%2C700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish%3A400%2C400italic%2C700%2C700italic%7CNoto+Serif+SC%3A400%2C400italic%2C700%2C700italic&display=swap" media="print" onload="this.media&#x3D;&#39;all&#39;">
+    <link rel="preload" href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    
+<link rel="stylesheet" href="/css/loader.css">
+
+    <meta name="description" content="放假太闲了，也没啥游戏可玩，于是学学科技">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多项式计数相关">
+<meta property="og:url" content="https://crimson000000.github.io/2023/07/26/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E8%AE%A1%E6%95%B0%E7%9B%B8%E5%85%B3/index.html">
+<meta property="og:site_name" content="crimson000">
+<meta property="og:description" content="放假太闲了，也没啥游戏可玩，于是学学科技">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/qhcg0i6p.png">
+<meta property="article:published_time" content="2023-07-26T12:16:14.000Z">
+<meta property="article:modified_time" content="2026-08-15T08:51:39.739Z">
+<meta property="article:author" content="crimson000">
+<meta property="article:tag" content="学习笔记">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.luogu.com.cn/upload/image_hosting/qhcg0i6p.png">
+    <link rel="alternate" href="/atom.xml" title="crimson000" type="application/atom+xml">
+    <link rel="shortcut icon" href="/images/favicon.png">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL&#x2F;toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx&#x2F;1oA&#x2F;0l8ysE" crossorigin="anonymous">
+    
+<script src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js" integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script>
+
+    
+<link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css" integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous">
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+  <body>
+      <div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate">
+          <svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+           M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
+          </svg>
+      </div>
+      <div class="loading-word">少女祈祷中...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script>
+<div id="copy-tooltip"></div>
+<div id="heatmap-tooltip"></div>
+
+
+    <div id="container">
+      <div id="wrap">
+        <div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation">
+        <a class="main-nav-link-wrap" href="/">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">首页</span>
+        </span>
+        <a class="main-nav-link-wrap" href="/archives">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">归档</span>
+        </span>
+        <a class="main-nav-link-wrap" href="/about">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">关于</span>
+        </span>
+        <a class="main-nav-link-wrap" href="/friend">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">友链</span>
+        </span>
+    <a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation">
+      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅" aria-label="RSS 订阅" target="_blank"></a>
+  </nav>
+</div>
+<header id="header" aria-label="Site header">
+    <picture></picture>
+    <img  fetchpriority="high" src="https://gitcode.net/crimson000000/mypic/-/raw/master/bg/41.jpg" alt="多项式计数相关">
+  <div id="header-outer">
+    <div id="header-title">
+          <span id="logo">
+            <h1 data-aos="slide-up">多项式计数相关</h1>
+          </span>
+        <h2 id="subtitle-wrap" data-aos="slide-down">
+        </h2>
+    </div>
+  </div>
+</header>
+
+        <div id="content" aria-label="Page content"  class="sidebar-right" >
+          <aside id="sidebar" aria-label="Sidebar">
+  <div class="sidebar-wrapper-container sticky">
+  <div class="sidebar-wrapper">
+    <div class="sidebar-wrap" data-aos="fade-up">
+          <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8C%87%E6%95%B0%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0-exp-%E7%9A%84%E7%BB%84%E5%90%88%E6%84%8F%E4%B9%89"><span class="toc-number">2.</span> <span class="toc-text">指数生成函数 exp 的组合意义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AC%A7%E6%8B%89%E5%8F%98%E6%8D%A2"><span class="toc-number">3.</span> <span class="toc-text">欧拉变换</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E9%A2%98%E7%9B%AE"><span class="toc-number">4.</span> <span class="toc-text">一些题目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD"><span class="toc-number">5.</span> <span class="toc-text">未完待续</span></a></li></ol>
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.jpg" data-sizes="auto" alt="crimson000" class="lazyload">
+  <div class="sidebar-author-name">crimson000</div>
+  <div class="sidebar-description">我喜欢打源神和舞萌</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">11</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">8</div>
+  </div>
+</div>
+<div class="sidebar-social">
+</div>
+<div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+</div>
+</div>
+          <div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div>
+    </div>
+  </div>
+  <div class="sidebar-widget">
+  </div>
+  </div>
+</aside>
+
+          <section id="main" aria-label="Main content"><article id="post-多项式计数相关" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner" data-aos="fade-up">
+    <div class="article-meta">
+      <div class="article-date">
+  <span class="article-date-link icon-calendar" data-aos="zoom-in">
+    <time datetime="2023-07-26T12:16:14.000Z" itemprop="datePublished">2023-07-26</time>
+    <time style="display: none;" id="post-update-time">2026-08-15</time>
+  </span>
+</div>
+
+        <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/" title="算法竞赛">算法竞赛</a><a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="学习笔记">学习笔记</a>
+  </div>
+
+    </div>
+    
+    <div class="hr-line"></div>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+        <p><del>放假太闲了，也没啥游戏可玩，于是学学科技</del></p>
+<span id="more"></span>
+
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/qhcg0i6p.png" alt="来自hosen学长的亲切关怀"></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本博客直接嗯看的话一开始跨度会比较大，因此不建议没有了解过以下内容的人观看。</p>
+<ul>
+<li>多项式以及多项式的一些初等函数</li>
+<li>生成函数的简单了解，包括 OGF 和 EGF（仅限了解即可）</li>
+<li>组合数学</li>
+</ul>
+<h1 id="指数生成函数-exp-的组合意义"><a href="#指数生成函数-exp-的组合意义" class="headerlink" title="指数生成函数 exp 的组合意义"></a>指数生成函数 exp 的组合意义</h1><p>我们考虑下面这个问题：</p>
+<p>有 $n$ 个不同的小球，我们设 $k$ 个小球放入一个盒子中的方案数为 $f_k$（显然在球和盒子的问题中 $f_i&#x3D;1$，但是有时我们需要研究 $f_i$ 不等于 $1$ 的情况）。求下面两个问题的答案：</p>
+<ul>
+<li>$n$ 个不同的小球放入 $k$ 个互不区分的盒子中的方案数</li>
+<li>$n$ 个不同的小球放入任意个互不区分的盒子中的方案数</li>
+</ul>
+<hr>
+<p>我们设第一个问题的答案为 $G_k[n]$，枚举 $k$ 个盒子中都放多少个小球，我们有下面的式子：</p>
+<p>$$<br>G_k[n]&#x3D;\frac{n!}{k!}\sum \limits_{a_1+a_2+\cdots a_k&#x3D;n}\frac{f_{a_1}f_{a_2}\cdots f_{a_k}}{a_1!a_2!\cdots a_k!}<br>$$</p>
+<p>我们设 $f_i$ 的 EGF 为 $F(x)$，$G_k[i]$ 的 EGF 为 $G_k(x)$，上面的式子就可以写成：</p>
+<p>$$<br>G_k(x)&#x3D;\frac{1}{k!}F^k(x)<br>$$</p>
+<p>多项式快速幂即可解决。</p>
+<p>而对于第二个问题，我们只需要枚举有多少个盒子即可。我们就可以写出下面的式子：</p>
+<p>$$<br>\begin{aligned}<br>G(x) &amp; &#x3D; \sum \limits_{i &#x3D; 0}^{+\infty} G_i(x) \<br>&amp;&#x3D; \sum \limits_{i &#x3D; 0}^{+\infty} \frac{F^i(x)}{i!} \<br>\end{aligned}<br>$$</p>
+<p>根据 $e^x&#x3D;\sum \limits_{i&#x3D;0}^{+\infty} \frac{x^i}{i!}$（麦克劳林展开），我们可以得到下面的式子：</p>
+<p>$$<br>G(x)&#x3D; \mathrm{exp}(F(x))<br>$$</p>
+<p>出奇的简洁，对吧。这也就是指数生成函数 $\mathrm{exp}$ 的组合意义，既<strong>将</strong> $n$ <strong>个互异元素划分为任意非空的无序集合中，其中大小为</strong> $i$ <strong>的集合方案数为</strong> $f_i$<strong>，最后总方案数为</strong> $g_n$<strong>，则两者 EGF 满足</strong> $G(x)&#x3D;\mathrm{exp} (F(x))$。或者说<strong>指示了用有标号的元素构成的集合来生成集族有多少情况</strong>。</p>
+<p>如果上面这些话比较抽象，可以参照下面的两个个例子来理解：</p>
+<ol>
+<li>有标号的小球放到一个盒子是集合，它能够通过 $\mathrm{exp}$ 来转化为放到一堆盒子中的情况。</li>
+<li>有标号的点形成连通块是集合，它能够转化为一堆连通块，也就是普通图。</li>
+</ol>
+<h1 id="欧拉变换"><a href="#欧拉变换" class="headerlink" title="欧拉变换"></a>欧拉变换</h1><p>再回到小球和盒子上来，我们还可以解决下面这几个问题：</p>
+<ol>
+<li>我们认为盒子有序，那么我们前面就不用除去 $k!$，那么 $G(x)&#x3D;\sum \limits_{i&#x3D;0} F^i(x) &#x3D; \frac{1}{1-F(x)}$。</li>
+<li>无标号小球放入有标号盒子，那么只需要把前面的 EGF 换为 OGF 即可。</li>
+</ol>
+<p>我们需要解决的问题主要在下一种：无标号小球放入无标号盒子。我们设生成函数 $F(x)&#x3D;\sum \limits_{i&#x3D;0} f_i x^i$。那么我们对大小为 $i$ 的盒子构造完全背包的生成函数，既 $\frac{1}{1-x^i}$，那么这些盒子的方案数即为 $\frac{1}{(1-x^i)^{f_i}}$，我们就可以得到欧拉变换的定义式：</p>
+<p>$$<br>\mathcal{E}(F(x))&#x3D;\prod_{i&#x3D;1}^{+\infty}\frac{1}{(1-x^i)^{f_i}}<br>$$</p>
+<p>我们考虑把它化简一下，化简的具体过程可以参考我的<a target="_blank" rel="noopener" href="http://localhost:4000/2023/05/13/%E5%8D%81%E4%BA%8C%E9%87%8D%E8%AE%A1%E6%95%B0%E6%B3%95/">十二重计数法博客</a>，下面过程可能会略微省略。</p>
+<p>$$<br>\begin{aligned}<br>\mathcal{E}(F(x)) &amp; &#x3D; \prod_{i &#x3D; 1}^{+\infty}\frac{1}{(1-x^i)^{f_i}}\<br>&amp;&#x3D; \mathrm{exp}(\sum_{i&#x3D;1} f_i\ln\frac{1}{1-x^i})\<br>&amp;&#x3D;\mathrm{exp}(\sum \limits_{i&#x3D;1} f_i\sum \limits_{j&#x3D;1}\frac{x^{ij}}{j})\<br>&amp;&#x3D;\mathrm{exp}(\sum \limits_{j&#x3D;1} \frac{1}{j}\sum \limits_{i&#x3D;1}f_i x^{ij})\<br>&amp;&#x3D;\mathrm{exp}(\sum \limits_{i&#x3D;1} \frac{F(x^i)}{i})\<br>\end{aligned}<br>$$</p>
+<p>这样就得到了欧拉变换的最终式子，欧拉变换的组合意义和 $\mathrm{exp}$ 类似，但是它主要是用来解决无标号问题的，我们在下面的习题中会看到类似的题目。</p>
+<h1 id="一些题目"><a href="#一些题目" class="headerlink" title="一些题目"></a>一些题目</h1><p>限于作者能力和精力有限，只能找一些板题来当例题了。</p>
+<p><strong>集合划分计数</strong></p>
+<p>一个有 $n$ 个元素的集合，将其分为任意个非空无序子集，求方案数。</p>
+<p>数据范围：$T &#x3D; 1000$，$1\le n \le 10^5$。</p>
+<hr>
+<p>和上面第一个提到的例子相同，只不过为 $f_i&#x3D;[i&gt;0]$ 的特殊情况。按照上面的式子写即可。</p>
+<p><strong>城市规划</strong></p>
+<p>求 $n$ 个点有标号无向连通图的数量。</p>
+<p>数据范围：$n\le 10^5$。</p>
+<hr>
+<p>在<a href="https://crimson000000.github.io/2023/07/08/%E8%AE%A1%E6%95%B0%E6%9D%82%E9%A2%98/">计数杂题</a>中，我们已经介绍了基于 DP 的分治 FFT 做法，这里我们再介绍基于 $\mathrm{exp}$ 的组合意义的做法。</p>
+<p>我们考虑一张简单无向图是如何组成的：是由一堆有标号点构成的连通块组成的。我们把上面的例子套到这里：小球即为有标号点，盒子即为连通块。只不过这里小球放入一个盒子中的方案数不为 $1$ 了，我们设方案数为 $f_i$。而放到任意多个盒子中的方案数我们设为 $g_i$，易得 $g_n&#x3D;2^{\dbinom{n}{2}}$。根据 $\mathrm{exp}$ 的组合意义，很容易得到下面的式子：</p>
+<p>$$<br>\begin{aligned}<br>G(x)&amp;&#x3D;\mathrm{exp}(F(x))\<br>F(x)&amp;&#x3D;\ln (G(x))<br>\end{aligned}<br>$$</p>
+<p>多项式 $\ln$ 即可。</p>
+<p><strong>有标号 DAG 计数</strong></p>
+<p>对 $n$ 个点有标号的有向无环图进行计数，要求：弱连通图（所有的有向边替换为无向边后的图为连通图）。</p>
+<p>数据范围：$n\le 10^5$。</p>
+<hr>
+<p>设 $f_i$ 为大小为 $i$ 的普通 DAG（可能不连通）的数量。</p>
+<p>我们考虑模拟拓扑排序的过程，我们删去图中的 $j$ 个零入度点，剩下的图仍然是一张 DAG。我们就能得到下面的式子：</p>
+<p>$$<br>f_i&#x3D;\sum \limits <em>{j&#x3D;1}^{i-1}\dbinom{i}{j} (-1)^{j+1}f</em>{i-j}2^{j(i-j)}<br>$$</p>
+<p>注意这里我们乘了一个 $(-1)^{j+1}$，因为我们注意到我们没有保证恰好 $j$ 个零入度点，所以要容斥一下。而 $2^{j(i-j)}$ 是因为这 $j$ 个点可以对剩下的 $(i-j)$ 个点选择连或不连边。因此公式为这个。我们考虑化简这个式子：</p>
+<p>首先这个 $\dbinom{i}{j}$ 很好处理，取两边的 EGF 即可，而对于 $2^{j(i-j)}$，我们可以把它用下面这个式子化简：$j(i-j)&#x3D;\dbinom{i}{2}-\dbinom{j}{2}-\dbinom{i-j}{2}$。这个式子易证，我们就可以把 $2^{j(i-j)}$ 化为 $\frac{2^{\dbinom{i}{2}}}{2^{\dbinom{j}{2}}\times 2^{\dbinom{i-j}{2}}}$。这样我们构造下面这两个生成函数：</p>
+<p>$$<br>F(x)&#x3D; \sum \limits_{i&#x3D;0}\frac{f_i}{2^{\dbinom{i}{2}}\times i!}x^i<br>$$</p>
+<p>$$<br>G(x)&#x3D; \sum \limits_{i&#x3D;0}\frac{(-1)^{i+1}}{2^{\dbinom{i}{2}}\times i!}x^i<br>$$</p>
+<p>我们就能得到这个式子：$F(x)&#x3D;F(x)G(x)+1$，这里加一是因为有 $F[0]&#x3D;1$。解方程即可得到 $F(x)&#x3D;\frac{1}{1-G(x)}$。</p>
+<p>我们得到了普通 DAG 的答案，我们考虑弱连通 DAG。一个普通 DAG 一定是由一堆弱连通的 DAG 构成，因此它也符合我们 $\mathrm{exp}$ 的组合意义。因此我们只需要取一下 $\ln$ 即可。</p>
+<p><strong>无标号无根树计数</strong></p>
+<p>求 $n$ 个点的无标号无根树数量。</p>
+<p>数据范围：$1\le n \le 2\times 10^5$。  </p>
+<hr>
+<p>本题是无标号问题，因此我们需要用上面提到的欧拉变换来解决。</p>
+<p>我们先考虑有根树。我们把根去掉后，会形成一堆小的无标号有根树。如果我们把一棵树看作一个集合，那么这一堆树就是生成集族。通过比较系数我们就可以用欧拉变换列出下面的式子：</p>
+<p>$$<br>F(x)&#x3D;x\mathcal{E}(F(x))<br>$$</p>
+<p>这么简洁的式子不出意料的难解决。我们考虑对两边求导。</p>
+<p>$$<br>\begin{aligned}<br>F(x)&amp;&#x3D;x\mathcal{E}(F(x))\<br>F(x)&amp;&#x3D;x\times \exp(\sum \limits_{i&#x3D;1}\frac{F(x^i)}{i})\<br>F’(x)&amp;&#x3D;x’\times \exp(\sum \limits_{i&#x3D;1}\frac{F(x^i)}{i})+x\times \left ( \exp(\sum \limits_{i&#x3D;1}\frac{F(x^i)}{i}) \right )’\<br>&amp;&#x3D;\frac{F(x)}{x}+x\times \exp(\sum \limits_{i&#x3D;1}\frac{F(x^i)}{i})\times \left (\sum \limits_{i&#x3D;1}\frac{F(x^i)}{i}\right )’\<br>&amp;&#x3D;\frac{F(x)}{x}+F(x)\times \left (\sum \limits_{i&#x3D;1}\frac{F’(x^i)\times i\times x^{i-1}}{i}\right )\<br>&amp;&#x3D;\frac{F(x)}{x}+F(x)\times \left (\sum \limits_{i&#x3D;1}\frac{F’(x^i)\times i\times x^{i-1}}{i}\right )\<br>&amp;&#x3D;\frac{F(x)}{x}+F(x)\left (\sum \limits_{i&#x3D;1}F’(x^i)\times x^{i-1}\right )\<br>xF’(x)&amp;&#x3D;F(x)+F(x)\sum \limits_{i&#x3D;1}F’(x^i)\times x^{i}<br>\end{aligned}<br>$$</p>
+<p>我们发现右边这个 $\sum \limits_{i&#x3D;1}F’(x^i)\times x^{i}$ 及其恶心，我们设 $G(x)&#x3D;\sum \limits_{i&#x3D;1}F’(x^i)\times x^{i}$，则</p>
+<p>$$<br>\begin{aligned}<br>G(x) &amp; &#x3D; \sum \limits_{i &#x3D; 1}F’(x^i)\times x^{i}\<br>&amp;&#x3D;\sum \limits_{i &#x3D; 1} x^{i}\sum \limits_{j&#x3D;1}jf_jx^{i(j-1)}\<br>&amp;&#x3D;\sum\limits_{i&#x3D;1}\sum \limits_{j&#x3D;1}jf_jx^{ij}\<br>\end{aligned}<br>$$</p>
+<p>因此所有对 $G(x)$ 第 $n$ 项系数有 $j\times f_j$ 的贡献的 $j$ 必须满足 $j|n$。因此 $[x^n]G(x)&#x3D;\sum \limits _{i|n}i\times f_i$。</p>
+<p>我们再把 $G(x)$ 带回去，能够得到 $xF’(x)-F(x) &#x3D; F(x)G(x)$。而我们发现 $xF’(x)&#x3D;\sum \limits _{i&#x3D;1}i\times f_i\times x^i$，因此我们能得到下面的式子：</p>
+<p>$$<br>\begin{aligned}<br>\left [ x^n \right ] F(x)&amp;&#x3D;\frac{\left [  x^n\right ]F(x)G(x)}{n-1}\<br>f_n&amp;&#x3D;\frac{\sum \limits_{i&#x3D;0}^{n-1}f_ig_{n-i}}{n-1}<br>\end{aligned}<br>$$</p>
+<p>分治 FFT 即可。注意这里的分治 FFT 和 luogu 上的板子题不太一样，$g_i$ 是依赖于已经计算过的 $f_i$ 的，因此我们需要采取下面的方式转移：</p>
+<p>当 $l &#x3D; 0$ 时，$f_{l\sim mid}\times g_{0\sim r-l}\to f_{mid\sim r}$。</p>
+<p>当 $l\not&#x3D; 0$ 时，转移为：</p>
+<p>$$<br>\left.\begin{matrix}<br>f_{l\sim mid}\times g_{0\sim r-l}\<br>g_{l\sim mid}\times f_{0\sim r-l}<br>\end{matrix}\right}\to f_{mid\sim r}<br>$$</p>
+<p>这样我们就求出了有根树的数量，我们再考虑无根树的数量，我们只需要给它定个根：重心。减去不合法的（子树大小大于 $\frac{n}{2}$ 的），这样答案即为：</p>
+<p>$$<br>f_n-\sum \limits <em>{i&#x3D;\left \lfloor \frac{n}{2} \right \rfloor+1 }^{n-1}f_if</em>{n-i}<br>$$</p>
+<p>但是我们考虑偶数个点可能会有两个重心，因此我们需要再减去当这两颗大小相同的树同构的情况，也就是 $\dbinom{f_{\frac{n}{2}}}{2}$，这样就做完了。</p>
+<h1 id="未完待续"><a href="#未完待续" class="headerlink" title="未完待续"></a>未完待续</h1>
+    </div>
+    <footer class="article-footer">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag" title="学习笔记">学习笔记</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag" title="数学">数学</a></li></ul>
+
+    </footer>
+  </div>
+    <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
+      <div class="article-nav-link-wrap left">
+          <img data-src="https://gitcode.net/crimson000000/mypic/-/raw/master/bg/32.jpg" data-sizes="auto" alt="SAM学习笔记" class="lazyload">
+        <a href="/2023/08/27/SAM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" aria-label="前一篇: SAM学习笔记" title="前一篇: SAM学习笔记"></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">
+            SAM学习笔记
+        </h3>
+      </div>
+    <div class="article-nav-link-wrap right">
+        <img data-src="https://gitcode.net/crimson000000/mypic/-/raw/master/bg/6.jpg" data-sizes="auto" alt="字符串总结" class="lazyload">
+      <a href="/2023/07/17/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%80%BB%E7%BB%93/" aria-label="后一篇: 字符串总结"  title="后一篇: 字符串总结"></a>
+      <div class="article-nav-caption">后一篇</div>
+      <h3 class="article-nav-title">
+          字符串总结
+      </h3>
+    </div>
+  </nav>
+
+</article>
+
+
+</section>
+        </div>
+        <footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info">
+    <div>
+      <span class="icon-copyright"></span>
+        2020-2026
+      <span class="footer-info-sep rotate"></span>
+      crimson000
+    </div>
+      <div>
+        基于&nbsp;<a href="https://hexo.io/" rel="noopener nofollow noreferrer" target="_blank">Hexo</a>&nbsp;
+        Theme.<a href="https://github.com/D-Sketon/hexo-theme-reimu" rel="noopener nofollow noreferrer" target="_blank">Reimu</a>
+      </div>
+      <div>
+        <span class="icon-brush"></span>
+        85.3k
+        &nbsp;|&nbsp;
+        <span class="icon-coffee"></span>
+        05:54
+      </div>
+      <div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv">总访问量&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv">总访客量&nbsp;<span id="busuanzi_value_site_uv"></span></span>
+      </div>
+  </div>
+</footer>
+
+          <div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div>
+        <div id="mask" class="hide"></div>
+      </div>
+      <nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap">
+        <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8C%87%E6%95%B0%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0-exp-%E7%9A%84%E7%BB%84%E5%90%88%E6%84%8F%E4%B9%89"><span class="toc-number">2.</span> <span class="toc-text">指数生成函数 exp 的组合意义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AC%A7%E6%8B%89%E5%8F%98%E6%8D%A2"><span class="toc-number">3.</span> <span class="toc-text">欧拉变换</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E9%A2%98%E7%9B%AE"><span class="toc-number">4.</span> <span class="toc-text">一些题目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD"><span class="toc-number">5.</span> <span class="toc-text">未完待续</span></a></li></ol>
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.jpg" data-sizes="auto" alt="crimson000" class="lazyload">
+  <div class="sidebar-author-name">crimson000</div>
+  <div class="sidebar-description">我喜欢打源神和舞萌</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">11</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">8</div>
+  </div>
+</div>
+<div class="sidebar-social">
+</div>
+<div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+</div>
+</div>
+  </div>
+      <div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div>
+</nav>
+
+    </div>
+    
+<script src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js" integrity="sha384-3gT&#x2F;vsepWkfz&#x2F;ff7PpWNUeMzeWoH3cDhm&#x2F;A8jM7ouoAK0&#x2F;fP&#x2F;9bcHHR5kHq2nf+e" crossorigin="anonymous"></script>
+
+
+<script src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js" integrity="sha384-J08i8An&#x2F;QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  
+<script src="/js/aos.js"></script>
+
+  <script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', aosInit);
+    } else {
+      aosInit();
+    }
+  </script>
+
+
+<script src="/js/pjax_script.js" data-pjax></script>
+
+
+
+
+  
+<script src="https://npm.webcache.cn/mouse-firework@0.1.1/dist/index.umd.js" integrity="sha384-8LyaidD9GPxQQgLJO&#x2F;WRw&#x2F;O2h3BoNq&#x2F;ApI&#x2F;ecpvM6RsrCz2qP2ppBXUKihP4V&#x2F;2d" crossorigin="anonymous"></script>
+
+  <script>
+    if (!false || !window.matchMedia('(max-width: 768px)').matches) {
+      window.firework && window.firework(JSON.parse('{"excludeElements":["a","button"],"particles":[{"shape":"circle","move":["emit"],"easing":"easeOutExpo","colors":["var(--red-1)","var(--red-2)","var(--red-3)","var(--red-4)"],"number":20,"duration":[1200,1800],"shapeOptions":{"radius":[16,32],"alpha":[0.3,0.5]}},{"shape":"circle","move":["diffuse"],"easing":"easeOutExpo","colors":["var(--red-0)"],"number":1,"duration":[1200,1800],"shapeOptions":{"radius":20,"alpha":[0.2,0.5],"lineWidth":6}}]}'));
+    }
+  </script>
+
+
+
+
+
+<div id="lazy-script">
+  <div>
+      
+      
+      <script data-pjax>
+        window.REIMU_POST = {
+          author: "crimson000",
+          title: "多项式计数相关",
+          url: "https://crimson000000.github.io/2023/07/26/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E8%AE%A1%E6%95%B0%E7%9B%B8%E5%85%B3/",
+          excerpt: "放假太闲了，也没啥游戏可玩，于是学学科技",
+          description: "",
+          stripContent: "放假太闲了，也没啥游戏可玩，于是学学科技    前言本博客直接嗯看的话一开始跨度会比较大，因此不建议没有了解过以下内容的人观看。  多项式以及多项式的一些初等函数 生成函数的简单了解，包括 OGF 和 EGF（仅限了解即可） 组合数学  指数生成函数 exp 的组合意义我们考虑下面这个问题： 有 $n$ 个不同的小球，我们设 $k$ 个小球放入一个盒子中的方案数为 $f_k$（显然在球和盒子的问题中 $f_i&amp;#x3D;1$，但是有时我们需要研究 $f_i$ 不等于 $1$ 的情况）。求下面两个",
+          date: "Wed Jul 26 2023 20:16:14 GMT+0800",
+          updated: "Sat Aug 15 2026 16:51:39 GMT+0800",
+          cover: "https://gitcode.net/crimson000000/mypic/-/raw/master/bg/41.jpg",
+        };
+      </script>
+        
+<script src="/js/insert_highlight.js" data-pjax></script>
+
+      <script type="module" data-pjax>
+        const PhotoSwipeLightbox = (await safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js", "sha384-DiL6M/gG+wmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF/N6lrZi/")).default;
+        const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,
+              pswpModule: () => safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8+oTJ7m3DfYEWX1fu1scuS4+s")
+            }).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script>
+        
+
+  </div>
+</div>
+
+
+  <script>
+    console.log(String.raw`%c 
+ ______     ______     __     __    __     __  __    
+/\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+\ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+ \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+  \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                  
+`,'color: #ff5252;')
+    console.log('%c Theme.Reimu v' + '1.10.4' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+  </script>
+  
+
+
+  
+<script src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js" integrity="sha384-0M75wtSkhjIInv4coYlaJU83+OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id+S" crossorigin="anonymous" async></script>
+
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      for (let registration of registrations) {
+        registration.unregister();
+      }
+    });
+  }
+</script>
+
+
+
+
+
+  </body>
+  </html>
